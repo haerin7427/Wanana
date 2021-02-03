@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.mappers.portfolio_mapper">
+
+
+    <!--Register -->
+
+    <insert id="Join_user">
+    	<!-- insert into users (name, user_id, pwd, email_address, gender, phone_number, social) values("서인아","sia2650","seoina1324","21700355@handong.edu","여","010-1234-567",0) -->
+    	 insert into users (name, user_id, pwd, email_address, gender, phone_number, social)
+
+		 values(#{name},#{user_id}, #{pwd},#{email_address}, #{gender}, #{phone_number},#{social})
+    </insert>
+    
+    <insert id="JoinSocialUser">
+    	 insert into users (name, email_address) values(#{name},#{email_address})
+    </insert>
+
+    <!-- login -->
+    <select id="login" resultType="com.project.login.DTO.User">
+    	select * from users where user_id=#{userid} and pwd=#{userpw}
+    </select>
+    <select id="socialLogin" resultType="com.project.login.DTO.User">
+    	select * from users where name=#{name} and email_address=#{email}
+    </select>
+    
+    <select id="socialCheck" resultType="int" parameterType="com.project.login.DTO.User">
+    	select count(*) from users where name=#{name} and email_address=#{email_address}
+    </select>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="checkOverId" parameterType="String" resultType="int">
+    	select count(*) from users where user_id=#{user_id}
+    </select>
+
+    <!-- 데이터DB에 넣기 -->
+    <insert id="masterDataIN" parameterType="com.project.portfolio.DTO.Data" >
+        	INSERT INTO detail (portfolio_id,item_id,content1,content2,content3,content4,content5,content6) value (#{portfolio_id},#{item_id},#{content1},#{content2},#{content3},#{content4},#{content5},#{content6});
+    </insert>
+    
+    <!-- 유저 portfolio 리스트 가져오기 -->
+    <select id="getMyPortfolio" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
+    	<![CDATA[
+		 	SELECT portfolio.id as id, user_id,template_id,template.html as html,title,date_format(portfolio.update_date, '%Y-%m-%d') as update_date FROM portfolio LEFT JOIN template on portfolio.template_id=template.id where user_id=#{user_id} AND portfolio.template_id IS NOT NULL ORDER BY update_date;
+		 ]]>
+    </select>
+    
+    <!-- 선택한 포트폴리오 템플릿 html 이름 가져오기 -->
+    <select id="checkTemplateID" parameterType="int" resultType="String">
+    	select html from portfolio LEFT JOIN template ON portfolio.template_id=template.id WHERE portfolio.id=#{portfolio_ID};
+    </select>
+    
+<!--  선택한 포트폴리오 데이터 가져오기 -->
+    <select id="checkPortfolio" parameterType="int" resultType="com.project.portfolio.DTO.Data">
+    	<![CDATA[
+    		SELECT item_id, data_no, content1, content2, content3, content4, content5, content6 FROM detail LEFT JOIN item ON detail.item_id=item.id WHERE portfolio_id=#{portfolio_id};
+		 ]]>
+    </select>
+    
+    <!-- 선택한 포트폴리오 데이터 삭제하기 -->
+   <delete id="deletePortfolio" parameterType="int">
+    	delete from portfolio where id=#{portfolio_ID};
+    </delete>
+    
+    <!-- portfolio id 생성 (포트폴리오 생성) -->
+    <insert id="portfolio_id" parameterType="com.project.portfolio.DTO.Portfolio" >
+    	INSERT INTO portfolio (user_id,title,isPublic,template_id,color,font) VALUE (#{user_id},#{title},#{isPublic},#{template_id},#{color},#{font});
+    	
+    	<selectKey keyProperty="id" resultType="Integer">
+		    SELECT LAST_INSERT_ID()
+		</selectKey>
+    	
+    </insert>
+    
+    
+    <!-- template_id 업데이트 하기  --> 
+    <select id="update_template" parameterType="com.project.portfolio.DTO.Portfolio" >
+    	
+		 UPDATE portfolio SET template_id = #{template_id}  where id=#{portfolio_id};
+		
+    </select>
+    
+
+    <!-- 카테고리 가져오기 -->
+    <select id="category" resultType="com.project.portfolio.DTO.Category">
+    	<![CDATA[
+		 	SELECT id as category_id, category_name FROM category;
+		 ]]>
+    </select>
+
+    <!--  Item_id에 맞는 input type 가져오기 (이거 사용)  -->
+    <select id="item"  resultType="com.project.portfolio.DTO.Item">
+    	<![CDATA[
+		 	SELECT item_id, data_no,field.id as field_id,field_name, field_type, isEssential FROM item LEFT JOIN field ON item.id=field.item_id;
+		 ]]>
+    </select>
+    
+        <!--  category 별 item 가져오기 (이거 사용) -->
+    <select id="category_item" resultType="com.project.portfolio.DTO.Category_Item">
+    	<![CDATA[
+		 	select category.id as category_id, category_name,item.id as item_id, item_name from category LEFT JOIN item ON category.id=item.category_id ORDER BY category_id;
+		 ]]> 
+    </select>
+    
+    
+         <!--  select option list 가져오기 (이거 사용) -->
+    <select id="option"  resultType="com.project.portfolio.DTO.Option">
+    	<![CDATA[
+		 	select field_id, list_name from list;
+		 ]]> 
+    </select>
+    
+    	<!-- 포트폴리오에 넣을 데이터 가져오기(이거 사용) -->
+    <select id="callData" parameterType="int" resultType="com.project.portfolio.DTO.Data">
+    	<![CDATA[
+    		SELECT item_id, data_no,item_name, content1, content2, content3, content4, content5, content6 FROM detail LEFT JOIN item ON detail.item_id=item.id WHERE portfolio_id=#{portfolio_id};
+		 ]]>
+    </select>
+    
+
+    <!-- template 가져오기 -->
+    <select id="template" resultType="com.project.portfolio.DTO.Template">
+    	<![CDATA[
+		 	SELECT id,template_name,html,explanation FROM template;
+		 ]]>
+    </select>
+    
+      <!-- 이전데이터 눌렀을 때 user_id의 data 들고오기 -->
+    <select id="getData" resultType="com.project.portfolio.DTO.Data">
+    	<![CDATA[
+    		SELECT i.id as id,user_id,item_id,content1,content2,content3,content4,content5,content6,i.update_date as update_date FROM (SELECT detail.*,portfolio.user_id as user_id FROM detail INNER JOIN portfolio ON detail.portfolio_id=portfolio.id WHERE user_id=#{user_id}) i WHERE id IN (SELECT MAX(id)as id FROM detail GROUP BY content1, content2,content3,content4,content5,content6) AND item_id=#{item_id} ORDER BY update_date DESC LIMIT 3;
+		 ]]>
+    </select>
+    
+      <!-- item_id의 data_no 들고오기 -->
+    <select id="getDataNo" resultType="int">
+			SELECT data_no FROM item where id =#{item_id};
+    </select>
+    
+    <!-- file명 DB에 넣기 (이거 사용) -->
+    <insert id="savePhoto" parameterType="com.project.portfolio.DTO.Data" >
+        	INSERT INTO detail (portfolio_id,item_id,content1,content2,content3,content4,content5,content6) value (#{portfolio_id},#{item_id},#{content1}, '', '', '', '','');
+    </insert>
+    
+    <!-- Item_id에 맞는 input type 가져오기 -->
+    <select id="itemBox" parameterType="int" resultType="com.project.portfolio.DTO.Item">
+    	<![CDATA[
+		 	SELECT item_id, data_no,field.id as field_id,field_name, field_type FROM item LEFT JOIN field ON item.id=field.item_id WHERE item_id=#{item_id};
+		 ]]>
+    </select>
+    
+    <!-- port_id에 맞는 portfolio 정보 가져오기  -->
+    <select id="temID" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
+    	<![CDATA[
+    		SELECT title, isPublic, template_id FROM portfolio where id = #{portID};
+		 ]]>
+    </select>
+    
+    <!-- port_id로 portfolio 정보 업데이트 하기  -->
+    <update id="portUpdate" parameterType="com.project.portfolio.DTO.Portfolio" >
+    		UPDATE portfolio SET title=#{title}, isPublic=#{isPublic},template_id=#{template_id} WHERE id=#{id};
+    </update>
+    
+    <!-- 수정 중 기존 detail 정보 지우기   -->
+    <delete id="detailDelete" parameterType="int" >
+    		DELETE FROM detail WHERE portfolio_id=#{portfolio_id};
+    </delete>
+    
+</mapper>

@@ -1,0 +1,44 @@
+div{border:1px solid purple;}
+
+.sub_title{color:gray; margin-bottom: 15px;}
+
+.vl{border-left: 1px solid gray; float: left; width: 1%; height: 100%;}
+
+input, select{padding:10px; margin-bottom: 10px; border-radius: 15px;}
+textarea{padding:10px; border-radius: 15px;}
+.small_input:not(#phone){margin-right:2%;}
+
+.category1,.category2{overflow: auto; margin-bottom: 10px;}
+.basic_info{padding:30px 20px;}
+.interest, .strength{padding:23px 20px;}
+
+/*category1_사진, 기본정보*/
+#View_area{
+    position:relative; width:100px; height:130px; color: black; border: 0px solid black;
+}
+
+.photo_zone{
+    float: left; width: 24%; height: 100%; padding:10px;
+    margin-right: 1%;
+}
+
+.basic_info{
+    float: left; width: 74%; height: 100%;
+}
+#name{float: left; width: 40%;}
+#birth{float: left; width: 35%;}
+#sex{float: left; width: 21%;}
+#email{float: left; width: 49%;}
+#phone{float: left; width: 49%;}
+
+/*category2_저는 이런사람이에요!(짧은자기소개, 관심분야, 강점)*/
+.category{padding:30px 20px 0px 20px;}
+#introduce{width:100%;}
+
+.int_str{height:100%;}
+
+.interest{float:left; width: 49%; margin:5px 20px 0 0; border:1px solid grey; border-radius: 35px;}
+.interest_result_place{padding: 10px 0; margin-bottom: 10px;}
+#interest_major, #interest_side, #interest_detail{width:100%;}
+
+.strength{float: left; width: 49%; height: 100%; margin:5px 0 20px 0; border:1px solid grey; border-radius: 35px;}

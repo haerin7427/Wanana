@@ -1,0 +1,183 @@
+@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+
+        /* light300 regular400 bold700 extrabold800 */
+        body{font-family: 'NanumSquareRound', sans-serif; color: black;}
+        header h2{font-weight: 800;}
+
+        /* Header */
+        header {
+        width:100%;
+        padding: 20px 0;
+        }
+
+        nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        }
+        
+        nav.mypagemenu ul {
+        margin: 0 0 0 80px;
+        padding: 0;
+        list-style-type: none;
+        }
+
+        nav a{
+        margin: 5px 0;
+        padding: 5px 0;
+        text-decoration: none;
+        font-weight: bold;
+        line-height: 1.3;
+        color: black;
+        }
+
+        h4 a{
+        margin: 5px 0;
+        padding: 5px 0;
+        text-decoration: none;
+        font-weight: bold;
+        line-height: 1.3;
+        color: black;
+        text-align: right;
+        float:right;
+        }
+
+        #yellowtitle{
+        color: #F9CA03;
+        }
+
+        .imageicon{
+        padding: 0px 0px 0px 10px;
+        text-align: right;
+        float:right;
+        }
+
+        nav a:hover {
+        color: #F9CA03;
+        }
+
+        /* Main */
+        main {
+        background-color: #F2F2F2;
+        }
+
+        .titlebar{
+        background-color:white;
+        width: 100%;
+        line-height: 1em;
+        position: relative;
+        padding: 20px 120px;
+        border: 1px solid;
+        border-color: white white #E6E6E6 white;
+        }
+
+        .titlebar h2{
+        display: inline;
+        position: absolute;
+        top:40%;
+        left: 14%;
+        }
+
+        .titlebar a{
+        position: absolute;
+        margin: 0 0 0 30px;
+        top:30%;
+        left: 20%;
+        }
+
+        .editprofile{
+        border-radius: 40px;
+        text-align: center;
+        color: #F9CA03;
+        border: 1px solid #F9CA03;
+        padding: 10px 15px;
+        font-weight: 700;
+        font-size: 15;
+        }
+
+        .mypagemenu{
+        background-color:white;
+        width: 100%;
+        display: block; margin: 0px auto;
+        padding: 0 0 0 40px;
+        }
+
+        .profile{
+            background-color:white;
+            width: 90%;
+            display: block; margin: 0px auto;
+        }
+
+        .myportfolio{
+        padding: 30px;
+        background-color:white;
+        border-radius: 40px;
+        width:80%;
+        display: block; margin: 0px auto;
+        }
+
+        .create{
+        margin-top: 30%;
+        padding: 20px 0;
+        border-radius: 40px;
+        text-align: center;
+        color: #F9CA03;
+        border: 1px solid #F9CA03;
+        padding: 10px 100px;
+        font-weight: 700;
+        }
+
+        @media only screen and (min-width: 480px) {
+        nav a{
+            text-align: center;
+            float: left;
+            margin-right: 5%;
+        }
+
+        .imageicon, h4 a{
+            float: right;
+        }
+        
+        }
+
+        @media only screen and (min-width: 768px) {
+        header h2 {
+            float: left;
+            font-size: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-left: 50px;
+            float: left;
+            width: 40%;
+        }
+
+        
+        main article {
+            float: left;
+            width: 70%;
+        }
+        
+        }
+
+        /* Common */
+        .clearfix:after {
+        clear: both;
+        content: " ";
+        display: table;
+        }
+
+        .wrapper {
+        max-width: 1024px;
+        width: 90%;
+        margin: 0 auto;
+        }
+
+        h1, h2, h3, p {
+        margin: 0;
+        }
+
+        * {
+        box-sizing: border-box;
+        }
