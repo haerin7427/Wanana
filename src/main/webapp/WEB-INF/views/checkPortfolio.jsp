@@ -344,6 +344,86 @@
       
 </style>
 
+<script>
+$(document).ready(function(){
+  
+  	//경로 구하는 법 
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+	};
+
+	//session 정보 가져오기 
+	function sessionChecking() {
+		var check_sessionID="";
+
+		$.ajax({ 
+		      url : '<%=request.getContextPath()%>/sessionCheck',
+		  	  type : "POST",
+		  	  dataType : 'json',
+		  	  async: false,
+		  	  success: function(data){
+		  		
+		  		console.log("세션 확인 성공");
+		  		check_sessionID=data;
+		  	  },error:function(jqXHR, textStatus, errorThrown){
+	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+	        }
+		 });
+	
+		if(check_sessionID == null || check_sessionID == ""){
+	    	//session 값이 없을 시 
+	    	console.log("session end");
+	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
+	    	location.href = "login";
+	    	return 0;
+		}else
+			return 1;
+	}
+
+	//session 만료 확인
+	sessionChecking();
+
+	$("#printB").click(function() {
+   		var resultYN = sessionChecking();
+		if(resultYN == 1){
+   		 	var initBody = document.body.innerHTML;
+   		 
+                 window.onbeforeprint = function(){
+                    document.body.innerHTML = document.getElementById('printSection').innerHTML;
+                }
+                window.onafterprint = function(){
+                    document.body.innerHTML = initBody;
+                } 
+                window.print();   
+		 }
+	       });
+
+   		$("#deleteB").click(function() {
+   			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+				   		     document.deleteForm.submit();
+				}else{   //취소
+				   		     return false;
+				}
+   	   		 }
+	    });
+
+   		$("#editB").click(function() {
+			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+   	   	  		$("#deleteForm").attr("action","editPortfolio");
+				$("#deleteForm").submit();
+   			}
+   	       });//edit 버튼
+
+});//document ready end
+
+</script>
+
 
 </head>
 
@@ -389,41 +469,7 @@
 	
 	 
 	    
-     <jsp:include page="/WEB-INF/views/basic/footer.jsp" />
-     <script>
-
-     $(document).ready(function() {
-         
-   	  $("#printB").click(function() {
-   	   	  
-   		 var initBody = document.body.innerHTML;
-   		 
-                 window.onbeforeprint = function(){
-                    document.body.innerHTML = document.getElementById('printSection').innerHTML;
-                }
-                window.onafterprint = function(){
-                    document.body.innerHTML = initBody;
-                } 
-                window.print();   
-	       });
-
-   		$("#deleteB").click(function() {
- 	   	  
-   		 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-
-   		     document.deleteForm.submit();
-
-   		 }else{   //취소
-
-   		     return false;
-
-   		 }
-	       });
-     });
-      
-         
-        </script>
-     
+     <jsp:include page="/WEB-INF/views/basic/footer.jsp" /> 
 
 </body>
 </html>

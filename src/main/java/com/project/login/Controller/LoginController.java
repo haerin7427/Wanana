@@ -208,7 +208,6 @@ public class LoginController{
 		else {
 			mav=new ModelAndView("login");
 			mav.addObject("no_login","아이디 또는 비밀번호를 다시 입력해주세요.");
-			
 		}
 		System.out.println("loginProcess controller end");
 		return mav;
