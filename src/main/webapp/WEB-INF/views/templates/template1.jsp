@@ -9,6 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
     
+    <!-- 한글 폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
+
     <title>portfolio</title>
     <style>
 	    :root {
@@ -476,8 +480,8 @@
 <script>
    		var item= ${data_list};
    		var template_info=${template_info};
-   		document.body.style.setProperty("--my-font", template_info.template_font);
-   		document.body.style.setProperty("--my-color", template_info.template_color);
+   		document.body.style.setProperty("--my-font", template_info[0].template_font);
+   		document.body.style.setProperty("--my-color", template_info[0].template_color);
   		//div에 div 넣기 
 		for(var i=0; i < item.length; i++){
 			
@@ -499,7 +503,13 @@
 
 				//console.log("파일명  :" + item[i].content[0]);
 			
-				var new_image_src = "resources/user_photo/" + item[i].content[0];
+				if(item[i].content[0].indexOf("data:") != -1) {
+					var new_image_src = item[i].content[0];
+				}
+				
+				else {
+					var new_image_src = "resources/user_photo/" + item[i].content[0];
+				}
 				$($("#item_1").children('img')).attr("src", new_image_src); 
 				$($("#item_1").children('img')).css("width", "166");
 				$($("#item_1").children('img')).css("height", "195"); 

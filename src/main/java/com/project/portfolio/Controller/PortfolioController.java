@@ -290,14 +290,17 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	//step5.미리보기 
 		@RequestMapping(value= "/preview", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		@ResponseBody 
-		public ModelAndView showPreview(HttpServletRequest request) throws Exception {
+		public ModelAndView showPreview(HttpServletRequest request, @RequestParam("file1") MultipartFile file) throws Exception {
 			ModelAndView mav = new ModelAndView();
 			
 			System.out.println("preview!!");
 
 		    String template_name  = request.getParameter("template_html");
 		    String template_color  = request.getParameter("template_color");
+		    String photo_name  = request.getParameter("photo_name");
 		    String template_font  = request.getParameter("template_font");
+		    
+		  
 		    
 		    String []item_id = request.getParameterValues("item_id");
 		    String []content1 = request.getParameterValues("content1");
@@ -311,6 +314,49 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				
 			JSONArray jArray2 = new JSONArray();
 		    try {
+		    	//file 데이터 저장 
+				if(photo_name == null) {
+					JSONObject ob =new JSONObject();
+					content=new String[6];
+					System.out.println("file : " + file);
+					
+					String url = null;
+					
+					// 파일 정보
+					String originFilename = file.getOriginalFilename(); //file 실제
+
+					System.out.println("originFilename : " + originFilename);
+					ob.put("item_id", "1");
+					ob.put("data_no", "1");
+					content[0]=originFilename;
+					content[1]="";
+					content[2]="";
+					content[3]="";
+					content[4]="";
+					content[5]="";
+					    
+					ob.put("content", content);
+					jArray2.put(ob);
+						
+				}else {
+					JSONObject ob =new JSONObject();
+					content=new String[6];
+					System.out.println("file X : " + photo_name);
+					
+					ob.put("item_id", "1");
+			        ob.put("data_no", "1");
+			        
+			        content[0]=photo_name;
+			        content[1]="";
+			        content[2]="";
+			        content[3]="";
+			        content[4]="";
+			        content[5]="";
+			            
+			        ob.put("content", content);
+			        jArray2.put(ob);
+				}
+		    	
 		    	for (int i = 0; i < item_id.length ; i++) {   
 			    	JSONObject ob =new JSONObject();
 			        content=new String[6];
@@ -335,10 +381,15 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        e.printStackTrace();
 		    }
 		    
+		    JSONArray jArray = new JSONArray();
+		    JSONObject ob =new JSONObject();
+		    ob.put("template_color", template_color);
+		    ob.put("template_font", template_font);
+		    jArray.put(ob);
+		    
 		    String url="templates/"+template_name;
 			mav.addObject("data_list", jArray2);
-			mav.addObject("template_color", template_color);
-			mav.addObject("template_font", template_font);
+			mav.addObject("template_info", jArray);
 			mav.setViewName(url);
 			
 			return mav;
@@ -814,14 +865,17 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	        e.printStackTrace();
 	    }
 	    
-	    JSONObject template_info =new JSONObject();
-	    template_info.put("template_color", template_color);
-	    template_info.put("template_font", template_font);
+	    JSONArray jArray = new JSONArray();
+	    JSONObject ob =new JSONObject();
+	    ob.put("template_color", template_color);
+	    ob.put("template_font", template_font);
+	    jArray.put(ob);
+	    
 	
 	    //보여주기
 		mav.addObject("temName", template_name);
 		mav.addObject("data_list", jArray2);
-		mav.addObject("template_font", template_info);
+		mav.addObject("template_info", jArray);
 		mav.setViewName("portfolio_finish1");
 		
 //		if(template_name.equals("template1"))

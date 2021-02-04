@@ -169,10 +169,10 @@
 
                             //id li랑 연결
                             if(first == 1){
-                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2"></div></div>');
+                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
                             		first = 0;
                                 }else{
-                                	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2"></div></div>');
+                                	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
                                     }
                             $("#"+tabID).append(niceTag1);
                             
@@ -213,7 +213,7 @@
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea></div>');
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                             var spanTag = $('<span class="redMark">*</span>');
@@ -225,7 +225,7 @@
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="month" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="month" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                             var spanTag = $('<span class="redMark">*</span>');
@@ -257,7 +257,7 @@
                                         $("#"+tabDiv_itemID).append(labelTag);
 
                                         //var fieldID = "1page_field_" + field_content[k].field_id;
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="'+field_content[k].field_type+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="'+field_content[k].field_type+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                             var spanTag = $('<span class="redMark">*</span>');
@@ -351,15 +351,15 @@
   				console.log("test option!");
   				console.log(option_list); 
 
-  				//이전 데이터들을 감싸는 div 
-  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-1 longersize2 1page_pastBox'+id+'"></div>');
+  				//이전 데이터들을 감싸는 div  (여기 u-group을 지우니 세로 정렬!)
+  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-radius-21 u-shape-round u-group-1 longersize2 1page_pastBox'+id+'" style="overflow:scroll;"></div>');
   				$('.1page_past'+id).after(brotherItem); 	
 
   				var pastBox=$('<div class="u-container-layout u-container-layout-3"><p class="u-custom-font u-text u-text-2">이전 데이터​</p></div>');
   				$('.1page_pastBox'+id).append(pastBox); 
 
   				for(var idx=0;idx<item_data.length;idx++){
-  					var parentBox=$('<div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2 longersize" ></div>');
+  					var parentBox=$('<div class="u-grey-5 u-group u-radius-21 u-shape-round longersize" ></div>');
   					$('.1page_pastBox'+id).append(parentBox); 
   					var box1=$('<div class="u-container-layout u-valign-bottom-xs u-container-layout-14"></div>');
   					$($('.1page_pastBox'+id).children()[idx+1]).append(box1);
@@ -406,14 +406,14 @@
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
   	
   	                    }else if(item_type[k].field_type=='date'){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="month" value="'+content+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="month" value="'+content+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
   	
   	                    }else if(item_type[k].field_type=="select"){
@@ -439,7 +439,7 @@
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="'+item_type[k].field_type+'" name="defaultName" value="'+content+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="'+item_type[k].field_type+'" name="defaultName" value="'+content+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv); 
   	
   	                    }					
@@ -686,6 +686,7 @@
 
   		      for(var i=0; i<length; i++){                         
   		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
+
   		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
   		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
   		    	content3[i] = $("#1page_form").find("input[name=content3]").eq(i).val();
@@ -705,6 +706,9 @@
     		  $.ajax({
                   url: "<%=request.getContextPath()%>/preview",
                   type:'POST',
+                  enctype: 'multipart/form-data',
+                  processData: false,
+                  contentType: false,
                   traditional : true,
                   data: sendData,
                   success:function(result){

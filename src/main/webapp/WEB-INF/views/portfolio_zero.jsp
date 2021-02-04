@@ -14,9 +14,13 @@
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 
 <!-- font -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/fontselect-alternate.css" />
 <script src="<%=request.getContextPath()%>/resources/js/jquery.fontselect.js"></script>
+
+<!-- 한글 폰트 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
 
 <script>
 var color;
@@ -287,10 +291,10 @@ function rgbToHex(rgb) {
                     <div>
                   
 						<div id="onepage_ cp-background-color" class="onepage_ color-picker" style="display:inline;">
-							<div onclick="changeColor(this);" class="color bg-primary"></div>
-							<div onclick="changeColor(this);" class="color bg-success"></div>
-							<div onclick="changeColor(this);" class="color bg-warning"></div>
-							<div onclick="changeColor(this);" class="color bg-danger"></div>
+							<div onclick="changeColor(this);" class="color #1500E7"></div>
+							<div onclick="changeColor(this);" class="color #017417 "></div>
+							<div onclick="changeColor(this);" class="color #FAD400 "></div>
+							<div onclick="changeColor(this);" class="color #E90000"></div>
 						</div>
 						
 	                    
