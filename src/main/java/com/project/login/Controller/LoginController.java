@@ -184,9 +184,6 @@ public class LoginController{
 	}
 
 	//로그인 성공 or 실패
-
-
-
 	@RequestMapping(value="loginProcess",method=RequestMethod.POST)
 	public ModelAndView loginProcess(HttpSession session,User user) throws Exception {
 		ModelAndView mav;
@@ -206,16 +203,14 @@ public class LoginController{
 			session.setAttribute("phone", one.getPhone_number());
 			session.setAttribute("login", one);
 			
-			mav=new ModelAndView("new_home");
-			//mav.setViewName("new_home");
+			mav=new ModelAndView("home");
 		}
 		else {
 			mav=new ModelAndView("login");
 			mav.addObject("no_login","아이디 또는 비밀번호를 다시 입력해주세요.");
-			//model.addAttribute("no_login","아이디 또는 비밀번호를 다시 입력해주세요.");
 			
 		}
-		System.out.println("I'm heres");
+		System.out.println("loginProcess controller end");
 		return mav;
 	}
 
@@ -242,6 +237,13 @@ public class LoginController{
 		
         return new ModelAndView("home");
 	}
-
-
+	
+	//session check controller
+		@RequestMapping(value="/sessionCheck", method= {RequestMethod.POST, RequestMethod.GET})
+		@ResponseBody
+		public int sessionCheck(HttpSession session, HttpServletRequest request) {
+			int sessionID = (int) session.getAttribute("ID");
+			System.out.println("session controller : " + sessionID);
+	        return sessionID;
+		}
 }
