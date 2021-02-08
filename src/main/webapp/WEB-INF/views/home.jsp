@@ -30,6 +30,61 @@
     <meta property="og:url" content="index.html">
 
     <title>Wanana</title>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script>
+
+    $(document).ready( function(){
+        
+    	function getContextPath() {
+    	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+    	};
+
+    	function loginAlert() {
+    		alert("로그인 후 이용해주세요!");
+    	};
+    	
+    	//session 정보 가져오기 
+    	var check_sessionID="";
+    	$.ajax({ 
+		      url : '<%=request.getContextPath()%>/sessionCheck',
+		  	  type : "POST",
+		  	  dataType : 'json',
+		  	  async: false,
+		  	  success: function(data){
+		  		
+		  		console.log("세션 확인 성공");
+		  		check_sessionID=data;
+		  	  },error:function(jqXHR, textStatus, errorThrown){
+                console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+            }
+		 });
+
+    	//session 값 확인
+    	if(check_sessionID == null || check_sessionID == ""){
+        	//session 값이 없을 시 
+        	console.log("session info" +check_sessionID);
+        	
+        	//nav bar 설정 변경
+        	$('.1page_login').attr("href", getContextPath()+"/login");
+        	$('.1page_login').attr("onclick", "javascript:alert('로그인 후 이용해주세요!')"); 
+        	
+        	//logout 메뉴 지우기 
+        	$("#1page_logoutMenu1").css("display", "none");
+        	$("#1page_logoutMenu2").css("display", "none");
+        	
+        	//바로가기 링크 재설정 
+        	$('#1page_link').attr("href", getContextPath()+"/login");
+        	$('#1page_link').attr("onclick", "javascript:alert('로그인 후 이용해주세요!')"); 	
+    	}
+
+        });
+
+    </script>
 </head>
 <body class="u-backlink-hidden u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -44,23 +99,30 @@
           <div class="u-custom-menu u-nav-container">
             <ul class="u-custom-font u-nav u-unstyled u-nav-1">
             	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; onclick="javascript:alert('로그인 후 이용해주세요!')" href="<%=request.getContextPath()%>/login">Portfolios</a>
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black 1page_login"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolios"/>Portfolios</a>
 				</li>
 				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; onclick="javascript:alert('로그인 후 이용해주세요!')" href="<%=request.getContextPath()%>/login">MY 페이지</a>	
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black 1page_login"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
 				</li>
+				<li id="1page_logoutMenu1" class="u-nav-item">
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
+					</li>
+				
 			</ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <ul  class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" onclick="javascript:alert('로그인 후 이용해주세요!')" href="<%=request.getContextPath()%>/login">Portfolios</a>
+                		<a class="u-button-style u-nav-link maker 1page_login"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolios">Portfolios</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" onclick="javascript:alert('로그인 후 이용해주세요!')" href="<%=request.getContextPath()%>/login">MY 페이지</a>
+						<a class="u-button-style u-nav-link 1page_login"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>
+					</li>
+					<li id="1page_logoutMenu2" class="u-nav-item">
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
@@ -75,6 +137,8 @@
           </a>
         </p>
       </div></header> 
+      
+      
     <section class="u-clearfix u-white u-section-1" id="sec-fad6">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-align-left u-container-style u-expanded-width-xs u-group u-similar-fill u-group-1">
@@ -88,8 +152,8 @@
             <h2 class="u-custom-font u-text u-text-2">원페이지<br>포트폴리오
             </h2>
             <h5 class="u-custom-font u-text u-text-3">예쁜 포트폴리오를 손쉽게 만들어보세요 !</h5>
-            <div class="u-container-style u-custom-color-1 u-group u-radius-21 u-shape-round u-group-2" data-href="addData.html" data-page-id="266091356">
-              <a onclick="javascript:alert('로그인 후 이용해주세요!')" href="<%=request.getContextPath()%>/login">
+            <div class="u-container-style u-custom-color-1 u-group u-radius-21 u-shape-round u-group-2" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">
+              <a id ="1page_link"  href="<%=request.getContextPath()%>/portfolio_one">
               <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-xl u-valign-top-xs u-container-layout-2">
                 <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-4" style="padding-left:-200px;">포트폴리오 만들기 바로가기</p>
                 <span class="u-icon u-icon-circle u-text-white u-icon-1">
@@ -113,11 +177,11 @@
       </div>
     </section>
     
-    
   
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>
+        <p>Real Main Page</p>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
     </section>

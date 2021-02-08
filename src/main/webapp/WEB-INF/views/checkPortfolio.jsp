@@ -4,352 +4,96 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Wanana</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
-<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
-<style>
-    .modal label {  
-    	display: block;
-    	margin-top: 20px;
-    	letter-spacing: 2px;
-    }
-    .modal form {
-    	margin: 0 auto;
-    	width: 459px;
-    }
-    .modal input{
-    	width: 100%;
-    	height: 27px;
-    	background-color: #efefef;
-    	border-radius: 6px;
-    	border: 1px solid #dedede; 
-    	padding: 10px;
-    	margin-top: 10px;
-    	font-size: 0.9em;
-    	color: #3a3a3a; 
-    }
-    .modal input:focus{
-    		border: 1px solid #97d6eb;
-    	}
-	
-    #submit{
-    	width: 100%;
-    	height: 35px;
-    	text-align: center;
-    	border: none;
-    	margin-top: 20px;
-    	cursor: pointer;
-    }
-    #submit:hover{
-    	color: #fff;
-    	background-color: #216282;
-    	opacity: 0.9;
-    }
-	.modal {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(1.1);
-        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-    }
-    .modal-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 1rem 1.5rem;
-        width: 500px;
-        height: 180px;
-        border-radius: 0.5rem;
-    }
-    .close-button {
-        float: right;
-        width: 1.5rem;
-        line-height: 1.5rem;
-        text-align: center;
-        cursor: pointer;
-        border-radius: 0.25rem;
-        background-color: lightgray;
-    }
-    .close-button:hover {
-        background-color: darkgray;
-    }
-    .show-modal {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1.0);
-        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-    }
+<html style="font-size: 16px;">
+  <head>
+  
+  	<!-- jQuery -->
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="LOGIN">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Check</title>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">
+   
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "index.html"
+}</script>
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    
 
-    @import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+  </head>
 
-    /* light300 regular400 bold700 extrabold800 */
-    body{font-family: 'NanumSquareRound', sans-serif; color: black;}
-        header h2{font-weight: 800;}
-
-        /* Header */
-        header {
-        width:100%;
-        padding: 20px 0;
-        }
-
-        nav ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        }
-        
-        nav.mypagemenu ul {
-        margin: 0 0 0 80px;
-        padding: 0;
-        list-style-type: none;
-        }
-
-        nav a{
-        margin: 5px 0;
-        padding: 5px 0;
-        text-decoration: none;
-        font-weight: bold;
-        line-height: 1.3;
-        color: black;
-        }
-
-        h4 a{
-        margin: 5px 0;
-        padding: 5px 0;
-        text-decoration: none;
-        font-weight: bold;
-        line-height: 1.3;
-        color: black;
-        text-align: right;
-        float:right;
-        }
-
-        #yellowtitle{
-        color: #F9CA03;
-        }
-
-        .imageicon{
-        padding: 0px 0px 0px 10px;
-        text-align: right;
-        float:right;
-        }
-
-        nav a:hover {
-        color: #F9CA03;
-        }
-
-        /* Main */
-        main {
-        background-color: #F2F2F2;
-        }
-
-        .titlebar{
-        background-color:white;
-        width: 100%;
-        line-height: 60px;
-        padding: 20px 120px;
-        border: 1px solid;
-        border-color: white white #E6E6E6 white;
-        }
-
-        .titlebar h2{
-        display: inline;
-        top:40%;
-        left: 14%;
-        }
-
-        .titlebar a{
-        margin: 0 0 0 30px;
-        top:30%;
-        left: 20%;
-        }
-
-		.profile_img{
-		margin-right: 20px;
-		vertical-align:middle;
-		}
-
-		.login_user{
-		vertical-align:middle;
-		}
-
-        .editprofile{
-        vertical-align:middle;
-        border-radius: 40px;
-        text-align: center;
-        color: #F9CA03;
-        border: 1px solid #F9CA03;
-        padding: 10px 15px;
-        font-weight: 700;
-        font-size: 15;
-        }
-
-        .mypagemenu{
-        background-color:white;
-        width: 100%;
-        display: block; margin: 0px auto;
-        padding: 0 0 0 40px;
-        }
-
-        .profile{
-            background-color:white;
-            width: 90%;
-            display: block; margin: 0px auto;
-        }
-
-        .myportfolio{
-        padding: 30px;
-        background-color:white;
-        border-radius: 40px;
-        width: 85%;
-        display: block; margin: 0px auto;
-        }
-
-        .leftmenu{
-        width: 30px;
-        height: 50px;
-        background-color:white;
-        }
-
-        .trigger{
-        background-color:white;
-        margin-top: 20px;
-        border-radius: 40px;
-        text-align: center;
-        color: #d3d3d3;
-        border: 1px solid #F2F2F2;
-        padding: 70px 70px;
-        font-weight: 700;
-        font-size: 18px;
-        }
-        
-        :hover.trigger{
-        border: 1px solid #F9CA03;
-        color:#F9CA03;
-        }
-
-        @media only screen and (min-width: 480px) {
-        nav a{
-            text-align: center;
-            float: left;
-            margin-right: 5%;
-        }
-
-        .imageicon, h4 a{
-            float: right;
-        }
-        
-        }
-
-        @media only screen and (min-width: 768px) {
-        header h2 {
-            float: left;
-            font-size: 2rem;
-        }
-
-        nav {
-            text-align: center;
-            margin-left: 50px;
-            float: left;
-            width: 40%;
-        }
-
-        
-        main article {
-            float: left;
-            width: 70%;
-        }
-        
-        }
-
-        /* Common */
-        .clearfix:after {
-        clear: both;
-        content: " ";
-        display: table;
-        }
-
-        .wrapper {
-        max-width: 1024px;
-        width: 90%;
-        margin: 0 auto;
-        }
-
-        h1, h2, h3, p {
-        margin: 0;
-        }
-
-        * {
-        box-sizing: border-box;
-        }
-        
-        .home{
-        margin-top: 10px;
-        margin-right: 5px;
-        background-color: white;
-        border: 1px solid #F9CA03;
-        color: #F9CA03;
-        vertical-align:middle;
-        border-radius: 40px;
-        text-align: center;
-        padding: 10px 15px;
-        font-weight: 700;
-        width: 200px;
-        font-size: 18px;
-        }
-        
-        .print,.delete,.edit{
-        margin-top: 10px;
-        margin-right: 5px;
-        background-color: #F9CA03;
-        color: white;
-        border: 1px solid #F9CA03;
-        vertical-align:middle;
-        border-radius: 40px;
-        text-align: center;
-        padding: 10px 15px;
-        font-weight: 700;
-        width: 200px;
-        font-size: 18px;
-        }
-        
-        /* 
-        @media print {
-		#printSection {-webkit-print-color-adjust: exact;}
-		}
-		*/
-		
-        /*
-        main{
-        	display:block;
-        	margin: 0 12.5%;
-        
-        }
-        */
-        page[size="A4"][layout="portrait"] { width: 29.7cm; height: 21cm; }
-		page[size="A4"] { width: 21cm; height: 29.7cm; }
-
-        @media print { body, page { margin: 0; box-shadow: 0; } }
-      
-</style>
-
-
-</head>
-
-
-<body>
-	 <jsp:include page="/WEB-INF/views/basic/header.jsp" />
+<body class="u-body">
+	<header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+          <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: NanumGothic; font-weight: 800;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#">
+              <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</symbol>
+</defs></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            	<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolios" style="padding: 10px 20px;">Portfolios</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>	
+				</li>
+			</ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                	<li class="u-nav-item">
+                		<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_one" style="padding: 10px 20px;">Portfolios</a>
+					</li>
+					<li class="u-nav-item">
+						<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
+					</li>
+					<li class="u-nav-item">
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>
+					</li>
+				</ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+        <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="home.html" data-page-id="425530424">
+            <span class="u-text-custom-color-1">One</span>
+            <span class="u-text-black">하나</span>
+          </a>
+        </p>
+      </div></header>
 	 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
@@ -389,14 +133,51 @@
 	
 	 
 	    
-     <jsp:include page="/WEB-INF/views/basic/footer.jsp" />
+    
      <script>
+$(document).ready(function(){
+  
+  	//경로 구하는 법 
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+	};
 
-     $(document).ready(function() {
-         
-   	  $("#printB").click(function() {
-   	   	  
-   		 var initBody = document.body.innerHTML;
+	//session 정보 가져오기 
+	function sessionChecking() {
+		var check_sessionID="";
+
+		$.ajax({ 
+		      url : '<%=request.getContextPath()%>/sessionCheck',
+		  	  type : "POST",
+		  	  dataType : 'json',
+		  	  async: false,
+		  	  success: function(data){
+		  		
+		  		console.log("세션 확인 성공");
+		  		check_sessionID=data;
+		  	  },error:function(jqXHR, textStatus, errorThrown){
+	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+	        }
+		 });
+	
+		if(check_sessionID == null || check_sessionID == ""){
+	    	//session 값이 없을 시 
+	    	console.log("session end");
+	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
+	    	location.href = "login";
+	    	return 0;
+		}else
+			return 1;
+	}
+
+	//session 만료 확인
+	sessionChecking();
+
+	$("#printB").click(function() {
+   		var resultYN = sessionChecking();
+		if(resultYN == 1){
+   		 	var initBody = document.body.innerHTML;
    		 
                  window.onbeforeprint = function(){
                     document.body.innerHTML = document.getElementById('printSection').innerHTML;
@@ -405,25 +186,39 @@
                     document.body.innerHTML = initBody;
                 } 
                 window.print();   
+		 }
 	       });
 
    		$("#deleteB").click(function() {
- 	   	  
-   		 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+   			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+				   		     document.deleteForm.submit();
+				}else{   //취소
+				   		     return false;
+				}
+   	   		 }
+	    });
 
-   		     document.deleteForm.submit();
+   		$("#editB").click(function() {
+			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+   	   	  		$("#deleteForm").attr("action","editPortfolio");
+				$("#deleteForm").submit();
+   			}
+   	       });//edit 버튼
 
-   		 }else{   //취소
+});//document ready end
 
-   		     return false;
-
-   		 }
-	       });
-     });
-      
-         
-        </script>
+</script>
      
-
+	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
+        </p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+    </section>
 </body>
 </html>

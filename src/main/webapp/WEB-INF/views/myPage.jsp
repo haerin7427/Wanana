@@ -26,7 +26,7 @@
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">
-    
+   
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -38,6 +38,28 @@
     <meta name="theme-color" content="#478ac9">
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
+    
+    <style type="text/css">
+    	.fixsize{
+    		height: 700px;
+    		
+    	} 
+    	.makeshort{
+    		height: 700px;
+    	}
+    	.makeshort2{
+    		height:250px;
+    		overflow: auto;
+    	}
+    	.shortmargin{
+    		margin-top: -50px;
+    	}
+    	.changecolor{
+    		color: #D6A630;
+    	}
+    </style>
+    
+    
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -92,9 +114,9 @@
     <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-14 u-layout-wrap u-layout-wrap-1">
-          <div class="u-layout">
+          <div class="u-layout fixsize shortmargin">
             <div class="u-layout-row">
-              <div class="u-size-14-xl u-size-16-lg u-size-16-md u-size-16-sm u-size-16-xs">
+              <div class="u-size-14-xl u-size-16-lg u-size-16-md u-size-16-sm u-size-16-xs makeshort">
                 <div class="u-layout-col">
                   <div class="u-container-style u-gradient u-layout-cell u-size-60 u-layout-cell-1">
                     <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-1">
@@ -135,19 +157,26 @@
 			          <c:set var="port_count" value="${port_count + 1}"/>
 			         </c:forEach>
                     
-                      <h6 class="u-custom-font u-text u-text-7">현재 포트폴리오가 ${port_count}개 있습니다.</h6>
-                      <div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3"> <!-- 포트폴리오 리스트 div -->
+                      <h6 class="u-custom-font u-text u-text-7">현재 포트폴리오가 <span class="changecolor">${port_count}개</span> 있습니다.</h6>
+                      <div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3 makeshort2"> <!-- 포트폴리오 리스트 div -->
                         <div class="u-container-layout u-container-layout-6">
                           
-                          <div class="u-container-style u-grey-25 u-group u-radius-21 u-shape-round u-group-4" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356"> <!-- 포트폴리오 박스 하나 -->
-                            <div class="u-container-layout u-valign-middle u-container-layout-7">
-                              <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-8">+ 새로만들기</p>
-                            </div>
+                          <div style="height:25px;"></div>
+                          
+                          <div style="margin-left:15px;">
+                          <div style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
+                              <p style="color:black;">+ 새로만들기</p>
                           </div>
                           
                           <c:forEach items="${portfolio_list}" var="portfolio">
-				            <div style="float:left;">	
-				            	<button class="select_port" id="${portfolio.id}" > <img src="<%=request.getContextPath()%>/resources/images/${portfolio.html}.png"  style="max-width: 100%; height: auto;"> ${portfolio.title} <br> <p class="update_time"><fmt:formatDate value="${portfolio.update_date}" pattern = "YYYY-MM-dd"/></p> </button>
+				            <div style="float:left; width: 180px; height: 130px; margin-left:10px; margin-bottom: 30px;">	
+				            	<button class="select_port" id="${portfolio.id}" style="border-radius:5px; height: 150px; border: transparent"> 
+				            		<div style="width: 160px; height: 105px;">
+				            			<img src="<%=request.getContextPath()%>/resources/images/${portfolio.html}.png"  style="max-width: auto; height: 100%;"> 
+				            		</div>  
+				            		<div style="height:30px;">${portfolio.title}</div>
+				            		<p class="update_time" style="font-size:10px; margin-top:-8px;"><fmt:formatDate value="${portfolio.update_date}" pattern = "YYYY-MM-dd"/></p> 
+				            	</button>
 				            	<form id="checkForm" class="checkForm" action="checkPortfolio" method="POST">
 				            		<input type="hidden" id="select_portID" name="select_portID" value=""/>
 				            	</form>
@@ -166,7 +195,8 @@
 				            	</script>
 				            
 				            </div>
-				            </c:forEach>
+				            </c:forEach>  
+				            </div> 
                           
                         </div>
                         
@@ -187,15 +217,6 @@
         </p>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/landing-page" target="_blank">
-        <span>Free Landing Page</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
     </section>
   </body>
 </html>

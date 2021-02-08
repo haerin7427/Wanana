@@ -26,6 +26,11 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|NanumGothic:400,700,800">
     
+    <meta property="og:title" content="addData">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
 
     <style type="text/css">
     .noenter{
@@ -61,26 +66,51 @@
 		display: table-cell; vertical-align: middle;
 	}
     </style>
-    
-	
-	
-	</style>
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
 		"name": "",
 		"url": "index.html"
-}</script>
-    <meta property="og:title" content="addData">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#478ac9">
-    <link rel="canonical" href="index.html">
-    <meta property="og:url" content="index.html">
+}
+</script>
     
     <script type="text/javascript">
     $(document).ready(function () {
-        //category list 보여주기 
+    	//경로 구하는 법 
+    	function getContextPath() {
+    	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+    	};
 
+    	//session 정보 가져오기 
+    	function sessionChecking() {
+    		var check_sessionID="";
+    		$.ajax({ 
+    		      url : '<%=request.getContextPath()%>/sessionCheck',
+    		  	  type : "POST",
+    		  	  dataType : 'json',
+    		  	  async: false,
+    		  	  success: function(data){
+    		  		
+    		  		console.log("세션 확인 성공");
+    		  		check_sessionID=data;
+    		  	  },error:function(jqXHR, textStatus, errorThrown){
+    	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+    	        }
+    		 });
+    	
+    		if(check_sessionID == null || check_sessionID == ""){
+    	    	//session 값이 없을 시 
+    	    	console.log("session end");
+    	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
+    	    	location.href = "login";
+    	    	return 0;
+    		}else
+    			return 1;
+    	}
+
+    	
+        //category list 보여주기 
         var item_content = ${item_list};
         var field_content = ${item_input};
         var list_content = ${options}
@@ -269,12 +299,14 @@
 
                                 }
                             }//for (k) 종료  
+                            
 
                             //hidden field
                             for(var a = count+1 ; a <= 6; a++){
                                 var hiddenTag = $('<input type="hidden" name="content'+a+'" value="" readonly="">');
                                 $("#"+tabDiv_itemID).append(hiddenTag);
                             }
+                        
 
                             //입력 버튼
                             var addB = $('<div class="u-align-center u-form-group u-form-submit fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
@@ -290,10 +322,14 @@
                       //end
                       past_categoryID = item_content[i].category_id;
                   }
-        }
-
+        }//for (i) 종료 
+   		
+   
         //이전 데이터 눌렀을 때 
          	$(".pastB").click(function (){
+         		var resultYN = sessionChecking();
+       			
+       			if(resultYN == 1){
              	
   			var id=this.id;
   			var item_data;
@@ -347,7 +383,8 @@
   					  		
   					  	  }
   					});
-  			  	}
+  			  	}//select의 경우 option 들고오기 끝! 
+  			  	
   				console.log("test option!");
   				console.log(option_list); 
 
@@ -455,273 +492,260 @@
   					var pastAddB = $('<div class="u-align-center u-form-group u-form-submit "><a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_pastAddB">+ 입력</a></div>');
                       $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastAddB);
   	                
-  				}//이전데이터 개수(3개)만큼 반복문을 돌림
+  					}//이전데이터 개수(3개)만큼 반복문을 돌림 for(idx) 
 
+  		  	  	}//success
+				});//2번쨰 ajax 끝! 
+       		} //resultYN == 1 경우 끝
+  	    }); // 이전 데이터 보여주기 끝 
 
-  		  	  }//success
-
-  		 });
-
-  	    });
-
-        //이전 데이터 div에 넣기 
+        //이전 데이터 포트폴리오에 추가하기
           $(document).on("click", ".1page_pastAddB", function(){
-        	add_count++; //포트폴리오에 넣는 전체 항목 
-            var data_num = $(this).parent().siblings("div").length;
-            console.log("click : " + data_num);
-
-            var find_itemID = $($(this).parent()).parent().attr("id");
-            console.log(find_itemID);
-            find_itemID = find_itemID.split("_");
-            var item = find_itemID[3] - 1;
-            console.log("item : " + item_content[item].item_name);
-
-            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
-            $('#1page_form').append(niceTag3); 
-            
-
-          //체크된 박스의 라인에 존재하는 상태 값 변경
-          var field_count = 0;
-          $(this).parent().siblings("div").each(function() { 
-            	 field_count++;
-                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
-                 //type : $(this).children().attr("type")
-                 //value : $(this).children().val()
-                 var type = $(this).children().attr("type");
-                 
-                 if(type == "file"){
-                     var viewTag = $('<img src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
-                     $($('#1page_count' + add_count).children()[0]).append(viewTag);
-
-                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-                     
-                  }
-                 else{
-                      /* if(vali($(this).children().val())){
-                         정보를 입력하지 않았을 경
-                          } */
-                          	
-                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
-                      $($('#1page_count' + add_count).children()[0]).append(pTag);
-                      
-                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-                     
-                  }
-
-            }); //field 수 만큼 반복  
-             for(var z = field_count+1 ; z < 7;z++){
-                 var trashTag =  $('<input type = "hidden" id="content'+z+'" name="content'+z+'" value ="">');
-                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
-             }
-
-              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
-              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
-          });//이전 데이터에서 입력된 정보 div에 넣기 끝
-         
-
-        //입력된 정보 div에 넣기 
-          $(".1page_addB").click(function () {
-
-        	  /* var check1 = $('input[name=file1]').length;
-              var check2 = $('input[name=add_itemID]').length; */
-              //console.log("사진 개수: "+check1 +"/ 필드 개수 : "+ check2);
-
-             var check_id = $(this).attr("id");
-             check_id = check_id.split("_");
-
-             var isEmpty = 0;
-             $(this).parent().siblings('.redStar').each(function() { 
-            	 		if ( $(this).children().is('input, textarea, select') && $(this).children().val().length < 1 ) 
-            	 				isEmpty = 1;
-                });
-
-             if(isEmpty == 1){
-                 
-            	 	$(this).siblings('p').text("필수 사항(*)을 모두 입력해주세요! ");
-                 
-                 }else{
-
-              if(check_id[2]==1 && $('input[name=file1]').length == 1){//사진 개수 확인 
-                  
-                  $(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");
-                  
-              }else if( (check_id[2]==2 || check_id[2]==5 || check_id[2]==6 || check_id[2]==9) && $('input[name=add_itemID]:input[value='+check_id[2]+']').length > 0){//사진 개수 확인 
-                  
-                  $(this).siblings('p').text("최대 1개만 입력 가능합니다. ");
-                  
-              }
-
-              else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
-                  var topic = $(this).parent().siblings('label').text();
-            	  $(this).siblings('p').text(topic+" : 최대 3개 입력가능합니다.");
-              }else{
-                  //추가 가능할 때!
-                  $(this).siblings('p').text("");
-                  
               
-	        	  add_count++; //포트폴리오에 넣는 전체 항목 
-	              var data_num = $(this).parent().siblings("div").length;
+        	var resultYN = sessionChecking();
+     			
+     		if(resultYN == 1){
+        	  
+	        	add_count++; //포트폴리오에 넣는 전체 항목 
+	            var data_num = $(this).parent().siblings("div").length;
 	            console.log("click : " + data_num);
 	
 	            var find_itemID = $($(this).parent()).parent().attr("id");
+	            console.log(find_itemID);
 	            find_itemID = find_itemID.split("_");
 	            var item = find_itemID[3] - 1;
 	            console.log("item : " + item_content[item].item_name);
-	
+
 	            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
 	            $('#1page_form').append(niceTag3); 
-	            
-	
-	          //체크된 박스의 라인에 존재하는 상태 값 변경
+            
+
+          		//체크된 박스의 라인에 존재하는 상태 값 변경
 	          var field_count = 0;
-	          var type = "";
-	          $(this).parent().siblings("div").each(function() { 
+	          $(this).parent().siblings("div").each(function() {
 	            	 field_count++;
 	                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
 	                 //type : $(this).children().attr("type")
 	                 //value : $(this).children().val()
-	                	 type = $(this).children().attr("type");
+	                 var type = $(this).children().attr("type");
 	                 
 	                 if(type == "file"){
+	                     var viewTag = $('<img src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
+	                     $($('#1page_count' + add_count).children()[0]).append(viewTag);
 	
-	                	 	$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
-	
-	                	 	
-	                   var viewTag = $($(this).siblings("img")).clone();
-	                   viewTag.attr("id","1page_view2" );
-	                   $($('#1page_count' + add_count).children()[0]).append(viewTag);
-	
-	                     var realTag = $($(this).children()).clone();
-	                     realTag.attr("name", "file1");
-	                     realTag.attr("id", "");
-	                     realTag.attr("class", "");
-	                     realTag.css('display', 'none');
+	                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-	
-						// 기본이미지로 되돌리기 
-	                     $('#1page_view1').attr('src', 'resources/images/21.png');     
-	                     
-	                     
 	                  }else{
-	                      /* if(vali($(this).children().val())){
-	                         정보를 입력하지 않았을 경
-	                          } */
-	                          	
 	                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                      
 	                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                     
 	                  }
-	                 $(this).children().val('');
-	                 console.log("value : " + $(this).children().attr("type"));
-	
-	            }); //field 수 만큼 반복
-	              
-	            if(type != "file"){
-		             for(var z = field_count+1 ; z < 7;z++){
-		                 var trashTag =  $('<input type = "hidden" id="content'+z+'"  name="content'+z+'" value ="">');
-		                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
-		                 }
-	          	}
-	
+	            }); //field 수 만큼 반복  
+	            
+	             for(var z = field_count+1 ; z < 7;z++){
+	                 var trashTag =  $('<input type = "hidden" id="content'+z+'" name="content'+z+'" value ="">');
+	                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
+	             }
 	              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
 	              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
-              	  }
-                }
+	              
+     			} //resultYN == 1 경우 
+          	});//이전 데이터에서 입력된 정보 div에 넣기 끝
+         
+
+        //입력된 정보 div에 넣기 
+          $(".1page_addB").click(function () {
+        	  var resultYN = sessionChecking();
+     			
+     			if(resultYN == 1){
+
+		             var check_id = $(this).attr("id");
+		             check_id = check_id.split("_");
+
+		             var isEmpty = 0;
+		             $(this).parent().siblings('.redStar').each(function() { 
+		            	 		if ( $(this).children().is('input, textarea, select') && $(this).children().val().length < 1 ) 
+		            	 				isEmpty = 1;
+		                });
+
+		             if(isEmpty == 1){
+		            	 	$(this).siblings('p').text("필수 사항(*)을 모두 입력해주세요! ");
+		              }else{ //필수 사항 모두 입력한 경우
+
+              				if(check_id[2]==1 && $('input[name=file1]').length == 1){//사진 개수 확인 
+                  					$(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");
+                  			 }else if( (check_id[2]==2 || check_id[2]==5 || check_id[2]==6 || check_id[2]==9) && $('input[name=add_itemID]:input[value='+check_id[2]+']').length > 0){//사진 개수 확인 
+                  					$(this).siblings('p').text("최대 1개만 입력 가능합니다. ");
+              				}else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
+                  					var topic = $(this).parent().siblings('label').text();
+            	 					$(this).siblings('p').text(topic+" : 최대 3개 입력가능합니다.");
+              				}else{
+				                  //추가 가능할 때!
+				                  $(this).siblings('p').text("");
+				                  add_count++; //포트폴리오에 넣는 전체 항목 
+						          var data_num = $(this).parent().siblings("div").length;
+						          console.log("click : " + data_num);
+	
+					            var find_itemID = $($(this).parent()).parent().attr("id");
+					            find_itemID = find_itemID.split("_");
+					            var item = find_itemID[3] - 1;
+					            console.log("item : " + item_content[item].item_name);
+					
+					            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
+					            $('#1page_form').append(niceTag3); 
+	            
+	
+					          //체크된 박스의 라인에 존재하는 상태 값 변경
+					          var field_count = 0;
+					          var type = "";
+					          $(this).parent().siblings("div").each(function() {
+					            	 field_count++;
+					                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
+					                 //type : $(this).children().attr("type")
+					                 //value : $(this).children().val()
+					                	 type = $(this).children().attr("type");
+	                 
+	                						 if(type == "file"){
+	
+	                	 							$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
+	
+							                   var viewTag = $($(this).siblings("img")).clone();
+							                   viewTag.attr("id","1page_view2" );
+							                   $($('#1page_count' + add_count).children()[0]).append(viewTag);
+							
+							                     var realTag = $($(this).children()).clone();
+							                     realTag.attr("name", "file1");
+							                     realTag.attr("id", "");
+							                     realTag.attr("class", "");
+							                     realTag.css('display', 'none');
+							                     $($('#1page_count' + add_count).children()[0]).append(realTag);
+							
+												// 기본이미지로 되돌리기 
+							                     $('#1page_view1').attr('src', 'resources/images/21.png');     
+	                     
+	                     
+	                  					}else{
+	   
+	                          	
+							                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
+							                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+							                      
+							                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
+							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+	                     
+	                  					}
+	 	                  					
+						                 $(this).children().val('');
+						                 console.log("value : " + $(this).children().attr("type"));
+	
+	            					}); //field 수 만큼 반복
+	              
+					            if(type != "file"){
+						             for(var z = field_count+1 ; z < 7;z++){
+						                 var trashTag =  $('<input type = "hidden" id="content'+z+'"  name="content'+z+'" value ="">');
+						                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
+						                 }
+					          	}
+	
+				              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
+				              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
+              	  		}//else - 추가 가능할 경우 
+                		}//else - 필수 사항 모두 입력한 경우 
+     			}//resultYN == 1 경우 끝 
 	          });//입력된 정보 div에 넣기 끝
 	
 	          //입력 정보 지우기 
 	          $(document).on("click", ".1page_deleteB", function() {
-	        	  $($($(this).parent()).parent()).remove();
+	        	  var resultYN = sessionChecking();
+	     			if(resultYN == 1){
+	        	  		$($($(this).parent()).parent()).remove();
+	     			}//resultYN == 1 경우 끝 
 	          }); 
 
         //정보 저장 
           $("#1page_saveB").click(function () {
               console.log("저장 ");
+              var resultYN = sessionChecking();
+   			if(resultYN == 1){
 
-              var check1 = $('input[name=file1]').length;
-              var check2 = $('input[name=add_itemID]').length;
-              console.log("사진 개수: "+check1 +"/ 필드 개수 : "+ check2);
-
-              if(check1 < 1){
-                  $('#1page_alertM').text("사진이 부족합니다. (사진 입력 필수!!!)");
-                  //alert("사진이 없습니다! ");
-              }else if(check2 < 1){
-            	  $('#1page_alertM').text("입력된 정보가 없습니다. (사진 제외) ");
-                  }else{
-					//포트폴리오 이름, 공개 여부 form에 입력 
-	              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
-	              $('#select_portfolio_public').val($("select[name=1page_public]").val());
-
-	              //form 전송 
-	              $("#1page_myForm").attr("action", "portfolio_two");
-		          $("#1page_myForm").attr("target", "");
-		          $("#1page_myForm").submit();
-                      
-             }
+	              var check1 = $('input[name=file1]').length;
+	              var check2 = $('input[name=add_itemID]').length;
+	              console.log("사진 개수: "+check1 +"/ 필드 개수 : "+ check2);
+	
+	              if(check1 < 1){
+	                  $('#1page_alertM').text("사진이 부족합니다. (사진 입력 필수!!!)");
+	                  //alert("사진이 없습니다! ");
+	              }else if(check2 < 1){
+	            	  $('#1page_alertM').text("입력된 정보가 없습니다. (사진 제외) ");
+	              }else{
+						//포트폴리오 이름, 공개 여부 form에 입력 
+		              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
+		              $('#select_portfolio_public').val($("select[name=1page_public]").val());
+	
+		              //form 전송 
+		              $("#1page_myForm").attr("action", "portfolio_two");
+			          $("#1page_myForm").attr("target", "");
+			          $("#1page_myForm").submit();
+                   }
+   			}//resultYN == 1 경우 끝 
                
           }); 
           
           //미리보기 창 
           $("#1page_preview_button").click(function() {
         	  console.log("preview test");
-        	  var length=$("#1page_form").find("input[name=add_itemID]").length;
-        	  var item_id=new Array(length);
-  		      var content1=new Array(length);
-  		      var content2=new Array(length);
-  		      var content3=new Array(length);
-  		      var content4=new Array(length);
-  		      var content5=new Array(length);
-  		      var content6=new Array(length);
-  		      console.log(length);
-  		   	  var template_html=$("input[name=template_html]").val();
-  		   	  var template_color=$("input[name=template_color]").val();
-  		  	  var template_font=$("input[name=template_font]").val();
-  		  	  console.log("template  color"+template_color);
-  		  	  console.log("template  font"+template_font);
+        	  
+        	  var resultYN = sessionChecking();
+        	  if(resultYN == 1){
+        	  
+	        	  var length=$("#1page_form").find("input[name=add_itemID]").length;
+	        	  var item_id=new Array(length);
+	  		      var content1=new Array(length);
+	  		      var content2=new Array(length);
+	  		      var content3=new Array(length);
+	  		      var content4=new Array(length);
+	  		      var content5=new Array(length);
+	  		      var content6=new Array(length);
+	  		      console.log(length);
+	  		   	  var template_html=$("input[name=template_html]").val();
+	  		   	  var template_color=$("input[name=template_color]").val();
+	  		  	  var template_font=$("input[name=template_font]").val();
+	  		  	  console.log("template  color"+template_color);
+	  		  	  console.log("template  font"+template_font);
 
-  		      for(var i=0; i<length; i++){                         
-  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
+	  		      for(var i=0; i<length; i++){                         
+		  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
+		  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
+		  		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
+		  		    	content3[i] = $("#1page_form").find("input[name=content3]").eq(i).val();
+		  		    	content4[i] = $("#1page_form").find("input[name=content4]").eq(i).val();
+		  		    	content5[i] = $("#1page_form").find("input[name=content5]").eq(i).val();
+		  		    	content6[i] = $("#1page_form").find("input[name=content6]").eq(i).val();
+	  		      }
+					console.log(item_id);
+					console.log(content1);
+  		       		var sendData = {"template_html":template_html,"template_color":template_color,"template_font":template_font,"item_id": item_id, "content1" : content1 , "content2" : content2 , "content3" : content3 , "content4" : content4 , "content5" : content5 , "content6" : content6};
 
-  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
-  		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
-  		    	content3[i] = $("#1page_form").find("input[name=content3]").eq(i).val();
-  		    	content4[i] = $("#1page_form").find("input[name=content4]").eq(i).val();
-  		    	content5[i] = $("#1page_form").find("input[name=content5]").eq(i).val();
-  		    	content6[i] = $("#1page_form").find("input[name=content6]").eq(i).val();
-  		      }
-  		        
-				console.log(item_id);
-				console.log(content1);
-  		       var sendData = {"template_html":template_html,"template_color":template_color,"template_font":template_font,"item_id": item_id, "content1" : content1 , "content2" : content2 , "content3" : content3 , "content4" : content4 , "content5" : content5 , "content6" : content6};
-  		      /* $("#1page_form > input[name=add_itemID]").each(function() { 
-	             var value = $(this).val();
-	             item_id.push(value);
-          	  }); */
-       	  		console.log(sendData);
-    		  $.ajax({
-                  url: "<%=request.getContextPath()%>/preview",
-                  type:'POST',
-                  enctype: 'multipart/form-data',
-                  processData: false,
-                  contentType: false,
-                  traditional : true,
-                  data: sendData,
-                  success:function(result){
-                      $("#1page_preview").html(result);
-                  },
-                  error:function(request,status,error){
-               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                  }
-          		});
-    	  });
+       	  			console.log(sendData);
+		    		  $.ajax({
+		                  url: "<%=request.getContextPath()%>/preview",
+		                  type:'POST',
+		                  traditional : true,
+		                  data: sendData,
+		                  success:function(result){
+		                      $("#1page_preview").html(result);
+		                      $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+		                  },
+		                  error:function(request,status,error){
+		               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		                  }
+		          		});
+          		}//resultYN == 1 경우 끝
+    	  });//미리보기 창 끝
 
-    });
-
+    });//document.ready 
 
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -731,7 +755,7 @@
             }
             reader.readAsDataURL(input.files[0]);
         }
-    }
+    }// function readURL end 
 </script>
                         
   </head>

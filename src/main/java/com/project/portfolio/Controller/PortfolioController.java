@@ -49,30 +49,42 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	  public ModelAndView GoMypage(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		
-		int user_id=(Integer) session.getAttribute("ID");
+		try {
+			int user_id=(Integer) session.getAttribute("ID");
+			List<Portfolio> port_list =portfolioService.portfolioList(user_id);
+			System.out.println(port_list);
+			mav.addObject("portfolio_list",port_list);
+			mav.setViewName("myPage");
 		
-		List<Portfolio> port_list =portfolioService.portfolioList(user_id);
-		System.out.println(port_list);
+		}catch(NullPointerException  e){
+			mav=new ModelAndView("login");
+			mav.addObject("no_login","세션이 만료되었습니다. 다시 로그인 해주세요:)");
+		}
 		
-		mav.addObject("portfolio_list",port_list);
-		
-        mav.setViewName("myPage");
         return mav;
 	}
 	
 	//고른 포트폴리오로 이동
 		@RequestMapping(value = "/checkPortfolio" ,method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (POST)
 		public ModelAndView GoMyportfolio(HttpSession session,HttpServletRequest request) throws Exception {
+			System.out.println("GoMyportfolio portfolio");
+			
 			ModelAndView mav = new ModelAndView();
 			int portfolio_ID=Integer.parseInt(request.getParameter("select_portID"));
 					
 			String template_name=portfolioService.getCheckTemplateID(portfolio_ID);
 			List<Data> list=portfolioService.getCheckPortfolio(portfolio_ID);
-					
+			Portfolio portInfo = portfolioService.getPortInfo(portfolio_ID);
+		    
 			String content[];
 					
 			JSONArray jArray2 = new JSONArray();
+			JSONArray template_info = new JSONArray();
 			try {
+				JSONObject ob2 =new JSONObject();
+				ob2.put("template_color", portInfo.getColor());
+        		ob2.put("template_font", portInfo.getFont());
+        		template_info.put(ob2);
 				for (int i = 0; i < list.size() ; i++) {   
 					JSONObject ob =new JSONObject();
 				    content=new String[6];
@@ -95,11 +107,12 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			}catch(JSONException e){
 			 	e.printStackTrace();
 			}
-			
+			System.out.println(template_info);
 			System.out.println(jArray2);
 			mav.addObject("data_list", jArray2);
 			mav.addObject("temName", template_name);
 			mav.addObject("portfolio_ID",portfolio_ID);
+			mav.addObject("template_info",template_info);
 			mav.setViewName("checkPortfolio");
 			
 			return mav;
@@ -109,11 +122,14 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	//해당 포트폴리오 삭제
 	@RequestMapping(value = "/deletePortfolio" ,method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (POST)
 	public ModelAndView deleteMyPortfolio(HttpSession session,HttpServletRequest request) throws Exception {
+			ModelAndView mav;
 			
-		int portfolio_ID=Integer.parseInt(request.getParameter("select_portID"));
-		portfolioService.deletePortfolio(portfolio_ID);
-					
-		return new ModelAndView("redirect:/myPage");
+			int portfolio_ID=Integer.parseInt(request.getParameter("select_portID"));
+			portfolioService.deletePortfolio(portfolio_ID);
+		
+			mav=new ModelAndView("redirect:/myPage");
+		
+		return mav;
 	}
 	
 	
@@ -154,63 +170,70 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 			ModelAndView mav = new ModelAndView();
 			
-			List<Category_Item> item_list = portfolioService.getCategoryItem();
-			List<Template> template = portfolioService.getTemplate();
-			List<Item> item_input = portfolioService.getItem();	
-			List<Option> option_list = portfolioService.getOption();
-			
-			JSONArray jArray1 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < item_list.size() ; i++) {   
-	        		JSONObject ob =new JSONObject();
-	        		ob.put("category_id", item_list.get(i).getCategory_id());
-			        ob.put("category_name", item_list.get(i).getCategory_name());
-		            ob.put("item_id", item_list.get(i).getItem_id());
-		            ob.put("item_name", item_list.get(i).getItem_name());
-		            jArray1.put(ob);
-		        }
-	        	System.out.println(jArray1.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-	        
-	        JSONArray jArray2 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < item_input.size() ; i++) {   
-	        		JSONObject ob2 =new JSONObject();
-	        		ob2.put("field_id", item_input.get(i).getField_id() );
-	        		ob2.put("field_name", item_input.get(i).getField_name());
-	        		ob2.put("field_type", item_input.get(i).getField_type());
-	        		ob2.put("item_id", item_input.get(i).getItem_id());
-	        		ob2.put("field_mark", item_input.get(i).getIsEssential());
-		            jArray2.put(ob2);
-		        }
-	        	System.out.println(jArray2.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-	        
-	        JSONArray jArray3 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < option_list.size() ; i++) {   
-	        		JSONObject ob3 =new JSONObject();
-	        		ob3.put("field_id", option_list.get(i).getField_id());
-	        		ob3.put("list_name", option_list.get(i).getList_name());
+			try {
+				int user_id=(Integer) session.getAttribute("ID");
 
-		            jArray3.put(ob3);
+				List<Category_Item> item_list = portfolioService.getCategoryItem();
+				List<Template> template = portfolioService.getTemplate();
+				List<Item> item_input = portfolioService.getItem();	
+				List<Option> option_list = portfolioService.getOption();
+				
+				JSONArray jArray1 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < item_list.size() ; i++) {   
+		        		JSONObject ob =new JSONObject();
+		        		ob.put("category_id", item_list.get(i).getCategory_id());
+				        ob.put("category_name", item_list.get(i).getCategory_name());
+			            ob.put("item_id", item_list.get(i).getItem_id());
+			            ob.put("item_name", item_list.get(i).getItem_name());
+			            jArray1.put(ob);
+			        }
+		        	System.out.println(jArray1.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
 		        }
-	        	System.out.println(jArray3.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-			
-			//View로 보내기
-	        mav.addObject("template",template);
-	        mav.addObject("item_list",jArray1);
-	        mav.addObject("item_input",jArray2);
-	        mav.addObject("options", jArray3);
-	        
-			mav.setViewName("portfolio_one");
+		        
+		        JSONArray jArray2 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < item_input.size() ; i++) {   
+		        		JSONObject ob2 =new JSONObject();
+		        		ob2.put("field_id", item_input.get(i).getField_id() );
+		        		ob2.put("field_name", item_input.get(i).getField_name());
+		        		ob2.put("field_type", item_input.get(i).getField_type());
+		        		ob2.put("item_id", item_input.get(i).getItem_id());
+		        		ob2.put("field_mark", item_input.get(i).getIsEssential());
+			            jArray2.put(ob2);
+			        }
+		        	System.out.println(jArray2.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
+		        }
+		        
+		        JSONArray jArray3 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < option_list.size() ; i++) {   
+		        		JSONObject ob3 =new JSONObject();
+		        		ob3.put("field_id", option_list.get(i).getField_id());
+		        		ob3.put("list_name", option_list.get(i).getList_name());
+	
+			            jArray3.put(ob3);
+			        }
+		        	System.out.println(jArray3.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
+		        }
+				
+				//View로 보내기
+		        mav.addObject("template",template);
+		        mav.addObject("item_list",jArray1);
+		        mav.addObject("item_input",jArray2);
+		        mav.addObject("options", jArray3);
+				mav.setViewName("portfolio_one");
+				
+			}catch(NullPointerException  e){
+				 mav=new ModelAndView("login");
+				 mav.addObject("no_login","세션이 만료되었습니다. 다시 로그인 해주세요:)");
+			}
 			return mav;
 	    }
 	
@@ -227,22 +250,23 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
     }
 	
 	
-	//step3. 이전 데이터 불러오기 (사용자가 누른 항목만!)
+	//step3. [ajax] 이전 데이터 불러오기 1 (사용자가 누른 항목만!)
 		@RequestMapping(value= "/pastData", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		@ResponseBody
 		public List<Data> pastData(HttpServletRequest request, HttpSession session) throws Exception {
-
+			
 			dataKey dk = new dataKey();
 			dk.setUser_id((Integer) session.getAttribute("ID"));
 			dk.setItem_id(Integer.parseInt(request.getParameter("item_id")));
 			        
 			List<Data> data = portfolioService.getData(dk);
 			System.out.println(data);
+			
 				
 			return data;
 		}
 	
-	//step4. 새 데이터 추가하기 
+	//step4. [ajax] 이전 데이터 불러오기 2 (사용자가 누른 항목만!)
 		@RequestMapping(value= "/dataInput", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		@ResponseBody
 		public List<Item> newData(HttpServletRequest request, HttpSession session) throws Exception {
@@ -272,7 +296,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 //	}
 		
 		
-	//항목 중에 select하는 항목에 옵션 제공
+	//  [ajax] 이전 데이터 불러오기 3 - select 옵션 제공
 	@RequestMapping(value= "/optionList", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 	@ResponseBody
 	public List<Option> getOptionList(HttpServletRequest request, HttpSession session) throws Exception {
@@ -290,17 +314,16 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	//step5.미리보기 
 		@RequestMapping(value= "/preview", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		@ResponseBody 
-		public ModelAndView showPreview(HttpServletRequest request, @RequestParam("file1") MultipartFile file) throws Exception {
+		public ModelAndView showPreview(HttpServletRequest request, HttpSession session) throws Exception {
+
 			ModelAndView mav = new ModelAndView();
 			
 			System.out.println("preview!!");
+			
 
 		    String template_name  = request.getParameter("template_html");
 		    String template_color  = request.getParameter("template_color");
-		    String photo_name  = request.getParameter("photo_name");
 		    String template_font  = request.getParameter("template_font");
-		    
-		  
 		    
 		    String []item_id = request.getParameterValues("item_id");
 		    String []content1 = request.getParameterValues("content1");
@@ -314,48 +337,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				
 			JSONArray jArray2 = new JSONArray();
 		    try {
-		    	//file 데이터 저장 
-				if(photo_name == null) {
-					JSONObject ob =new JSONObject();
-					content=new String[6];
-					System.out.println("file : " + file);
-					
-					String url = null;
-					
-					// 파일 정보
-					String originFilename = file.getOriginalFilename(); //file 실제
-
-					System.out.println("originFilename : " + originFilename);
-					ob.put("item_id", "1");
-					ob.put("data_no", "1");
-					content[0]=originFilename;
-					content[1]="";
-					content[2]="";
-					content[3]="";
-					content[4]="";
-					content[5]="";
-					    
-					ob.put("content", content);
-					jArray2.put(ob);
-						
-				}else {
-					JSONObject ob =new JSONObject();
-					content=new String[6];
-					System.out.println("file X : " + photo_name);
-					
-					ob.put("item_id", "1");
-			        ob.put("data_no", "1");
-			        
-			        content[0]=photo_name;
-			        content[1]="";
-			        content[2]="";
-			        content[3]="";
-			        content[4]="";
-			        content[5]="";
-			            
-			        ob.put("content", content);
-			        jArray2.put(ob);
-				}
+		    	
 		    	
 		    	for (int i = 0; i < item_id.length ; i++) {   
 			    	JSONObject ob =new JSONObject();
@@ -391,6 +373,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			mav.addObject("data_list", jArray2);
 			mav.addObject("template_info", jArray);
 			mav.setViewName(url);
+		
 			
 			return mav;
 			        
@@ -399,8 +382,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		//step6. 데이터 DB에 포트폴리오 정보 넣기
 		@RequestMapping(value= "/portfolio_two", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		public ModelAndView putMyData(HttpServletRequest request, HttpSession session,RedirectAttributes redirectAttr, @RequestParam("file1") MultipartFile file) throws Exception {
-//			, @RequestParam("file1") MultipartFile file
-			System.out.println("putMyData controller! ");
+
+			System.out.println("putMyData controller! ");	
+
 		    String template_id  = request.getParameter("template_id");
 		    String template_name  = request.getParameter("template_html");
 		    String portfolio_name  = request.getParameter("portfolio_name");
@@ -465,9 +449,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 				}
 				catch (IOException e) {
-					// 원래라면 RuntimeException 을 상속받은 예외가 처리되어야 하지만
-					// 편의상 RuntimeException을 던진다.
-					// throw new FileUploadException();	
 					throw new RuntimeException(e);
 				}
 					
@@ -540,135 +521,147 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("portfolio_id",portfolio_id);
 		    redirectAttr.addFlashAttribute("template_color",template_color);
 		    redirectAttr.addFlashAttribute("template_font",template_font);
-
+		    
 			return new ModelAndView("redirect:/call_data");
 		}
 		
-		//portfolio 수정하기  
+		
+		//portfolio 수정하기  (수정 버튼 클릭!)
 		@RequestMapping(value= "/editPortfolio")
 	  	public ModelAndView editPortfolio (HttpSession session,HttpServletRequest request) throws Exception {
 			
 			System.out.println("editPortfolio controller! ");
+			ModelAndView mav = new ModelAndView();
 			
-		    String portID  = request.getParameter("select_portID");
-		    String temName = request.getParameter("temName");
-		    Portfolio portInfo = portfolioService.getPortInfo(Integer.parseInt(portID));
-		    
-		    	List<Data> data_list = portfolioService.callData(Integer.parseInt(portID));
-			List<Category_Item> item_list = portfolioService.getCategoryItem();
-			List<Template> template = portfolioService.getTemplate();
-			List<Item> item_input = portfolioService.getItem();	
-			List<Option> option_list = portfolioService.getOption();
-			
-			//template 명 
-			JSONArray jArrayTem = new JSONArray();
 			try {
-
-	        		JSONObject ob =new JSONObject();
-	        		ob.put("tem_name", temName);
-	        		ob.put("tem_id", portInfo.getTemplate_id());
-	        		ob.put("port_title", portInfo.getTitle());
-	        		ob.put("port_public", portInfo.getIsPublic());
-	        		jArrayTem.put(ob);
+				int user_id=(Integer) session.getAttribute("ID");
+			
+			    String portID  = request.getParameter("select_portID");
+			    String temName = request.getParameter("temName");
+			    Portfolio portInfo = portfolioService.getPortInfo(Integer.parseInt(portID));
+			    
+			    List<Data> data_list = portfolioService.callData(Integer.parseInt(portID));
+				List<Category_Item> item_list = portfolioService.getCategoryItem();
+				List<Template> template = portfolioService.getTemplate();
+				List<Item> item_input = portfolioService.getItem();	
+				List<Option> option_list = portfolioService.getOption();
+				
+				//template 명 
+				JSONArray jArrayTem = new JSONArray();
+				JSONArray template_info = new JSONArray();
+				
+				try {
+	
+		        		JSONObject ob =new JSONObject();
+		        		JSONObject ob2 =new JSONObject();
+		        		ob.put("tem_name", temName);
+		        		ob.put("tem_id", portInfo.getTemplate_id());
+		        		ob.put("port_title", portInfo.getTitle());
+		        		ob.put("port_public", portInfo.getIsPublic());
+		        		ob2.put("template_color", portInfo.getColor());
+		        		ob2.put("template_font", portInfo.getFont());
+		        		template_info.put(ob2);
+			        
+		        	System.out.println(jArrayTem.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
+		        }
 		        
-	        	System.out.println(jArrayTem.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-	        
-			
-			
-			String content[];
-			JSONArray jArray0 = new JSONArray();
-		    try {
-		    	for (int i = 0; i < data_list.size() ; i++) {   
-			    	JSONObject ob =new JSONObject();
-			        content=new String[6];
-			        ob.put("item_id", data_list.get(i).getItem_id());
-			        ob.put("item_name", data_list.get(i).getItem_name());
-			        ob.put("data_no", data_list.get(i).getData_no());
-			        
-			        content[0]=data_list.get(i).getContent1();
-			        content[1]=data_list.get(i).getContent2();
-			        content[2]=data_list.get(i).getContent3();
-			        content[3]=data_list.get(i).getContent4();
-			        content[4]=data_list.get(i).getContent5();
-			        content[5]=data_list.get(i).getContent6();
-			            
-			        ob.put("content", content);
-			            
-			        jArray0.put(ob);
-			        
+				String content[];
+				JSONArray jArray0 = new JSONArray();
+			    try {
+			    	for (int i = 0; i < data_list.size() ; i++) {   
+				    	JSONObject ob =new JSONObject();
+				        content=new String[6];
+				        ob.put("item_id", data_list.get(i).getItem_id());
+				        ob.put("item_name", data_list.get(i).getItem_name());
+				        ob.put("data_no", data_list.get(i).getData_no());
+				        
+				        content[0]=data_list.get(i).getContent1();
+				        content[1]=data_list.get(i).getContent2();
+				        content[2]=data_list.get(i).getContent3();
+				        content[3]=data_list.get(i).getContent4();
+				        content[4]=data_list.get(i).getContent5();
+				        content[5]=data_list.get(i).getContent6();
+				            
+				        ob.put("content", content);
+				            
+				        jArray0.put(ob);
+				        
+				    }
+			        System.out.println(jArray0.toString());
+			    }catch(JSONException e){
+			        e.printStackTrace();
 			    }
-		        System.out.println(jArray0.toString());
-		    }catch(JSONException e){
-		        e.printStackTrace();
-		    }
-			
-			
-			
-			//category 항목 json 처리 
-			JSONArray jArray1 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < item_list.size() ; i++) {   
-	        		JSONObject ob =new JSONObject();
-	        		ob.put("category_id", item_list.get(i).getCategory_id());
-			        ob.put("category_name", item_list.get(i).getCategory_name());
-		            ob.put("item_id", item_list.get(i).getItem_id());
-		            ob.put("item_name", item_list.get(i).getItem_name());
-		            jArray1.put(ob);
+				
+			    
+				//category 항목 json 처리 
+				JSONArray jArray1 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < item_list.size() ; i++) {   
+		        		JSONObject ob =new JSONObject();
+		        		ob.put("category_id", item_list.get(i).getCategory_id());
+				        ob.put("category_name", item_list.get(i).getCategory_name());
+			            ob.put("item_id", item_list.get(i).getItem_id());
+			            ob.put("item_name", item_list.get(i).getItem_name());
+			            jArray1.put(ob);
+			        }
+		        	System.out.println(jArray1.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
 		        }
-	        	System.out.println(jArray1.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-	        
-	        //field 정보 json 처리 
-	        JSONArray jArray2 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < item_input.size() ; i++) {   
-	        		JSONObject ob2 =new JSONObject();
-	        		ob2.put("field_id", item_input.get(i).getField_id() );
-	        		ob2.put("field_name", item_input.get(i).getField_name());
-	        		ob2.put("field_type", item_input.get(i).getField_type());
-	        		ob2.put("item_id", item_input.get(i).getItem_id());
-	        		ob2.put("field_mark", item_input.get(i).getIsEssential());
-		            jArray2.put(ob2);
+		        
+		        //field 정보 json 처리 
+		        JSONArray jArray2 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < item_input.size() ; i++) {   
+		        		JSONObject ob2 =new JSONObject();
+		        		ob2.put("field_id", item_input.get(i).getField_id() );
+		        		ob2.put("field_name", item_input.get(i).getField_name());
+		        		ob2.put("field_type", item_input.get(i).getField_type());
+		        		ob2.put("item_id", item_input.get(i).getItem_id());
+		        		ob2.put("field_mark", item_input.get(i).getIsEssential());
+			            jArray2.put(ob2);
+			        }
+		        	System.out.println(jArray2.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
 		        }
-	        	System.out.println(jArray2.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
-	        
-	        //option 내용 json 처리 
-	        JSONArray jArray3 = new JSONArray();
-	        try {
-	        	for (int i = 0; i < option_list.size() ; i++) {   
-	        		JSONObject ob3 =new JSONObject();
-	        		ob3.put("field_id", option_list.get(i).getField_id());
-	        		ob3.put("list_name", option_list.get(i).getList_name());
-
-		            jArray3.put(ob3);
+		        
+		        //option 내용 json 처리 
+		        JSONArray jArray3 = new JSONArray();
+		        try {
+		        	for (int i = 0; i < option_list.size() ; i++) {   
+		        		JSONObject ob3 =new JSONObject();
+		        		ob3.put("field_id", option_list.get(i).getField_id());
+		        		ob3.put("list_name", option_list.get(i).getList_name());
+	
+			            jArray3.put(ob3);
+			        }
+		        	System.out.println(jArray3.toString());
+		        }catch(JSONException e){
+		        	e.printStackTrace();
 		        }
-	        	System.out.println(jArray3.toString());
-	        }catch(JSONException e){
-	        	e.printStackTrace();
-	        }
+				
+				//View로 보내기
+		        
+		        mav.addObject("template",template);
+		        mav.addObject("portfolioID",Integer.parseInt(portID));
+		        mav.addObject("portfolioInfo",jArrayTem);
+		        mav.addObject("template_info",template_info);
+		        mav.addObject("data_list",jArray0);
+		        mav.addObject("item_list",jArray1);
+		        mav.addObject("item_input",jArray2);
+		        mav.addObject("options", jArray3);
+		        
+				mav.setViewName("portfolio_three");
+				
+				System.out.println("수정 페이지 로드 완료");
+			}catch(NullPointerException  e){
+				 mav=new ModelAndView("login");
+				 mav.addObject("no_login","세션이 만료되었습니다. 다시 로그인 해주세요:)");
+			}
 			
-			//View로 보내기
-	        ModelAndView mav = new ModelAndView();
-	        mav.addObject("template",template);
-	        mav.addObject("portfolioID",Integer.parseInt(portID));
-	        mav.addObject("portfolioInfo",jArrayTem);
-	        
-	        mav.addObject("data_list",jArray0);
-	        mav.addObject("item_list",jArray1);
-	        mav.addObject("item_input",jArray2);
-	        mav.addObject("options", jArray3);
-	        
-			mav.setViewName("portfolio_three");
-			
-			System.out.println("수정 페이지 로드 완료");
 			return mav;
 	    }
 		
@@ -701,8 +694,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	        portfolioService.deleteDetail(portfolio_id); //detail 정보 delete
 	        
 	      
-	        
-			
 			//file 데이터 저장 
 			if(photo_name == null) {
 				System.out.println("file : " + file);
@@ -830,9 +821,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			template_font= (String)redirectMap.get("template_font");
 		}
 		System.out.println("step7 : portfolio id: "+portfolio_id);
-			
-		//int isVerticle=portfolioService.isVerticle(template_id);
-		
+					
 		List<Data> list = portfolioService.callData(portfolio_id);
 		
 		System.out.println("Get Data for template");
@@ -878,22 +867,23 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		mav.addObject("template_info", jArray);
 		mav.setViewName("portfolio_finish1");
 		
-//		if(template_name.equals("template1"))
-//			mav.setViewName("portfolio_finish1");
-//		if(template_name.equals("template2"))
-//			mav.setViewName("portfolio_finish2");
-		
 		System.out.println("step7 clear! ");
 		return mav;
 	}
 	
 	//포트폴리오 게시판 가기
 	@RequestMapping(value = "/portfolios") // GET 방식으로 페이지 호출
-
 	public ModelAndView GoPortfolioBoard(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
-			
-	    mav.setViewName("portfolios");
+		
+		try {
+			int user_id=(Integer) session.getAttribute("ID");
+			mav.setViewName("portfolios");
+		}catch(NullPointerException  e){
+			 mav=new ModelAndView("login");
+			 mav.addObject("no_login","세션이 만료되었습니다. 다시 로그인 해주세요:)");
+		}
+		
 	    return mav;
 	}
 
