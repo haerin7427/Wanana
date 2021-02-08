@@ -26,6 +26,11 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">
    
@@ -35,11 +40,86 @@
 		"name": "",
 		"url": "index.html"
 }</script>
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#478ac9">
-    <link rel="canonical" href="index.html">
-    <meta property="og:url" content="index.html">
     
+<script>
+$(document).ready(function(){
+  
+  	//경로 구하는 법 
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+	};
+
+	//session 정보 가져오기 
+	function sessionChecking() {
+		var check_sessionID="";
+
+		$.ajax({ 
+		      url : '<%=request.getContextPath()%>/sessionCheck',
+		  	  type : "POST",
+		  	  dataType : 'json',
+		  	  async: false,
+		  	  success: function(data){
+		  		
+		  		console.log("세션 확인 성공");
+		  		check_sessionID=data;
+		  	  },error:function(jqXHR, textStatus, errorThrown){
+	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+	        }
+		 });
+	
+		if(check_sessionID == null || check_sessionID == ""){
+	    	//session 값이 없을 시 
+	    	console.log("session end");
+	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
+	    	location.href = "login";
+	    	return 0;
+		}else
+			return 1;
+	}
+
+	//session 만료 확인
+	sessionChecking();
+
+	$("#printB").click(function() {
+   		var resultYN = sessionChecking();
+		if(resultYN == 1){
+   		 	var initBody = document.body.innerHTML;
+   		 
+                 window.onbeforeprint = function(){
+                    document.body.innerHTML = document.getElementById('printSection').innerHTML;
+                }
+                window.onafterprint = function(){
+                    document.body.innerHTML = initBody;
+                } 
+                window.print();   
+		 }
+	       });
+
+   		$("#deleteB").click(function() {
+   			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+				   		     document.deleteForm.submit();
+				}else{   //취소
+				   		     return false;
+				}
+   	   		 }
+	    });
+
+   		$("#editB").click(function() {
+			var resultYN = sessionChecking();
+   			
+   			if(resultYN == 1){
+   	   	  		$("#deleteForm").attr("action","editPortfolio");
+				$("#deleteForm").submit();
+   			}
+   	       });//edit 버튼
+
+});//document ready end
+
+</script>
 
   </head>
 
@@ -121,7 +201,6 @@
 	 		</div>
 	 	</div>
 	 	
-     
 	 </main>
 	 
 	 <!--  
@@ -130,90 +209,7 @@
 		<button type="button" class="print" name=print id="printB" onclick="">출력 </button>
     </div>	
 	 -->
-	
 	 
-	    
-    
-     <script>
-$(document).ready(function(){
-  
-  	//경로 구하는 법 
-	function getContextPath() {
-	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
-	};
-
-	//session 정보 가져오기 
-	function sessionChecking() {
-		var check_sessionID="";
-
-		$.ajax({ 
-		      url : '<%=request.getContextPath()%>/sessionCheck',
-		  	  type : "POST",
-		  	  dataType : 'json',
-		  	  async: false,
-		  	  success: function(data){
-		  		
-		  		console.log("세션 확인 성공");
-		  		check_sessionID=data;
-		  	  },error:function(jqXHR, textStatus, errorThrown){
-	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
-	        }
-		 });
-	
-		if(check_sessionID == null || check_sessionID == ""){
-	    	//session 값이 없을 시 
-	    	console.log("session end");
-	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
-	    	location.href = "login";
-	    	return 0;
-		}else
-			return 1;
-	}
-
-	//session 만료 확인
-	sessionChecking();
-
-	$("#printB").click(function() {
-   		var resultYN = sessionChecking();
-		if(resultYN == 1){
-   		 	var initBody = document.body.innerHTML;
-   		 
-                 window.onbeforeprint = function(){
-                    document.body.innerHTML = document.getElementById('printSection').innerHTML;
-                }
-                window.onafterprint = function(){
-                    document.body.innerHTML = initBody;
-                } 
-                window.print();   
-		 }
-	       });
-
-   		$("#deleteB").click(function() {
-   			var resultYN = sessionChecking();
-   			
-   			if(resultYN == 1){
-				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-				   		     document.deleteForm.submit();
-				}else{   //취소
-				   		     return false;
-				}
-   	   		 }
-	    });
-
-   		$("#editB").click(function() {
-			var resultYN = sessionChecking();
-   			
-   			if(resultYN == 1){
-   	   	  		$("#deleteForm").attr("action","editPortfolio");
-				$("#deleteForm").submit();
-   			}
-   	       });//edit 버튼
-
-});//document ready end
-
-</script>
-     
 	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>
