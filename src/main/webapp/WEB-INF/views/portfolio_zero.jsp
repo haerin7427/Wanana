@@ -23,6 +23,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
 
 <script>
+$(document).ready(function () {
+	var colorList;
+	$.ajax({ //해당 template의 colorList가져오기
+		url : "colorList",
+	  	type : "post",
+	  	data:{"template_id":"1"},
+	  	dataType : "json",
+	  	async: false,
+	  	success: function(data){
+	  		colorList = data;
+		  	console.log("colorList 불러오기 성공");
+		  	console.log(colorList); 	
+		  					  		
+	  	},
+	  	error:function(request, status, error){
+
+			alert("code:"+request.status+"\n"+"\n"+"error:"+error);
+
+		}
+	});
+
+	for(var i=0; i<colorList.length;i++){
+		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
+		$(".color-picker").append(colorDiv);
+	}
+});
+
+
 var color;
 
 function imgBig(a,b,templateID,template_html){
@@ -34,6 +62,33 @@ function imgBig(a,b,templateID,template_html){
 	document.getElementById('select_template_id').value = templateID;
 	document.getElementById('select_template_html').value = template_html;
 	//$("#select_template_html").val() = template_html;
+
+	$.ajax({ //해당 template의 colorList가져오기
+		url : "colorList",
+	  	type : "post",
+	  	data:{"template_id":templateID},
+	  	dataType : "json",
+	  	async: false,
+	  	success: function(data){
+	  		colorList = data;
+		  	console.log("colorList 불러오기 성공");
+		  	console.log(formInfo); 	
+		  					  		
+	  	},
+	  	error:function(request, status, error){
+
+			alert("code:"+request.status+"\n"+"\n"+"error:"+error);
+
+		}
+	});
+
+	$(".color-picker").empty();
+
+	for(var i=0; i<colorList.length;i++){
+		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
+		$(".color-picker").append(colorDiv);
+	}
+	
 }
 
 //Select Color
@@ -47,8 +102,13 @@ function changeColor(sender) {
 	var selectedClass = sender.className.replace('color', '');
 	color = selectedClass;
 	console.log(color);
-	document.getElementById('select_template_color').value =color;
+
+	var color_id=$(sender).attr("id");	
+	var id_split=color_id.split('_');
+
+	document.getElementById('select_template_color').value =id_split[1];
 	sender.classList.add("active");
+	
 }
 
 function rgbToHex(rgb) { 
@@ -58,22 +118,6 @@ function rgbToHex(rgb) {
   return hex;
 }	
 
-
- /* Font */
-/*  $(function(){
-    $('#font').fontselect().change(function(){
-    
-      // replace + signs with spaces for css
-      var font = $(this).val().replace(/\+/g, ' ');
-      
-      // split font into family and weight
-      font = font.split(':');
-      console.log(font[0]);
-      // set family on paragraphs 
-      $('p').css('font-family', font[0]);
-    });
-  });
- */
  	function applyFont(font) {
 		console.log('You selected font: ' + font);
 
@@ -291,10 +335,7 @@ function rgbToHex(rgb) {
                     <div>
                   
 						<div id="onepage_ cp-background-color" class="onepage_ color-picker" style="display:inline;">
-							<div onclick="changeColor(this);" class="color #1500E7"></div>
-							<div onclick="changeColor(this);" class="color #017417 "></div>
-							<div onclick="changeColor(this);" class="color #FAD400 "></div>
-							<div onclick="changeColor(this);" class="color #E90000"></div>
+							<!-- colorList 들어갈 자리 -->
 						</div>
 						
 	                    

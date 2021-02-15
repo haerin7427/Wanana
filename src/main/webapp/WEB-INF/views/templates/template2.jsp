@@ -38,6 +38,7 @@
 :root {
   --my-font: sans-serif;
   --my-color:black;
+  --my-color2:white;
 }
 
 .aside, .header, .left, .right, #mypic, .aboutme, #contact, #interest,
@@ -87,6 +88,7 @@ p{
 	width: 100%;
 	height: 100%;
 	padding-top:15px;
+	background-color:var(--my-color2);
 }
 
 .left, .right {
@@ -428,7 +430,28 @@ p{
    		var item= ${data_list};
    		var template_info=${template_info};
    		document.body.style.setProperty("--my-font", template_info[0].template_font);
-   		document.body.style.setProperty("--my-color", template_info[0].template_color);
+   		if(template_info[0].template_color>0){
+   			var color_info;
+   			$.ajax({ //해당 color 정보 가져오기
+   				url : "colorData",
+   			  	type : "post",
+   			  	data:{"color_id":template_info[0].template_color},
+   			  	dataType : "json",
+   			  	async: false,
+   			  	success: function(data){
+   			  		color_info = data;
+   				  	console.log("color_info 불러오기 성공");
+   				 	document.body.style.setProperty("--my-color", color_info.color1);
+   				 	document.body.style.setProperty("--my-color2", color_info.color2);		
+   				  					  		
+   			  	},
+   			  	error:function(request, status, error){
+
+   					alert("code:"+request.status+"\n"+"\n"+"error:"+error);
+
+   				}
+   			});
+   	   	}
   		//div에 div 넣기 
 		for(var i=0; i < item.length; i++){
 			

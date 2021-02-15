@@ -12,7 +12,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.portfolio.DTO.Category_Item;
+import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
@@ -401,11 +403,10 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	        port.setTitle(portfolio_name);
 	        port.setIsPublic(Integer.parseInt(portfolio_public));
 	        port.setTemplate_id(Integer.parseInt(template_id));
-	        port.setColor(template_color);
+	       
 	        port.setFont(template_font);
 	        
 	        portfolioService.portfolio_ID(port);
-	       
 	        int portfolio_id = port.getId();
 	        
 	        System.out.println("포트폴리오 아이디 : " +portfolio_id);
@@ -511,7 +512,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    }	
 	    
 		    System.out.println("step6 clear!");
-		    System.out.println(template_color);
 		    System.out.println(template_font);
 		    
 		    
@@ -678,6 +678,10 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    String portfolio_public  = request.getParameter("portfolio_public");
 		    String photo_name  = request.getParameter("photo_name");
 		    String ex_portID = request.getParameter("portfolio_id");
+		    
+		    String template_color  = request.getParameter("template_color");
+		    String template_font  = request.getParameter("template_font");
+		    
 		    int portfolio_id = Integer.parseInt(ex_portID);
 		    
 		    
@@ -797,7 +801,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("template_id",Integer.parseInt(template_id));
 		    redirectAttr.addFlashAttribute("template_name",template_name);
 		    redirectAttr.addFlashAttribute("portfolio_id",portfolio_id);
-
+		    redirectAttr.addFlashAttribute("template_color",template_color);
+		    redirectAttr.addFlashAttribute("template_font",template_font);
+		    
 			return new ModelAndView("redirect:/call_data");
 		}
 		
@@ -871,6 +877,21 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		return mav;
 	}
 	
+//  [ajax] colorList 가져오기
+	@RequestMapping(value= "/colorList", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	@ResponseBody
+	public List<Color> getcolorList(HttpServletRequest request, HttpSession session) throws Exception {
+			
+		int template_id=Integer.parseInt(request.getParameter("template_id"));
+		System.out.println("template_id: "+template_id);
+			
+		List<Color> colorList = portfolioService.getColorList(template_id);
+			
+		System.out.println("colorList: "+colorList);
+			
+		return colorList;
+	}		
+	
 	//포트폴리오 게시판 가기
 	@RequestMapping(value = "/portfolios") // GET 방식으로 페이지 호출
 	public ModelAndView GoPortfolioBoard(HttpSession session) throws Exception {
@@ -886,5 +907,19 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		
 	    return mav;
 	}
+	
+	@RequestMapping(value= "/colorData", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	@ResponseBody
+	public Color getColorInfo(HttpServletRequest request, HttpSession session) throws Exception {
+			
+		int color_id=Integer.parseInt(request.getParameter("color_id"));
+		System.out.println("color_id: "+color_id);
+			
+		Color colorList = portfolioService.getColorInfo(color_id);
+			
+		System.out.println("colorList: "+colorList);
+			
+		return colorList;
+	}	
 
 }

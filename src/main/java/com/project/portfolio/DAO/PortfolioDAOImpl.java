@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.project.portfolio.DTO.Category;
 import com.project.portfolio.DTO.Category_Item;
+import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
@@ -148,5 +149,15 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			// TODO Auto-generated method stub
 			sqlSession.delete(namespace + ".detailDelete",portfolio_id);
 			
+		}
+		
+		@Override
+		public List<Color> getColorList(int template_id) throws Exception{
+			return sqlSession.selectList(namespace + ".getColorList",template_id);
+		}
+		
+		@Override
+		public Color getColorInfo(int color_id) throws Exception{
+			return sqlSession.selectOne(namespace + ".getColorInfo",color_id);
 		}
 }

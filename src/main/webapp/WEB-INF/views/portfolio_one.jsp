@@ -859,7 +859,7 @@
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
 						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="" readonly/>
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
-						<input type="hidden" id="select_template_color" name="template_color" value="" readonly/>
+						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						
                       <div id="1page_form" class="u-container-layout u-container-layout-14">

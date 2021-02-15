@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.portfolio.DTO.Category;
 import com.project.portfolio.DTO.Category_Item;
+import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
@@ -62,6 +63,7 @@ public interface PortfolioDAO {
 
 	public void deleteDetail(int portfolio_id) throws Exception;
 	
+	public List<Color> getColorList(int template_id) throws Exception;
 	
-		
+	public Color getColorInfo(int color_id) throws Exception;
 }

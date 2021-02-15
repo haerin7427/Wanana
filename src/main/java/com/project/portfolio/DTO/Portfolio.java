@@ -1,4 +1,4 @@
-package com.project.portfolio.DTO;
+ package com.project.portfolio.DTO;
 
 import java.sql.Date;
 
@@ -10,12 +10,12 @@ public class Portfolio {
 	Integer template_id;
 	String html;
 	Integer user_id;
-	String color;
+	Integer color;
 	String font;
 	Date create_date;
 	Date update_date;
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "Portfolio [id=" + id + ", title=" + title + ", isPublic=" + isPublic + ", template_id=" + template_id
@@ -113,13 +113,13 @@ public class Portfolio {
 
 
 
-	public String getColor() {
+	public Integer getColor() {
 		return color;
 	}
 
 
 
-	public void setColor(String color) {
+	public void setColor(Integer color) {
 		this.color = color;
 	}
 

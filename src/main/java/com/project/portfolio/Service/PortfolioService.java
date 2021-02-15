@@ -3,6 +3,7 @@ package com.project.portfolio.Service;
 import java.util.List;
 import com.project.portfolio.DTO.Category;
 import com.project.portfolio.DTO.Category_Item;
+import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
@@ -84,11 +85,13 @@ public interface PortfolioService {
 	//<수정> 기존 portfolio 정보 가져오기 
 	public Portfolio getPortInfo(int portID) throws Exception;
 		
-		//<수정> portfolio 내용 update
-		public void updatePortfolio(Portfolio port) throws Exception;
+	//<수정> portfolio 내용 update
+	public void updatePortfolio(Portfolio port) throws Exception;
 		
-		//<수정> detail 내용 delete
-		public void deleteDetail(int portfolio_id) throws Exception;
+	//<수정> detail 내용 delete
+	public void deleteDetail(int portfolio_id) throws Exception;
 	
-
+	public List<Color> getColorList(int template_id) throws Exception;
+	
+	public Color getColorInfo(int color_id) throws Exception;
 }
