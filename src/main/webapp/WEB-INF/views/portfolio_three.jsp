@@ -113,6 +113,8 @@
 		$('select[name=1page_public]').val(portfolio_Info[0].port_public);
 		$('#select_portfolio_name').val(portfolio_Info[0].port_title);
 		$('#select_portfolio_public').val(portfolio_Info[0].port_public);
+		$('#select_template_color').val(portfolio_Info[0].template_color);
+		$('#select_template_font').val(portfolio_Info[0].template_font);
  
           for(var i=0; i < item_content.length; i++){
                     /*1. category 별 div 만들기  */
@@ -921,7 +923,8 @@
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
 						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="" readonly/>
-						
+						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
+						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->

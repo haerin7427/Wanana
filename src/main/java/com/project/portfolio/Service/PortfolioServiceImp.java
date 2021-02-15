@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.portfolio.DAO.PortfolioDAO;
 import com.project.portfolio.DTO.Category_Item;
+import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
@@ -143,6 +144,16 @@ public class PortfolioServiceImp implements PortfolioService {
 	public void deleteDetail(int portfolio_id) throws Exception {
 		// TODO Auto-generated method stub
 		portfolioDAO.deleteDetail(portfolio_id);
+	}
+	
+	@Override
+	public List<Color> getColorList(int template_id) throws Exception{
+		return portfolioDAO.getColorList(template_id);
+	}
+	
+	@Override
+	public Color getColorInfo(int color_id) throws Exception{
+		return portfolioDAO.getColorInfo(color_id);
 	}
 }
 
