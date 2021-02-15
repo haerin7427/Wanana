@@ -88,8 +88,14 @@ public interface PortfolioService {
 	//<수정> portfolio 내용 update
 	public void updatePortfolio(Portfolio port) throws Exception;
 		
+
 	//<수정> detail 내용 delete
 	public void deleteDetail(int portfolio_id) throws Exception;
+
+		
+	//게시판용 포트폴리오 정보 가져오기
+	public List<Portfolio> getPortfolios() throws Exception;
+
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	

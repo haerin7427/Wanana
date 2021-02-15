@@ -169,6 +169,7 @@
     		DELETE FROM detail WHERE portfolio_id=#{portfolio_id};
     </delete>
     
+
     <!-- template_id에 맞는 colorList가져오기  -->
     <select id="getColorList" parameterType="int" resultType="com.project.portfolio.DTO.Color">
 
@@ -182,5 +183,14 @@
     	SELECT id, template_id, color1,color2 FROM color where id = #{color_id};
 
     </select>
+
+    <!-- 갤러리용 포트폴리오 들고오기   -->
+    <select id="portfolioBoard" resultType="com.project.portfolio.DTO.Portfolio">
+    	<![CDATA[
+    		SELECT * FROM portfolio where isPublic = 1 ORDER BY update_date ASC;
+		 ]]>
+    </select>
+    
+
     
 </mapper>
