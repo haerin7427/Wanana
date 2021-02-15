@@ -849,13 +849,35 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	}
 	
 	//포트폴리오 게시판 가기
-	@RequestMapping(value = "/portfolios") // GET 방식으로 페이지 호출
+	@RequestMapping(value = "/portfolio_board") // GET 방식으로 페이지 호출
 	public ModelAndView GoPortfolioBoard(HttpSession session) throws Exception {
+		System.out.println("GoPortfolioBoard controller!");
 		ModelAndView mav = new ModelAndView();
 		
 		try {
 			int user_id=(Integer) session.getAttribute("ID");
-			mav.setViewName("portfolios");
+			List<Portfolio> portinfo = portfolioService.getPortfolios();
+			System.out.println(portinfo.toString());
+			System.out.println("get info!");
+			JSONArray jArray = new JSONArray();
+	        try {
+	        	for (int i = 0; i < portinfo.size() ; i++) {   
+	        		JSONObject ob =new JSONObject();
+	        		ob.put("port_id", portinfo.get(i).getId());
+	        		ob.put("port_temId", portinfo.get(i).getTemplate_id());
+	        		ob.put("port_title", portinfo.get(i).getTitle());
+	        		ob.put("port_date", portinfo.get(i).getUpdate_date());
+	        		System.out.println(ob.toString());
+
+		            jArray.put(ob);
+		        }
+	        	//System.out.println(jArray.toString());
+	        	System.out.println("개수 : " + jArray.length());
+	        }catch(JSONException e){
+	        	e.printStackTrace();
+	        }
+	        mav.addObject("portinfo", jArray);
+			mav.setViewName("portfolio_board");
 		}catch(NullPointerException  e){
 			 mav=new ModelAndView("login");
 			 mav.addObject("no_login","세션이 만료되었습니다. 다시 로그인 해주세요:)");

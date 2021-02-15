@@ -149,4 +149,10 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			sqlSession.delete(namespace + ".detailDelete",portfolio_id);
 			
 		}
+
+		@Override
+		public List<Portfolio> getPortfolios() throws Exception {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList(namespace + ".portfolioBoard");
+		}
 }

@@ -144,5 +144,12 @@ public class PortfolioServiceImp implements PortfolioService {
 		// TODO Auto-generated method stub
 		portfolioDAO.deleteDetail(portfolio_id);
 	}
+
+
+	@Override
+	public List<Portfolio> getPortfolios() throws Exception {
+		// TODO Auto-generated method stub
+		return portfolioDAO.getPortfolios();
+	}
 }
 
