@@ -360,7 +360,7 @@ span.fr-img-caption.fr-view {
       float: right;
       margin: 5px 0 5px 5px;
       max-width: calc(100% - 5px); }
-/*begin-commonstyles animate*/@charset "UTF-8";
+/*begin-commonstyles animate @charset "UTF-8";*/
 
 /*!
  * animate.css -https://daneden.github.io/animate.css/
