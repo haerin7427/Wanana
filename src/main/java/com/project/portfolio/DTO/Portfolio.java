@@ -12,7 +12,6 @@ public class Portfolio {
 	Integer template_id;
 
 	String html;
-	Integer user_id;
 	Integer color;
 	String font;
 	String password;
@@ -38,7 +37,7 @@ public class Portfolio {
 
 
 
-	public void setCreate_date(Timestamp create_date) {
+	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
 
@@ -56,7 +55,7 @@ public class Portfolio {
 
 
 
-	public void setUpdate_date(Timestamp update_date) {
+	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
 
