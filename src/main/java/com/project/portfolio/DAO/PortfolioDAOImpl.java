@@ -160,6 +160,7 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 		@Override
 		public Color getColorInfo(int color_id) throws Exception{
 			return sqlSession.selectOne(namespace + ".getColorInfo",color_id);
+		}
 
 
 		@Override

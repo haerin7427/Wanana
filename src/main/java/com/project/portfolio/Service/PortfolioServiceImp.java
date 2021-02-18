@@ -155,6 +155,7 @@ public class PortfolioServiceImp implements PortfolioService {
 	@Override
 	public Color getColorInfo(int color_id) throws Exception{
 		return portfolioDAO.getColorInfo(color_id);
+	}
 
 
 
