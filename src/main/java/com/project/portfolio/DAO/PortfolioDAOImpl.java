@@ -150,6 +150,7 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			sqlSession.delete(namespace + ".detailDelete",portfolio_id);
 			
 		}
+
 		
 		@Override
 		public List<Color> getColorList(int template_id) throws Exception{
@@ -159,5 +160,13 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 		@Override
 		public Color getColorInfo(int color_id) throws Exception{
 			return sqlSession.selectOne(namespace + ".getColorInfo",color_id);
+		}
+
+
+		@Override
+		public List<Portfolio> getPortfolios() throws Exception {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList(namespace + ".portfolioBoard");
+
 		}
 }

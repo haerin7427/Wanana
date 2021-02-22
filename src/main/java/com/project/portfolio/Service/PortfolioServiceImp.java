@@ -145,6 +145,7 @@ public class PortfolioServiceImp implements PortfolioService {
 		// TODO Auto-generated method stub
 		portfolioDAO.deleteDetail(portfolio_id);
 	}
+
 	
 	@Override
 	public List<Color> getColorList(int template_id) throws Exception{
@@ -154,6 +155,15 @@ public class PortfolioServiceImp implements PortfolioService {
 	@Override
 	public Color getColorInfo(int color_id) throws Exception{
 		return portfolioDAO.getColorInfo(color_id);
+	}
+
+
+
+	@Override
+	public List<Portfolio> getPortfolios() throws Exception {
+		// TODO Auto-generated method stub
+		return portfolioDAO.getPortfolios();
+
 	}
 }
 

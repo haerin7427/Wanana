@@ -1,26 +1,30 @@
  package com.project.portfolio.DTO;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Portfolio {
 	
 	Integer id;
+	Integer user_id;
 	String title;
 	Integer isPublic;
 	Integer template_id;
+
 	String html;
-	Integer user_id;
 	Integer color;
 	String font;
+	String password;
 	Date create_date;
 	Date update_date;
 
 
+
 	@Override
 	public String toString() {
-		return "Portfolio [id=" + id + ", title=" + title + ", isPublic=" + isPublic + ", template_id=" + template_id
-				+ ", html=" + html + ", user_id=" + user_id + ", color=" + color + ", font=" + font + ", create_date="
-				+ create_date + ", update_date=" + update_date + "]";
+		return "Portfolio [id=" + id + ", user_id=" + user_id + ", title=" + title + ", isPublic=" + isPublic
+				+ ", template_id=" + template_id + ", color=" + color + ", font=" + font + ", password=" + password
+				+ ", html=" + html + ", create_date=" + create_date + ", update_date=" + update_date + "]";
 	}
 
 
@@ -31,9 +35,14 @@ public class Portfolio {
 
 
 
+
+
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
+
+
+
 
 
 
@@ -43,9 +52,15 @@ public class Portfolio {
 
 
 
+
+
+
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
+
+
+
 
 
 
@@ -90,17 +105,14 @@ public class Portfolio {
 	}
 	
 
-
 	public String getHtml() {
 		return html;
 	}
 
 
-
 	public void setHtml(String html) {
 		this.html = html;
 	}
-
 
 
 	public Integer getUser_id() {
@@ -112,8 +124,8 @@ public class Portfolio {
 	}
 
 
-
 	public Integer getColor() {
+
 		return color;
 	}
 
@@ -134,7 +146,17 @@ public class Portfolio {
 	public void setFont(String font) {
 		this.font = font;
 	}
-	
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	
 }

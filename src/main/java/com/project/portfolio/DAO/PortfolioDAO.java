@@ -62,6 +62,8 @@ public interface PortfolioDAO {
 	public void updatePortfolio(Portfolio port) throws Exception;
 
 	public void deleteDetail(int portfolio_id) throws Exception;
+
+	public List<Portfolio> getPortfolios() throws Exception;
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	
