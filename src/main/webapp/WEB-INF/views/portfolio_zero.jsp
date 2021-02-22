@@ -61,6 +61,7 @@ function imgBig(a,b,templateID,template_html){
 	document.getElementById('show_explanation').innerHTML=document.getElementById(b).innerHTML;
 	document.getElementById('select_template_id').value = templateID;
 	document.getElementById('select_template_html').value = template_html;
+	document.getElementById('select_template_isVerticle').value = document.getElementById("#template_isVerticle_"+templateID).val(); 
 	//$("#select_template_html").val() = template_html;
 
 	$.ajax({ //해당 template의 colorList가져오기
@@ -296,6 +297,7 @@ function rgbToHex(rgb) {
 									alt="template" style="height:auto; width:50%;">
 								<div class="onepage_ display-hover">
 						        	<button class="onepage_ template_explanation" id="template_explanation_${template.id}" onclick="imgBig('templete_image_${template.id}','template_explanation_${template.id}','${template.id}','${template.html}')">${template.explanation}</button>
+						       		<input type="hidden" id="template_isVerticle_${template.id}" class="onepage_ template_isVerticle" value="${template.isVerticle}">
 						        </div>
 							</div>
 							<p class="onepage_ template_name">${template.template_name}</p>

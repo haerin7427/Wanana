@@ -124,7 +124,7 @@
     <!-- template 가져오기 -->
     <select id="template" resultType="com.project.portfolio.DTO.Template">
     	<![CDATA[
-		 	SELECT id,template_name,html,explanation FROM template;
+		 	SELECT id,template_name,html,explanation,isVerticle FROM template;
 		 ]]>
     </select>
     

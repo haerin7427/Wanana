@@ -39,6 +39,7 @@
   --my-font: sans-serif;
   --my-color:black;
   --my-color2:white;
+   --my-fontSize:15px;
 }
 
 .aside, .header, .left, .right, #mypic, .aboutme, #contact, #interest,
@@ -48,6 +49,7 @@
 }
 p{
     display: inline;
+    font-size:calc(1*var(--my-fontSize));
 }
 
 
@@ -87,7 +89,7 @@ p{
 	display: flex;
 	width: 100%;
 	height: 100%;
-	padding-top:15px;
+	padding-top:calc(1*var(--my-fontSize));
 	background-color:var(--my-color2);
 }
 
@@ -104,46 +106,46 @@ p{
 
 
 #mypic {
-	padding: 50px 0 0 0;
+	padding: calc(3.33*var(--my-fontSize)) 0 0 0;
 	overflow:auto;
 }
 
 
 
 .aboutme {
-	padding: 10px 0 0 0;
-	height: 325px;
+	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
+	height: calc(21.66*var(--my-fontSize));
 }
 
 #introduce {
-	padding: 15px 0 0 0;
+	padding: calc(1*var(--my-fontSize)) 0 0 0;
 	color: white;
-	font-size: 14px;
+	font-size: calc(0.933*var(--my-fontSize));
 }
 
 #contact {
-	height:130px;
-	font-size: 12px;
+	height:calc(8.66*var(--my-fontSize));
+	font-size: calc(0.8*var(--my-fontSize));
 	color: white;
-	padding: 10px 0 0 0;
+	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
 }
 
 #interest {
 	width: 80%;
-	padding: 0 20px 0 20px;
+	padding: 0 calc(1.33*var(--my-fontSize));
 }
 
 .name {
 	width: 20%;
 	text-align: right;
-	padding: 0 30px 0 0;
+	padding: 0 calc(2*var(--my-fontSize)) 0 0;
 }
 
 .interests {
 	display: flex;
 	color: #f5b433;
 	font-weight: 700;
-	font-size: 22px;
+	font-size: calc(1.466*var(--my-fontSize));
 }
 
  #tecs {
@@ -152,12 +154,12 @@ p{
 }
 
 #interest1, #interest2, #interest3 {
-	margin: 0 10px 0 0;
+	margin: 0 calc(0.66*var(--my-fontSize)) 0 0;
 }
 
 #tec, #exps{
 	width: 100%;
-	padding: 0 20px 0 20px;
+	padding: 0 calc(1.33*var(--my-fontSize));
 }
 
 #chart {
@@ -170,7 +172,7 @@ p{
 }
 
 .title_line{
-       		width:40px; height:7px; background-color:black; margin-bottom:20px; margin-top:5px;
+       		width:calc(2.66*var(--my-fontSize)); height:calc(0.466*var(--my-fontSize)); background-color:black; margin-bottom:calc(1.33*var(--my-fontSize)); margin-top:calc(0.33*var(--my-fontSize));
 }
 
 #coding_exp {
@@ -189,35 +191,35 @@ p{
 
 
 .interest_title{
-    margin-top: 10px;
-    margin-right: 5px;
+    margin-top: calc(0.66*var(--my-fontSize));
+    margin-right: calc(0.33*var(--my-fontSize));
     background-color: white;
     color: #727171;
     border: 1px solid white;
     vertical-align:middle;
-    border-radius: 40px;
+    border-radius: calc(2.66*var(--my-fontSize));
     text-align: center;
-    padding: 6px 15px;
+    padding: calc(0.4*var(--my-fontSize)) calc(1*var(--my-fontSize));
     font-weight: 700;
-    width: 100px;
-    font-size: 15px;
+    width: calc(6.66*var(--my-fontSize));
+    font-size: calc(1*var(--my-fontSize));
 }
 
 .small_title{
-    margin-top: 10px;
-    margin-right: 5px;
+    margin-top: calc(0.66*var(--my-fontSize));
+    margin-right: calc(0.3*var(--my-fontSize));
     border: 3px solid #efefef;
     background-color: white;
     border-radius: 10px;
     color: #f5b433;
-    padding: 2px 5px;
+    padding: calc(0.133*var(--my-fontSize)) calc(0.33*var(--my-fontSize));
     text-align:center;
-    width: 90px;
-    font-size: 17px;
+    width: calc(6*var(--my-fontSize));
+    font-size: calc(1.133*var(--my-fontSize));
 }
 .tech{
-	border: 2px solid black;
-	border-radius:40px;
+	border: calc(0.133*var(--my-fontSize)) solid black;
+	border-radius:calc(2.66*var(--my-fontSize));
 }
 
 .small_title2{
@@ -231,7 +233,7 @@ p{
 }
 
 .tecs{
-    padding:10px;    
+    padding:calc(0.66*var(--my-fontSize));    
     float:left;
 }
 
@@ -245,10 +247,10 @@ p{
   position: relative;
   display: inline-block;
   color: #999;
-  font-size: 14px;
+  font-size: calc(0.933*var(--my-fontSize));
   text-align: center;
-  width:100px;
-  height:100px;
+  width:calc(6.66*var(--my-fontSize));
+  height:calc(6.66*var(--my-fontSize));
 }
 .chart canvas {
   position: absolute;
@@ -258,14 +260,14 @@ p{
 
 #item_2_0_1{
     color:white;
-    font-size:14px; 
+    font-size:calc(0.933*var(--my-fontSize));
     word-break:keep-all;
 }
 
 .item_4{
     background-color:#424242; 
-    padding:3px 10px 0px 10px; 
-    margin-right:5px;
+    padding:calc(0.2*var(--my-fontSize)) calc(0.66*var(--my-fontSize)) 0px calc(0.66*var(--my-fontSize)); 
+    margin-right:calc(0.33*var(--my-fontSize));
     border-radius:11px;
 }
 
@@ -278,13 +280,13 @@ p{
 }
 
 .item_010, .item_08{
-    margin-bottom:15px;
+    margin-bottom:calc(1*var(--my-fontSize));
 }
 
 .item_07{
     float:left; 
     text-align:center;
-    padding-right:12px; 
+    padding-right:calc(0.8*var(--my-fontSize)); 
 }
 
 .item_9_1, .item_9_2, .item_9_3, .item_9_6, .item_9_5{
@@ -310,9 +312,9 @@ p{
 .item_8_4, .item_10_5{ 
     display:block;
     border: 1px solid gray;
-    padding: 8px 8px 0 8px;
+    padding: calc(0.533*var(--my-fontSize)) calc(0.533*var(--my-fontSize)) 0 calc(0.533*var(--my-fontSize));
     border-radius: 7px;
-    font-size: 10.5px; 
+    font-size: calc(0.7*var(--my-fontSize)); 
     word-break:keep-all;
 }
 
@@ -330,15 +332,15 @@ p{
 			</div>
 			
 			<div style="display:block;" class="aboutme" id="item_2">
-				<h4 style="color: #f5b433; font-size:18px; font-weight:800;">ABOUT ME</h4>
+				<h4 style="color: #f5b433; font-size:calc(0.7*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
 				
 			</div>
 			
 			<div id="contact">
-                <img class="pic" style="position:relative; top:-3px;"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="20" alt="default_img">
-                <h5 style="line-height:5px; display:inline; padding-left:5px;">CONTACT</h5>
+                <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="16px;" alt="default_img">
+                <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
                 
-                <div style="padding:7px;">
+                <div style="padding:calc(0.467*var(--my-fontSize));">
                     <div class="phone">${phone}</div>
                     <div class="email">${email}</div>
                     <div class="github" id="item_5"></div>
@@ -354,12 +356,12 @@ p{
 			<!-- 메인 헤더 (희망 분야)  -->
 			<div class="header">
 			<!-- 희망 분야  -->
-				<div class="interest" style="width:90%; padding:8px;">
+				<div class="interest" style="width:90%; padding:calc(0.533*var(--my-fontSize));">
 					<h4 class="interest_title" style="float:left"> 희망분야</h4>
-					<div class="interests" id="item_4" style="position:relative; top:9px; color:white;"></div>
+					<div class="interests" id="item_4" style="position:relative; top:calc(0.6*var(--my-fontSize)); color:white;"></div>
 				</div>
 				<div class="name" id="item_1">
-					<h1 style="font-weight:800; padding-top: 23px; margin: auto 0;">${Name}</h1>
+					<h1 style="font-weight:800; padding-top: calc(1.6*var(--my-fontSize)); margin: auto 0;font-size:calc(3.5*var(--my-fontSize)); ">${Name}</h1>
 				</div>
 			</div>
 
@@ -367,11 +369,11 @@ p{
 			<div class="main">
 
 				<!-- 왼쪽 바디 -->
-				<div class="main_column left" id="leftBody" style="padding: 15px;">
+				<div class="main_column left" id="leftBody" style="padding: calc(1*var(--my-fontSize));">
 				
-					<div id="education" style="margin-bottom:10px;">
+					<div id="education" style="margin-bottom:calc(0.66*var(--my-fontSize));">
 						<h5 class="small_title" style="font-weight:700">학력</h5>
-						<div class="educations" id="item_9" style="padding: 0 30px 0 10px;"></div>
+						<div class="educations" id="item_9" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
                     </div>
                     
 					<div id="strength">
@@ -397,7 +399,7 @@ p{
 					<!--나의 활동-->
 					<div id="activities">
 						<h5 class="small_title" style="font-weight:700">나의 활동</h5>
-						<div class="activities" id="item_10" style="padding: 0 30px 0 10px;"></div>
+						<div class="activities" id="item_10" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
                     </div>
                     
                 </div>
@@ -407,15 +409,15 @@ p{
 
 				<!-- 오른쪽바디 -->
 				<div class="main_column right">
-					<div id="tec" style="margin-bottom:10px;">
+					<div id="tec" style="margin-bottom:calc(0.66*var(--my-fontSize));">
 						<h6 class="small_title" style="font-weight:700">테크닉</h6>
-						<div class="tecs" id="item_7" style="padding: 0 5px 0 10px;"></div>
+						<div class="tecs" id="item_7" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
 					</div>
 					
 					<div id="coding_exp">
 						<div id="exps">
 							<h6 class="small_title" style="font-weight:700">개발경험</h6>
-							<div class="exps" id="item_8" style="padding: 0 5px 0 10px;"></div>
+							<div class="exps" id="item_8" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
 						</div>
 					</div>
 				</div>
@@ -430,6 +432,7 @@ p{
    		var item= ${data_list};
    		var template_info=${template_info};
    		document.body.style.setProperty("--my-font", template_info[0].template_font);
+   		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
    		if(template_info[0].template_color>0){
    			var color_info;
    			$.ajax({ //해당 color 정보 가져오기

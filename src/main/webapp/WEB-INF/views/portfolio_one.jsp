@@ -712,8 +712,9 @@
 	  		   	  var template_html=$("input[name=template_html]").val();
 	  		   	  var template_color=$("input[name=template_color]").val();
 	  		  	  var template_font=$("input[name=template_font]").val();
-	  		  	  console.log("template  color"+template_color);
-	  		  	  console.log("template  font"+template_font);
+	  		  	  var template_isVerticle=$("input[name=template_isVerticle]").val();
+	  		  	  console.log("template color"+template_color);
+	  		  	  console.log("template font"+template_font);
 
 	  		      for(var i=0; i<length; i++){                         
 		  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
@@ -737,6 +738,14 @@
 		                  success:function(result){
 		                      $("#1page_preview").html(result);
 		                      $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+		                      if(template_isVerticle=="1"){
+			                      $(".wrap").css("width","440px"); 
+			                      $(".wrap").css("height","560px");
+		                      }
+		                      else{
+		                    	  $(".wrap").css("width","610px"); 
+			                      $(".wrap").css("height","409px");
+			                  }
 		                  },
 		                  error:function(request,status,error){
 		               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -861,6 +870,7 @@
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
+						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="" readonly/>
 						
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->
@@ -934,12 +944,12 @@
   <!--  미리보기 모달 창 -->
   <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-4" id="sec-0d99">
       <div class="u-align-center u-container-style u-dialog u-white u-dialog-1">
-        <div class="u-container-layout u-valign-top u-container-layout-1" >
-        	<div id= "1page_preview"></div>
+        <div class="u-container-layout u-valign-top u-container-layout-1" style="height:700px" >
+        	<div id= "1page_preview" style="margin:0 auto;"></div>
           <!-- <img alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1500" data-image-height="1001" src="images/2.svg"> -->
           
           <!-- ok 버튼 -->
-          <a href="" class="u-btn u-btn-round u-button-style u-custom-color-1 u-custom-font u-hover-custom-color-1 u-radius-50 u-text-body-alt-color u-btn-1">OK</a>
+          <a  xlink:href="#svg-6e8b" class="u-btn u-btn-round u-button-style u-custom-color-1 u-custom-font u-hover-custom-color-1 u-radius-50 u-text-body-alt-color u-btn-1">OK</a>
         </div>
         
         <!-- x 버튼 -->
@@ -948,7 +958,8 @@
     </section>
     
     
-    <style>.u-section-4 {
+    <style>
+    .u-section-4 {
   min-height: 1352px;
 }
 

@@ -6,11 +6,13 @@ public class Template {
 	private String template_name;
 	private String html;
 	private String explanation;
+	private int isVerticle;
 	
+
 	@Override
 	public String toString() {
 		return "Template [id=" + id + ", template_name=" + template_name + ", html=" + html + ", explanation="
-				+ explanation + "]";
+				+ explanation + ", isVerticle=" + isVerticle + "]";
 	}
 
 	public Integer getId() {
@@ -44,5 +46,14 @@ public class Template {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
+
+	public int getIsVerticle() {
+		return isVerticle;
+	}
+
+	public void setIsVerticle(int isVerticle) {
+		this.isVerticle = isVerticle;
+	}
+	
 	
 }

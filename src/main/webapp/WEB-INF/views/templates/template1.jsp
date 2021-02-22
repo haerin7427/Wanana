@@ -19,60 +19,65 @@
 		  --my-font: sans-serif;
 		  --my-color:black;
 		  --my-color2:white;
-		}
-       
-		p{
-		    display: inline;
-		    font-size:15px;
+		  --my-fontSize:15px;
 		}
 		
-		#coding_exp p{
-			font-size:12px;
+		p{
+		    display: inline;
+		    font-size:calc(1*var(--my-fontSize));
+		}
+		
+		#coding_exp p{ /* 개발경험 p */
+			font-size:calc(0.8*var(--my-fontSize));
 		}
 		
 		.wrap {
 			display: flex;
-			width: 1100px;
-			height: 1400px;
+			width: 1100px;/* 2480 */
+			height: 1400px;/* 3508 */
 			background-color: white;
 			font-family:var(--my-font);
 		}
 
         h6{
             color:#A6A6A6;
-            margin-bottom:2px;
-            margin-top:10px;
+            margin-bottom:0.45%;
+            margin-top:5%;
         }
         .small_title{
         	color:black;
-        	font-size: 18px;
-        	margin-top:10px;
+        	font-size: calc(1.2*var(--my-fontSize));
+        	margin-top:2.3%;
         }
         .small_title2{
 			font-weight:bold;
 			color:#9fa0a0;
 		}
         .title_line{
-       		width:40px; height:7px; background-color:black; margin-bottom:20px; margin-top:5px;
+       		width:18%; 
+       		height:calc(0.5*var(--my-fontSize)); 
+       		background-color:black; 
+       		margin-bottom:4.5%; 
+       		margin-top:1.1%;
         }
 
         .container { 
         	/*padding: 10px 70px; */
-        	margin: 80px auto; 
+        	margin: 5.7% auto; 
         	background: #f5f5f5; 
         	!important;
         	border: solid #666; 
-        	border-width: 8px 0 2px 0;
+        	border-width: 0.57% 0 0.1425% 0;
         	border: 1px solid black;
 			display: flex;
 			flex-direction: column;
-			width: 1000px;
-			height: 1300px;
+			width: 91%; /* 1000 */
+			height: 93%; /* 1300 */
         }
         
         .header{
         	display: flex;
-        	padding: 40px 50px;
+        	padding: 4% 5%;/* 40px 50px; */
         	background-color: var(--my-color);
         	!important;
         	box-shadow:0 5px 13px gray;
@@ -100,21 +105,19 @@
 
         .header{
         	display: flex;
-        	
-           
         }
 		.main{
 			display: flex;
 			width: 100%;
 			height: 100%;
-			padding:10px 0 10px 0;
+			padding:1% 0;
 			background-color:var(--my-color2);
 		}
         
         .main_column {
             float: left;
             width: 50%;
-            padding:10px 25px 0 25px;
+            padding:1% 2.5% 0 2.5%;
         }
 
         .main:after {
@@ -130,7 +133,7 @@
         }
 
         .name,.itemBox_2{
-            padding-left:15px;
+            padding-left:3%;
         }
         
        
@@ -143,16 +146,16 @@
             content: "";
             display: table;
             clear: both;
-            margin-bottom:3px;
+            margin-bottom:0.7%;
           	overflow: auto;
-        	margin-top:20px;
+        	margin-top:4.5%;
         }
   
         
         
         #tec, #exps{
 			width: 100%;
-			padding: 0 20px 0 20px;
+			padding: 0 4.4% 4.4%;
 		}
         
 
@@ -184,7 +187,7 @@
 		  position: relative;
 		  display: inline-block;
 		  color: #999;
-		  font-size: 14px;
+		  font-size: calc(0.93*var(--my-fontSize));
 		  text-align: center;
 		  width:100px;
 		  height:100px;
@@ -206,7 +209,7 @@
             border-image-slice: 1;
             border-width: 1px;
             margin: 0;
-            padding: 13px 25px 13px 25px;
+            padding: 3.2% 6.1% 3.2% 6.1%;
             counter-increment: section 1;
             position: relative;
             color: black;
@@ -218,14 +221,14 @@
             content: counter(section);
             position: absolute;
             border-radius: 50%;
-            padding: 10px;
-            height: 1.0em;
-            width: 1.0em;
+            padding: 2.4%;
+            height: 1.3em;
+            width: 1.3em;
             background-color: black;
-            text-align: center;
             line-height: 1.25em;
-            color: white;
+            color: pink;
             font-size: 0.8em;
+            padding:0 1.5%;
         }
         /*odd number borders*/
         .item_08:nth-child(odd) {
@@ -234,7 +237,7 @@
         } 
         .item_08:nth-child(odd):before {
             left: 100%; 
-            margin-left: -20px;
+            margin-left: -4.8%;
         }
         .item_08:nth-child(even) {
             border-left: 1px solid;
@@ -242,7 +245,7 @@
         } 
         .item_08:nth-child(even):before {
             right: 100%; 
-            margin-right: -20px;
+            margin-right: -4.8%;
         }
         .item_08:first-child {
             border-top: 0;
@@ -253,10 +256,6 @@
             border-bottom-right-radius:0;
             border-bottom-left-radius:0;
         }
-        .tecs{
-		    float:left;
-		    margin:5px;
-		}
 		
 		
 		@media (max-width: 600px) {
@@ -266,10 +265,6 @@
 		}	
        /*exps end*/
        
-       /*nams css*/
-		.item_1{
-			font-size:42px; color:white; font-weight:bold; display:inline;
-		}
 		
 		/*interest css*/
 		.item_04,#item_4{
@@ -278,11 +273,10 @@
 		.item_4{
 			
 			background-color:#424242; 
-			padding:3px 7px; 
 			border-radius:11px;
 		}
 		.item_4:first-child{
-			margin-right:5px;
+			margin-right:0.3em;
 		}
 		
 		/*introduce css*/
@@ -292,7 +286,7 @@
 		
 		/*contact css*/
 		.item_5,.item_6{
-			padding:3px 0;
+			padding:1.7% 0;
 		}
 		
 		.item_3{
@@ -304,14 +298,11 @@
 		    display:inline;
 		}
 		
-		.item_010{
-		    margin-bottom:15px;
-		}
 		
 		.item_07{
 		    float:left; 
 		    text-align:center;
-		    padding-right:12px; 
+		    padding-right:2.5%; 
 		}
 		
 		.item_9_1, .item_9_2, .item_9_3, .item_9_6, .item_9_5{
@@ -328,7 +319,7 @@
 		    font-weight:bold;
 		}
 		
-		.item_8_4, .item_10_5{
+		/* .item_8_4, .item_10_5{
 		    display:block;
 		    border: 1px solid gray;
 		    padding: 8px 8px 0 8px;
@@ -336,8 +327,11 @@
 		    font-size: 10.5px; 
 		    word-break:keep-all;
 		
-		}	
+		}	 */
 		
+		/* .item_010{
+		    margin-bottom:15px;
+		} */
 		
 		
 		@media print {
@@ -355,47 +349,47 @@
         <!--div1(header)-->
         <div class="header">
             <!--div1_1(사진)-->
-            <div class="header_column side mypic itemBox_1" id="item_1"  style="width:150px;">
-            	<img class="pic" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="135" alt="<%=request.getContextPath()%>/resources/images/default_userpic.png">
+            <div class="header_column side mypic itemBox_1" id="item_1"  style="width:15%;">
+            	<img class="pic" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="109%" alt="<%=request.getContextPath()%>/resources/images/default_userpic.png">
             </div>
             
             <!--div1_2(이름+자기소개)-->
-            <div class="header_column middle aboutme"  style="width: 580px; display:table-cell; margin:0 15px; padding-top:8px;">
+            <div class="header_column middle aboutme"  style="width: 62.5%; display:table-cell; margin:0 1.67%; padding-top:0.89%;">
                 <!--이름-->
-                <div class="name" style="margin-bottom:5px;">
-                	<div class="name1_content1" style="font-size:42px; color:white; font-weight:bold; display:inline;">
+                <div class="name" style="margin-bottom:0.97%;">
+                	<div class="name1_content1" style="font-size:calc(3.5*var(--my-fontSize)); color:white; font-weight:bold; display:inline;">
 	                  ${Name}
 	                </div>
 		            <!--div2_1(희망분야)-->
-		            <div class="itemBox_4" style="display:inline; color:white; margin: 0 10px; display: inline-block;">
-						<h4 class="interest_title" style="display:inline; color:#efefef; margin-bottom:8px;">#희망분야</h4>
+		            <div class="itemBox_4" style="display:inline; color:white; margin: 0 1.97%; display: inline-block;">
+						<h4 class="interest_title" style="display:inline; color:#efefef; font-size:calc(1.3*var(--my-fontSize)); margin-bottom:10%">#희망분야</h4>
 						<div class="interests" id="item_4"></div>
 					</div>
                 </div>
 
                 <!--자기소개-->
-                <div class="itemBox_2" style="display:none; position:relative; top:-5px;">
-                	<h4 style="color:#F9CA03; margin-bottom:3px; ">ABOUT ME</h4>
+                <div class="itemBox_2" style="display:none; position:relative; top:-2.8%; ">
+                	<h4 style="color:#F9CA03; margin-bottom:0.6%; font-size:calc(1.3*var(--my-fontSize));">ABOUT ME</h4>
                 	<div id="item_2"></div>
                 </div>
             </div>
             
             <!--div1_3(contact)-->
-            <div class="header_column side contact" style="width:230px; padding:15px; font-size: 15px; background-color:var(--my-color, #efefef); border-radius:15px;">
-            	<img class="pic" style="position:relative; top:5px;"src="<%=request.getContextPath()%>/resources/images/phone.png" width="25" alt="default_img">
-            	<h3 style="line-height:5px; display:inline; padding-left:5px;">CONTACT</h3>
-            	<ul class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:10px;">
+            <div class="header_column side contact" style="width:25.56%; padding:1.7%; font-size: calc(1*var(--my-fontSize)); color: white;background-color:var(--my-color, #efefef); border-radius:15px;">
+            	<img class="pic" style="background-color:white; position:relative; top:2%;"src="<%=request.getContextPath()%>/resources/images/phone.png" width="15%" alt="default_img">
+            	<h3 style="line-height:2%; display:inline; padding-left:2%; font-size:calc(2*var(--my-fontSize));">CONTACT</h3>
+            	<ul class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:5.7%;">
 	                <!--핸드폰 번호-->
 	                <li class="phone">
 	               		<div class="phone1">
-	                		<div class="phone1_content1" style="padding:3px 0;">${phone}</div>
+	                		<div class="phone1_content1" style="padding:1.6% 0;">${phone}</div>
 	                	</div>
 	                </li>
 	                	
 	                <!--이메일-->
 					<li class="email"> 
 						<div class="email1">
-							<div class="email1_content1" style="padding:3px 0;">${email}</div>
+							<div class="email1_content1" style="padding:1.6% 0;">${email}</div>
 						</div>
 					</li>
 					<!--깃허브-->
@@ -453,7 +447,7 @@
 				</div>
 	        </div>
 	        
-	        <div class="vl" style="border-left: 1px solid black; float:left; height: 1000px;"></div>
+	        <div class="vl" style="border-left: 1px solid black; float:left; height: 100%;"></div>
 	         
 			<!--div3(right box)-->
 	        <div class="main_column right">
@@ -483,6 +477,7 @@
    		var item= ${data_list};
    		var template_info=${template_info};
    		document.body.style.setProperty("--my-font", template_info[0].template_font);
+   		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
 
    		if(template_info[0].template_color>0){
    			var color_info;
@@ -496,8 +491,7 @@
    			  		color_info = data;
    				  	console.log("color_info 불러오기 성공");
    				 	document.body.style.setProperty("--my-color", color_info.color1);
-   				 	document.body.style.setProperty("--my-color2", color_info.color2);		
-   				  					  		
+   				 	document.body.style.setProperty("--my-color2", color_info.color2);
    			  	},
    			  	error:function(request, status, error){
 

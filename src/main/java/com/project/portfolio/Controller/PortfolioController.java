@@ -369,6 +369,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    JSONObject ob =new JSONObject();
 		    ob.put("template_color", template_color);
 		    ob.put("template_font", template_font);
+		    ob.put("template_fontSize", "5.6px");
 		    jArray.put(ob);
 		    
 		    String url="templates/"+template_name;
