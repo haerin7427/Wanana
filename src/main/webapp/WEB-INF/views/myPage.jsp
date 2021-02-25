@@ -105,7 +105,7 @@
           </a>
         </p>
       </div></header>
-    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b">
+    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b" style="height: 620px; overflow:auto;">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-14 u-layout-wrap u-layout-wrap-1">
           <div class="u-layout fixsize" style="margin-top: -40px;">
@@ -206,11 +206,12 @@
       </div>
     </section>
     
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
-        </p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
+    	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
+       		<p class="u-custom-font u-small-text u-text u-text-variant u-text-1" style="line-height:20px;">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b></p>
+      	</div>
+     </footer>
+    <section class="u-backlink u-clearfix u-grey-80" style="height:2px;">
     </section>
   </body>
 </html>
