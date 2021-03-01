@@ -10,7 +10,7 @@ public class Portfolio {
 	String title;
 	Integer isPublic;
 	Integer template_id;
-
+	Integer isVerticle;
 	String html;
 	Integer color;
 	String font;
@@ -18,51 +18,31 @@ public class Portfolio {
 	Date create_date;
 	Date update_date;
 
-
+	
 
 	@Override
 	public String toString() {
 		return "Portfolio [id=" + id + ", user_id=" + user_id + ", title=" + title + ", isPublic=" + isPublic
-				+ ", template_id=" + template_id + ", color=" + color + ", font=" + font + ", password=" + password
-				+ ", html=" + html + ", create_date=" + create_date + ", update_date=" + update_date + "]";
+				+ ", template_id=" + template_id + ", isVerticle=" + isVerticle + ", html=" + html + ", color=" + color
+				+ ", font=" + font + ", password=" + password + ", create_date=" + create_date + ", update_date="
+				+ update_date + "]";
 	}
-
-
 
 	public Date getCreate_date() {
 		return create_date;
 	}
 
-
-
-
-
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-
-
-
-
-
 
 	public Date getUpdate_date() {
 		return update_date;
 	}
 
-
-
-
-
-
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
-
-
-
-
-
 
 	public Integer getId() {
 		return id;
@@ -157,6 +137,12 @@ public class Portfolio {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	public Integer getIsVerticle() {
+		return isVerticle;
+	}
+
+	public void setIsVerticle(Integer isVerticle) {
+		this.isVerticle = isVerticle;
+	}
 }

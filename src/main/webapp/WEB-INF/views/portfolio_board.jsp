@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
@@ -50,10 +50,11 @@
 		    for(var i = 0; i < 9; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
-			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1">');
+			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
 			    var portTitle = $('<div class="u-blog-control u-post-content u-text u-text-1">'+port_info[i].port_title+'</div> ');
 			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1"><span class="u-meta-date u-meta-icon">'+port_info[i].port_date+'</span></div>');
 			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+port_info[i].port_id+'">');
+			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+port_info[i].isVerticle+'">');
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portImg);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portTitle);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portDate);
@@ -61,7 +62,78 @@
 
 			}
 	
-	
+            
+		    $('.1page_portImg').on('click', function() {
+		    	var id = $(this).siblings("input[name='1page_portfolioID']").val();
+		    	var isVerticle = $(this).siblings("input[name='1page_portfolioIsVerticle']").val();
+			    $.ajax({
+					url: "board/portfolioView",
+				 	type:'POST',
+				   	traditional : true,
+				    data:{"portfolioID":id},
+				  	success:function(result){
+				    	$("#yourModal").html(result);
+				     	modal('yourModal');
+				   	},
+				   	error:function(request,status,error){
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+				});
+				          		
+			    
+			});
+	    });
+
+	    function modal(id) {
+		    var zIndex = 9999;
+		    var modal = $('#' + id);
+		
+		    // 모달 div 뒤에 희끄무레한 레이어
+		    var bg = $('<div>')
+		    	.attr('id','bg')
+		        .css({
+		            position: 'fixed',
+		            zIndex: zIndex,
+		            left: '0px',
+		            top: '0px',
+		            width: '100%',
+		            height: '100%',
+		            overflow: 'auto',
+		            // 레이어 색갈은 여기서 바꾸면 됨
+		            backgroundColor: 'rgba(0,0,0,0.4)'
+		        })
+		        .appendTo('body');
+		
+		    modal
+		        .css({
+		            position: 'fixed',
+		            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+		
+		            // 시꺼먼 레이어 보다 한칸 위에 보이기
+		            zIndex: zIndex + 1,
+		
+		            // div center 정렬
+		            top: '50%',
+		            left: '50%',
+		            transform: 'translate(-50%, -50%)',
+		            msTransform: 'translate(-50%, -50%)',
+		            webkitTransform: 'translate(-50%, -50%)'
+		        })
+		        .show()
+		        
+		        .find('.modal_close_btn')
+		        .on('click', function() {
+		        	
+		            bg.remove();
+		            modal.hide();
+		        });
+		}
+
+	    $(document).click(function(e) {
+	        if (!$(e.target).closest('#yourModal').length) {
+	        	$("#yourModal").css({ display : "none"});
+	    		$("#bg").remove();
+	        }
 	    });
     </script>
   </head>
@@ -222,7 +294,7 @@
     <!-- 목록 페이지 조회  -->
     <section class="u-clearfix u-grey-5 u-section-3" id="sec-8f03">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <ul class="responsive-style1 u-pagination u-unstyled u-pagination-1">
+        <!-- <ul class="responsive-style1 u-pagination u-unstyled u-pagination-1">
           <li class="disabled prev u-nav-item u-pagination-item">
             <a class="u-button-style u-nav-link" href="#" style="padding: 16px 28px;">〈</a>
           </li>
@@ -244,8 +316,30 @@
           <li class="next u-nav-item u-pagination-item">
             <a class="u-button-style u-nav-link" href="#" style="padding: 16px 28px;">〉</a>
           </li>
-        </ul>
+        </ul> -->
+        <ul class="responsive-style1 u-pagination u-unstyled u-pagination-1">
+			<c:if test="${pageMaker.prev}">
+			<li class="disabled prev u-nav-item u-pagination-item">
+				<a  class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.startPage-1}'>&laquo;</a>
+			</li>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+			<li class="active u-nav-item u-pagination-item">
+				<a class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${idx}'>${idx}</a>
+			</li>
+			</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+			<li class="next u-nav-item u-pagination-item">
+				<a class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.endPage+1}'>&raquo;</a>
+			</li>
+			</c:if>
+		</ul>
       </div>
+      
+      <div id="yourModal">
+	        
+      </div>
+      
     </section>
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>

@@ -199,7 +199,7 @@
 
                             //id li랑 연결
                             if(first == 1){
-                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
+                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" style="height:80%" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
                             		first = 0;
                                 }else{
                                 	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
@@ -1046,20 +1046,22 @@
 
 <!-- 1번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-5" id="1page_section1">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
-        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1"style="height:55vh">
+        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1" >
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역  -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-95b6"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-95b6"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-5 {
+    </section><style>
+    
+/*     .u-section-5 {
   min-height: 1760px;
-}
+} */
 
 .u-section-5 .u-dialog-1 {
   width: 814px;
-  min-height: 727px;
+  min-height: 700px;
   height: auto;
   margin: 89px auto 60px;
 }
@@ -1541,7 +1543,7 @@
 @media (max-width: 991px) {
   .u-section-5 .u-dialog-1 {
     width: 720px;
-    min-height: 723px;
+    min-height: 700px;
   }
 
   .u-section-5 .u-text-1 {
@@ -2028,16 +2030,16 @@
 
 <!-- 2번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6" id="1page_section2">
-      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
         <div id="1page_sectionDiv_2" class="u-container-layout u-container-layout-1">
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-3"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2bec"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-2bec"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-6 {
+    </section><style>/* .u-section-6 {
   min-height: 1760px;
-}
+} */
 
 .u-section-6 .u-dialog-1 {
   width: 800px;
@@ -2747,19 +2749,19 @@
 }</style>
 <!-- 3번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-7" id="1page_section3">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
         <div id="1page_sectionDiv_3"  class="u-container-layout u-valign-top u-container-layout-1">
         <!-- 삭제 구역    -->
                   <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-5"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8edf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-8edf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-7 {
+    </section><style>/* .u-section-7 {
   min-height: 1760px;
-}
+} */
 
 .u-section-7 .u-dialog-1 {
   width: 800px;
-  min-height: 779px;
+  min-height: 100%;
   margin: 89px auto 60px;
 }
 
@@ -4171,7 +4173,7 @@
 }</style>
 <!-- 4번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-8" id="1page_section4">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
         <div id="1page_sectionDiv_4"  class="u-container-layout u-valign-bottom u-container-layout-1">
         <!-- 삭제 구역    -->
           <!-- 삭제 구역    -->

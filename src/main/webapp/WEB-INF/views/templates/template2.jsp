@@ -6,32 +6,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Output page</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
 
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-	
-		<!--doughnut chart-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-
+<!--doughnut chart-->
+<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+    
 <!-- 한글 폰트 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
+
+<title>Output page</title>
 
 <style>
 
@@ -294,12 +277,6 @@ p{
 }
 
 
-@media print {
-
-	.aside {background-color: #2a2b2b; !important; -webkit-print-color-adjust:exact;}
-	.header{background-color: #efefef; !important; -webkit-print-color-adjust:exact;}
-	
-}
 
 .item_8_1, .item_8_2{
     float:left 
@@ -318,6 +295,12 @@ p{
     word-break:keep-all;
 }
 
+@media print{
+	canvas{
+	!important;
+	}
+}
+
 </style>
 
 </head>
@@ -332,7 +315,7 @@ p{
 			</div>
 			
 			<div style="display:block;" class="aboutme" id="item_2">
-				<h4 style="color: #f5b433; font-size:calc(0.7*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
+				<h4 style="color: #f5b433; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
 				
 			</div>
 			
@@ -501,11 +484,12 @@ p{
 			    $('.item_'+item[i].item_id+"_"+i+"_"+j).easyPieChart({
 			    	scaleColor: "#ecf0f1",
 			    	lineWidth:5,
-			    	    
 			    	barColor: '#f5b433', 
 			    	trackColor:	"#ecf0f1",
 			    	size: 62,
-			    	animate: 500
+			    	rotate: 0,
+			    	lineCap: 'round',
+			    	animate: false
 			    });
 			    
 			}

@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--doughnut chart-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
     
     <!-- 한글 폰트 -->
@@ -319,24 +318,10 @@
 		    font-weight:bold;
 		}
 		
-		/* .item_8_4, .item_10_5{
-		    display:block;
-		    border: 1px solid gray;
-		    padding: 8px 8px 0 8px;
-		    border-radius: 7px;
-		    font-size: 10.5px; 
-		    word-break:keep-all;
-		
-		}	 */
-		
-		/* .item_010{
-		    margin-bottom:15px;
-		} */
-		
-		
-		@media print {
-			.header{background-color: #2a2b2b; !important; -webkit-print-color-adjust:exact; color-adjust:exact;}
-			canvas{color: #f5b433; }
+		@media print{
+			canvas{
+			!important;
+			}
 		}
 		
 		
@@ -551,11 +536,12 @@
 				   
 			    	scaleColor: "#ecf0f1",
 			    	lineWidth:5,
-			    	
+			    	rotate: 0,
+			    	lineCap: 'round',
 			    	barColor: '#f5b433',
 			    	trackColor:	"#ecf0f1",
 			    	size: 70,
-			    	animate: 500
+			    	animate: false
 			    });
 			    
 			}

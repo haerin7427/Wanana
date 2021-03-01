@@ -1,6 +1,8 @@
 package com.project.portfolio.DAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.Portfolio2;
+import com.project.portfolio.DTO.SearchCriteria;
 import com.project.portfolio.DTO.Template;
 import com.project.portfolio.DTO.dataKey;
 
@@ -164,9 +167,17 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 
 
 		@Override
-		public List<Portfolio> getPortfolios() throws Exception {
+		public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception {
 			// TODO Auto-generated method stub
-			return sqlSession.selectList(namespace + ".portfolioBoard");
+			return sqlSession.selectList(namespace + ".portfolioBoard",cri);
 
+		}
+		
+		@Override
+		public int countPortfolio(String searchType, String keyword) throws Exception{
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("searchType", searchType);
+			map.put("keyword", keyword);
+			return sqlSession.selectOne("countPortfolio", map);
 		}
 }

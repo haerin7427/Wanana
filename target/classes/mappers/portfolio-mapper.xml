@@ -43,9 +43,9 @@
     
     <!-- 유저 portfolio 리스트 가져오기 -->
     <select id="getMyPortfolio" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
-    	<![CDATA[
-		 	SELECT portfolio.id as id, user_id,template_id,template.html as html,title,date_format(portfolio.update_date, '%Y-%m-%d') as update_date FROM portfolio LEFT JOIN template on portfolio.template_id=template.id where user_id=#{user_id} AND portfolio.template_id IS NOT NULL ORDER BY update_date;
-		 ]]>
+  
+		 	SELECT portfolio.id as id, user_id,template_id,template.html as html,title,date_format(portfolio.update_date, '%Y-%m-%d') as update_date FROM portfolio LEFT JOIN template on portfolio.template_id=template.id where user_id=#{user_id} AND portfolio.template_id IS NOT NULL ORDER BY update_date DESC;
+
     </select>
     
     <!-- 선택한 포트폴리오 템플릿 html 이름 가져오기 -->
@@ -187,10 +187,13 @@
     <!-- 갤러리용 포트폴리오 들고오기   -->
     <select id="portfolioBoard" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT * FROM portfolio where isPublic = 1 ORDER BY update_date ASC;
+    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY update_date ASC LIMIT #{pageStart}, #{perPageNum};
 		 ]]>
     </select>
     
-
+    <!-- 갤러리용 포트폴리오 개수 들고오기   -->
+	<select id="countPortfolio" resultType="int">
+      SELECT count(*) FROM portfolio where isPublic = 1;
+   </select>
     
 </mapper>

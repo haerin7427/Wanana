@@ -10,6 +10,7 @@ import com.project.portfolio.DTO.Item;
 import com.project.portfolio.DTO.Option;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.Portfolio2;
+import com.project.portfolio.DTO.SearchCriteria;
 import com.project.portfolio.DTO.Template;
 import com.project.portfolio.DTO.dataKey;
 
@@ -63,9 +64,11 @@ public interface PortfolioDAO {
 
 	public void deleteDetail(int portfolio_id) throws Exception;
 
-	public List<Portfolio> getPortfolios() throws Exception;
+	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception;
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	
 	public Color getColorInfo(int color_id) throws Exception;
+	
+	public int countPortfolio(String searchType, String keyword) throws Exception;
 }
