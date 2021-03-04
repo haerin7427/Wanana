@@ -140,7 +140,7 @@
       
       
     <section class="u-clearfix u-white u-section-1" id="sec-fad6" style="height: 620px; overflow:auto;">
-      <div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-40px; heigth: 600px;  ">
+      <div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-40px;">
         <div class="u-align-left u-container-style u-expanded-width-xs u-group u-similar-fill u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-custom-font u-enable-responsive u-text u-text-1">

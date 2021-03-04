@@ -51,6 +51,9 @@
     	.changecolor{
     		color: #D6A630;
     	}
+    	html, body {
+			width: 100%; height: 100%;
+		}
     </style>
     
     
@@ -105,17 +108,17 @@
           </a>
         </p>
       </div></header>
-    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b" style="height: 620px; overflow:auto;">
+    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b" style="height:620px; overflow:auto;">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-14 u-layout-wrap u-layout-wrap-1">
           <div class="u-layout fixsize" style="margin-top: -40px;">
-            <div class="u-layout-row">
+            <div class="u-layout-row" style="size:100px;">
               <div class="u-size-14-xl u-size-16-lg u-size-16-md u-size-16-sm u-size-16-xs makeshort">
                 <div class="u-layout-col">
                   <div class="u-container-style u-gradient u-layout-cell u-size-60 u-layout-cell-1">
                     <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-1">
                       <div class="u-container-style u-expanded-width u-group u-group-1">
-                        <div class="u-container-layout u-container-layout-2">
+                        <div class="u-container-layout u-container-layout-2" style="margin-top: -60px; margin-bottom:-80px;">
                           <p class="u-align-left u-custom-font u-text u-text-1" style="font-size:26px;">${sessionScope.Name} 님</p>
                           <p class="u-align-left u-custom-font u-text u-text-custom-color-3 u-text-2">안녕하​세​요!</p>
                           <div class="u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-image u-radius-28 u-shape-round u-image-1" data-image-width="472" data-image-height="725">
@@ -158,7 +161,7 @@
                           <div style="height:25px;"></div>
                           
                           <div style="margin-left:15px;">
-                          <div style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
+                          <div style="float:left; width: 233px; height: 250px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
                               <p style="color:black;">+ 새로만들기</p>
                           </div>
                           
