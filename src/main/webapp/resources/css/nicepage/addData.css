@@ -117,7 +117,7 @@
 }
 
 .u-section-1 .u-container-layout-4 {
-  padding: 30px;
+  padding: 20px;
 }
 
 .u-section-1 .u-text-4 {
@@ -412,7 +412,7 @@
 .u-section-1 .u-group-14 {
   margin-top: 3px;
   margin-bottom: 0;
-  min-height: 107px;
+ /*  min-height: 107px; *//* 고침 */
   height: auto;
 }
 
@@ -421,11 +421,12 @@
 }
 
 .u-section-1 .u-line-2 {
+  display: inline-block;
   border-style: dashed;
   height: 69px;
   transform-origin: center bottom 0px;
   width: 1px;
-  margin: 3px auto 0 44px;
+  margin: 2% auto 0 44px;
 }
 
 .u-section-1 .u-text-19 {
@@ -444,7 +445,9 @@
 .u-section-1 .u-icon-13 {
   height: 30px;
   width: 30px;
-  margin: -52px auto 0 0;
+  /* margin: -30px auto 0 0; 고침 */
+  position:absolute; 
+  top:38%;
 }
 
 .u-section-1 .u-group-15 {
@@ -789,7 +792,7 @@
   }
 
   .u-section-1 .u-group-18 {
-    margin-top: 290px;
+    margin-top: 200px;
     margin-bottom: 20px;
   }
 }

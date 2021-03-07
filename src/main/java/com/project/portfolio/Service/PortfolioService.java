@@ -11,6 +11,7 @@ import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.Portfolio2;
 import com.project.portfolio.DTO.Template;
 import com.project.portfolio.DTO.dataKey;
+import com.project.portfolio.DTO.SearchCriteria;
 
 public interface PortfolioService {
 	
@@ -94,10 +95,12 @@ public interface PortfolioService {
 
 		
 	//게시판용 포트폴리오 정보 가져오기
-	public List<Portfolio> getPortfolios() throws Exception;
+	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception;
 
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	
 	public Color getColorInfo(int color_id) throws Exception;
+	
+	public int countPortfolio(String searchType, String keyword) throws Exception ;
 }

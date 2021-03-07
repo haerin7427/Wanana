@@ -8311,6 +8311,7 @@ section.u-image,
   position: relative;
   flex: 1;
   max-width: 100%;
+  display:inline-block;
 }
 .u-inner-container-layout,
 .u-container-layout > * {
@@ -17518,7 +17519,7 @@ a.pswp__share--download:hover {
   flex: 1;
 }
 .u-tabs .u-tab-content > .u-tab-pane {
-  flex: 1;
+  /* flex: 1; *//* 고침  */
   display: none;
 }
 .u-tabs .u-tab-content > .u-tab-active {

@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css" media="screen">
     
     <title>addData</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=2" media="screen">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
@@ -32,40 +32,6 @@
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
 
-    <style type="text/css">
-    .noenter{
-		white-space:nowrap;
-	}
-	.immodal{
-		 height: 400px;
-		 overflow-y: auto;
-	}
-	img.fixplace, div.fixplace2{
-		position: relative;
-		top: 120px;
-	}
-	div.fixplace3{
-		float:right;
-	}
-	.longersize, .longersize2{
-		float:left;
-	}
-	.longersize2{
-		margin-bottom: 300px;
-	}
-	.modalscroll{
-		display: static;
-		height: 300px;
-		overflow: auto;
-	}
-	.makedown_helper{
-		display: table;
-	}
-	.makedown{
-		float:left;
-		display: table-cell; vertical-align: middle;
-	}
-    </style>
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -199,10 +165,10 @@
 
                             //id li랑 연결
                             if(first == 1){
-                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
+                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" style="height:90%" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
                             		first = 0;
                                 }else{
-                                	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
+                                	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" style="height:90%" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
                                     }
                             $("#"+tabID).append(niceTag1);
                             
@@ -215,6 +181,7 @@
 
                             	// field 추가 (content1-6)
                             var count = 0;
+                            var isFile=false;
                             for(var k = 0 ; k <field_content.length;k++){
                                 if(item_content[h].item_id < field_content[k].item_id)
                                     break;
@@ -229,15 +196,15 @@
                                         var imgTag = $('<img id="1page_view'+ field_content[k].field_id+ '" src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
                                         $("#"+tabDiv_itemID).append(imgTag);
 
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3 fileLabel">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName" onchange="readURL(this);"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName" onchange="readURL(this);"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                         }
                                         $("#"+tabDiv_itemID).append(fieldDiv);
-
+										isFile=true;
                                         
                                     }else if(field_content[k].field_type=='textarea'){
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
@@ -309,11 +276,16 @@
                         
 
                             //입력 버튼
-                            var addB = $('<div class="u-align-center u-form-group u-form-submit fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
+                            var addB = $('<div class="fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
                             $("#"+tabDiv_itemID).append(addB);
-
+                            if(isFile==true)
+                            	addB.addClass("fileAddB");
+                            else
+                            	addB.addClass("otherAddB");
+                        	
+							isFile=false;
                           //이전 데이터 버튼
-                            var dbB = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3 1page_past'+item_content[h].item_id+'"><div class="u-container-layout u-valign-middle-xs u-container-layout-5 "><a href="#" id="'+item_content[h].item_id+'" class="pastB"><p class="u-align-center-xs u-custom-font u-text u-text-grey-40 u-text-3" >이전➕</p></a></div></div>');
+                            var dbB = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3 1page_tm 1page_past'+item_content[h].item_id+'"><div class="u-container-layout u-valign-middle-xs u-container-layout-5 "><a href="#" id="'+item_content[h].item_id+'" class="pastB"><p class="u-align-center-xs u-custom-font u-text u-text-grey-40 u-text-3" >이전➕</p></a></div></div>');
                             //$($($("#"+tabID).children()[0]).children()[0]).append(dbB);
                             $($("#"+itemDiv_ID).children()[0]).append(dbB);
                         } //for(h) 종료 
@@ -389,21 +361,22 @@
   				console.log(option_list); 
 
   				//이전 데이터들을 감싸는 div  (여기 u-group을 지우니 세로 정렬!)
-  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-radius-21 u-shape-round u-group-1 longersize2 1page_pastBox'+id+'" style="overflow:scroll;"></div>');
+  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-radius-21 u-shape-round u-group-1 longersize2 1page_tm 1page_pastBox'+id+'"></div>');
   				$('.1page_past'+id).after(brotherItem); 	
 
   				var pastBox=$('<div class="u-container-layout u-container-layout-3"><p class="u-custom-font u-text u-text-2">이전 데이터​</p></div>');
   				$('.1page_pastBox'+id).append(pastBox); 
 
   				for(var idx=0;idx<item_data.length;idx++){
-  					var parentBox=$('<div class="u-grey-5 u-group u-radius-21 u-shape-round longersize" ></div>');
-  					$('.1page_pastBox'+id).append(parentBox); 
-  					var box1=$('<div class="u-container-layout u-valign-bottom-xs u-container-layout-14"></div>');
-  					$($('.1page_pastBox'+id).children()[idx+1]).append(box1);
+  					var parentBox=$('<div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2 longersize longersize" ></div>');
+  					$($('.1page_pastBox'+id).children()[0]).append(parentBox); 
+  					var box1=$('<div class="u-container-layout u-container-layout-4"></div>');
+  					$($($('.1page_pastBox'+id).children()[0]).children()[idx+1]).append(box1);
   					var box2=$('<div class="u-form u-form-1 1page_tabDiv'+id+'_past_'+item_data[idx].id+'"  id="1page_tabDiv'+id+'_past_'+item_data[idx].item_id+'"></div>');
-  					$($($('.1page_pastBox'+id).children()[idx+1]).children()[0]).append(box2);
+  					$($($($('.1page_pastBox'+id).children()[0]).children()[idx+1]).children()[0]).append(box2);
 
   					var count = 0;
+  					var isFile=false;
   					for(var k = 0 ; k <item_type.length; k++){
   						
   						if(k==0){
@@ -433,12 +406,14 @@
   	                        var imgPast = $('<img id="1page_view'+ item_type[k].field_id+ '" src="resources/user_photo/'+content+'" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(imgPast);
   	
-  	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
+  	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3 fileLabel">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
-  	
+
+  	                      	isFile=true;
+  	                      	
   	                    }else if(item_type[k].field_type=='textarea'){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
@@ -489,8 +464,13 @@
   	                }
 
   					//입력 버튼
-  					var pastAddB = $('<div class="u-align-center u-form-group u-form-submit "><a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_pastAddB">+ 입력</a></div>');
+  					var pastAddB = $('<div class="fixplace3 "><a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_pastAddB">+ 입력</a></div>');
                       $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastAddB);
+                    if(isFile==true)
+                    	pastAddB.addClass("fileAddB");
+                    else
+                    	pastAddB.addClass("otherAddB");
+                  	isFile=false;
   	                
   					}//이전데이터 개수(3개)만큼 반복문을 돌림 for(idx) 
 
@@ -516,7 +496,7 @@
 	            var item = find_itemID[3] - 1;
 	            console.log("item : " + item_content[item].item_name);
 
-	            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
+	            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2" ></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
 	            $('#1page_form').append(niceTag3); 
             
 
@@ -613,6 +593,8 @@
 	
 							                   var viewTag = $($(this).siblings("img")).clone();
 							                   viewTag.attr("id","1page_view2" );
+							                   viewTag.attr("style","top:-15px;margin-left:40%;width:70px; height:70px;" );
+							                   viewTag.attr("class","u-image" );
 							                   $($('#1page_count' + add_count).children()[0]).append(viewTag);
 							
 							                     var realTag = $($(this).children()).clone();
@@ -908,8 +890,6 @@
           </div>
         </div><span class="u-hidden-md u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-grey-30 u-icon-16" data-href="https://nicepage.com"><svg class="u-svg-link u-flip-horizontal" preserveAspectRatio="xMidYMin slice" viewBox="0 0 492.004 492.004" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ce59"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 492.004 492.004" x="0px" y="0px" id="svg-ce59" style="enable-background:new 0 0 492.004 492.004;"><g><g><path d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12    c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028    c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265    c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"></path>
 </g>
-</g></svg></span><span class="u-hidden-md u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-grey-30 u-icon-17"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 492.004 492.004" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ce59"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 492.004 492.004" x="0px" y="0px" id="svg-ce59" style="enable-background:new 0 0 492.004 492.004;"><g><g><path d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12    c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028    c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265    c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"></path>
-</g>
 </g></svg></span>
         <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round u-group-18">
           <div class="u-container-layout u-container-layout-21">
@@ -918,11 +898,6 @@
         </div>
       </div>
     </section>
-    
-    
-    
-    
-    
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
@@ -958,7 +933,76 @@
     </section>
     
     
+    <style type="text/css">
+    .noenter{
+		white-space:nowrap;
+	}
+	.immodal{
+		 height: 400px;
+		 overflow-y: auto;
+	}
+	img.fixplace{
+		position: relative;
+		top: 120px;
+	}
+	div.fixplace2{
+		float:left;
+		width:50%;
+		margin-left:25%;
+		margin-top:10%;
+	}
+	div.fixplace3{
+		float:right;
+		height:80px;
+	}
+	.fileAddB{
+		margin-top:7%;
+	}
+	/* .otherAddB{
+		position:absolute;
+		top:-30px;
+		left:82%;
+	} */
+	.longersize, .longersize2{
+		float:left;
+	}
+	.longersize2{
+		margin-bottom: 300px;
+	}
+	.modalscroll{
+		display: static;
+		height: 300px;
+		overflow: scroll;
+	}
+	.makedown_helper{
+		display: table;
+	}
+	.makedown{
+		float:left;
+		display: table-cell; vertical-align: middle;
+	}
+	.u-tab-content{
+   		height:400px;
+     }
+     .u-form{
+     	display:inline-block;
+     	height:90%;
+     	padding-top:2%;
+     }
+     .fileLabel{
+     	float:left;
+     	position:absolute;
+     	margin-left:27%;
+     	margin-top:5%;
+     }
+     .1page_tm{
+     	margin-top:2%;
+     }
+    </style>
+    
+    
     <style>
+    
     .u-section-4 {
   min-height: 1352px;
 }
@@ -1046,20 +1090,22 @@
 
 <!-- 1번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-5" id="1page_section1">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
-        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1"style="height:55vh">
+        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1" >
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역  -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-95b6"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-95b6"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-5 {
+    </section><style>
+    
+/*     .u-section-5 {
   min-height: 1760px;
-}
+} */
 
 .u-section-5 .u-dialog-1 {
   width: 814px;
-  min-height: 727px;
+  min-height: 700px;
   height: auto;
   margin: 89px auto 60px;
 }
@@ -1127,13 +1173,12 @@
 }
 
 .u-section-5 .u-container-layout-4 {
-  padding: 30px 30px 25px;
+  padding: 20px 20px 15px;
 }
 
 .u-section-5 .u-group-3 {
   width: 108px;
   min-height: 41px;
-  margin: 83px 0 0 auto;
 }
 
 .u-section-5 .u-container-layout-5 {
@@ -1541,7 +1586,7 @@
 @media (max-width: 991px) {
   .u-section-5 .u-dialog-1 {
     width: 720px;
-    min-height: 723px;
+    min-height: 700px;
   }
 
   .u-section-5 .u-text-1 {
@@ -2028,20 +2073,20 @@
 
 <!-- 2번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6" id="1page_section2">
-      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:40vh">
         <div id="1page_sectionDiv_2" class="u-container-layout u-container-layout-1">
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-3"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2bec"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-2bec"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-6 {
+    </section><style>/* .u-section-6 {
   min-height: 1760px;
-}
+} */
 
 .u-section-6 .u-dialog-1 {
   width: 800px;
-  min-height: 772px;
+  min-height: 700px;
   margin: 88px auto 60px;
 }
 
@@ -2747,19 +2792,19 @@
 }</style>
 <!-- 3번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-7" id="1page_section3">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
         <div id="1page_sectionDiv_3"  class="u-container-layout u-valign-top u-container-layout-1">
         <!-- 삭제 구역    -->
                   <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-5"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8edf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-8edf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-7 {
+    </section><style>/* .u-section-7 {
   min-height: 1760px;
-}
+} */
 
 .u-section-7 .u-dialog-1 {
   width: 800px;
-  min-height: 779px;
+  min-height: 700px;
   margin: 89px auto 60px;
 }
 
@@ -4171,8 +4216,8 @@
 }</style>
 <!-- 4번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-8" id="1page_section4">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
-        <div id="1page_sectionDiv_4"  class="u-container-layout u-valign-bottom u-container-layout-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
+        <div id="1page_sectionDiv_4"  class="u-container-layout u-container-layout-1">
         <!-- 삭제 구역    -->
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-6"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-63bf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-63bf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
@@ -4183,7 +4228,7 @@
 
 .u-section-8 .u-dialog-1 {
   width: 800px;
-  min-height: 773px;
+  min-height: 700px;
   margin: 84px auto 60px;
 }
 
