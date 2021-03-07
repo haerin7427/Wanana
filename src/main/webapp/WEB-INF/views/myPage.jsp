@@ -164,7 +164,7 @@
                           <div style="height:25px;"></div>
                           
                           <div style="margin-left:15px;">
-                          <div style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
+                          <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
                               <p style="color:black;">+ 새로만들기</p>
                           </div>
                           

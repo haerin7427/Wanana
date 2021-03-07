@@ -21,7 +21,7 @@
 		  --my-fontSize:15px;
 		}
 		
-		p{
+		.wrap p{
 		    display: inline;
 		    font-size:calc(1*var(--my-fontSize));
 		}
@@ -38,7 +38,7 @@
 			font-family:var(--my-font);
 		}
 
-        h6{
+        .wrap h6{
             color:#A6A6A6;
             margin-bottom:0.45%;
             margin-top:5%;
@@ -323,8 +323,6 @@
 			!important;
 			}
 		}
-		
-		
 	</style>
 </head>
 <body>

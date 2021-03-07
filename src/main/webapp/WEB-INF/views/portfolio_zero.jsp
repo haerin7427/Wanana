@@ -44,6 +44,34 @@ $(document).ready(function () {
 		}
 	});
 
+	var template_color=$("#bigView_color").val();
+	var template_font=$("#bigView_font").val();
+	var template_html="template2";
+	var template_isVerticle=$("input[name=template_isVerticle]").val();
+	
+	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
+	$.ajax({
+        url: "<%=request.getContextPath()%>/tem_image",
+        type:'POST',
+        traditional : true,
+        data: sendData,
+        success:function(result){
+            $("#preview_portfolio_img").html(result);
+            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+            if(template_isVerticle=="1"){
+                $(".wrap").css("width","220px"); 
+                $(".wrap").css("height","280px");
+            }
+            else{
+            	$(".wrap").css("width","297px"); 
+               	$(".wrap").css("height","207px");
+            }
+        },
+        error:function(request,status,error){
+     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	});
+
 	for(var i=0; i<colorList.length;i++){
 		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
 		$(".color-picker").append(colorDiv);
@@ -54,14 +82,12 @@ $(document).ready(function () {
 var color;
 
 function imgBig(a,b,templateID,template_html){
-	<%-- $("#preview_portfolio").load('<%=request.getContextPath()%>/tem_image'
-		 ,{ template_html: template_html}); --%>
-		 
-	document.getElementById('preview_portfolio').src=document.getElementById(a).src; 
+ 
+	//document.getElementById('preview_portfolio').src=document.getElementById(a).src; 
 	document.getElementById('show_explanation').innerHTML=document.getElementById(b).innerHTML;
 	document.getElementById('select_template_id').value = templateID;
 	document.getElementById('select_template_html').value = template_html;
-	document.getElementById('select_template_isVerticle').value = document.getElementById("#template_isVerticle_"+templateID).val(); 
+	document.getElementById('select_template_isVerticle').value = $("#template_isVerticle_"+templateID).val(); 
 	//$("#select_template_html").val() = template_html;
 
 	$.ajax({ //해당 template의 colorList가져오기
@@ -73,7 +99,7 @@ function imgBig(a,b,templateID,template_html){
 	  	success: function(data){
 	  		colorList = data;
 		  	console.log("colorList 불러오기 성공");
-		  	console.log(formInfo); 	
+		  	console.log(colorList); 	
 		  					  		
 	  	},
 	  	error:function(request, status, error){
@@ -89,6 +115,36 @@ function imgBig(a,b,templateID,template_html){
 		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
 		$(".color-picker").append(colorDiv);
 	}
+
+
+	var template_color=$("#bigView_color").val();
+	var template_font=$("#bigView_font").val();
+	var template_html=template_html;
+	var template_isVerticle=$("input[name=template_isVerticle]").val();
+	
+	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
+	$.ajax({
+        url: "<%=request.getContextPath()%>/tem_image",
+        type:'POST',
+        traditional : true,
+        data: sendData,
+        success:function(result){
+            $("#preview_portfolio_img").html(result);
+            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+            if(template_isVerticle=="1"){
+            	$(".wrap").css("width","220px"); 
+                $(".wrap").css("height","280px");
+            }
+            else{
+          	  	$(".wrap").css("width","297px"); 
+               	$(".wrap").css("height","207px");
+            }
+        },
+        error:function(request,status,error){
+     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	});
+	
 	
 }
 
@@ -108,7 +164,36 @@ function changeColor(sender) {
 	var id_split=color_id.split('_');
 
 	document.getElementById('select_template_color').value =id_split[1];
+	document.getElementById('bigView_color').value =id_split[1];
 	sender.classList.add("active");
+
+	var template_color=id_split[1];
+	var template_font=$("#bigView_font").val();
+	var template_html=$("input[name=template_html]").val();
+	var template_isVerticle=$("input[name=template_isVerticle]").val();
+	
+	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
+	$.ajax({
+        url: "<%=request.getContextPath()%>/tem_image",
+        type:'POST',
+        traditional : true,
+        data: sendData,
+        success:function(result){
+            $("#preview_portfolio_img").html(result);
+            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+            if(template_isVerticle=="1"){
+            	$(".wrap").css("width","220px"); 
+                $(".wrap").css("height","280px");
+            }
+            else{
+          	  	$(".wrap").css("width","297px"); 
+               	$(".wrap").css("height","207px");
+            }
+        },
+        error:function(request,status,error){
+     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	});
 	
 }
 
@@ -147,6 +232,35 @@ function rgbToHex(rgb) {
 		
 		/* $('p').css(css); */
 		document.getElementById('select_template_font').value =fontFamily;
+		document.getElementById('bigView_font').value =fontFamily;
+
+		var template_color=$("#bigView_color").val();
+		var template_font=fontFamily;
+		var template_html=$("input[name=template_html]").val();
+		var template_isVerticle=$("input[name=template_isVerticle]").val();
+		
+		var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
+		$.ajax({
+	        url: "<%=request.getContextPath()%>/tem_image",
+	        type:'POST',
+	        traditional : true,
+	        data: sendData,
+	        success:function(result){
+	            $("#preview_portfolio_img").html(result);
+	            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+	            if(template_isVerticle=="1"){
+	            	$(".wrap").css("width","220px"); 
+	                $(".wrap").css("height","280px");
+	            }
+	            else{
+	          	  	$(".wrap").css("width","297px"); 
+	               	$(".wrap").css("height","207px");
+	            }
+	        },
+	        error:function(request,status,error){
+	     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	        }
+		});
 	}
 
  
@@ -376,11 +490,13 @@ function rgbToHex(rgb) {
                     <div class="u-border-2 u-border-grey-5 u-expanded-width u-radius-10 u-shape u-shape-round u-shape-1" style="text-align:center; border:white;">
                     	<!-- 선택한 템플릿 이미지 -->
                     	<div id="preview_portfolio_img">
-							<img class="myPortfolio" id="preview_portfolio" name="bigView" src="<%=request.getContextPath()%>/resources/images/template2.png" style="width:80%; height:auto;" >
+							<%-- <img class="myPortfolio" id="preview_portfolio" name="bigView" src="<%=request.getContextPath()%>/resources/images/template2.png" style="width:80%; height:auto;" > --%>
 						</div>
                     	<!— 선택한 템플릿 설명 —>
                     	<p class="text" id="show_explanation" style="padding: 20px 0;"></p>
 						<p class="text" id="ready" style="color:red"></p>
+						<input type="hidden" id="bigView_color" value="1">
+						<input type="hidden" id="bigView_font" value="">
                     </div>
                   </div>
                 </div>

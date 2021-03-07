@@ -249,8 +249,21 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 		ModelAndView mav = new ModelAndView();
 		String template_html=request.getParameter("template_html");
+		int template_color=Integer.parseInt(request.getParameter("template_color"));
+		String template_font=request.getParameter("template_font");
+		
 		String url="templates/"+template_html;
 		
+		JSONArray jArray = new JSONArray();
+	    JSONObject ob =new JSONObject();
+	    ob.put("template_color", template_color);
+	    ob.put("template_font", template_font);
+	    ob.put("template_fontSize", "0.3px");
+	    jArray.put(ob);
+	    ObjectMapper mapper=new ObjectMapper();
+		String jArray2=mapper.writeValueAsString("no data");
+		mav.addObject("template_info", jArray);
+		mav.addObject("data_list", jArray2);
 		mav.setViewName(url);
 		return mav;
     }

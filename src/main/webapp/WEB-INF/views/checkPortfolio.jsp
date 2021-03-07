@@ -29,7 +29,7 @@
       
       <!--doughnut chart-->
 	<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-      
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- 한글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
@@ -174,8 +174,28 @@ function printB() {
 	if(resultYN == 1){
 		 	var initBody = document.body.innerHTML;
 		 	var g_oBeforeBody = document.getElementById('printSection').innerHTML;
-		 
-             window.onbeforeprint = function(){
+
+		 	html2canvas(document.querySelector("#printSection"),{scrollY: -window.scrollY, 
+		 	   scale: 1}).then(canvas => {  
+		 	    var dataURL = canvas.toDataURL();
+		 	    var width = canvas.width;
+		 	    var printWindow = window.open("");
+
+		 	   var data=document.querySelector("#printSection");
+		       var divHeight = data.clientHeight
+		       var divWidth = data.clientWidth
+		       var ratio = divHeight / divWidth;
+		       var height = ratio * width;
+		       
+		 	    $(printWindow.document.body)
+		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "'></img>")
+		 	      .ready(function() {
+		 	      printWindow.focus();
+		 	      printWindow.print();
+		 	      printWindow.close();
+		 	    });
+		 	  });
+             /* window.onbeforeprint = function(){
                 document.body.innerHTML = g_oBeforeBody;
             }
             window.onafterprint = function(){
@@ -184,7 +204,7 @@ function printB() {
             setTimeout(function() {
 	            window.print(); 
 	            window.close();
-            }, 1000); 
+            }, 1000);  */
 	 }
        }
 

@@ -30,7 +30,7 @@
 	#coding_exp, #exps, #exp1, #exp2, #exp3, #exp4, #exp5,
 	#free_one, #free_two, #free_three {
 }
-p{
+.wrap p{
     display: inline;
     font-size:calc(1*var(--my-fontSize));
 }
@@ -300,6 +300,7 @@ p{
 	!important;
 	}
 }
+
 
 </style>
 
