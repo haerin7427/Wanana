@@ -2,7 +2,6 @@ package com.project.portfolio.DAO;
 
 import java.util.List;
 
-import com.project.portfolio.DTO.Category;
 import com.project.portfolio.DTO.Category_Item;
 import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
