@@ -210,7 +210,7 @@
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea></div>');
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea><span id="1page_textLimit">(0/150)</span></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                             var spanTag = $('<span class="redMark">*</span>');
@@ -418,7 +418,7 @@
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea><span id="1page_textLimit">(0/150)</span></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
   	
   	                    }else if(item_type[k].field_type=='date'){
@@ -736,6 +736,7 @@
           		}//resultYN == 1 경우 끝
     	  });//미리보기 창 끝
 
+          
     });//document.ready 
 
     function readURL(input) {
@@ -748,7 +749,7 @@
         }
     }// function readURL end 
 </script>
-                        
+                    
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -898,8 +899,6 @@
         </div>
       </div>
     </section>
-    
-    
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>
@@ -5670,5 +5669,9 @@
     margin-left: initial;
     width: auto;
   }
-}</style></body>
+}</style>
+
+ <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/textData.js?ver=11"></script>
+
+</body>
 </html>

@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/myPage.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -134,7 +135,7 @@
                               </p>
                             </div>
                           </div>
-                          <a href="#" class="u-btn u-btn-round u-button-style u-custom-color-3 u-custom-font u-hover-custom-color-4 u-radius-50 u-btn-1">내 정보 수정</a>
+                          <a href="javascript:userInfo()" class="u-btn u-btn-round u-button-style u-custom-color-3 u-custom-font u-hover-custom-color-4 u-radius-50 u-btn-1">내 정보 수정</a>
                         </div>
                       </div>
                     </div>
@@ -164,7 +165,7 @@
                           <div style="height:25px;"></div>
                           
                           <div style="margin-left:15px;">
-                          <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">	
+                          <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" <c:if test="${port_count >= 100}" var="portfolio"> onClick="createAlert();" </c:if> <c:if test="${port_count < 100}" var="portfolio"> data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356" </c:if>>	
                               <p style="color:black;">+ 새로만들기</p>
                           </div>
                           
@@ -212,6 +213,7 @@
       </div>
     </section>
     
+  	<jsp:include page="/WEB-INF/views/userInfo.jsp" />
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>

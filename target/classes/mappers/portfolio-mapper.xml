@@ -196,4 +196,8 @@
       SELECT count(*) FROM portfolio where isPublic = 1;
    </select>
     
+    <!-- user 정보 가져오기 -->
+   <select id="getUserInfo" parameterType="String" resultType="com.project.login.DTO.User">
+      SELECT * FROM users WHERE email_address=#{email};
+   </select>
 </mapper>

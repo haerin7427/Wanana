@@ -40,6 +40,7 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 	public List<Data> getCheckPortfolio(int portfolio_ID) throws Exception {
 		return sqlSession.selectList(namespace + ".checkPortfolio",portfolio_ID);
 	}
+	
 	@Override
 	public String getCheckTemplateID(int portfolio_ID) throws Exception {
 		return sqlSession.selectOne(namespace+".checkTemplateID",portfolio_ID);
