@@ -337,50 +337,53 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 			ModelAndView mav = new ModelAndView();
 			
-			System.out.println("preview!!");
+			System.out.println("showPreview controller!!");
 			
-
 		    String template_name  = request.getParameter("template_html");
 		    String template_color  = request.getParameter("template_color");
 		    String template_font  = request.getParameter("template_font");
 		    
-		    String []item_id = request.getParameterValues("item_id");
-		    String []content1 = request.getParameterValues("content1");
-		    String []content2 = request.getParameterValues("content2");
-		    String []content3 = request.getParameterValues("content3");
-		    String []content4 = request.getParameterValues("content4");
-		    String []content5 = request.getParameterValues("content5");
-		    String []content6 = request.getParameterValues("content6");
-			
-		    String[]content;
+		    System.out.println("showPreview checking controller!!");
+			if(request.getParameterValues("item_id") != null ) {
 				
-			JSONArray jArray2 = new JSONArray();
-		    try {
-		    	
-		    	
-		    	for (int i = 0; i < item_id.length ; i++) {   
-			    	JSONObject ob =new JSONObject();
-			        content=new String[6];
-			        
-			        ob.put("item_id", item_id[i]);
-			        ob.put("data_no", portfolioService.getData_no(item_id[i]));
-			        
-			        content[0]=content1[i];
-			        content[1]=content2[i];
-			        content[2]=content3[i];
-			        content[3]=content4[i];
-			        content[4]=content5[i];
-			        content[5]=content6[i];
-			            
-			        ob.put("content", content);
-			            
-			        jArray2.put(ob);
-			        
+				System.out.println("showPreview check1 controller!!");
+				
+				String []item_id = request.getParameterValues("item_id");
+			    String []content1 = request.getParameterValues("content1");
+			    String []content2 = request.getParameterValues("content2");
+			    String []content3 = request.getParameterValues("content3");
+			    String []content4 = request.getParameterValues("content4");
+			    String []content5 = request.getParameterValues("content5");
+			    String []content6 = request.getParameterValues("content6");
+			    String[]content;
+			    
+			    JSONArray jArray2 = new JSONArray();
+			    
+			    try {
+			    	for (int i = 0; i < item_id.length ; i++) {   
+				    	JSONObject ob =new JSONObject();
+				        content=new String[6];
+				        
+				        ob.put("item_id", item_id[i]);
+				        ob.put("data_no", portfolioService.getData_no(item_id[i]));
+				        
+				        content[0]=content1[i];
+				        content[1]=content2[i];
+				        content[2]=content3[i];
+				        content[3]=content4[i];
+				        content[4]=content5[i];
+				        content[5]=content6[i];
+				            
+				        ob.put("content", content);
+				        jArray2.put(ob);
+				        
+				    }
+			        System.out.println(jArray2.toString());
+			    }catch(JSONException e){
+			        e.printStackTrace();
 			    }
-		        System.out.println(jArray2.toString());
-		    }catch(JSONException e){
-		        e.printStackTrace();
-		    }
+			    mav.addObject("data_list", jArray2);
+			}
 		    
 		    JSONArray jArray = new JSONArray();
 		    JSONObject ob =new JSONObject();
@@ -390,14 +393,37 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    jArray.put(ob);
 		    
 		    String url="templates/"+template_name;
-			mav.addObject("data_list", jArray2);
+			
+			mav.addObject("template_info", jArray);
+			mav.setViewName(url);
+			System.out.println("showPreview end controller!!");
+			return mav;
+		}
+		
+		@RequestMapping(value= "/preview_empty", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+		@ResponseBody 
+		public ModelAndView showPreviewEmpty(HttpServletRequest request, HttpSession session) throws Exception {
+			System.out.println("showPreviewEmpty controller!!");
+
+		    String template_name  = request.getParameter("template_html");
+		    String template_color  = request.getParameter("template_color");
+		    String template_font  = request.getParameter("template_font");
+		    
+		    JSONArray jArray = new JSONArray();
+		    JSONObject ob =new JSONObject();
+		    ob.put("template_color", template_color);
+		    ob.put("template_font", template_font);
+		    ob.put("template_fontSize", "5.6px");
+		    jArray.put(ob);
+		    
+		    String url="templates/"+template_name;
+		    ModelAndView mav = new ModelAndView();
 			mav.addObject("template_info", jArray);
 			mav.setViewName(url);
 		
-			
 			return mav;
-			        
 		}
+
 
 		//step6. 데이터 DB에 포트폴리오 정보 넣기
 		@RequestMapping(value= "/portfolio_two", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)

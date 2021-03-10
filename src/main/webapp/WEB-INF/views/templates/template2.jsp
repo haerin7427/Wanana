@@ -97,7 +97,8 @@
 
 .aboutme {
 	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
-	height: calc(21.66*var(--my-fontSize));
+	height: calc(65% - 8.66*var(--my-fontSize));
+	/* height: calc(21.66*var(--my-fontSize)); */
 }
 
 #introduce {

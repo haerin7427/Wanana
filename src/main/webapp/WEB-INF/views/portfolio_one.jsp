@@ -675,12 +675,15 @@
                
           }); 
           
-          //미리보기 창 
+        //미리보기 창 
           $("#1page_preview_button").click(function() {
         	  console.log("preview test");
         	  
         	  var resultYN = sessionChecking();
         	  if(resultYN == 1){
+        		  var check1 = $('input[name=file1]').length;
+	              var check2 = $('input[name=add_itemID]').length;
+	              console.log("사진 개수: "+check1 +"/ 필드 개수 : "+ check2);
         	  
 	        	  var length=$("#1page_form").find("input[name=add_itemID]").length;
 	        	  var item_id=new Array(length);
@@ -697,7 +700,6 @@
 	  		  	  var template_isVerticle=$("input[name=template_isVerticle]").val();
 	  		  	  console.log("template color"+template_color);
 	  		  	  console.log("template font"+template_font);
-
 	  		      for(var i=0; i<length; i++){                         
 		  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
 		  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
@@ -709,6 +711,7 @@
 	  		      }
 					console.log(item_id);
 					console.log(content1);
+
   		       		var sendData = {"template_html":template_html,"template_color":template_color,"template_font":template_font,"item_id": item_id, "content1" : content1 , "content2" : content2 , "content3" : content3 , "content4" : content4 , "content5" : content5 , "content6" : content6};
 
        	  			console.log(sendData);
@@ -719,7 +722,10 @@
 		                  data: sendData,
 		                  success:function(result){
 		                      $("#1page_preview").html(result);
-		                      $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+		                      
+		                      if(check1 > 0) //사진을 추가 했을 때만!!
+		                      	$(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+		                      	
 		                      if(template_isVerticle=="1"){
 			                      $(".wrap").css("width","440px"); 
 			                      $(".wrap").css("height","560px");
@@ -735,7 +741,9 @@
 		          		});
           		}//resultYN == 1 경우 끝
     	  });//미리보기 창 끝
-
+	
+	             
+	            
     });//document.ready 
 
     function readURL(input) {
