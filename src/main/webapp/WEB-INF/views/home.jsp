@@ -139,8 +139,8 @@
       </div></header> 
       
       
-    <section class="u-clearfix u-white u-section-1" id="sec-fad6">
-      <div class="u-clearfix u-sheet u-sheet-1">
+    <section class="u-clearfix u-white u-section-1" id="sec-fad6" style="height: 620px; overflow:auto;">
+      <div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-40px;">
         <div class="u-align-left u-container-style u-expanded-width-xs u-group u-similar-fill u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-custom-font u-enable-responsive u-text u-text-1">
@@ -156,17 +156,6 @@
               <a id ="1page_link"  href="<%=request.getContextPath()%>/portfolio_one">
               <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-xl u-valign-top-xs u-container-layout-2">
                 <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-4" style="padding-left:-200px;">포트폴리오 만들기 바로가기</p>
-                <span class="u-icon u-icon-circle u-text-white u-icon-1">
-                	<svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 492.004 492.004" style="">
-                		<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-abcc"></use>
-                	</svg>
-                	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 492.004 492.004" x="0px" y="0px" id="svg-abcc" style="enable-background:new 0 0 492.004 492.004;">
-                	<g><g>
-                	<path d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12    c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028    c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265    c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z">
-                	</path>
-					</g></g>
-				</svg>
-				</span>
               </div>
               </a>
             </div>
@@ -178,11 +167,11 @@
     </section>
     
   
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
-        </p>
-        <p>Real Main Page</p>
-      </div></footer>
+   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
+    	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
+       		<p class="u-custom-font u-small-text u-text u-text-variant u-text-1" style="line-height:20px;">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b></p>
+      	</div>
+     </footer>
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
   </body>

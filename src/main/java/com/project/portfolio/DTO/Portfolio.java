@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 public class Portfolio {
 	
 	Integer id;
-	Integer user_id;
 	String title;
 	Integer isPublic;
 	Integer template_id;
@@ -32,6 +31,10 @@ public class Portfolio {
 		return create_date;
 	}
 
+
+
+
+
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
@@ -39,6 +42,11 @@ public class Portfolio {
 	public Date getUpdate_date() {
 		return update_date;
 	}
+
+
+
+
+
 
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;

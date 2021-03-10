@@ -41,10 +41,7 @@
     <meta property="og:url" content="index.html">
     
     <style type="text/css">
-    	.fixsize{
-    		height: 700px;
-    		
-    	} 
+    	
     	.makeshort{
     		height: 700px;
     	}
@@ -52,12 +49,12 @@
     		height:250px;
     		overflow: auto;
     	}
-    	.shortmargin{
-    		margin-top: -50px;
-    	}
     	.changecolor{
     		color: #D6A630;
     	}
+    	html, body {
+			width: 100%; height: 100%;
+		}
     </style>
     
     
@@ -112,23 +109,23 @@
           </a>
         </p>
       </div></header>
-    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b">
+    <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b" style="height:620px; overflow:auto;">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-14 u-layout-wrap u-layout-wrap-1">
-          <div class="u-layout fixsize shortmargin">
-            <div class="u-layout-row">
+          <div class="u-layout fixsize" style="margin-top: -40px;">
+            <div class="u-layout-row" style="size:100px;">
               <div class="u-size-14-xl u-size-16-lg u-size-16-md u-size-16-sm u-size-16-xs makeshort">
                 <div class="u-layout-col">
                   <div class="u-container-style u-gradient u-layout-cell u-size-60 u-layout-cell-1">
                     <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-1">
                       <div class="u-container-style u-expanded-width u-group u-group-1">
-                        <div class="u-container-layout u-container-layout-2">
-                          <p class="u-align-left u-custom-font u-text u-text-1">${sessionScope.Name} 님</p>
+                        <div class="u-container-layout u-container-layout-2" style="margin-top: -60px; margin-bottom:-80px;">
+                          <p class="u-align-left u-custom-font u-text u-text-1" style="font-size:26px;">${sessionScope.Name} 님</p>
                           <p class="u-align-left u-custom-font u-text u-text-custom-color-3 u-text-2">안녕하​세​요!</p>
                           <div class="u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-image u-radius-28 u-shape-round u-image-1" data-image-width="472" data-image-height="725">
                             <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-3">
                               <p class="u-align-left u-custom-font u-text u-text-custom-color-2 u-text-3">WELCOME</p>
-                              <p class="u-align-left u-custom-font u-text u-text-grey-50 u-text-4">${sessionScope.Name}&nbsp;님</p>
+                              <p class="u-align-left u-custom-font u-text u-text-grey-50 u-text-4" style="font-size:15px;">${sessionScope.Name}&nbsp;님</p>
                               <img src="<%=request.getContextPath()%>/resources/images/21.png" alt="" class="u-image u-image-default u-image-2" data-image-width="242" data-image-height="275">
                               <p class="u-align-center u-custom-font u-enable-responsive u-text u-text-5">
                                 <span class="u-text-custom-color-1">One</span>하나
@@ -213,12 +210,12 @@
       </div>
     </section>
     
-  	<jsp:include page="/WEB-INF/views/userInfo.jsp" />
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
-        </p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
+    	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
+       		<p class="u-custom-font u-small-text u-text u-text-variant u-text-1" style="line-height:20px;">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b></p>
+      	</div>
+     </footer>
+    <section class="u-backlink u-clearfix u-grey-80" style="height:2px;">
     </section>
   </body>
 </html>
