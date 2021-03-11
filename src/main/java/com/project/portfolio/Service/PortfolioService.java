@@ -94,13 +94,11 @@ public interface PortfolioService {
 	public void deleteDetail(int portfolio_id) throws Exception;
 
 		
-	//게시판용 포트폴리오 정보 가져오기
-	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception;
 
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	
 	public Color getColorInfo(int color_id) throws Exception;
 	
-	public int countPortfolio(String searchType, String keyword) throws Exception ;
+	
 }

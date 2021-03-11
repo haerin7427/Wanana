@@ -158,19 +158,5 @@ public class PortfolioServiceImp implements PortfolioService {
 		return portfolioDAO.getColorInfo(color_id);
 	}
 
-
-
-	@Override
-	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return portfolioDAO.getPortfolios(cri);
-
-	}
-	
-	@Override
-	public int countPortfolio(String searchType, String keyword) throws Exception {
-		// TODO Auto-generated method stub
-		return portfolioDAO.countPortfolio(searchType, keyword);
-	}
 }
 

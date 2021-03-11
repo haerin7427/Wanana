@@ -63,11 +63,9 @@ public interface PortfolioDAO {
 
 	public void deleteDetail(int portfolio_id) throws Exception;
 
-	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception;
 	
 	public List<Color> getColorList(int template_id) throws Exception;
 	
 	public Color getColorInfo(int color_id) throws Exception;
 	
-	public int countPortfolio(String searchType, String keyword) throws Exception;
 }

@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Portfolio {
 	
 	Integer id;
+	Integer user_id;
 	String title;
 	Integer isPublic;
 	Integer template_id;
@@ -153,4 +154,6 @@ public class Portfolio {
 	public void setIsVerticle(Integer isVerticle) {
 		this.isVerticle = isVerticle;
 	}
+	
+	
 }
