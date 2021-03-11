@@ -238,11 +238,11 @@ public class LoginController{
 	}
 	
 	//session check controller
-		@RequestMapping(value="/sessionCheck", method= {RequestMethod.POST, RequestMethod.GET})
-		@ResponseBody
-		public int sessionCheck(HttpSession session, HttpServletRequest request) {
-			int sessionID = (int) session.getAttribute("ID");
-			System.out.println("session controller : " + sessionID);
-	        return sessionID;
-		}
+	@RequestMapping(value="/sessionCheck", method= {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public int sessionCheck(HttpSession session, HttpServletRequest request) {
+		int sessionID = (Integer) session.getAttribute("ID");
+		System.out.println("session controller : " + sessionID);
+	    return sessionID;
+	}
 }

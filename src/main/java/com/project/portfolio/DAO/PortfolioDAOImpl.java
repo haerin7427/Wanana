@@ -166,19 +166,4 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			return sqlSession.selectOne(namespace + ".getColorInfo",color_id);
 		}
 
-
-		@Override
-		public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception {
-			// TODO Auto-generated method stub
-			return sqlSession.selectList(namespace + ".portfolioBoard",cri);
-
-		}
-		
-		@Override
-		public int countPortfolio(String searchType, String keyword) throws Exception{
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("searchType", searchType);
-			map.put("keyword", keyword);
-			return sqlSession.selectOne("countPortfolio", map);
-		}
 }
