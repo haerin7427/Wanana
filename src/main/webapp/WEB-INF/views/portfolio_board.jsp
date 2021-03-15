@@ -82,6 +82,11 @@
 				          		
 			    
 			});
+
+
+			/* 좋아요 수에 따른 포트폴리오 가져오기 */
+		    var likePort = ${likePort};
+		    
 	    });
 
 	    function modal(id) {
@@ -208,14 +213,11 @@
                       <div class="u-back-slide" data-image-width="720" data-image-height="1080">
                         <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/pexels-photo-3601244.jpeg">
                       </div>
-                      <div class="u-over-slide u-shading u-over-slide-1">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
-                <div class="u-custom-color-1 u-expanded-width-xs u-radius-21 u-shape u-shape-round u-shape-1"></div>
+                
               </div>
             </div>
             <div class="u-align-center u-carousel-item u-container-style u-expanded-width-xl u-slide">
@@ -226,14 +228,11 @@
                       <div class="u-back-slide" data-image-width="720" data-image-height="1080">
                         <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/grayscale-photography-of-woman-wearing-coat-and-fedora-hat-2947337.jpg">
                       </div>
-                      <div class="u-over-slide u-shading u-over-slide-2">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
-                <div class="u-custom-color-1 u-radius-21 u-shape u-shape-round u-shape-2"></div>
+               
               </div>
             </div>
           </div>
@@ -252,7 +251,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 조회수에 따라 산정됩니다.&nbsp;</p>
+        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 좋아요수에 따라 산정됩니다.&nbsp;</p>
       </div>
     </section>
     

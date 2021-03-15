@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.Service.BoardService;
@@ -66,10 +67,14 @@ public class BoardController {
 	        PageMaker pageMaker = new PageMaker();
 	        pageMaker.setCri(cri);
 			pageMaker.setTotalCount(count);
+
+			List<Portfolio> likePort = boardService.getLikePort();
+			ObjectMapper mapper=new ObjectMapper();
+			String likePortfolios=mapper.writeValueAsString(likePort);
 			
 			mav.addObject("searchOption", cri.getSearchType());
 			mav.addObject("keyword", cri.getKeyword());
-			
+			mav.addObject("likePort", likePortfolios);
 			mav.addObject("pageMaker", pageMaker);
 	        mav.addObject("portinfo", jArray);
 			mav.setViewName("portfolio_board");

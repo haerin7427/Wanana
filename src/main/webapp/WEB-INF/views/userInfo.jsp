@@ -91,9 +91,9 @@
 			}
 		
 		});
-		
+		console.log(userinfo.email_address);
 		$( 'input#userName' ).val( userinfo.name );
-		$( 'input#email' ).val( userinfo.email_address );
+		$( 'input[name="email"]' ).val( userinfo.email_address );
 		$( 'input#phoneNum' ).val( userinfo.phone_number );
 		
 		$('#id01').css("display","block");

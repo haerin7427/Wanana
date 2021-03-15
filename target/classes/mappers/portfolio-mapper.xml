@@ -200,4 +200,11 @@
    <select id="getUserInfo" parameterType="String" resultType="com.project.login.DTO.User">
       SELECT * FROM users WHERE email_address=#{email};
    </select>
+   
+       <!-- 갤러리용 좋아요 많은 포트폴리오 들고오기   -->
+    <select id="likePort" resultType="com.project.portfolio.DTO.Portfolio">
+    	<![CDATA[
+    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY like,id ASC LIMIT 4;
+		 ]]>
+    </select>
 </mapper>

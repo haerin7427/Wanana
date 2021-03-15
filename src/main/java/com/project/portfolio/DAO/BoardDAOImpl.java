@@ -31,5 +31,10 @@ public class BoardDAOImpl implements BoardDAO {
 		map.put("keyword", keyword);
 		return sqlSession.selectOne("countPortfolio", map);
 	}
+	
+	@Override
+	public List<Portfolio> getLikePort() throws Exception {
+		return sqlSession.selectList(namespace + ".likePort");
+	}
 
 }

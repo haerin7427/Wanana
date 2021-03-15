@@ -10,4 +10,5 @@ public interface BoardDAO {
 
 	public List<Portfolio> getPortfolios(SearchCriteria cri) throws Exception;
 	public int countPortfolio(String searchType, String keyword) throws Exception ;
+	public List<Portfolio> getLikePort() throws Exception;
 }

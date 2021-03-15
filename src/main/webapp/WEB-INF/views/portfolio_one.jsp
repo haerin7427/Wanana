@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=2" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -530,7 +530,7 @@
 	             }
 	              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
 	              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
-	              
+	              showNotification();
      			} //resultYN == 1 경우 
           	});//이전 데이터에서 입력된 정보 div에 넣기 끝
          
@@ -635,6 +635,7 @@
 				              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
               	  		}//else - 추가 가능할 경우 
                 		}//else - 필수 사항 모두 입력한 경우 
+                		showNotification();
      			}//resultYN == 1 경우 끝 
 	          });//입력된 정보 div에 넣기 끝
 	
@@ -754,7 +755,25 @@
         }
     }// function readURL end 
 </script>
-                    
+  <style>
+  	.notification-container {
+		background-color: #ABABAB;
+		opacity:0.7;
+		color:white;
+		border-radius: 10px;
+		position: fixed;
+		left:40%;
+		padding:5px;
+		top:100px;
+		border : 1px solid black;
+		display: none;
+		z-index:100002;
+	}
+			
+	.notification-container.show {
+		display: flex;
+	}
+  </style>      
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -810,8 +829,6 @@
         
         <div class="u-expanded-width u-tab-links-align-justify u-tabs u-tabs-1">
         
-        
-        
           <ul class="u-border-1 u-border-grey-75 u-custom-color-2 u-spacing-15 u-tab-list u-unstyled u-tab-list-1" role="tablist">
             <li class="u-tab-item" role="presentation">
               <a class="active u-active-white u-border-3 u-border-active-custom-color-1 u-border-no-bottom u-button-style u-custom-font u-tab-link u-text-active-black u-text-hover-custom-color-3 u-text-white u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">1 템플릿 선택</a>
@@ -828,6 +845,20 @@
           <!-- 1. 템플릿  include  -->
           <jsp:include page="/WEB-INF/views/portfolio_zero.jsp"/>
             
+          <!-- 입력시 문구 -->
+          <div class="1page_ notification-container" id="notification-container">
+		    <span>포트폴리오에 데이터를 입력했습니다.</span>
+		  </div>
+          <script>
+          const notification = document.getElementById('notification-container');
+       	  // Show notification
+          const showNotification = () => {
+            notification.classList.add('show')
+            setTimeout(() => {
+              notification.classList.remove('show')
+            }, 1000)
+          }
+          </script>
             <!-- 2. 정보 입력  -->
             <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-2917" role="tabpanel" aria-labelledby="link-tab-2917">
               <div class="u-container-layout u-container-layout-6">

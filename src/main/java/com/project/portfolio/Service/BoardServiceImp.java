@@ -26,4 +26,9 @@ public class BoardServiceImp implements BoardService {
 	public int countPortfolio(String searchType, String keyword) throws Exception {
 		return boardDAO.countPortfolio(searchType, keyword);
 	}
+	
+	@Override
+	public List<Portfolio> getLikePort() throws Exception {
+		return boardDAO.getLikePort();
+	}
 }
