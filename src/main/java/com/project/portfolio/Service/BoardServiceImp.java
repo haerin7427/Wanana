@@ -31,4 +31,29 @@ public class BoardServiceImp implements BoardService {
 	public List<Portfolio> getLikePort() throws Exception {
 		return boardDAO.getLikePort();
 	}
+	
+	@Override
+	public int linkDupCheck(String link) throws Exception{
+		return boardDAO.linkDupCheck(link);
+	}
+	
+	@Override
+	public Integer checkLike(int port_id, int user_id) throws Exception{
+		return boardDAO.checkLike(port_id, user_id);
+	}
+	
+	@Override
+	public int likeCnt(int portfolio_id) throws Exception{
+		return boardDAO.likeCnt(portfolio_id);
+	}
+	
+	@Override
+	public void createLike(int portfolio_id,int user_id) throws Exception{
+		boardDAO.createLike(portfolio_id,user_id);
+	}
+	
+	@Override
+	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception{
+		boardDAO.updateLike(portfolio_id,user_id,isLike);
+	}
 }

@@ -67,7 +67,7 @@
     
     <!-- portfolio id 생성 (포트폴리오 생성) -->
     <insert id="portfolio_id" parameterType="com.project.portfolio.DTO.Portfolio" >
-    	INSERT INTO portfolio (user_id,title,isPublic,template_id,color,font) VALUE (#{user_id},#{title},#{isPublic},#{template_id},#{color},#{font});
+    	INSERT INTO portfolio (user_id,title,isPublic,template_id,color,font,url) VALUE (#{user_id},#{title},#{isPublic},#{template_id},#{color},#{font},#{url});
     	
     	<selectKey keyProperty="id" resultType="Integer">
 		    SELECT LAST_INSERT_ID()
@@ -187,7 +187,7 @@
     <!-- 갤러리용 포트폴리오 들고오기   -->
     <select id="portfolioBoard" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY update_date ASC LIMIT #{pageStart}, #{perPageNum};
+    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY update_date DESC LIMIT #{pageStart}, #{perPageNum};
 		 ]]>
     </select>
     
@@ -204,7 +204,31 @@
        <!-- 갤러리용 좋아요 많은 포트폴리오 들고오기   -->
     <select id="likePort" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY like,id ASC LIMIT 4;
+    		SELECT  portfolio.*, isVerticle  FROM portfolio LEFT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY portfolio.like LIMIT 4;
 		 ]]>
     </select>
+    
+    <!-- portfolio 링크 중복 체크 -->
+    <select id="linkDupCheck" resultType="int">
+      SELECT COUNT(*) from portfolio where url = #{link};
+   </select>
+   
+   <!-- portfolio 좋아요 눌렀는지 체크 -->
+    <select id="checkLike" resultType="Integer">
+      SELECT isLike from `like` where portfolio_id = #{portfolio_id} AND user_id=#{user_id};
+   </select>
+   
+      <!-- portfolio 좋아요수 -->
+    <select id="likeCnt" resultType="int">
+      SELECT `like` from `portfolio` where id = #{portfolio_id};
+   </select>
+   
+    <!-- 해당 포트폴리오 좋아요 누르기  -->
+    <insert id="createLike">
+    	 INSERT INTO `like` (portfolio_id, user_id) values(#{portfolio_id},#{user_id})
+    </insert>
+     <!-- 해당 포트폴리오 좋아요 이미 누른 적이 있다면 update하기 -->
+     <update id="updateLike">
+    	 UPDATE `like` SET isLike=#{isLike} WHERE portfolio_id=#{portfolio_id} AND user_id=#{user_id};
+    </update>
 </mapper>

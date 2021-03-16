@@ -9,13 +9,15 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>portfolios</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=14" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css?ver=4" media="screen">
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     
@@ -47,7 +49,7 @@
 	            </div>
 	          </div> --%>
 
-		    for(var i = 0; i < 9; i++){
+		    for(var i = 0; i < port_info.length; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
 			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
@@ -61,7 +63,44 @@
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portHidden);
 
 			}
-	
+
+
+			/* 좋아요 수에 따른 포트폴리오 가져오기 */
+		    var likePort = ${likePort};
+		    for(var i = 0; i < 2; i++){
+		    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts1"></div>');
+		    	$(".1page_like1").append(portDiv);
+		    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
+			    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+		    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+			    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
+			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
+			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
+
+			    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
+			    $("#1page_likePortID_" + likePort[i].id).append(portDate);
+			    $("#1page_likePortID_" + likePort[i].id).append(portImg);
+			    $("#1page_likePortID_" + likePort[i].id).append(portLike);
+			    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
+		    }
+		    for(var i = 2; i < 4; i++){
+		    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts2"></div>');
+		    	$(".1page_like2").append(portDiv);
+		    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
+			    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+		    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+		    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
+			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
+			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
+
+			    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
+			    $("#1page_likePortID_" + likePort[i].id).append(portDate);
+			    $("#1page_likePortID_" + likePort[i].id).append(portImg);
+			    $("#1page_likePortID_" + likePort[i].id).append(portLike);
+			    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
+				  
+		    }
+
             
 		    $('.1page_portImg').on('click', function() {
 		    	var id = $(this).siblings("input[name='1page_portfolioID']").val();
@@ -82,11 +121,6 @@
 				          		
 			    
 			});
-
-
-			/* 좋아요 수에 따른 포트폴리오 가져오기 */
-		    var likePort = ${likePort};
-		    
 	    });
 
 	    function modal(id) {
@@ -208,13 +242,8 @@
             <div class="u-active u-align-center u-carousel-item u-container-style u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-container-layout-1">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
-                  <div class="u-gallery-inner u-gallery-inner-1">
-                    <div class="u-effect-fade u-gallery-item">
-                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
-                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/pexels-photo-3601244.jpeg">
-                      </div>
-                      
-                    </div>
+                  <div class="u-gallery-inner u-gallery-inner-1  1page_like1">
+                    
                   </div>
                 </div>
                 
@@ -223,13 +252,8 @@
             <div class="u-align-center u-carousel-item u-container-style u-expanded-width-xl u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-2">
-                  <div class="u-gallery-inner u-gallery-inner-2">
-                    <div class="u-effect-fade u-gallery-item">
-                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
-                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/grayscale-photography-of-woman-wearing-coat-and-fedora-hat-2947337.jpg">
-                      </div>
-                      
-                    </div>
+                  <div class="u-gallery-inner u-gallery-inner-2 1page_like2">
+                    
                   </div>
                 </div>
                

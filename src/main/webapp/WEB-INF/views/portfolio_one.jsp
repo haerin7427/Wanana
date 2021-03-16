@@ -14,13 +14,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
    <!-- haerin  -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css?ver=1" media="screen">
     
     <title>addData</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=2" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
+     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -879,7 +880,7 @@
                     <span class="u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-custom-color-2 u-icon-8"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 405.272 405.272" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-436d"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 405.272 405.272" x="0px" y="0px" id="svg-436d" style="enable-background:new 0 0 405.272 405.272;"><g><path d="M393.401,124.425L179.603,338.208c-15.832,15.835-41.514,15.835-57.361,0L11.878,227.836   c-15.838-15.835-15.838-41.52,0-57.358c15.841-15.841,41.521-15.841,57.355-0.006l81.698,81.699L336.037,67.064   c15.841-15.841,41.523-15.829,57.358,0C409.23,82.902,409.23,108.578,393.401,124.425z"></path>
 </g></svg></span>
                     <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-12">
-                    <form action="portfolio_two" id="1page_myForm" method="POST" enctype="multipart/form-data">
+                    <form action="portfolio_two" id="1page_myForm" method="POST" enctype="multipart/form-data" onsubmit="return isValidForm()">
                     
                     <!-- portfolio_Id 생성 정보   -->
                     	<input type="hidden" id="select_template_id" name="template_id" value="2" readonly/>

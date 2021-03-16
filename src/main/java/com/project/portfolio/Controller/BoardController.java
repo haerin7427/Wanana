@@ -20,6 +20,7 @@ import com.project.portfolio.DTO.SearchCriteria;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,6 +70,7 @@ public class BoardController {
 			pageMaker.setTotalCount(count);
 
 			List<Portfolio> likePort = boardService.getLikePort();
+			System.out.println(likePort);
 			ObjectMapper mapper=new ObjectMapper();
 			String likePortfolios=mapper.writeValueAsString(likePort);
 			
@@ -93,7 +95,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("portfolioView controller!!" );
 		int id=Integer.parseInt(request.getParameter("portfolioID"));
-		
+		int user_id=(Integer) session.getAttribute("ID");
 		String template_name=portfolioService.getCheckTemplateID(id);
 		List<Data> list=portfolioService.getCheckPortfolio(id);
 		Portfolio portInfo = portfolioService.getPortInfo(id);
@@ -124,9 +126,14 @@ public class BoardController {
 			    ob.put("content", content);
 			            
 			    jArray2.put(ob);
-
 			        	
 			}
+			Integer checkLike=boardService.checkLike(id,user_id);
+			if(checkLike==null)
+				checkLike=-1;
+			mav.addObject("checkLike", checkLike);
+			mav.addObject("likeCnt", boardService.likeCnt(id));
+			
 		}catch(JSONException e){
 		 	e.printStackTrace();
 		}
@@ -138,5 +145,34 @@ public class BoardController {
 		mav.setViewName("boardModal");
 		
 		return mav;
+	}
+	
+	//링크 중복체크
+	@RequestMapping(value="/link_finder",method=RequestMethod.POST)
+	public String linkDupCheck(@RequestParam("link") String link) throws Exception {
+		if(boardService.linkDupCheck(link)==0) return "success";
+		else return "fail";
+	}
+	
+	//포트폴리오 좋아요 눌렀을 때
+	//링크 중복체크
+	@RequestMapping(value="/clickHeart",method=RequestMethod.POST)
+	public boolean clickHeart(HttpSession session,HttpServletRequest request) throws Exception {
+		int portfolio_id=Integer.parseInt(request.getParameter("portfolio_id"));
+		int user_id=(Integer) session.getAttribute("ID");
+		boolean isOne=true;
+		Integer checkLike=boardService.checkLike(portfolio_id,user_id);
+		if(checkLike==null){ // 한번도 이 포트폴리오에 좋아요 체크를 안해봤다면
+			boardService.createLike(portfolio_id,user_id);
+		}
+		else {
+			if(checkLike==0)
+				boardService.updateLike(portfolio_id,user_id,1);
+			else if(checkLike==1) {
+				boardService.updateLike(portfolio_id,user_id,0);
+				isOne=false;
+			}
+		}
+		return isOne;
 	}
 }

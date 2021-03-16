@@ -37,4 +37,37 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace + ".likePort");
 	}
 
+	@Override
+	public int linkDupCheck(String link) throws Exception{
+		return sqlSession.selectOne(namespace +".linkDupCheck", link);
+	}
+	
+	@Override
+	public Integer checkLike(int port_id, int user_id) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("portfolio_id", port_id);
+		map.put("user_id", user_id);
+		return sqlSession.selectOne("checkLike", map);
+	}
+	
+	@Override
+	public int likeCnt(int portfolio_id) throws Exception{
+		return sqlSession.selectOne(namespace +".likeCnt", portfolio_id);
+	}
+	
+	@Override
+	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("portfolio_id", portfolio_id);
+		map.put("user_id", user_id);
+		map.put("isLike", isLike);
+		sqlSession.update(namespace +".updateLike", map);
+	}
+	@Override
+	public void createLike(int portfolio_id,int user_id) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("portfolio_id", portfolio_id);
+		map.put("user_id", user_id);
+		sqlSession.insert(namespace +".createLike", map);
+	}
 }

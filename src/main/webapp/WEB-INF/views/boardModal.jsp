@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="LOGIN">
@@ -23,8 +23,10 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/likeBtn.css?ver=8">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/likeBtn.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
       
       <!--doughnut chart-->
@@ -45,7 +47,15 @@
 	 <main class="portfolioBox" style="padding:10px;">
 		 	
 		 <div>
-		 	<button type="button" class="good" name="good">좋아요</button>
+		    <!-- 좋아요 버튼 -->
+		 	<button class="btn btn-like">
+			    <span class="btn-icon btn--icon-default">
+			        <span class="fa fa-heart"></span>
+			    </span>
+			    <span class="btn-content likeCnt">
+			        
+			    </span>
+			</button>
 		 	<button type="button" class="message" name="message">쪽지보내기</button>
 		 </div>
 	 
@@ -61,6 +71,38 @@
 	 	</div>
 	 	
 	 </main>
+	 <script>
+		 $(document).ready(function () {
+			var isLike=${checkLike};
+
+			if(isLike>0)
+				$('.btn').addClass('liked');
+
+			var likeCnt=${likeCnt};
+			$('.likeCnt').text(likeCnt);
+
+			var portID=${portfolio_ID};
+			$(".btn-like").click(function(){
+				var cnt=$('.likeCnt').text();
+				$.ajax({
+					url:"<%=request.getContextPath()%>/clickHeart",
+					type:'POST',
+					traditional:true,
+					data:{"portfolio_id":portID},
+					success:function(data){
+						if(data==true)
+							$('.likeCnt').text(parseInt(cnt)+1);
+						else
+							$('.likeCnt').text(parseInt(cnt)-1);
+					},
+					error:function(request,status,error){
+		            	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		            }
+				});
+			});
+		 });
+		 
+	 </script>
 	 
 </body>
 </html>

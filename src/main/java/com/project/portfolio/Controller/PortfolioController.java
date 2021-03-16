@@ -438,6 +438,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    String photo_name  = request.getParameter("photo_name");
 		    String template_color  = request.getParameter("template_color");
 		    String template_font  = request.getParameter("template_font");
+		    String port_url=request.getParameter("url");
 		    
 		    //포트폴리오(portfolio_id) 생성
 	        Portfolio port= new Portfolio();
@@ -449,6 +450,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	        port.setTemplate_id(Integer.parseInt(template_id));
 	        port.setColor(Integer.parseInt(template_color));
 	        port.setFont(template_font);
+	        port.setUrl(port_url);
 	        
 	        portfolioService.portfolio_ID(port);
 	        int portfolio_id = port.getId();
@@ -809,13 +811,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    String content5[]  = request.getParameterValues("content5");
 		    String content6[]  = request.getParameterValues("content6");
 		    
-//		    System.out.println("아이템 개수:" +item_id.length);
-//	        System.out.println("content1 개수:" +content1.length);
-//		    System.out.println("content2 개수:" +content2.length);
-//		    System.out.println("content3 개수:" +content3.length);
-//		    System.out.println("content4 개수:" +content4.length);
-//		    System.out.println("content5 개수:" +content5.length);
-//		    System.out.println("content6 개수:" +content6.length);
 	
 		    for(int i = 0;i<item_id.length;i++) {
 		    	//System.out.println("data 넣는 루프 ");

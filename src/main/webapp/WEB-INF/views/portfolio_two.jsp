@@ -39,9 +39,17 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
                           </div>
                         </div>
+                        <script>
+				        	const randomString = Math.random().toString(36).slice(2);
+				        </script>
                         <div class="u-form-group">
                           <label for="email-ba61" class="u-custom-font u-label u-text-grey-75 u-label-3">내 포트폴리오 URL</label>
-                          <input type="text" id="email-ba61" name="url" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" required="required">
+                           <span id="link_dup_txt" style="margin-left: 10px;"></span>
+                          <div>
+	                          <input type="text" id="link" name="url" style="float:left; width:80%;" onfocus="this.value=randomString;" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase;" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
+	                          <button id="red_ck_link" type="button" style="float:left;">중복 확인</button>
+	                      </div>
+                          
                         </div>
                         <div class="u-align-center u-form-group u-form-submit">
                           <a href="#" class="u-btn u-btn-submit u-button-style u-none u-btn-1">

@@ -17,23 +17,21 @@ public class Portfolio {
 	String password;
 	Date create_date;
 	Date update_date;
-
+	String url;
+	Integer like;
 	
-
+	
 	@Override
 	public String toString() {
 		return "Portfolio [id=" + id + ", user_id=" + user_id + ", title=" + title + ", isPublic=" + isPublic
 				+ ", template_id=" + template_id + ", isVerticle=" + isVerticle + ", html=" + html + ", color=" + color
 				+ ", font=" + font + ", password=" + password + ", create_date=" + create_date + ", update_date="
-				+ update_date + "]";
+				+ update_date + ", url=" + url + ", like=" + like + "]";
 	}
 
 	public Date getCreate_date() {
 		return create_date;
 	}
-
-
-
 
 
 	public void setCreate_date(Date create_date) {
@@ -154,6 +152,21 @@ public class Portfolio {
 	public void setIsVerticle(Integer isVerticle) {
 		this.isVerticle = isVerticle;
 	}
-	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Integer getLike() {
+		return like;
+	}
+
+	public void setLike(Integer like) {
+		this.like = like;
+	}
 	
 }
