@@ -5,13 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--doughnut chart-->
-    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-    
     <!-- 한글 폰트 -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
-
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
     <title>portfolio</title>
     <style>
 	    :root {
@@ -310,6 +307,8 @@
 			}
 		}
 	</style>
+	
+    
 </head>
 <body>
 	<div class="wrap">
@@ -442,6 +441,12 @@
     <!--/ 전체 body -->
     </div> 
     
+	</div>
+</body>
+
+    
+	<!--doughnut chart-->
+    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
 <script>
    		var item= ${data_list};
    		var template_info=${template_info};
@@ -593,6 +598,4 @@
 		}//div에 div 넣기 
 
     </script>
-	</div>
-</body>
 </html>

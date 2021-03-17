@@ -18,7 +18,7 @@ public class Criteria {
   /* 생성자로 페이지 번호와, 페이지당 보여줄 게시글의 갯수 초기화 */
 	public Criteria() {
 		this.page = 1;
-		this.perPageNum = 10;
+		this.perPageNum = 9;
 	}
 
 	public int getPage() {

@@ -6,10 +6,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-
 <!--doughnut chart-->
 <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-    
+<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
 <!-- 한글 폰트 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
@@ -81,8 +80,8 @@
 }
 .aboutme {
 	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
-	height: calc(65% - 8.66*var(--my-fontSize));
-	/* height: calc(21.66*var(--my-fontSize)); */
+	/* height: calc(65% - 8.66*var(--my-fontSize)); */
+	height: calc(16.66*var(--my-fontSize)); 
 }
 #introduce {
 	padding: calc(1*var(--my-fontSize)) 0 0 0;
@@ -251,6 +250,7 @@
 }
 </style>
 
+
 </head>
 <body >
 
@@ -268,7 +268,7 @@
 			</div>
 			
 			<div id="contact">
-                <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="16px;" alt="default_img">
+                <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="15%;" alt="default_img">
                 <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
                 
                 <div style="padding:calc(0.467*var(--my-fontSize));">
@@ -358,7 +358,9 @@
 		</div>
 	</div>
 
-
+<!--doughnut chart-->
+    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+    
 	<script>
    		var item= ${data_list};
    		var template_info=${template_info};
@@ -500,5 +502,7 @@
 			}
 		}//div에 div 넣기 
     </script>
+
+	
 </body>
 </html>

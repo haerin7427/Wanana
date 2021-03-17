@@ -16,6 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     
@@ -159,7 +161,7 @@
 		        })
 		        .show()
 		        
-		        .find('.modal_close_btn')
+		        .find('#close_btn')
 		        .on('click', function() {
 		        	
 		            bg.remove();
@@ -199,19 +201,6 @@
 </symbol>
 </defs></svg>
             </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
-            	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
-				</li>
-			</ul>
           </div>
           
           <div class="u-custom-menu u-nav-container-collapse">
@@ -256,8 +245,7 @@
         </p>
       </div></header>
       <!-- header 종료  -->
-      
-      <!-- 인기 포트폴리오 게시 (흰배경)  -->
+       <!-- 인기 포트폴리오 게시 (흰배경)  -->
     <section class="u-clearfix u-white u-section-1" id="carousel_2697">
       <div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-text u-text-1">이 시간 인기 포트폴리오</p><span class="u-icon u-icon-circle u-text-custom-color-2 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 316.658 316.658" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-4692"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 316.658 316.658" x="0px" y="0px" id="svg-4692" style="enable-background:new 0 0 316.658 316.658;"><g><path style="fill:currentColor;" d="M257.591,183.075c-11.104-12.792-26.45-21.154-43.217-23.551l-38.492-6.036V86.313   c0-15.952-12.979-28.93-28.931-28.93h-0.433c-15.952,0-28.931,12.978-28.931,28.93v107.881L77.794,177.14   c-7.993-3.425-17.104-2.614-24.367,2.176c-7.262,4.788-11.597,12.841-11.597,21.539v0.363c0,7.361,3.155,14.389,8.656,19.28   l67.102,59.669v28.989c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5V276.8c0-2.142-0.916-4.182-2.517-5.604l-69.618-61.906   c-2.303-2.048-3.623-4.989-3.623-8.071v-0.363c0-3.695,1.77-6.982,4.854-9.017c3.087-2.035,6.807-2.366,10.201-0.911l50.24,21.532   c0.462,0.199,0.948,0.355,1.453,0.458c0.751,0.155,1.509,0.189,2.25,0.114c0.084-0.008,0.166-0.024,0.249-0.035   c0.155-0.021,0.311-0.041,0.464-0.071c0.134-0.026,0.265-0.063,0.396-0.096c0.1-0.026,0.2-0.047,0.299-0.077   c0.149-0.044,0.294-0.098,0.439-0.152c0.08-0.029,0.162-0.056,0.241-0.088c0.142-0.058,0.28-0.124,0.417-0.19   c0.081-0.039,0.164-0.075,0.243-0.117c0.123-0.065,0.241-0.137,0.36-0.208c0.091-0.055,0.184-0.107,0.273-0.166   c0.1-0.066,0.194-0.138,0.291-0.208c0.102-0.075,0.205-0.147,0.304-0.227c0.079-0.064,0.153-0.134,0.23-0.201   c0.106-0.094,0.214-0.187,0.315-0.287c0.068-0.067,0.131-0.139,0.196-0.208c0.1-0.106,0.2-0.21,0.293-0.323   c0.072-0.086,0.136-0.177,0.204-0.265c0.078-0.102,0.157-0.201,0.23-0.307c0.092-0.135,0.175-0.275,0.258-0.416   c0.04-0.067,0.083-0.13,0.121-0.198c0.36-0.652,0.628-1.362,0.782-2.114c0.104-0.503,0.152-1.01,0.152-1.512V86.313   c0-7.681,6.249-13.93,13.931-13.93h0.433c7.682,0,13.931,6.249,13.931,13.93v72.025c0,0.277,0.018,0.551,0.047,0.82   c-0.396,3.933,2.339,7.535,6.291,8.154l44.88,7.037c0.036,0.006,0.071,0.011,0.107,0.017c27.148,3.857,47.621,27.444,47.621,54.866   v0.766c0,12.69-3.097,25.349-8.956,36.606l-20.345,39.088c-1.913,3.675-0.484,8.203,3.189,10.115c1.106,0.576,2.29,0.85,3.457,0.85   c2.707,0,5.322-1.472,6.658-4.039l20.345-39.088c6.969-13.388,10.651-28.44,10.651-43.532v-0.766   C274.828,212.275,268.706,195.883,257.591,183.075z"></path><path style="fill:currentColor;" d="M146.735,37.79c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5v22.79   C139.235,34.433,142.593,37.79,146.735,37.79z"></path><path style="fill:currentColor;" d="M193.189,98.897c0,4.143,3.357,7.5,7.5,7.5h22.79c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5   h-22.79C196.547,91.397,193.189,94.755,193.189,98.897z"></path><path style="fill:currentColor;" d="M194.744,56.468c1.919,0,3.839-0.732,5.304-2.196l16.115-16.115c2.929-2.93,2.929-7.678,0-10.607   c-2.93-2.928-7.678-2.928-10.607,0L189.44,43.664c-2.929,2.93-2.929,7.678,0,10.607C190.905,55.735,192.825,56.468,194.744,56.468z   "></path><path style="fill:currentColor;" d="M87.521,54.271c1.465,1.464,3.385,2.196,5.304,2.196s3.839-0.732,5.304-2.196   c2.929-2.93,2.929-7.678,0-10.607L82.013,27.549c-2.93-2.928-7.678-2.928-10.607,0c-2.929,2.93-2.929,7.678,0,10.607L87.521,54.271   z"></path><path style="fill:currentColor;" d="M64.419,106.397h22.79c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5h-22.79   c-4.143,0-7.5,3.357-7.5,7.5S60.276,106.397,64.419,106.397z"></path>
@@ -271,37 +259,21 @@
             <div class="u-active u-align-center u-carousel-item u-container-style u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-container-layout-1">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
-                  <div class="u-gallery-inner u-gallery-inner-1 1page_like1">
-                    <div class="u-effect-fade u-gallery-item">
-                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
-                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/pexels-photo-3601244.jpeg">
-                      </div>
-                      <div class="u-over-slide u-shading u-over-slide-1">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                      </div>
-                    </div>
+                  <div class="u-gallery-inner u-gallery-inner-1  1page_like1">
+                    
                   </div>
                 </div>
-                <div class="u-custom-color-1 u-expanded-width-xs u-radius-21 u-shape u-shape-round u-shape-1"></div>
+                
               </div>
             </div>
             <div class="u-align-center u-carousel-item u-container-style u-expanded-width-xl u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-2">
                   <div class="u-gallery-inner u-gallery-inner-2 1page_like2">
-                    <div class="u-effect-fade u-gallery-item">
-                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
-                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/grayscale-photography-of-woman-wearing-coat-and-fedora-hat-2947337.jpg">
-                      </div>
-                      <div class="u-over-slide u-shading u-over-slide-2">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
-                <div class="u-custom-color-1 u-radius-21 u-shape u-shape-round u-shape-2"></div>
+               
               </div>
             </div>
           </div>
