@@ -231,4 +231,9 @@
      <update id="updateLike">
     	 UPDATE `like` SET isLike=#{isLike} WHERE portfolio_id=#{portfolio_id} AND user_id=#{user_id};
     </update>
+    
+    <!-- 유저 개인정보 업데이트 -->
+    <update id="modifyUserInfo">
+    	 UPDATE `users` SET name=#{name},email_address=#{email},phone_number=#{phone} WHERE id=#{id};
+    </update>
 </mapper>
