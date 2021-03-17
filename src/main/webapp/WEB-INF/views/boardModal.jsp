@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/likeBtn.css?ver=8">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/likeBtn.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- 한글 폰트 -->
@@ -132,7 +133,6 @@
 					success:function(data){
 						if(data==true){
 							$('.likeCnt').text(parseInt(cnt)+1);
-							$('.btn').addClass('liked');
 						}
 						else
 							$('.likeCnt').text(parseInt(cnt)-1);
