@@ -109,6 +109,35 @@
 	 	
 	 	
 	 </main>
+	 <script>
+		 $(document).ready(function () {
+			var isLike=${checkLike};
+			if(isLike>0)
+				$('.btn').addClass('liked');
+			var likeCnt=${likeCnt};
+			$('.likeCnt').text(likeCnt);
+			var portID=${portfolio_ID};
+			$(".btn-like").click(function(){
+				var cnt=$('.likeCnt').text();
+				$.ajax({
+					url:"<%=request.getContextPath()%>/clickHeart",
+					type:'POST',
+					traditional:true,
+					data:{"portfolio_id":portID},
+					success:function(data){
+						if(data==true)
+							$('.likeCnt').text(parseInt(cnt)+1);
+						else
+							$('.likeCnt').text(parseInt(cnt)-1);
+					},
+					error:function(request,status,error){
+		            	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		            }
+				});
+			});
+		 });
+		 
+	 </script>
 	 
 </body>
 </html>

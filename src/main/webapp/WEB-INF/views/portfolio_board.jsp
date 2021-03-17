@@ -45,7 +45,7 @@
 	              <div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1"><span class="u-meta-date u-meta-icon">Mon Feb 01 2021</span></div>
 	            </div>
 	          </div> --%>
-		    for(var i = 0; i < 9; i++){
+	          for(var i = 0; i < port_info.length; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
 			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
@@ -58,6 +58,39 @@
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portDate);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portHidden);
 			}
+
+	          var likePort = ${likePort};
+			    for(var i = 0; i < 2; i++){
+			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts1"></div>');
+			    	$(".1page_like1").append(portDiv);
+			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
+				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+			    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+				    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
+				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
+				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
+				    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
+				    $("#1page_likePortID_" + likePort[i].id).append(portDate);
+				    $("#1page_likePortID_" + likePort[i].id).append(portImg);
+				    $("#1page_likePortID_" + likePort[i].id).append(portLike);
+				    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
+			    }
+			    for(var i = 2; i < 4; i++){
+			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts2"></div>');
+			    	$(".1page_like2").append(portDiv);
+			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
+				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+			    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+			    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
+				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
+				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
+				    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
+				    $("#1page_likePortID_" + likePort[i].id).append(portDate);
+				    $("#1page_likePortID_" + likePort[i].id).append(portImg);
+				    $("#1page_likePortID_" + likePort[i].id).append(portLike);
+				    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
+					  
+			    }
 	
             
 		    $('.1page_portImg').on('click', function() {
@@ -167,6 +200,20 @@
 </defs></svg>
             </a>
           </div>
+          <div class="u-custom-menu u-nav-container">
+           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            	<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
+				</li>
+			</ul>
+          </div>
+          
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
@@ -179,7 +226,7 @@
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
@@ -224,7 +271,7 @@
             <div class="u-active u-align-center u-carousel-item u-container-style u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-container-layout-1">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
-                  <div class="u-gallery-inner u-gallery-inner-1">
+                  <div class="u-gallery-inner u-gallery-inner-1 1page_like1">
                     <div class="u-effect-fade u-gallery-item">
                       <div class="u-back-slide" data-image-width="720" data-image-height="1080">
                         <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/pexels-photo-3601244.jpeg">
@@ -242,7 +289,7 @@
             <div class="u-align-center u-carousel-item u-container-style u-expanded-width-xl u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-2">
-                  <div class="u-gallery-inner u-gallery-inner-2">
+                  <div class="u-gallery-inner u-gallery-inner-2 1page_like2">
                     <div class="u-effect-fade u-gallery-item">
                       <div class="u-back-slide" data-image-width="720" data-image-height="1080">
                         <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/grayscale-photography-of-woman-wearing-coat-and-fedora-hat-2947337.jpg">
@@ -273,7 +320,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 조회수에 따라 산정됩니다.&nbsp;</p>
+        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 좋아요수에 따라 산정됩니다.&nbsp;</p>
       </div>
     </section>
     
