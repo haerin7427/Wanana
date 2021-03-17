@@ -177,14 +177,14 @@ public class LoginController{
 	
 
 	//아이디 중복 체크
-	@RequestMapping(value="/idCheck",method=RequestMethod.GET)
+	@RequestMapping(value="/gidCheck",method=RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("user_id") String user_id) throws Exception {
 		return loginService.userIdCheck(user_id);
 	}
 
 	//로그인 성공 or 실패
-	@RequestMapping(value="loginProcess",method=RequestMethod.POST)
+	@RequestMapping(value="login/loginProcess",method=RequestMethod.POST)
 	public ModelAndView loginProcess(HttpSession session,User user) throws Exception {
 		ModelAndView mav;
 
@@ -213,7 +213,7 @@ public class LoginController{
 		return mav;
 	}
 
-	@RequestMapping(value = "/redirectUrl")
+	@RequestMapping(value = "login/redirectUrl")
 	  public ModelAndView googleUrl() throws Exception {
 		ModelAndView mav = new ModelAndView();
 		
@@ -229,7 +229,7 @@ public class LoginController{
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/logout")
+	@RequestMapping(value="login/logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		//session.removeAttribute("login");
