@@ -52,8 +52,7 @@
           <div class="w3-container">
           <span class="w3-quarter" style='font-weight:bold;font-size:27px;'>기본정보</span>
           </div>
-          
-          <form class="w3-container" action="info/modify" method="POST">
+          <div class="w3-container">
             <div class="w3-section">
               <div>
               <label>이름</label>
@@ -68,17 +67,16 @@
               <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter your phone" name="phoneNum" id="phoneNum">
               </div>
               
-              
             </div>
             <button id="infoeditB" class="w3-button w3-black" type="submit">수정</button>
-          </form>
-    
+        	</div>
         </div>
       </div>
       <!-- 모달 창 끝 -->
       
     </div>
     <script>
+      var user_id;
 	  function userInfo(){
 		var userinfo;
 		$.ajax({ //user 정보 가져오기
@@ -88,16 +86,38 @@
 			success: function(data){
 				userinfo = data;
 				console.log(userinfo); 
+
+				$( 'input#userName' ).val( userinfo.name );
+				$( 'input[name="email"]' ).val( userinfo.email_address );
+				$( 'input#phoneNum' ).val( userinfo.phone_number );
+				user_id=userinfo.id;
+				$('#id01').css("display","block");
 			}
 		
 		});
-		console.log(userinfo.email_address);
-		$( 'input#userName' ).val( userinfo.name );
-		$( 'input[name="email"]' ).val( userinfo.email_address );
-		$( 'input#phoneNum' ).val( userinfo.phone_number );
-		
-		$('#id01').css("display","block");
 	  }
+
+	$(document).ready(function(){
+		$("#infoeditB").click(function(){	
+			var name=$( 'input#userName' ).val();
+			var email=$( 'input[name="email"]' ).val();
+			var phone=$( 'input#phoneNum' ).val();
+			$.ajax({ //user 정보 가져오기
+				url : '<%=request.getContextPath()%>/info/modify',
+				type : "POST",
+				data:{"id":user_id,"name":name,"email_address":email,"phone_number":phone},
+				dataType : "json",
+				async: false,
+				success: function(){
+					console.log("user정보 수정"); 
+				},
+                error:function(request,status,error){
+	               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	                  }
+			
+			});
+		});
+	});
     
       // Get the modal
       var modal = $('#id01');
