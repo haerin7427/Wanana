@@ -54,7 +54,7 @@ public class LoginController{
 
 	  public ModelAndView userGET() throws Exception {
 		
-		System.out.println("userform 입니");
+		System.out.println("userform 입니다");
 		ModelAndView mav = new ModelAndView();
         mav.setViewName("userform");
         return mav;
@@ -142,6 +142,7 @@ public class LoginController{
 
 		//로그인이 성공하면 User 객체를 반환한다.
 		User one=loginService.socialLogin(user);
+		System.out.println("one:"+one);
 		session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
 		session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
 		session.setAttribute("email", one.getEmail_address());

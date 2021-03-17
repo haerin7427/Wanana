@@ -12,7 +12,9 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  
+  	<!--doughnut chart-->
+    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="LOGIN">
@@ -26,9 +28,6 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
-      
-      <!--doughnut chart-->
-	<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- 한글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -68,18 +67,16 @@
 	        
 		        <div>
 		        	<!-- date -->
-		        	<div style="display:inline; padding-right:20px;"><p style="display:inline;">수정일: <span>2021-02-15</span></p></div>
+		        	<div style="display:inline; padding-right:20px;"><p style="display:inline;">등록일: <span>2021-02-15</span></p></div>
 		        
 		         	<!-- x 버튼 -->
 		        	<button id="close_btn" style="border:0; outline:0; cursor:pointer; margin-right:20px;"><p style="font-size:25px; font-weight:bold;">X</p></button>
 		        </div>
 	        </div>
         
- 
         
         	<div class="wrap" style="width:100%; position:auto; border:0; margin:0 15px 0 15px;">
 	 			<div style="display:block; margin:0 auto;">
-		 			
 			 			<!-- <page size="A4" layout="portrait">  -->
 						<page size="A4">
 				     		<jsp:include page="<%=templateURL%>" flush="true"/>
@@ -87,7 +84,6 @@
 	
 	 			</div>
 	 		</div>
-        
         
         
      	<div class="table-content" style="margin: 10px 15px 0 20px;">     	
@@ -135,6 +131,7 @@
 		            }
 				});
 			});
+
 		 });
 		 
 	 </script>

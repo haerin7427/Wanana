@@ -24,11 +24,11 @@
     	select * from users where user_id=#{userid} and pwd=#{userpw}
     </select>
     <select id="socialLogin" resultType="com.project.login.DTO.User">
-    	select * from users where name=#{name} and email_address=#{email}
+    	select * from users where email_address=#{email}
     </select>
     
     <select id="socialCheck" resultType="int" parameterType="com.project.login.DTO.User">
-    	select count(*) from users where name=#{name} and email_address=#{email_address}
+    	select count(*) from users where email_address=#{email_address}
     </select>
 
     <!-- 아이디 중복 체크 -->

@@ -108,7 +108,7 @@ public class BoardController {
 			JSONObject ob2 =new JSONObject();
 			ob2.put("template_color", portInfo.getColor());
     		ob2.put("template_font", portInfo.getFont());
-    		ob2.put("template_fontSize", "15px");
+    		ob2.put("template_fontSize", "12px");
     		template_info.put(ob2);
 			for (int i = 0; i < list.size() ; i++) {   
 				JSONObject ob =new JSONObject();
