@@ -106,7 +106,7 @@
                     <h2 class="u-custom-font u-text u-text-3">LOGIN</h2>
                     <div class="u-align-center u-custom-color-1 u-radius-50 u-shape u-shape-round u-shape-1"></div>
                     <p class="u-align-center u-custom-font u-text u-text-grey-50 u-text-4">회원전용서비스로 로그인이 필요합니다</p>
-                    <a style="cursor:pointer;" href="<%=request.getContextPath()%>/redirectUrl">
+                    <a style="cursor:pointer;" href="<%=request.getContextPath()%>/login/redirectUrl">
 	                    <div class="u-border-2 u-border-grey-30 u-container-style u-group u-radius-21 u-shape-round u-white u-group-3">
 	                      <div class="u-container-layout u-valign-top-xl u-container-layout-5" id="googleLoginBtn">
 	                      <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1">
@@ -130,7 +130,7 @@
                     </a>
                          
                     <div class="u-expanded-width-xs u-form u-form-1">
-                      <form action="loginProcess" method="post" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" name="form">
+                      <form action="login/loginProcess" method="post" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" name="form">
 	                        <div class="u-form-group">
 	                          <input type="text" id="user_id" name="user_id" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-1" required="required" placeholder="아이디">
 	                        </div>
