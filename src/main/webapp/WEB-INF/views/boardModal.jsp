@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   	<!--doughnut chart-->
     <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -25,6 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/likeBtn.css?ver=8">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
@@ -89,10 +91,17 @@
      	<div class="table-content" style="margin: 10px 15px 0 20px;">     	
      		<div style="display:inline;">
 		 		<!-- 좋아요버튼  -->
-			 	<button type="button" class="good" name="good" style="border:0; outline:0; margin-right:10px; cursor:pointer;"><img src="resources/images/like.png" width="30" height="auto" alt=""></button>
-			 	
+			 	<!-- <button type="button" class="good" name="good" style="border:0; outline:0; margin-right:10px; cursor:pointer;"><img src="resources/images/like.png" width="30" height="auto" alt=""></button> -->
+			 	<button class="btn good btn-like"  style="border:0; outline:0;">
+			    <span class="btn-icon btn--icon-default">
+			        <span class="fa fa-heart"></span>
+			    </span>
+			    <span class="btn-content likeCnt">
+			        
+			    </span>
+			</button>
 			 	<!-- 쪽지보내기버튼  -->
-			 	<button type="button" class="message" name="message" style="border:0; outline:0; cursor:pointer;"><img src="resources/images/message.png" width="30" height="auto" alt=""></button>
+			 	<button type="button" class="message" name="message" style="border:0; outline:0; cursor:pointer;"><img src="resources/images/message.png"width="30" height="auto" alt=""></button>
 			</div>
 			<!-- 좋아요 개수  -->
 			<div style="display:inline; text-align:right;" class="item" >
@@ -121,8 +130,10 @@
 					traditional:true,
 					data:{"portfolio_id":portID},
 					success:function(data){
-						if(data==true)
+						if(data==true){
 							$('.likeCnt').text(parseInt(cnt)+1);
+							$('.btn').addClass('liked');
+						}
 						else
 							$('.likeCnt').text(parseInt(cnt)-1);
 					},
