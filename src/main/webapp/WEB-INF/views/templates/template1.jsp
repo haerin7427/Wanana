@@ -37,7 +37,6 @@
 			background-color: white;
 			font-family:var(--my-font);
 		}
-
         .wrap h6{
             color:#A6A6A6;
             margin-bottom:0.45%;
@@ -59,7 +58,6 @@
        		margin-bottom:4.5%; 
        		margin-top:1.1%;
         }
-
         .container { 
         	/*padding: 10px 70px; */
         	margin: 5.7% auto; 
@@ -83,7 +81,6 @@
             border-bottom: 1px solid #ccc;
            
         }
-
         .header::after{
             content: "";
             display: table;
@@ -95,13 +92,11 @@
         .header_column.middle {
             width: 50%;
         }
-
         @media (max-width: 600px) {
             .header_column {
                 width: 100%;
             }
         }
-
         .header{
         	display: flex;
         }
@@ -118,19 +113,16 @@
             width: 50%;
             padding:1% 2.5% 0 2.5%;
         }
-
         .main:after {
             content: "";
             display: table;
             clear: both;
         }
-
         @media (max-width: 600px) {
             .main_column {
                 width: 100%;
             }
         }
-
         .name,.itemBox_2{
             padding-left:3%;
         }
@@ -157,12 +149,10 @@
 			padding: 0 4.4% 4.4%;
 		}
         
-
         .item_07{ 
             float:left;
            
         }
-
         @media (max-width: 600px) {
             .item_07 {
                 width: 100%;
@@ -198,7 +188,6 @@
 		  left: 0;
 		}
         
-
         /*exps*/
         .item_08{
             /*font-size: 1em;*/
@@ -214,7 +203,6 @@
             color: black;
             
         }
-
         /*numbers*/
         .item_08:before {
             content: counter(section);
@@ -292,7 +280,6 @@
 		    float:left;
 		}
 		
-
 		.item_11, .item_10, .item_12{
 		    display:inline;
 		}
@@ -313,7 +300,6 @@
 		    float:left 
 		}
 		
-
 		.item_8_1, .item_9_2, .item_10_1, .item_10_2, .item_11_1, .item_12_1{
 		    font-weight:bold;
 		}
@@ -392,14 +378,14 @@
 	        <div class="main_column left" >
 				
 				<!--div2_2(학력)-->
-				<div class="itemBox_9"  style="display:none; ">
-					<h6 class="small_title" style="font-weight:700">학력</h6>
+				<div class="itemBox_9">
+					<h6 class="small_title" style="font-weight:700;">학력</h6>
 					<div class="title_line"></div>
 					<div class="educations" id="item_9"></div>
 				</div>
 				
 				<!--div2_3(강점)-->
-				<div class="itemBox_3" style="display:none;">
+				<div class="itemBox_3" >
 					<h6 class="small_title" style="font-weight:700">강점</h6>
 					<div class="title_line"></div>
 					<div class="strengths" id="item_3"></div>
@@ -408,14 +394,14 @@
 				<!--div2_4(자격증/수상경력)-->
 				<div class="cANDa" >
 					<!--자격증-->
-					<div class="itemBox_11" style="display:none; ">
-						<h6 class="small_title" style="font-weight:700">자격증</h6>
+					<div class="itemBox_11" ">
+						<h6 class="small_title">자격증</h6>
 						<div class="title_line"></div>
 						<div class="certificates" id="item_11"></div>
 					</div>
 					
 					<!--수상경력-->
-					<div class="itemBox_12" style="display:none; ">
+					<div class="itemBox_12" >
 						<h6 class="small_title" style="font-weight:700">수상경력</h6>
 						<div class="title_line"></div>
 						<div class="awards" id="item_12"></div>
@@ -423,7 +409,7 @@
 				</div>
 					
 				<!--div2_5(활동)-->	
-				<div class="itemBox_10" style="display:none; ">
+				<div class="itemBox_10" >
 					<h6 class="small_title" style="font-weight:700">나의 활동</h6>
 					<div class="title_line"></div>
 					<div class="activities" id="item_10"></div>
@@ -435,7 +421,7 @@
 			<!--div3(right box)-->
 	        <div class="main_column right">
 	           <!--div3_1(테크닉)-->	
-	           <div class="itemBox_7" id="tec" style="display:none; ">
+	           <div class="itemBox_7" id="tec" >
 					<h6 class="small_title" style="font-weight:700">테크닉</h6>
 					<div class="title_line"></div>
 					<div class="tecs" id="item_7">
@@ -445,7 +431,7 @@
 				
 				<!--div3_2(개발경험)-->
 				<div id="coding_exp">	
-					<div id="exps" class="itemBox_8" style="display:none;">
+					<div id="exps" class="itemBox_8" >
 						<h6 class="small_title" style="font-weight:700">개발경험</h6>
 						<div class="title_line"></div>
 						<div class="exps" id="item_8"></div>
@@ -461,7 +447,6 @@
    		var template_info=${template_info};
    		document.body.style.setProperty("--my-font", template_info[0].template_font);
    		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
-
    		if(template_info[0].template_color>0){
    			var color_info;
    			$.ajax({ //해당 color 정보 가져오기
@@ -477,9 +462,7 @@
    				 	document.body.style.setProperty("--my-color2", color_info.color2);
    			  	},
    			  	error:function(request, status, error){
-
    					alert("code:"+request.status+"\n"+"\n"+"error:"+error);
-
    				}
    			});
    	   	}
@@ -499,11 +482,9 @@
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
 			$('#item_'+item[i].item_id).append(newItem);
-
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
-
 				//console.log("파일명  :" + item[i].content[0]);
 			
 				if(item[i].content[0].indexOf("data:") != -1) {
@@ -528,7 +509,6 @@
 				
 				
 				$("#item_"+item[i].item_id+"_"+i).append(newInput);
-
 				
 			    $('.item_'+item[i].item_id+"_"+i+"_"+0).easyPieChart({
 				   
@@ -551,7 +531,6 @@
 					
 					newInput.id="item_"+item[i].item_id+"_"+i+"_"+j;
 					$("#item_"+item[i].item_id+"_"+i).append(newInput);
-
 					if(item[i].item_id == 3){
                         $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp#</p><p>'+item[i].content[j-1]+'</p>');
                     }
@@ -564,10 +543,8 @@
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==4)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
-
                     }
                     else if(item[i].item_id == 9){
-
                         if(j==1)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
                         else if(j==2)
@@ -606,7 +583,6 @@
                         $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p>');
                     else if(j==3)
                         $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>|</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
-
                 }else
 						$("#item_"+item[i].item_id+"_"+i+"_"+j).append("<p>"+item[i].content[j-1]+"<p>");
 					

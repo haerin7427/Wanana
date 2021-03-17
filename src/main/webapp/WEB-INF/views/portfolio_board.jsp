@@ -9,15 +9,13 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>portfolios</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=14" media="screen">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css?ver=4" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css" media="screen">
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     
@@ -38,7 +36,6 @@
 	    $(document).ready(function () {
 		    /* portfolio info */
 		    var port_info = ${portinfo};
-
 		    
 	       <%--  <!-- 포트폴리오 1 -->
 	          <div class="u-blog-post u-container-style u-repeater-item">
@@ -48,8 +45,7 @@
 	              <div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1"><span class="u-meta-date u-meta-icon">Mon Feb 01 2021</span></div>
 	            </div>
 	          </div> --%>
-
-		    for(var i = 0; i < port_info.length; i++){
+		    for(var i = 0; i < 9; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
 			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
@@ -61,46 +57,8 @@
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portTitle);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portDate);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portHidden);
-
 			}
-
-
-			/* 좋아요 수에 따른 포트폴리오 가져오기 */
-		    var likePort = ${likePort};
-		    for(var i = 0; i < 2; i++){
-		    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts1"></div>');
-		    	$(".1page_like1").append(portDiv);
-		    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
-			    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-		    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
-			    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
-			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
-			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
-
-			    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
-			    $("#1page_likePortID_" + likePort[i].id).append(portDate);
-			    $("#1page_likePortID_" + likePort[i].id).append(portImg);
-			    $("#1page_likePortID_" + likePort[i].id).append(portLike);
-			    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
-		    }
-		    for(var i = 2; i < 4; i++){
-		    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts2"></div>');
-		    	$(".1page_like2").append(portDiv);
-		    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
-			    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-		    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
-		    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
-			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
-			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
-
-			    $("#1page_likePortID_" + likePort[i].id).append(portTitle);
-			    $("#1page_likePortID_" + likePort[i].id).append(portDate);
-			    $("#1page_likePortID_" + likePort[i].id).append(portImg);
-			    $("#1page_likePortID_" + likePort[i].id).append(portLike);
-			    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
-				  
-		    }
-
+	
             
 		    $('.1page_portImg').on('click', function() {
 		    	var id = $(this).siblings("input[name='1page_portfolioID']").val();
@@ -113,6 +71,15 @@
 				  	success:function(result){
 				    	$("#yourModal").html(result);
 				     	modal('yourModal');
+				     	if(isVerticle=="1"){
+		                      $("#yourModal .wrap").css("width","440px"); 
+		                      $("#yourModal .wrap").css("height","560px");
+	                      }
+	                      else{
+	                    	  $("#yourModal .wrap").css("width","970px"); 
+		                      $("#yourModal .wrap").css("height","579px");
+		                  }
+		              
 				   	},
 				   	error:function(request,status,error){
 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -122,7 +89,6 @@
 			    
 			});
 	    });
-
 	    function modal(id) {
 		    var zIndex = 9999;
 		    var modal = $('#' + id);
@@ -167,7 +133,6 @@
 		            modal.hide();
 		        });
 		}
-
 	    $(document).click(function(e) {
 	        if (!$(e.target).closest('#yourModal').length) {
 	        	$("#yourModal").css({ display : "none"});
@@ -175,8 +140,24 @@
 	        }
 	    });
     </script>
+    
+     <style>
+    	.table-content {
+		  display: flex;
+		  flex-direction: row;
+		}
+		
+		.item {
+		  flex: 1;
+		}
+		
+    </style>
+    
   </head>
-  <body data-home-page="portfolios.html" data-home-page-title="portfolios" class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+  <body data-home-page="portfolios.html" data-home-page-title="portfolios" class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7">
+<div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="table-content">
+        <div class="item"></div>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: NanumGothic; font-weight: 800;">
             <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#">
@@ -185,19 +166,6 @@
 </symbol>
 </defs></svg>
             </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
-            	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
-				</li>
-			</ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
@@ -211,14 +179,28 @@
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
+          <div class="u-custom-menu u-nav-container">
+           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            	<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
+				</li>
+			</ul>
+          </div>
         </nav>
+        </div>
         <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="home.html" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
@@ -242,21 +224,37 @@
             <div class="u-active u-align-center u-carousel-item u-container-style u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-container-layout-1">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
-                  <div class="u-gallery-inner u-gallery-inner-1  1page_like1">
-                    
+                  <div class="u-gallery-inner u-gallery-inner-1">
+                    <div class="u-effect-fade u-gallery-item">
+                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
+                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/pexels-photo-3601244.jpeg">
+                      </div>
+                      <div class="u-over-slide u-shading u-over-slide-1">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                
+                <div class="u-custom-color-1 u-expanded-width-xs u-radius-21 u-shape u-shape-round u-shape-1"></div>
               </div>
             </div>
             <div class="u-align-center u-carousel-item u-container-style u-expanded-width-xl u-slide">
               <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
                 <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-2">
-                  <div class="u-gallery-inner u-gallery-inner-2 1page_like2">
-                    
+                  <div class="u-gallery-inner u-gallery-inner-2">
+                    <div class="u-effect-fade u-gallery-item">
+                      <div class="u-back-slide" data-image-width="720" data-image-height="1080">
+                        <img class="u-back-image u-expanded" src="<%=request.getContextPath()%>/resources/images/grayscale-photography-of-woman-wearing-coat-and-fedora-hat-2947337.jpg">
+                      </div>
+                      <div class="u-over-slide u-shading u-over-slide-2">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-               
+                <div class="u-custom-color-1 u-radius-21 u-shape u-shape-round u-shape-2"></div>
               </div>
             </div>
           </div>
@@ -275,7 +273,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 좋아요수에 따라 산정됩니다.&nbsp;</p>
+        <p class="u-custom-font u-text u-text-grey-40 u-text-2">인기 포트폴리오는 조회수에 따라 산정됩니다.&nbsp;</p>
       </div>
     </section>
     

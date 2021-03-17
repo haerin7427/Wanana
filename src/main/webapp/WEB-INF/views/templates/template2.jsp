@@ -17,14 +17,12 @@
 <title>Output page</title>
 
 <style>
-
 :root {
   --my-font: sans-serif;
   --my-color:black;
   --my-color2:white;
    --my-fontSize:15px;
 }
-
 .aside, .header, .left, .right, #mypic, .aboutme, #contact, #interest,
 	.name, #interest1, #interest2, #interest3, #chart,
 	#coding_exp, #exps, #exp1, #exp2, #exp3, #exp4, #exp5,
@@ -34,18 +32,14 @@
     display: inline;
     font-size:calc(1*var(--my-fontSize));
 }
-
-
-
 .wrap {
-	border: 1px solid black;
+	box-shadow:1px 0px grey;
 	display: flex;
 	width: 1122px;
 	height: 755px;
 	background-color: white;
 	font-family:var(--my-font);
 }
-
 .aside {
 	float: left;
 	width: 23%;
@@ -53,13 +47,11 @@
 	background-color: var(--my-color);
 	box-shadow:5px 0 13px gray;
 }
-
 .container {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
-
 .header {
 	display: flex;
 	width: 100%;
@@ -67,7 +59,6 @@
 	background-color: #efefef;
 	box-shadow:0 5px 13px gray;
 }
-
 .main {
 	display: flex;
 	width: 100%;
@@ -75,105 +66,80 @@
 	padding-top:calc(1*var(--my-fontSize));
 	background-color:var(--my-color2);
 }
-
 .left, .right {
 	width: 50%;
 	display: flex;
 	flex-direction: column;
 }
-
 #mypic, .aboutme, #contact {
 	margin: auto;
 	width: 80%;
 }
-
-
 #mypic {
 	padding: calc(3.33*var(--my-fontSize)) 0 0 0;
 	overflow:auto;
 }
-
-
-
 .aboutme {
 	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
 	height: calc(65% - 8.66*var(--my-fontSize));
 	/* height: calc(21.66*var(--my-fontSize)); */
 }
-
 #introduce {
 	padding: calc(1*var(--my-fontSize)) 0 0 0;
 	color: white;
 	font-size: calc(0.933*var(--my-fontSize));
 }
-
 #contact {
 	height:calc(8.66*var(--my-fontSize));
 	font-size: calc(0.8*var(--my-fontSize));
 	color: white;
 	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
 }
-
 #interest {
 	width: 80%;
 	padding: 0 calc(1.33*var(--my-fontSize));
 }
-
 .name {
 	width: 20%;
 	text-align: right;
 	padding: 0 calc(2*var(--my-fontSize)) 0 0;
 }
-
 .interests {
 	display: flex;
 	color: #f5b433;
 	font-weight: 700;
 	font-size: calc(1.466*var(--my-fontSize));
 }
-
  #tecs {
 	display: flex;
-
 }
-
 #interest1, #interest2, #interest3 {
 	margin: 0 calc(0.66*var(--my-fontSize)) 0 0;
 }
-
 #tec, #exps{
 	width: 100%;
 	padding: 0 calc(1.33*var(--my-fontSize));
 }
-
 #chart {
 	display: flex;
 	width: 100%;
 }
-
 #cht1, #cht2, #cht3, #cht4 {
 	width: 26%;
 }
-
 .title_line{
        		width:calc(2.66*var(--my-fontSize)); height:calc(0.466*var(--my-fontSize)); background-color:black; margin-bottom:calc(1.33*var(--my-fontSize)); margin-top:calc(0.33*var(--my-fontSize));
 }
-
 #coding_exp {
 	display: flex;
 	height: 100%;
 }
-
-
 #exp1, #exp2, #exp3, #exp4, #exp5 {
 	height: 20%;
 }
-
 #strength, #free_one, #free_two, #free_three {
 	height: max-content;
 }
-
-
 .interest_title{
     margin-top: calc(0.66*var(--my-fontSize));
     margin-right: calc(0.33*var(--my-fontSize));
@@ -188,7 +154,6 @@
     width: calc(6.66*var(--my-fontSize));
     font-size: calc(1*var(--my-fontSize));
 }
-
 .small_title{
     margin-top: calc(0.66*var(--my-fontSize));
     margin-right: calc(0.3*var(--my-fontSize));
@@ -205,7 +170,6 @@
 	border: calc(0.133*var(--my-fontSize)) solid black;
 	border-radius:calc(2.66*var(--my-fontSize));
 }
-
 .small_title2{
 	font-weight:bold;
 	color:#9fa0a0;
@@ -215,18 +179,15 @@
     display: table;
     clear: both;
 }
-
 .tecs{
     padding:calc(0.66*var(--my-fontSize));    
     float:left;
 }
-
 @media (max-width: 600px) {
     .tecs {
         width: 100%;
     }
 }
-
 .chart {
   position: relative;
   display: inline-block;
@@ -241,52 +202,40 @@
   top: 0;
   left: 0;
 }
-
 #item_2_0_1{
     color:white;
     font-size:calc(0.933*var(--my-fontSize));
     word-break:keep-all;
 }
-
 .item_4{
     background-color:#424242; 
     padding:calc(0.2*var(--my-fontSize)) calc(0.66*var(--my-fontSize)) 0px calc(0.66*var(--my-fontSize)); 
     margin-right:calc(0.33*var(--my-fontSize));
     border-radius:11px;
 }
-
 .item_3{
     float:left;
 }
-
 .item_11, .item_10, .item_12{
     display:inline;
 }
-
 .item_010, .item_08{
     margin-bottom:calc(1*var(--my-fontSize));
 }
-
 .item_07{
     float:left; 
     text-align:center;
     padding-right:calc(0.8*var(--my-fontSize)); 
 }
-
 .item_9_1, .item_9_2, .item_9_3, .item_9_6, .item_9_5{
     float:left;
 }
-
-
-
 .item_8_1, .item_8_2{
     float:left 
 }
-
 .item_8_1, .item_9_2, .item_10_1, .item_10_2, .item_11_1, .item_12_1{
     font-weight:bold;
 }
-
 .item_8_4, .item_10_5{ 
     display:block;
     border: 1px solid gray;
@@ -295,14 +244,11 @@
     font-size: calc(0.7*var(--my-fontSize)); 
     word-break:keep-all;
 }
-
 @media print{
 	canvas{
 	!important;
 	}
 }
-
-
 </style>
 
 </head>
@@ -317,7 +263,7 @@
 			</div>
 			
 			<div style="display:block;" class="aboutme" id="item_2">
-				<h4 style="color: #f5b433; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
+				<h4 style="color:white; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
 				
 			</div>
 			
@@ -357,12 +303,12 @@
 				<div class="main_column left" id="leftBody" style="padding: calc(1*var(--my-fontSize));">
 				
 					<div id="education" style="margin-bottom:calc(0.66*var(--my-fontSize));">
-						<h5 class="small_title" style="font-weight:700">학력</h5>
+						<h5 class="small_title" style="font-weight:700; color:#474747;">학력</h5>
 						<div class="educations" id="item_9" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
                     </div>
                     
-					<div id="strength">
-						<h5 class="small_title" style="font-weight:700">강점</h5>
+					<div id="strength" >
+						<h5 class="small_title" style="font-weight:700; color:#474747;">강점</h5>
 						<div class="strengths" id="item_3"></div>
 					</div>
 					
@@ -370,38 +316,38 @@
                     <div class="cANDa" >
                         <!--자격증-->
                         <div class="certificate">
-                            <h4 class="small_title" style="font-weight:700">자격증</h4>
+                            <h4 class="small_title" style="font-weight:700; color:#474747;">자격증</h4>
                             <div class="certificates" id="item_11"></div>
                         </div>
                         
                         <!--수상경력-->
                         <div class="award">
-                            <h4 class="small_title" style="font-weight:700">수상경력</h4>
+                            <h4 class="small_title" style="font-weight:700; color:#474747;">수상경력</h4>
                             <div class="awards" id="item_12"></div>
                         </div>
                     </div>
 
 					<!--나의 활동-->
 					<div id="activities">
-						<h5 class="small_title" style="font-weight:700">나의 활동</h5>
+						<h5 class="small_title" style="font-weight:700; color:#474747;">나의 활동</h5>
 						<div class="activities" id="item_10" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
                     </div>
                     
                 </div>
                 
-                <div class="vl" style="border-left: 1px solid gray; float:left; height: 95%;"></div>
+                <div class="vl" style="border-left: 1px solid #d9d9d9; float:left; height: 95%;"></div>
 
 
 				<!-- 오른쪽바디 -->
 				<div class="main_column right">
-					<div id="tec" style="margin-bottom:calc(0.66*var(--my-fontSize));">
-						<h6 class="small_title" style="font-weight:700">테크닉</h6>
+					<div id="tec" style="margin-bottom:calc(0.66*var(--my-fontSize)); ">
+						<h6 class="small_title" style="font-weight:700; color:#474747;">테크닉</h6>
 						<div class="tecs" id="item_7" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
 					</div>
 					
 					<div id="coding_exp">
 						<div id="exps">
-							<h6 class="small_title" style="font-weight:700">개발경험</h6>
+							<h6 class="small_title" style="font-weight:700; color:#474747;">개발경험</h6>
 							<div class="exps" id="item_8" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
 						</div>
 					</div>
@@ -434,9 +380,7 @@
    				  					  		
    			  	},
    			  	error:function(request, status, error){
-
    					alert("code:"+request.status+"\n"+"\n"+"error:"+error);
-
    				}
    			});
    	   	}
@@ -449,11 +393,9 @@
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
 			$('#item_'+item[i].item_id).append(newItem);
-
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
-
 				//console.log("파일명  :" + item[i].content[0]);
 				if(item[i].content[0].indexOf("data:") != -1) {
 					var new_image_src = item[i].content[0];
@@ -478,7 +420,6 @@
 				newInput.innerHTML = item[i].content[1];
 				
 				$("#item_"+item[i].item_id+"_"+i).append(newInput);
-
                 var nameInput=document.createElement('div');
                 nameInput.innerHTML = item[i].content[0];
                 $("#item_"+item[i].item_id+"_"+i).append(nameInput);
@@ -501,7 +442,6 @@
 					var newInput=document.createElement('div');
 					newInput.className="item_"+item[i].item_id+"_"+i+"_"+j+ " item_"+item[i].item_id + " item_"+item[i].item_id +"_"+j;
 					newInput.id="item_"+item[i].item_id+"_"+i+"_"+j;
-
 					$("#item_"+item[i].item_id+"_"+i).append(newInput);
 					
                     if(item[i].item_id == 3){
@@ -515,10 +455,7 @@
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==4)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
-
-
                     }else if(item[i].item_id == 9){
-
                         if(j==1)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
                         else if(j==2)
@@ -531,7 +468,6 @@
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2">전공.&nbsp</p><p>'+item[i].content[j-1]+'</p>');
                         else if(j==6)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(학점: </p><p>'+item[i].content[j-1]+'</p><p>)</p>');
-
                     }else if(item[i].item_id == 10){
                         if(j==1)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
@@ -555,7 +491,6 @@
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p>');
                         else if(j==3)
                             $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>|</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
-
                     }else
                         $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
 					
@@ -564,7 +499,6 @@
 				//j=>해당 data의 몇번째 input인지
 			}
 		}//div에 div 넣기 
-
     </script>
 </body>
 </html>

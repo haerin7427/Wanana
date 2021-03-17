@@ -7,7 +7,7 @@
 <html style="font-size: 16px;">
   <head>
   
-  	<!-- jQuery -->
+  	<!-- jQuery -->  	
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,12 +21,13 @@
     <title>Check</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
-      
+
       <!--doughnut chart-->
 	<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -36,10 +37,25 @@
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
+    <style>
+    	.table-content {
+		  display: flex;
+		  flex-direction: row;
+		}
+		
+		.item {
+		  flex: 1;
+		}
+		
+    </style>
+    
   </head>
 
 <body class="u-body">
-	<header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+<header class="u-clearfix u-header u-header" id="sec-bbf7">
+<div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="table-content">
+        <div class="item"></div>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: NanumGothic; font-weight: 800;">
             <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#">
@@ -49,39 +65,40 @@
 </defs></svg>
             </a>
           </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-custom-font u-nav u-unstyled u-nav-1">
-            	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolios" style="padding: 10px 20px;">Portfolios</a>
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>	
-				</li>
-			</ul>
-          </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_one" style="padding: 10px 20px;">Portfolios</a>
+                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolio_board">Portfolios</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
+          <div class="u-custom-menu u-nav-container">
+           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            	<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
+				</li>
+			</ul>
+          </div>
         </nav>
+        </div>
         <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="home.html" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
@@ -89,6 +106,7 @@
           </a>
         </p>
       </div></header>
+	
 	 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
@@ -134,13 +152,10 @@ $(document).ready(function(){
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
 	};
-
-
 });//document ready end
 	//session 정보 가져오기 
 	function sessionChecking() {
 		var check_sessionID="";
-
 		$.ajax({ 
 		      url : '<%=request.getContextPath()%>/sessionCheck',
 		  	  type : "POST",
@@ -164,23 +179,18 @@ $(document).ready(function(){
 		}else
 			return 1;
 	}
-
 	//session 만료 확인
 	sessionChecking();
-
-
 function printB() {
 		var resultYN = sessionChecking();
 	if(resultYN == 1){
 		 	var initBody = document.body.innerHTML;
 		 	var g_oBeforeBody = document.getElementById('printSection').innerHTML;
-
 		 	html2canvas(document.querySelector("#printSection"),{scrollY: -window.scrollY, 
 		 	   scale: 1}).then(canvas => {  
 		 	    var dataURL = canvas.toDataURL();
 		 	    var width = canvas.width;
 		 	    var printWindow = window.open("");
-
 		 	   var data=document.querySelector("#printSection");
 		       var divHeight = data.clientHeight
 		       var divWidth = data.clientWidth
@@ -207,7 +217,6 @@ function printB() {
             }, 1000);  */
 	 }
        }
-
 function deleteB() {
 			var resultYN = sessionChecking();
 			
@@ -219,7 +228,6 @@ function deleteB() {
 			}
 	   		 }
     }
-
 function editB() {
 		var resultYN = sessionChecking();
 			
