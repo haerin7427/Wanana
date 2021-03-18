@@ -118,9 +118,11 @@
 	 <script>
 		 $(document).ready(function () {
 			var isLike=${checkLike};
-			if(isLike>0)
-				$('.btn').addClass('liked');
 			var likeCnt=${likeCnt};
+			if(isLike>0){
+				$('.btn').addClass('liked');
+				$('.likeCnt').text(likeCnt);
+			}
 			$('.likeCnt').text(likeCnt);
 			var portID=${portfolio_ID};
 			$(".btn-like").click(function(){
