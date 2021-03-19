@@ -40,7 +40,8 @@ public class LoginController{
 	
 	@Autowired
 	private LoginService loginService;
-
+	public String beforeUrl;
+	
 	final static String GOOGLE_AUTH_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 	final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
 	final static String GOOGLE_REVOKE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/revoke";
@@ -215,12 +216,14 @@ public class LoginController{
 	}
 
 	@RequestMapping(value = "login/redirectUrl")
-	  public ModelAndView googleUrl() throws Exception {
+	  public ModelAndView googleUrl(HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		
+		 String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+	      
+	      beforeUrl = request.getHeader("Referer");
 		String redirectUrl = "redirect:https://accounts.google.com/o/oauth2/v2/auth?"
 				+ "client_id=301548670560-kv6g6e8emg8kuac082ib4q4eah7hp4qu.apps.googleusercontent.com"
-				+ "&redirect_uri=http://localhost:8080/onepage/login/google/auth"
+				+ "&redirect_uri="+rootPath+"/login/google/auth"
 				+ "&response_type=code"
 				+ "&scope=email%20profile%20openid"
 				+ "&access_type=offline";
