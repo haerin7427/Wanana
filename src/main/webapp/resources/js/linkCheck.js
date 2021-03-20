@@ -21,7 +21,7 @@ $( document ).ready(function() {
 	
 	//중복 체크 안하면 못 넘어가게
 	//링크 중복 체크 
-	$("#red_ck_link").click(function(){
+	$("#link").blur(function(){
 		if($("#link").val()==""){
 	        $("#link").focus();
 	        alert("링크를 입력해주세요.");

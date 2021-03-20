@@ -47,7 +47,7 @@
                            <span id="link_dup_txt" style="margin-left: 10px;"></span>
                           <div style="height: 50px;">
 	                          <input type="text" id="link" name="url" style="float:left; width:80%;" onfocus="this.value=randomString;" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase;" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
-	                          <button id="red_ck_link" type="button" style="float:left; width:18%; margin-left:15px; line-height:40px; border-radius:25px; background-color:#eec63c; border:0; color:white; font-weight:bold;">URL중복체크</button>
+	                          
 	                      </div>
                           
                         </div>
