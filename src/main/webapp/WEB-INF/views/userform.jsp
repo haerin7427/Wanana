@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/userform.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script src="<%=request.getContextPath()%>/resources/js/userform.js?v=<%=System.currentTimeMillis()%>" type="text/javascript"></script>
+    
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">
@@ -153,6 +155,4 @@
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
   </body>
-   <script src="<%=request.getContextPath()%>/resources/js/userform.js?v=<%=System.currentTimeMillis()%>" type="text/javascript"></script>
-
 </html>
