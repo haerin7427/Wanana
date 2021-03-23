@@ -248,6 +248,10 @@
 	!important;
 	}
 }
+
+.small_title{
+			display:none;
+		}
 </style>
 
 
@@ -395,6 +399,7 @@
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
 			$('#item_'+item[i].item_id).append(newItem);
+			$('#item_'+item[i].item_id).siblings('.small_title').css("display","block");
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
