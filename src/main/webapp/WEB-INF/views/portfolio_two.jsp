@@ -31,12 +31,17 @@
                         <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-2">
                           <label for="select-fd8b" class="u-custom-font u-label u-text-grey-75 u-label-2">포트폴리오 공개여부</label>
                           <div class="u-form-select-wrapper">
+                          	<div class="u-border-1 u-input u-input-rectangle u-radius-21 u-white u-input-2" style="border-color:transparent;">
+                          	<input type="radio" name="1page_public" value="1" checked="checked" style="margin-right:10px; width:15px;height:15px;border:1px;">공개 
+                          	<input type="radio" name="1page_public" value="0" style="margin-right:10px; margin-left:20px; width:15px;height:15px;border:1px;">비공개 
+ 							</div>
+                          	<!-- 
                             <select id="select-fd8b" name="1page_public" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white u-input-2" required="required">
                               <option value="1">공개</option>
                               <option value="0">일부공개 (링크소지자에게만)</option>
                               <option value="0">비공개</option>
                             </select>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                             -->
                           </div>
                         </div>
                         <script>
@@ -46,8 +51,7 @@
                           <label for="email-ba61" class="u-custom-font u-label u-text-grey-75 u-label-3">내 포트폴리오 URL</label>
                            <span id="link_dup_txt" style="margin-left: 10px;"></span>
                           <div style="height: 50px;">
-	                          <input type="text" id="link" name="url" style="float:left; width:80%;" onfocus="this.value=randomString;" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase;" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
-	                          
+	                          <input type="text" id="link" name="url" style="float:left; width:100%;" onfocus="this.value=randomString;" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase;" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
 	                      </div>
                           
                         </div>
