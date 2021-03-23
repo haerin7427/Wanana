@@ -372,8 +372,12 @@
    		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
    		if(template_info[0].template_color>0){
    			var color_info;
+   			var whole_addr = $(location).attr('href');
+		   	var addr_slice = whole_addr.split('/');
+		   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+		   	
    			$.ajax({ //해당 color 정보 가져오기
-   				url : "colorData",
+   				url : addr + "colorData",
    			  	type : "post",
    			  	data:{"color_id":template_info[0].template_color},
    			  	dataType : "json",
@@ -409,7 +413,11 @@
 				}
 				
 				else {
-					var new_image_src = "resources/user_photo/" + item[i].content[0];
+					var whole_addr = $(location).attr('href');
+				   	var addr_slice = whole_addr.split('/');
+				   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+									
+					var new_image_src = addr+ "resources/user_photo/" + item[i].content[0];
 				}
 				
 				$($("#mypic").children('img')).attr("src", new_image_src); 

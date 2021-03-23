@@ -158,5 +158,12 @@ public class PortfolioServiceImp implements PortfolioService {
 		return portfolioDAO.getColorInfo(color_id);
 	}
 
+
+	@Override
+	public int getPortIdByUrl(String link) throws Exception {
+		// TODO Auto-generated method stub
+		return portfolioDAO.getPortIdByUrl(link);
+	}
+
 }
 

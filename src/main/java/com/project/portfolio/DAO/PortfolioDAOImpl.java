@@ -166,4 +166,10 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			return sqlSession.selectOne(namespace + ".getColorInfo",color_id);
 		}
 
+		@Override
+		public int getPortIdByUrl(String link) throws Exception {
+			// TODO Auto-generated method stub
+			return sqlSession.selectOne(namespace + ".getPortIDByUrl",link);
+		}
+
 }

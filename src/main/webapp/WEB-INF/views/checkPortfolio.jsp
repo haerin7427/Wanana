@@ -52,6 +52,7 @@
   </head>
 
 <body class="u-body">
+
 <header class="u-clearfix u-header u-header" id="sec-bbf7">
 <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <div class="table-content">
@@ -125,6 +126,8 @@
 				    	<button type="button" class="print" name="print" id="printB" onclick="javascript:printB();">출력 </button>
 				    	<button type="button" class="delete" name="delete" id="deleteB" onclick="javascript:deleteB();">삭제 </button>
 				    	<button type="button" class="edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
+				    	<button type="button" class="copy" name="copy" id="copyB" >url 복사 </button>
+				    	<input type="hidden" id="urlAddress" name="urlAddress" value="https://www.naver.com"/>
 				    	<form id="deleteForm" name="deleteForm" class="deleteForm"  action="deletePortfolio" method="POST">
 				    			<input type="hidden" id="select_portID" name="temName" value="${temName}"/>
 								<input type="hidden" id="select_portID" name="select_portID" value="${portfolio_ID}"/>
@@ -152,7 +155,27 @@ $(document).ready(function(){
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
 	};
+
+	var portURL = ${template_info};
+	var whole_addr = $(location).attr('href');
+   	var addr_slice = whole_addr.split('/');
+   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/portfolioView/";
+
+	$("#urlAddress").val(addr+portURL[0].port_url );
+
+	$('#copyB').click(function(){
+ 	   
+		$(this).siblings("#urlAddress").attr("type","text");
+		$(this).siblings("#urlAddress").select();
+		document.execCommand('copy');
+		$(this).siblings("#urlAddress").attr("type","hidden");
+
+		
+		alert('URL 주소가 복사 되었습니다');	
+
+		});	    
 });//document ready end
+
 	//session 정보 가져오기 
 	function sessionChecking() {
 		var check_sessionID="";
@@ -235,7 +258,11 @@ function editB() {
 	   	  		$("#deleteForm").attr("action","editPortfolio");
 			$("#deleteForm").submit();
 			}
-	       }//edit 버튼
+	}//edit 버튼
+
+
+		   
+	   		
 </script>
 </body>
 </html>
