@@ -56,6 +56,7 @@
 			<mapping path="/**" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/login/**" />
+			<exclude-mapping path="/portfolioView/**" />
 			<exclude-mapping path="/loginProcess" />
 			<exclude-mapping path="/userform" />
 			<exclude-mapping path="/resources/**" />
