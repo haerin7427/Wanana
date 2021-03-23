@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>userform</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/userform.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
@@ -30,7 +31,7 @@
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
 
-
+	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -103,15 +104,19 @@
                       <form action="userform" method="post" class="u-clearfix u-form-custom-backend u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form" redirect="true">
                         <div class="u-form-group">
                           <input type="text" id="user_id" name="user_id" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-1" required="required" placeholder="아이디">
+                          <span id="id_check" ></span><input id="idValiable" type="hidden" value="">
                         </div>
                         <div class="u-form-group u-form-partition-factor-2">
                           <input type="password" placeholder="비밀번호" id="pwd" name="pwd" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-2" required="required">
+                          <span id="pwd_check" ></span>
                         </div>
                         <div class="u-form-group u-form-partition-factor-2 u-form-group-3">
                           <input type="password" placeholder="비밀번호확인" id="re_pwd" name="re_pwd" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-3" required="required">
+                           <span id="re_pwd_check" ></span>
                         </div>
                         <div class="u-form-group u-form-group-4">
                           <input type="text" placeholder="이름" id="name" name="name" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-4" required="required">
+                        	<span id="name_check" ></span>
                         </div>
                         <div class="u-form-group u-form-select u-form-group-5">
                           <div class="u-form-select-wrapper">
@@ -124,6 +129,7 @@
                         </div>
                         <div class="u-form-group u-form-partition-factor-2 u-form-group-6">
                           <input type="text" placeholder="전화번호" id="phone_number" name="phone_number" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-6" required="required">
+                        	<span id="phone_check" ></span>
                         </div>
                         <div class="u-form-group u-form-partition-factor-2 u-form-group-7">
                           <input type="email" placeholder="이메일" id="email_address" name="email_address" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-7" required="required">

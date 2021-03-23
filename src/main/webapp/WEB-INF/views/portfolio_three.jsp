@@ -94,7 +94,7 @@
         var field_content = ${item_input};
         var list_content = ${options}
         var data_content = ${data_list};
-        var portfolio_Info = ${portfolioInfo};
+        var portfolio_Info = ${template_info};
         var portfolio_ID = ${portfolioID};
         if(data_content.length > 0)
             console.log("data in");

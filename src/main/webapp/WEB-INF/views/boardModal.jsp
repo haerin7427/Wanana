@@ -95,18 +95,19 @@
 			 	<!-- <button type="button" class="good" name="good" style="border:0; outline:0; margin-right:10px; cursor:pointer;"><img src="resources/images/like.png" width="30" height="auto" alt=""></button> -->
 			 	<button class="btn good btn-like"  style="border:0; outline:0;">
 			    <span class="btn-icon btn--icon-default">
-			        <span class="fa fa-heart"></span>
+			        <span class="fa fa-heart" style="font-size:30px"></span>
 			    </span>
-			    <span class="btn-content likeCnt">
-			        
-			    </span>
-			</button>
+				</button>
 			 	<!-- 쪽지보내기버튼  -->
-			 	<button type="button" class="message" name="message" style="border:0; outline:0; cursor:pointer;"><img src="resources/images/message.png"width="30" height="auto" alt=""></button>
+			 	<button type="button" class="message" name="message" style="border:0; outline:0; cursor:pointer;">
+					<span class="btn-icon btn--icon-default">
+			        	<span class="fa fa-envelope-o" aria-hidden="true" style="font-size:30px"></span>
+			   	 	</span>
+				</button>
 			</div>
 			<!-- 좋아요 개수  -->
 			<div style="display:inline; text-align:right;" class="item" >
-				<p style="display:inline; font-size:23px; font-weight:bold; color:#b3b3b3">좋아요 <span>0</span>개</p>
+				<p style="display:inline; font-size:23px; font-weight:bold; color:#b3b3b3">좋아요 <span class="likeCnt">0</span>개</p>
 			</div>
 		</div>
 		 

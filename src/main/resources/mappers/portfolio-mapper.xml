@@ -204,7 +204,7 @@
        <!-- 갤러리용 좋아요 많은 포트폴리오 들고오기   -->
     <select id="likePort" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT  portfolio.*, isVerticle  FROM portfolio LEFT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY portfolio.like LIMIT 4;
+    		SELECT  portfolio.*, isVerticle  FROM portfolio LEFT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY portfolio.like DESC LIMIT 4;
 		 ]]>
     </select>
     

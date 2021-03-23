@@ -360,10 +360,11 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			    JSONArray jArray2 = new JSONArray();
 			    
 			    try {
+			    	System.out.println(content1.length);
 			    	for (int i = 0; i < item_id.length ; i++) {   
 				    	JSONObject ob =new JSONObject();
 				        content=new String[6];
-				        
+				        System.out.println("i:"+i);
 				        ob.put("item_id", item_id[i]);
 				        ob.put("data_no", portfolioService.getData_no(item_id[i]));
 				        
@@ -690,7 +691,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        }
 				
 				//View로 보내기
-		        
+		        System.out.println(jArrayTem);
 		        mav.addObject("template",template);
 		        mav.addObject("portfolioID",Integer.parseInt(portID));
 		        mav.addObject("portfolioInfo",jArrayTem);

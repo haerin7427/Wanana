@@ -179,10 +179,11 @@ public class LoginController{
 	
 
 	//아이디 중복 체크
-	@RequestMapping(value="/gidCheck",method=RequestMethod.GET)
+	@RequestMapping(value="login/gidCheck",method=RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(@RequestParam("user_id") String user_id) throws Exception {
-		return loginService.userIdCheck(user_id);
+		int isOk=loginService.userIdCheck(user_id);
+		return isOk;
 	}
 
 	//로그인 성공 or 실패
