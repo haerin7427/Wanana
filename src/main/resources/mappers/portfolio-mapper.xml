@@ -155,7 +155,7 @@
     <!-- port_id에 맞는 portfolio 정보 가져오기  -->
     <select id="temID" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT title, isPublic, template_id,color,font FROM portfolio where id = #{portID};
+    		SELECT title, isPublic, template_id,color,font,url FROM portfolio where id = #{portID};
 		 ]]>
     </select>
     
@@ -236,4 +236,9 @@
     <update id="modifyUserInfo">
     	 UPDATE `users` SET name=#{name},email_address=#{email},phone_number=#{phone} WHERE id=#{id};
     </update>
+    
+    <!-- url로 portID GET -->
+    <select id="getPortIDByUrl" resultType="int">
+    	 SELECT id FROM portfolio WHERE url=#{link};
+    </select>
 </mapper>
