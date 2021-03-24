@@ -725,15 +725,15 @@
 		                      $("#1page_preview").html(result);
 		                      
 		                      if(check1 > 0) //사진을 추가 했을 때만!!
-		                      	$(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+		                      	$("#1page_preview .imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
 		                      	
 		                      if(template_isVerticle=="1"){
-			                      $(".wrap").css("width","440px"); 
-			                      $(".wrap").css("height","560px");
+			                      $("#1page_preview .wrap").css("width","440px"); 
+			                      $("#1page_preview .wrap").css("height","560px");
 		                      }
 		                      else{
-		                    	  $(".wrap").css("width","610px"); 
-			                      $(".wrap").css("height","409px");
+		                    	  $("#1page_preview .wrap").css("width","610px"); 
+			                      $("#1page_preview .wrap").css("height","409px");
 			                  }
 		                  },
 		                  error:function(request,status,error){

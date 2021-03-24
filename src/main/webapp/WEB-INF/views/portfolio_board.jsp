@@ -52,7 +52,7 @@
 			    $("#1page_portBoard").append(portDiv);
 			    var portImg = $('<div class="boardPortfolio" id="boardPortfolio_'+port_info[i].port_id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
 			    var portTitle = $('<div class="u-blog-control u-post-content u-text u-text-1">'+port_info[i].port_title+'</div> ');
-			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1"><span class="u-meta-date u-meta-icon">'+port_info[i].port_date+'</span></div>');
+			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1 portDate"><span class="u-meta-date u-meta-icon portDateSpan">'+port_info[i].port_date+'</span></div>');
 			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+port_info[i].port_id+'">');
 			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+port_info[i].isVerticle+'">');
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portImg);
@@ -71,7 +71,7 @@
 			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts1"></div>');
 			    	$(".1page_like1").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
-				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+				    var portDate = $('<div class="u-text-grey-40 portDate" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon portDateSpan">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
 			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
 				    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
@@ -86,7 +86,7 @@
 			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts2"></div>');
 			    	$(".1page_like2").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
-				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
+				    var portDate = $('<div class="u-text-grey-40 portDate" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon portDateSpan">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
 			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
 			    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
@@ -102,12 +102,14 @@
             
 		    $('.1page_portImg').on('click', function() {
 		    	var id = $(this).parent().siblings("input[name='1page_portfolioID']").val();
+		    	var regDate = $(this).parent().siblings(".portDate").find('.portDateSpan').text();
+		    	
 		    	var isVerticle = $(this).parent().siblings("input[name='1page_portfolioIsVerticle']").val();
 			    $.ajax({
 					url: "board/portfolioView",
 				 	type:'POST',
 				   	traditional : true,
-				    data:{"portfolioID":id},
+				    data:{"portfolioID":id,"regDate":regDate},
 				  	success:function(result){
 				    	$("#yourModal").html(result);
 				     	modal('yourModal');
