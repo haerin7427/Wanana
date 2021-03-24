@@ -11,7 +11,6 @@ public class User {
 
 	private String pwd;
 
-	
 	private String email_address;
 	
 	private String gender;
@@ -20,11 +19,14 @@ public class User {
 
 	private Boolean social;
 	
+	private Integer admin;
+	
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", user_id=" + user_id + ", pwd=" + pwd + ", email_address="
-				+ email_address + ", gender=" + gender + ", phone_number=" + phone_number + ", social=" + social + "]";
+				+ email_address + ", gender=" + gender + ", phone_number=" + phone_number + ", social=" + social
+				+ ", admin=" + admin + "]";
 	}
 
 	public Boolean getSocial() {
@@ -91,5 +93,12 @@ public class User {
 		this.phone_number = phone_number;
 	}
 
+	public Integer getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Integer admin) {
+		this.admin = admin;
+	}
 
 }

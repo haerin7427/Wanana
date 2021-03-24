@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" style="font-size: 16px;">
 <head>
@@ -106,9 +106,12 @@
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black 1page_login"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>	
 				</li>
+				<c:set var="admin" value="${admin}" />
+				<c:if test="${admin == 1}">
 				<li id="1page_logoutMenu3" class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
 				</li>
+				</c:if>
 				<li id="1page_logoutMenu1" class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
 					</li>
@@ -126,9 +129,12 @@
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link 1page_login"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>
 					</li>
+					<c:set var="admin" value="${admin}" />
+					<c:if test="${admin == 1}">
 					<li id="1page_logoutMenu4" class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
 					</li>
+					</c:if>
 					<li id="1page_logoutMenu2" class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
 					</li>

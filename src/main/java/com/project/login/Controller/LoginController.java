@@ -147,6 +147,7 @@ public class LoginController{
 		session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
 		session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
 		session.setAttribute("email", one.getEmail_address());
+		session.setAttribute("admin", one.getAdmin());
 		session.setAttribute("login", one);
 		
 		mav.addObject("user", one);
@@ -204,6 +205,7 @@ public class LoginController{
 			session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
 			session.setAttribute("email", one.getEmail_address());
 			session.setAttribute("phone", one.getPhone_number());
+			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
 			
 			mav=new ModelAndView("home");
