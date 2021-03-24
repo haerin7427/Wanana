@@ -47,11 +47,16 @@
 		  flex: 1;
 		}
 		
+		.top_btn{
+			width:100px;
+			border-radius:10px;
+		}
     </style>
     
   </head>
 
 <body class="u-body">
+
 <header class="u-clearfix u-header u-header" id="sec-bbf7">
 <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <div class="table-content">
@@ -71,10 +76,13 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolio_board">Portfolios</a>
+                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolio_board">Portfolio구경가기</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>
+					</li>
+					<li class="u-nav-item">
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
 					</li>
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
@@ -87,10 +95,13 @@
           <div class="u-custom-menu u-nav-container">
            <ul class="u-custom-font u-nav u-unstyled u-nav-1">
             	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolios</a>
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board"">Portfolio구경가기</a>
 				</li>
 				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY 페이지</a>	
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>	
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
 				</li>
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
@@ -110,40 +121,43 @@
 	 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
-	 <main>
-	 	<div class="wrap" style="width:100%; position:relative;">
-	 		<div style="display:block; margin:0 auto;">
-	 			<div id="printSection" style="float:left; margin-right: 15px; padding-left: 22px;">
+	 <section class="u-clearfix u-white u-section-1" id="sec-fad6" style="height:100%; padding-bottom:130px;">
+	 	<div class="wrap" style="width:100%; position:relative; background-color:transparent; margin-left:140px;">
+	 		<div>
+	 			<div class="table-content" style="padding:0 35px 0 26px;">
+	 				<div class="item" style="float:left; height:97px;">
+	 					<!-- 포트폴리오 이름넣기 -->
+		 				<h4 style="line-height: 10px; font-weight:bold;">해린이의 포트폴리오</h4>
+		 				<!-- 포트폴리오 url넣기 -->
+		 				<button style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
+		 				<div style="text-decoration:underline; display:inline;">http://walab.handong.edu/wanana/fdjshfj3849</div>
+	 				</div>
+	 				<div id="button_wrap" style="float:left; padding-top:10px;">
+						<div style="flex-direction:row; display:inline;" >
+					    	<button type="button" class="top_btn print" name="print" id="printB" onclick="javascript:printB();">출력 </button>
+					    	<button type="button" class="top_btn edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
+					    	<button type="button" class="top_btn delete" name="delete" id="deleteB" onclick="javascript:deleteB();">삭제 </button>
+					    	<form id="deleteForm" name="deleteForm" class="deleteForm"  action="deletePortfolio" method="POST">
+					    			<input type="hidden" id="select_portID" name="temName" value="${temName}"/>
+									<input type="hidden" id="select_portID" name="select_portID" value="${portfolio_ID}"/>
+							</form>
+				    	</div>	
+			    	</div>	
+	 			</div>
+	 			<div id="printSection" style="float:left; margin-right: 35px; padding-left: 22px;">
 	 			 <!-- <page size="A4" layout="portrait">  -->
 				 <page size="A4">
 		     		<jsp:include page="<%=templateURL%>" flush="true"/>
 		     	</page>
 				</div>
-				<div id="button_wrap" style="display:flex;">
-					<div style="flex-direction:column;">
-				    	<button type="button" class="home" name="home" id="homeB" onclick="location.href='<%=request.getContextPath()%>/home'">HOME</button>
-				    	<button type="button" class="print" name="print" id="printB" onclick="javascript:printB();">출력 </button>
-				    	<button type="button" class="delete" name="delete" id="deleteB" onclick="javascript:deleteB();">삭제 </button>
-				    	<button type="button" class="edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
-				    	<form id="deleteForm" name="deleteForm" class="deleteForm"  action="deletePortfolio" method="POST">
-				    			<input type="hidden" id="select_portID" name="temName" value="${temName}"/>
-								<input type="hidden" id="select_portID" name="select_portID" value="${portfolio_ID}"/>
-						</form>
-			    	</div>	
-			    </div>	
 	 		</div>
 	 	</div>
-	 	
-	 </main>
-	 
+	 </section>
 	 
 	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-    </section>
-    
     <script>
 $(document).ready(function(){
   
@@ -152,7 +166,27 @@ $(document).ready(function(){
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
 	};
+
+	var portURL = ${template_info};
+	var whole_addr = $(location).attr('href');
+   	var addr_slice = whole_addr.split('/');
+   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/portfolioView/";
+
+	$("#urlAddress").val(addr+portURL[0].port_url );
+
+	$('#copyB').click(function(){
+ 	   
+		$(this).siblings("#urlAddress").attr("type","text");
+		$(this).siblings("#urlAddress").select();
+		document.execCommand('copy');
+		$(this).siblings("#urlAddress").attr("type","hidden");
+
+		
+		alert('URL 주소가 복사 되었습니다');	
+
+		});	    
 });//document ready end
+
 	//session 정보 가져오기 
 	function sessionChecking() {
 		var check_sessionID="";
@@ -235,7 +269,11 @@ function editB() {
 	   	  		$("#deleteForm").attr("action","editPortfolio");
 			$("#deleteForm").submit();
 			}
-	       }//edit 버튼
+	}//edit 버튼
+
+
+		   
+	   		
 </script>
 </body>
 </html>

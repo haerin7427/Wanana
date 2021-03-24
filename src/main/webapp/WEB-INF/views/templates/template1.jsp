@@ -306,6 +306,14 @@
 			!important;
 			}
 		}
+		
+		.small_title, .title_line{
+			display:none;
+		}
+		
+		.itemBoxCSS{
+			width: 100%;
+		}
 	</style>
 	
     
@@ -377,14 +385,14 @@
 	        <div class="main_column left" >
 				
 				<!--div2_2(학력)-->
-				<div class="itemBox_9">
+				<div class="itemBox_9 itemBoxCSS">
 					<h6 class="small_title" style="font-weight:700;">학력</h6>
 					<div class="title_line"></div>
 					<div class="educations" id="item_9"></div>
 				</div>
 				
 				<!--div2_3(강점)-->
-				<div class="itemBox_3" >
+				<div class="itemBox_3 itemBoxCSS" >
 					<h6 class="small_title" style="font-weight:700">강점</h6>
 					<div class="title_line"></div>
 					<div class="strengths" id="item_3"></div>
@@ -393,14 +401,14 @@
 				<!--div2_4(자격증/수상경력)-->
 				<div class="cANDa" >
 					<!--자격증-->
-					<div class="itemBox_11" ">
+					<div class="itemBox_11 itemBoxCSS" >
 						<h6 class="small_title">자격증</h6>
 						<div class="title_line"></div>
 						<div class="certificates" id="item_11"></div>
 					</div>
 					
 					<!--수상경력-->
-					<div class="itemBox_12" >
+					<div class="itemBox_12 itemBoxCSS" >
 						<h6 class="small_title" style="font-weight:700">수상경력</h6>
 						<div class="title_line"></div>
 						<div class="awards" id="item_12"></div>
@@ -408,7 +416,7 @@
 				</div>
 					
 				<!--div2_5(활동)-->	
-				<div class="itemBox_10" >
+				<div class="itemBox_10 itemBoxCSS" >
 					<h6 class="small_title" style="font-weight:700">나의 활동</h6>
 					<div class="title_line"></div>
 					<div class="activities" id="item_10"></div>
@@ -454,8 +462,12 @@
    		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
    		if(template_info[0].template_color>0){
    			var color_info;
+   			var whole_addr = $(location).attr('href');
+		   	var addr_slice = whole_addr.split('/');
+		   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+		   	
    			$.ajax({ //해당 color 정보 가져오기
-   				url : "colorData",
+   				url : addr + "colorData",
    			  	type : "post",
    			  	data:{"color_id":template_info[0].template_color},
    			  	dataType : "json",
@@ -487,6 +499,9 @@
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
 			$('#item_'+item[i].item_id).append(newItem);
+			$('#item_'+item[i].item_id).siblings('.small_title').css("display","block");
+			$('#item_'+item[i].item_id).siblings('.title_line').css("display","block");
+			
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
@@ -497,7 +512,11 @@
 				}
 				
 				else {
-					var new_image_src = "resources/user_photo/" + item[i].content[0];
+					var whole_addr = $(location).attr('href');
+				   	var addr_slice = whole_addr.split('/');
+				   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+									
+					var new_image_src = addr+ "resources/user_photo/" + item[i].content[0];
 				}
 				$($("#item_1").children('img')).attr("src", new_image_src); 
 				$($("#item_1").children('img')).css("width", "166");

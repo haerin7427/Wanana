@@ -70,4 +70,9 @@ public class BoardDAOImpl implements BoardDAO {
 		map.put("user_id", user_id);
 		sqlSession.insert(namespace +".createLike", map);
 	}
+	
+	@Override
+	public List<String> getInterest(int port_id) throws Exception{
+		return sqlSession.selectList(namespace+".getInterest",port_id);
+	}
 }

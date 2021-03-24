@@ -666,8 +666,7 @@
 	              }else{
 						//포트폴리오 이름, 공개 여부 form에 입력 
 		              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
-		              $('#select_portfolio_public').val($("select[name=1page_public]").val());
-	
+		              $('#select_portfolio_url').val($("input[name=url]").val());
 		              //form 전송 
 		              $("#1page_myForm").attr("action", "portfolio_two");
 			          $("#1page_myForm").attr("target", "");
@@ -744,6 +743,10 @@
           		}//resultYN == 1 경우 끝
     	  });//미리보기 창 끝
 
+          $('input[name="1page_public"]').on('click', function() {
+      	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
+				$("#select_portfolio_public").val(valueCheck);
+        });
     });//document.ready 
 
     function readURL(input) {
@@ -787,8 +790,11 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-custom-font u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolios</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
+            <ul class="u-custom-font u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
+</li>
+<li class="u-nav-item">
+<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
 </li>
 <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
 </li>
@@ -798,9 +804,13 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolios</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
+</li>
+<li class="u-nav-item">
+<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
 </li></ul>
               </div>
             </div>
@@ -886,12 +896,12 @@
                     	<input type="hidden" id="select_template_id" name="template_id" value="2" readonly/>
 						<input type="hidden" id="select_template_html" name="template_html" value="template2" readonly/>
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
-						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="" readonly/>
+						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="1" readonly/>
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="" readonly/>
-						
+						<input type="hidden" id="select_template_url" name="url" value="" readonly/>
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->
                         <div class="u-align-left u-container-style u-expanded-width u-grey-15 u-group u-group-13">
@@ -941,15 +951,6 @@
         </p>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/landing-page" target="_blank">
-        <span>Free Landing Page</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
     </section>
     
   <!--  미리보기 모달 창 -->

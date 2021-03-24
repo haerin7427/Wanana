@@ -248,6 +248,10 @@
 	!important;
 	}
 }
+
+.small_title{
+			display:none;
+		}
 </style>
 
 
@@ -368,8 +372,12 @@
    		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
    		if(template_info[0].template_color>0){
    			var color_info;
+   			var whole_addr = $(location).attr('href');
+		   	var addr_slice = whole_addr.split('/');
+		   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+		   	
    			$.ajax({ //해당 color 정보 가져오기
-   				url : "colorData",
+   				url : addr + "colorData",
    			  	type : "post",
    			  	data:{"color_id":template_info[0].template_color},
    			  	dataType : "json",
@@ -395,6 +403,7 @@
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
 			$('#item_'+item[i].item_id).append(newItem);
+			$('#item_'+item[i].item_id).siblings('.small_title').css("display","block");
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
@@ -404,7 +413,11 @@
 				}
 				
 				else {
-					var new_image_src = "resources/user_photo/" + item[i].content[0];
+					var whole_addr = $(location).attr('href');
+				   	var addr_slice = whole_addr.split('/');
+				   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+									
+					var new_image_src = addr+ "resources/user_photo/" + item[i].content[0];
 				}
 				
 				$($("#mypic").children('img')).attr("src", new_image_src); 

@@ -48,10 +48,10 @@
           <div class="u-custom-menu u-nav-container">
             <ul class="u-custom-font u-nav u-unstyled u-nav-1">
             	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolios</a>
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolio구경가기</a>
 				</li>
 				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY 페이지</a>	
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY페이지</a>	
 				</li>
 			</ul>
           </div>
@@ -61,10 +61,10 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolios</a>
+                		<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolio구경가기</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY 페이지</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY페이지</a>
 					</li>
 				</ul>
               </div>
@@ -73,7 +73,7 @@
           </div>
         </nav>
         <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
-          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="<%=request.getContextPath()%>/home" data-page-id="425530424">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="<%=request.getContextPath()%>" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
             <span class="u-text-black">하나</span>
           </a>

@@ -344,7 +344,7 @@
 	            	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+data_content[e].content[f]+'</p>');
 	                $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                
-	                var realTag = $('<textarea style="display: none;" name="content'+(f+1)+'">'+data_content[e].content[f]+'</textarea>');
+	                var realTag = $('<input type = "hidden" name="content'+(f+1)+'" id="content'+(f+1)+'" val="'+data_content[e].content[f]+'">');
 	                $($('#1page_count' + add_count).children()[0]).append(realTag);
 	             }//content수만큼 반복
 	
@@ -587,7 +587,7 @@
                 	  	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
                       $($('#1page_count' + add_count).children()[0]).append(pTag);
 
-                      var realTag = $('<textarea style="display: none;" name="content'+field_count+'">'+$(this).children().val()+'</textarea>');
+                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
                       $($('#1page_count' + add_count).children()[0]).append(realTag);
                       
                   }
@@ -697,7 +697,7 @@
 	                	  	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	
-	                      var realTag = $('<textarea style="display: none;" name="content'+field_count+'">'+$(this).children().val()+'</textarea>');
+	                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
 	                      
 	                  }
@@ -762,6 +762,9 @@
         	  
         	  var resultYN = sessionChecking();
         	  if(resultYN == 1){
+        		  var check1 = $('input[name=file1]').length;
+	              var check2 = $('input[name=add_itemID]').length;
+	              console.log("사진 개수: "+check1 +"/ 필드 개수 : "+ check2);
         	  
 	        	  var length=$("#1page_form").find("input[name=add_itemID]").length;
 	        	  var item_id=new Array(length);
@@ -800,6 +803,17 @@
 		                  data: sendData,
 		                  success:function(result){
 		                      $("#1page_preview").html(result);
+		                      if(check1 > 0) //사진을 추가 했을 때만!!
+			                      	$(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+			                      	
+			                  if(template_isVerticle=="1"){
+				              	$(".wrap").css("width","440px"); 
+				                $(".wrap").css("height","560px");
+			                  }
+			                  else{
+			                  	$(".wrap").css("width","610px"); 
+				                $(".wrap").css("height","409px");
+				              }
 		                  },
 		                  error:function(request,status,error){
 		               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -807,6 +821,11 @@
 		          		});
           		}//resultYN == 1 경우 끝
     	  });//미리보기 창 끝
+
+          $('input[name="1page_public"]').on('click', function() {
+        	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
+				$("#select_portfolio_public").val(valueCheck);
+          });
 
     }); //document.ready 
 
@@ -918,11 +937,11 @@
                     <form action="portfolio_two" id="1page_myForm" method="POST" enctype="multipart/form-data">
                     
                     <!-- portfolio_Id 생성 정보   -->
-                    		<input type="hidden" id="select_template_id" name="template_id" value="2" readonly/>
+                    	<input type="hidden" id="select_template_id" name="template_id" value="2" readonly/>
 						<input type="hidden" id="select_template_html" name="template_html" value="template2" readonly/>
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
-						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="" readonly/>
+						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="1" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						

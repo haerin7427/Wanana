@@ -99,6 +99,9 @@ public interface PortfolioService {
 	public List<Color> getColorList(int template_id) throws Exception;
 	
 	public Color getColorInfo(int color_id) throws Exception;
+
+
+	public int getPortIdByUrl(String link) throws Exception;
 	
 	
 }

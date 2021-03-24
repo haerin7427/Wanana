@@ -14,4 +14,5 @@ public interface BoardDAO {
 	public int likeCnt(int portfolio_id) throws Exception;
 	public void createLike(int portfolio_id,int user_id) throws Exception;
 	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception;
+	public List<String> getInterest(int port_id) throws Exception;
 }

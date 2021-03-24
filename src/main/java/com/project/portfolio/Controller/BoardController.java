@@ -48,6 +48,7 @@ public class BoardController {
 			System.out.println(portinfo.toString());
 			System.out.println("get info!");
 			JSONArray jArray = new JSONArray();
+			String []interest;
 	        try {
 	        	for (int i = 0; i < portinfo.size() ; i++) {   
 	        		JSONObject ob =new JSONObject();
@@ -56,6 +57,15 @@ public class BoardController {
 	        		ob.put("port_title", portinfo.get(i).getTitle());
 	        		ob.put("port_date", portinfo.get(i).getUpdate_date());
 	        		ob.put("isVerticle", portinfo.get(i).getIsVerticle());
+
+	        		List<String> interestList = boardService.getInterest(portinfo.get(i).getId());
+	        		interest=new String[interestList.size()];
+	        		
+	        		for(int j=0; j<interestList.size();j++) {
+	        			interest[j]=interestList.get(j);
+	        		}
+	        		ob.put("interestNum", interestList.size());
+	        		ob.put("interests", interest);
 	        		System.out.println(ob.toString());
 
 		            jArray.put(ob);
