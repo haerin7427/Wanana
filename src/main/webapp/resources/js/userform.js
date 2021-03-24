@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 		//유효성 검사
 		var empJ = /\s/g;
 		var idJ= /^[a-z0-9]{4,12}$/;
@@ -11,10 +11,12 @@
 		//아이디 중복 체크
 		$('#user_id').blur(function(){
 			var id=$('#user_id').val();
-			
+			console.log(id);
 			$.ajax({
-				url : 'idCheck?id='+id, 
-				type: 'get',
+				url : 'login/gidCheck', 
+				type: 'post',
+				traditional : true,
+		        data: {"user_id":id},
 				success : function(data){
 					console.log('중복 o = 1 / 중복 x = 0 : '+ data);
 					
@@ -34,17 +36,19 @@
 							$('#id_check').css('color','red');
 							//$('#reg_submit').attr('disabled','true');
 						}
+						$('#idValiable').val("1");
 					}
 					else{
 
 						$('#id_check').text('사용중인 아이디입니다.');
 						$('#id_check').css('color','red');
+						$('#idValiable').val("0");
 						//$('#reg_submit').attr('disabled','true');
 					}
 				},
-				error : function(){
-					console.log('error 발생');
-				}
+				error:function(request,status,error){
+		        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        }
 			});
 		});
 		
@@ -74,7 +78,7 @@
 		});
 		
 		// 휴대전화
-		$('#phone').blur(function(){
+		$('#phone_number').blur(function(){
 			if(phoneJ.test($(this).val())){
 				console.log(nameJ.test($(this).val()));
 				$('#phone_check').text('');
@@ -94,6 +98,6 @@
 				$('#name_check').css('color', 'red');
 			}
 		});
-		
+});	
 		
 		

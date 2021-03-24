@@ -73,7 +73,10 @@ $(document).ready(function () {
 	});
 
 	for(var i=0; i<colorList.length;i++){
-		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
+		if(i==0)
+			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+" active' style='background-color:"+colorList[i].color1+";'></div>"); 
+		else
+			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
 		$(".color-picker").append(colorDiv);
 	}
 });

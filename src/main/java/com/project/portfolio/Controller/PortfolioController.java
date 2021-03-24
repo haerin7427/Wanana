@@ -361,6 +361,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			    JSONArray jArray2 = new JSONArray();
 			    
 			    try {
+			    	System.out.println(content1.length);
 			    	for (int i = 0; i < item_id.length ; i++) {   
 				    	JSONObject ob =new JSONObject();
 				        content=new String[6];
@@ -385,7 +386,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			    }
 			    mav.addObject("data_list", jArray2);
 			}
-		    
 		    JSONArray jArray = new JSONArray();
 		    JSONObject ob =new JSONObject();
 		    ob.put("template_color", template_color);
@@ -600,14 +600,13 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				try {
 	
 		        		JSONObject ob =new JSONObject();
-		        		JSONObject ob2 =new JSONObject();
 		        		ob.put("tem_name", temName);
 		        		ob.put("tem_id", portInfo.getTemplate_id());
 		        		ob.put("port_title", portInfo.getTitle());
 		        		ob.put("port_public", portInfo.getIsPublic());
-		        		ob2.put("template_color", portInfo.getColor());
-		        		ob2.put("template_font", portInfo.getFont());
-		        		template_info.put(ob2);
+		        		ob.put("template_color", portInfo.getColor());
+		        		ob.put("template_font", portInfo.getFont());
+		        		template_info.put(ob);
 			        
 		        	System.out.println(jArrayTem.toString());
 		        }catch(JSONException e){
@@ -691,7 +690,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        }
 				
 				//View로 보내기
-		        
+		        System.out.println(jArrayTem);
 		        mav.addObject("template",template);
 		        mav.addObject("portfolioID",Integer.parseInt(portID));
 		        mav.addObject("portfolioInfo",jArrayTem);

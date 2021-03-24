@@ -666,8 +666,7 @@
 	              }else{
 						//포트폴리오 이름, 공개 여부 form에 입력 
 		              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
-		              $('#select_portfolio_public').val($("select[name=1page_public]").val());
-	
+		              $('#select_portfolio_url').val($("input[name=url]").val());
 		              //form 전송 
 		              $("#1page_myForm").attr("action", "portfolio_two");
 			          $("#1page_myForm").attr("target", "");
@@ -744,6 +743,10 @@
           		}//resultYN == 1 경우 끝
     	  });//미리보기 창 끝
 
+          $('input[name="1page_public"]').on('click', function() {
+      	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
+				$("#select_portfolio_public").val(valueCheck);
+        });
     });//document.ready 
 
     function readURL(input) {
@@ -893,12 +896,12 @@
                     	<input type="hidden" id="select_template_id" name="template_id" value="2" readonly/>
 						<input type="hidden" id="select_template_html" name="template_html" value="template2" readonly/>
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
-						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="" readonly/>
+						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="1" readonly/>
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="" readonly/>
-						
+						<input type="hidden" id="select_template_url" name="url" value="" readonly/>
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->
                         <div class="u-align-left u-container-style u-expanded-width u-grey-15 u-group u-group-13">

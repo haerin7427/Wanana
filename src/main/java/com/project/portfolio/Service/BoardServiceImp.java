@@ -56,4 +56,9 @@ public class BoardServiceImp implements BoardService {
 	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception{
 		boardDAO.updateLike(portfolio_id,user_id,isLike);
 	}
+	
+	@Override
+	public List<String> getInterest(int port_id) throws Exception{
+		return boardDAO.getInterest(port_id);
+	}
 }

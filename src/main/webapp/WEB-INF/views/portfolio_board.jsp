@@ -50,7 +50,7 @@
 	          for(var i = 0; i < port_info.length; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
-			    var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+			    var portImg = $('<div class="boardPortfolio" id="boardPortfolio_'+port_info[i].port_id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
 			    var portTitle = $('<div class="u-blog-control u-post-content u-text u-text-1">'+port_info[i].port_title+'</div> ');
 			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1"><span class="u-meta-date u-meta-icon">'+port_info[i].port_date+'</span></div>');
 			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+port_info[i].port_id+'">');
@@ -59,6 +59,11 @@
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portTitle);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portDate);
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portHidden);
+			    $("#1page_portID_" + port_info[i].port_id).children().append(portIsVerticle);
+			    for(var j=0; j< port_info[i].interestNum; j++){
+					var interestSpan=$('<p>#'+port_info[i].interests[j]+'</p>');
+					$("#boardPortfolio_" + port_info[i].port_id).find(".interests").append(interestSpan);
+				}
 			}
 
 	          var likePort = ${likePort};
@@ -67,7 +72,7 @@
 			    	$(".1page_like1").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
 				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-			    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
 				    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
 				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
@@ -82,7 +87,7 @@
 			    	$(".1page_like2").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
 				    var portDate = $('<div class="u-text-grey-40" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-			    	var portImg = $('<img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg">');
+			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
 			    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
 				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
@@ -96,8 +101,8 @@
 	
             
 		    $('.1page_portImg').on('click', function() {
-		    	var id = $(this).siblings("input[name='1page_portfolioID']").val();
-		    	var isVerticle = $(this).siblings("input[name='1page_portfolioIsVerticle']").val();
+		    	var id = $(this).parent().siblings("input[name='1page_portfolioID']").val();
+		    	var isVerticle = $(this).parent().siblings("input[name='1page_portfolioIsVerticle']").val();
 			    $.ajax({
 					url: "board/portfolioView",
 				 	type:'POST',
@@ -122,6 +127,18 @@
 				});
 				          		
 			    
+			});
+
+			$('.boardPortfolio').on('mouseover', function(){
+				$(this).css("background","rgba(0,0,0,0.5)");
+				$(this).find("img").css("opacity","0.3");
+				$(this).find(".interests").css("display","block");
+				$(this).find(".interests").css("color","white");
+			});
+			$('.boardPortfolio').on('mouseleave', function(){
+				$(this).css("background","");
+				$(this).find("img").css("opacity","1");
+				$(this).find(".interests").css("display","none");
 			});
 	    });
 	    function modal(id) {
@@ -185,7 +202,13 @@
 		.item {
 		  flex: 1;
 		}
-		
+		.interests{
+			z-index:9998;
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+		}
     </style>
     
   </head>
