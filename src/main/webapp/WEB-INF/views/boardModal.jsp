@@ -64,13 +64,13 @@
 			
 				<!-- 포트폴리오주인 -->
 	        	<div class="item" style="padding:15px; display:inline; padding-left:25px;">
-	        		<span><h2 style="display:inline; font-weight:bold;">이주연</h2></span>
+	        		<span><h2 style="display:inline; font-weight:bold;">${sessionScope.Name}</h2></span>
 	        		<span><p style="font-size:23px; display:inline;">님의 포트폴리오</p></span>
 	       	 	</div>
 	        
 		        <div>
 		        	<!-- date -->
-		        	<div style="display:inline; padding-right:20px;"><p style="display:inline;">등록일: <span>2021-02-15</span></p></div>
+		        	<div style="display:inline; padding-right:20px;"><p style="display:inline;">등록일: <span class="regTime"></span></p></div>
 		        
 		         	<!-- x 버튼 -->
 		        	<button id="close_btn" style="border:0; outline:0; cursor:pointer; margin-right:20px;"><p style="font-size:25px; font-weight:bold;">X</p></button>
@@ -79,7 +79,7 @@
         
         
         	<div class="wrap" style="width:100%; position:auto; border:0; margin:0 15px 0 15px;">
-	 			<div style="display:block; margin:0 auto;">
+	 			<div id="1page_preview" style="display:block; margin:0 auto;">
 			 			<!-- <page size="A4" layout="portrait">  -->
 						<page size="A4">
 				     		<jsp:include page="<%=templateURL%>" flush="true"/>
@@ -120,11 +120,14 @@
 		 $(document).ready(function () {
 			var isLike=${checkLike};
 			var likeCnt=${likeCnt};
+			var regDate=${regDate};
 			if(isLike>0){
 				$('.btn').addClass('liked');
 				$('.likeCnt').text(likeCnt);
 			}
 			$('.likeCnt').text(likeCnt);
+			console.log("regDate: "+regDate.regDate);
+			$('.regTime').text(regDate.regDate);
 			var portID=${portfolio_ID};
 			$(".btn-like").click(function(){
 				var cnt=$('.likeCnt').text();

@@ -105,6 +105,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("portfolioView controller!!" );
 		int id=Integer.parseInt(request.getParameter("portfolioID"));
+		String regDate=request.getParameter("regDate");
 		int user_id=(Integer) session.getAttribute("ID");
 		String template_name=portfolioService.getCheckTemplateID(id);
 		List<Data> list=portfolioService.getCheckPortfolio(id);
@@ -147,8 +148,10 @@ public class BoardController {
 		}catch(JSONException e){
 		 	e.printStackTrace();
 		}
-		System.out.println(template_info);
+		JSONObject reg_date =new JSONObject();
+		reg_date.put("regDate", regDate);
 		mav.addObject("data_list", jArray2);
+		mav.addObject("regDate", reg_date);
 		mav.addObject("portfolio_ID",id);
 		mav.addObject("template_info",template_info);
 		mav.addObject("temName",template_name);

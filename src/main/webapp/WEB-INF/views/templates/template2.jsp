@@ -366,6 +366,7 @@
     <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
     
 	<script>
+	$(document).ready(function () {
    		var item= ${data_list};
    		var template_info=${template_info};
    		document.body.style.setProperty("--my-font", template_info[0].template_font);
@@ -402,8 +403,8 @@
 			var newItem=document.createElement('div');
 			newItem.className="item_0"+item[i].item_id;
 			newItem.id="item_"+item[i].item_id+"_"+i;
-			$('#item_'+item[i].item_id).append(newItem);
-			$('#item_'+item[i].item_id).siblings('.small_title').css("display","block");
+			$('#1page_preview #item_'+item[i].item_id).append(newItem);
+			$('#1page_preview #item_'+item[i].item_id).siblings('.small_title').css("display","block");
 			
 			if(item[i].item_id == 1){
 				//파일의 경우
@@ -434,10 +435,10 @@
 				
 				newInput.innerHTML = item[i].content[1];
 				
-				$("#item_"+item[i].item_id+"_"+i).append(newInput);
+				$("#1page_preview #item_"+item[i].item_id+"_"+i).append(newInput);
                 var nameInput=document.createElement('div');
                 nameInput.innerHTML = item[i].content[0];
-                $("#item_"+item[i].item_id+"_"+i).append(nameInput);
+                $("#1page_preview #item_"+item[i].item_id+"_"+i).append(nameInput);
 				
 			    $('.item_'+item[i].item_id+"_"+i+"_"+j).easyPieChart({
 			    	scaleColor: "#ecf0f1",
@@ -457,63 +458,64 @@
 					var newInput=document.createElement('div');
 					newInput.className="item_"+item[i].item_id+"_"+i+"_"+j+ " item_"+item[i].item_id + " item_"+item[i].item_id +"_"+j;
 					newInput.id="item_"+item[i].item_id+"_"+i+"_"+j;
-					$("#item_"+item[i].item_id+"_"+i).append(newInput);
+					$("#1page_preview #item_"+item[i].item_id+"_"+i).append(newInput);
 					
                     if(item[i].item_id == 3){
-                        $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp#</p><p>'+item[i].content[j-1]+'</p>');
+                        $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp#</p><p>'+item[i].content[j-1]+'</p>');
                     }else if(item[i].item_id == 8){
                         if(j==1)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                         else if(j==2)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
                         else if(j==3)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==4)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                     }else if(item[i].item_id == 9){
                         if(j==1)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
                         else if(j==2)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                         else if(j==3)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
                         else if(j==4)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==5)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2">전공.&nbsp</p><p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2">전공.&nbsp</p><p>'+item[i].content[j-1]+'</p>');
                         else if(j==6)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(학점: </p><p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(학점: </p><p>'+item[i].content[j-1]+'</p><p>)</p>');
                     }else if(item[i].item_id == 10){
                         if(j==1)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');
                         else if(j==2)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                         else if(j==3)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>&nbsp~&nbsp</p>');
                         else if(j==4)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==5)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                     }else if(item[i].item_id == 11){
                         if(j==1)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                         else if(j==2)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
                     }else if(item[i].item_id == 12){
                         if(j==1)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                         else if(j==2)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>&nbsp(</p><p>'+item[i].content[j-1]+'</p>');
                         else if(j==3)
-                            $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>|</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
+                            $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>|</p><p>'+item[i].content[j-1]+'</p><p>)</p>');
                     }else
-                        $("#item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                        $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
 					
 				}
 				//i=>한 item에 몇개의 data가 있을 경우, 구분해주기 위해
 				//j=>해당 data의 몇번째 input인지
 			}
 		}//div에 div 넣기 
+	});
     </script>
 
 	

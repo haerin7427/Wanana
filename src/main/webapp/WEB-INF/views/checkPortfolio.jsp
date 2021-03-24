@@ -144,7 +144,7 @@
 				    	</div>	
 			    	</div>	
 	 			</div>
-	 			<div id="printSection" style="float:left; margin-right: 35px; padding-left: 22px;">
+	 			<div id="printSection 1page_preview" style="float:left; margin-right: 35px; padding-left: 22px;">
 	 			 <!-- <page size="A4" layout="portrait">  -->
 				 <page size="A4">
 		     		<jsp:include page="<%=templateURL%>" flush="true"/>
