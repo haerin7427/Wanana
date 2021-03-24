@@ -81,9 +81,12 @@
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>
 					</li>
+					<c:set var="admin" value="${admin}" />
+					<c:if test="${admin == 1}">
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
 					</li>
+					</c:if>
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
@@ -100,9 +103,12 @@
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>	
 				</li>
+				<c:set var="admin" value="${admin }" />
+				<c:if test="${admin == 1}">
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
 				</li>
+				</c:if>
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
 				</li>
