@@ -254,117 +254,6 @@
 		}
 </style>
 
-
-</head>
-<body >
-
-	<div class="wrap">
-	
-		<!-- 왼쪽 사이드 바  -->
-		<div class="aside">
-			<div id="mypic">
-				<img class="imageicon" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="100%" alt="default_img&quot;" data-image-width="166" data-image-height="195">
-			</div>
-			
-			<div style="display:block;" class="aboutme" id="item_2">
-				<h4 style="color:white; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
-				
-			</div>
-			
-			<div id="contact">
-                <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="15%;" alt="default_img">
-                <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
-                
-                <div style="padding:calc(0.467*var(--my-fontSize));">
-                    <div class="phone">${phone}</div>
-                    <div class="email">${email}</div>
-                    <div class="github" id="item_5"></div>
-                    <div class="blog" id="item_6"></div>
-                </div>
-
-			</div>
-		</div>
-		
-		<!-- 메인 섹션 -->
-		<div class="container">
-		
-			<!-- 메인 헤더 (희망 분야)  -->
-			<div class="header">
-			<!-- 희망 분야  -->
-				<div class="interest" style="width:90%; padding:calc(0.533*var(--my-fontSize));">
-					<h4 class="interest_title" style="float:left"> 희망분야</h4>
-					<div class="interests" id="item_4" style="position:relative; top:calc(0.6*var(--my-fontSize)); color:white;"></div>
-				</div>
-				<div class="name" id="item_1">
-					<h1 style="font-weight:800; padding-top: calc(1.6*var(--my-fontSize)); margin: auto 0;font-size:calc(3.5*var(--my-fontSize)); ">${Name}</h1>
-				</div>
-			</div>
-
-			 <!-- 포트폴리오 바디 -->
-			<div class="main">
-
-				<!-- 왼쪽 바디 -->
-				<div class="main_column left" id="leftBody" style="padding: calc(1*var(--my-fontSize));">
-				
-					<div id="education" style="margin-bottom:calc(0.66*var(--my-fontSize));">
-						<h5 class="small_title" style="font-weight:700; color:#474747;">학력</h5>
-						<div class="educations" id="item_9" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
-                    </div>
-                    
-					<div id="strength" >
-						<h5 class="small_title" style="font-weight:700; color:#474747;">강점</h5>
-						<div class="strengths" id="item_3"></div>
-					</div>
-					
-					<!--div2_4(자격증/수상경력)-->
-                    <div class="cANDa" >
-                        <!--자격증-->
-                        <div class="certificate">
-                            <h4 class="small_title" style="font-weight:700; color:#474747;">자격증</h4>
-                            <div class="certificates" id="item_11"></div>
-                        </div>
-                        
-                        <!--수상경력-->
-                        <div class="award">
-                            <h4 class="small_title" style="font-weight:700; color:#474747;">수상경력</h4>
-                            <div class="awards" id="item_12"></div>
-                        </div>
-                    </div>
-
-					<!--나의 활동-->
-					<div id="activities">
-						<h5 class="small_title" style="font-weight:700; color:#474747;">나의 활동</h5>
-						<div class="activities" id="item_10" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
-                    </div>
-                    
-                </div>
-                
-                <div class="vl" style="border-left: 1px solid #d9d9d9; float:left; height: 95%;"></div>
-
-
-				<!-- 오른쪽바디 -->
-				<div class="main_column right">
-					<div id="tec" style="margin-bottom:calc(0.66*var(--my-fontSize)); ">
-						<h6 class="small_title" style="font-weight:700; color:#474747;">테크닉</h6>
-						<div class="tecs" id="item_7" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
-					</div>
-					
-					<div id="coding_exp">
-						<div id="exps">
-							<h6 class="small_title" style="font-weight:700; color:#474747;">개발경험</h6>
-							<div class="exps" id="item_8" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
-		</div>
-	</div>
-
-<!--doughnut chart-->
-    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-    
 	<script>
 	$(document).ready(function () {
    		var item= ${data_list};
@@ -518,6 +407,118 @@
 	});
     </script>
 
+</head>
+<body >
+
+	<div class="wrap">
 	
+		<!-- 왼쪽 사이드 바  -->
+		<div class="aside">
+			<div id="mypic">
+				<img class="imageicon" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="100%" alt="default_img&quot;" data-image-width="166" data-image-height="195">
+			</div>
+			
+			<div style="display:block;" class="aboutme" id="item_2">
+				<h4 style="color:white; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
+				
+			</div>
+			
+			<div id="contact">
+                <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="15%;" alt="default_img">
+                <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
+                
+                <div style="padding:calc(0.467*var(--my-fontSize));">
+                    <div class="phone">${phone}</div>
+                    <div class="email">${email}</div>
+                    <div class="github" id="item_5"></div>
+                    <div class="blog" id="item_6"></div>
+                </div>
+
+			</div>
+		</div>
+		
+		<!-- 메인 섹션 -->
+		<div class="container">
+		
+			<!-- 메인 헤더 (희망 분야)  -->
+			<div class="header">
+			<!-- 희망 분야  -->
+				<div class="interest" style="width:90%; padding:calc(0.533*var(--my-fontSize));">
+					<h4 class="interest_title" style="float:left"> 희망분야</h4>
+					<div class="interests" id="item_4" style="position:relative; top:calc(0.6*var(--my-fontSize)); color:white;"></div>
+				</div>
+				<div class="name" id="item_1">
+					<h1 style="font-weight:800; padding-top: calc(1.6*var(--my-fontSize)); margin: auto 0;font-size:calc(3.5*var(--my-fontSize)); ">${Name}</h1>
+				</div>
+			</div>
+
+			 <!-- 포트폴리오 바디 -->
+			<div class="main">
+
+				<!-- 왼쪽 바디 -->
+				<div class="main_column left" id="leftBody" style="padding: calc(1*var(--my-fontSize));">
+				
+					<div id="education" style="margin-bottom:calc(0.66*var(--my-fontSize));">
+						<h5 class="small_title" style="font-weight:700; color:#474747;">학력</h5>
+						<div class="educations" id="item_9" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
+                    </div>
+                    
+					<div id="strength" >
+						<h5 class="small_title" style="font-weight:700; color:#474747;">강점</h5>
+						<div class="strengths" id="item_3"></div>
+					</div>
+					
+					<!--div2_4(자격증/수상경력)-->
+                    <div class="cANDa" >
+                        <!--자격증-->
+                        <div class="certificate">
+                            <h4 class="small_title" style="font-weight:700; color:#474747;">자격증</h4>
+                            <div class="certificates" id="item_11"></div>
+                        </div>
+                        
+                        <!--수상경력-->
+                        <div class="award">
+                            <h4 class="small_title" style="font-weight:700; color:#474747;">수상경력</h4>
+                            <div class="awards" id="item_12"></div>
+                        </div>
+                    </div>
+
+					<!--나의 활동-->
+					<div id="activities">
+						<h5 class="small_title" style="font-weight:700; color:#474747;">나의 활동</h5>
+						<div class="activities" id="item_10" style="padding: 0 calc(2*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="vl" style="border-left: 1px solid #d9d9d9; float:left; height: 95%;"></div>
+
+
+				<!-- 오른쪽바디 -->
+				<div class="main_column right">
+					<div id="tec" style="margin-bottom:calc(0.66*var(--my-fontSize)); ">
+						<h6 class="small_title" style="font-weight:700; color:#474747;">테크닉</h6>
+						<div class="tecs" id="item_7" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
+					</div>
+					
+					<div id="coding_exp">
+						<div id="exps">
+							<h6 class="small_title" style="font-weight:700; color:#474747;">개발경험</h6>
+							<div class="exps" id="item_8" style="padding: 0 calc(0.33*var(--my-fontSize)) 0 calc(0.66*var(--my-fontSize));"></div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+<!--doughnut chart-->
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
+   
+
 </body>
+ 
+	 <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
 </html>

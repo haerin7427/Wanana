@@ -155,7 +155,7 @@
     <!-- port_id에 맞는 portfolio 정보 가져오기  -->
     <select id="temID" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
     	<![CDATA[
-    		SELECT title, isPublic, template_id,color,font,url FROM portfolio where id = #{portID};
+    		SELECT * FROM portfolio where id = #{portID};
 		 ]]>
     </select>
     
@@ -246,4 +246,35 @@
     <select id="getInterest" parameterType="int" resultType="java.lang.String">
     	 SELECT content1 FROM detail WHERE portfolio_id=#{port_id} AND item_id=4;
     </select>
+    
+    <!-- User 정보 가져오기 (한페이지용 데이터 들고 오기)  (페이징 + 검색 추가)-->
+    <select id="getAllUser"  resultType="com.project.login.DTO.User">
+ 
+         SELECT * FROM users 
+         <include refid="search_userManage"/> 
+         LIMIT #{pageStart}, #{perPageNum};
+   </select> 
+   
+   <select id="getUserPortInfo" parameterType="int"  resultType="int">
+ 
+         SELECT count(*) FROM portfolio WHERE user_id=#{user_id};
+   </select> 
+   <!-- 검색 대한 게시글 수 (admin)-->
+   <select id="countUserInfo" resultType="int">
+         SELECT count(*) FROM users 
+         <include refid="search_userManage"/> 
+   </select>
+   <!-- MyBatis 동적 sql -->
+   <sql id="search_userManage">
+      <choose>
+         <when test="searchType == 'all'">
+            AND (name LIKE CONCAT('%', #{keyword}, '%')
+            OR email_address LIKE CONCAT('%', #{keyword}, '%'))
+         </when>
+         <when test="searchType == 'admin'">
+        		AND admin = #{keyword}
+         </when>
+      </choose>
+   </sql>
+   
 </mapper>

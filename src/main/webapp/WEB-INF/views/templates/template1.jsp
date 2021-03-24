@@ -315,147 +315,7 @@
 			width: 100%;
 		}
 	</style>
-	
-    
-</head>
-<body>
-	<div class="wrap">
-    <!--전체 body-->
-    <div class="container">
-        <!--div1(header)-->
-        <div class="header">
-            <!--div1_1(사진)-->
-            <div class="header_column side mypic itemBox_1" id="item_1"  style="width:15%;">
-            	<img class="pic" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="109%" alt="<%=request.getContextPath()%>/resources/images/default_userpic.png">
-            </div>
-            
-            <!--div1_2(이름+자기소개)-->
-            <div class="header_column middle aboutme"  style="width: 62.5%; display:table-cell; margin:0 1.67%; padding-top:0.89%;">
-                <!--이름-->
-                <div class="name" style="margin-bottom:0.97%;">
-                	<div class="name1_content1" style="font-size:calc(3.5*var(--my-fontSize)); color:white; font-weight:bold; display:inline;">
-	                  ${Name}
-	                </div>
-		            <!--div2_1(희망분야)-->
-		            <div class="itemBox_4" style="display:inline; color:white; margin: 0 1.97%; display: inline-block;">
-						<h4 class="interest_title" style="display:inline; color:#efefef; font-size:calc(1.3*var(--my-fontSize)); margin-bottom:10%">#희망분야</h4>
-						<div class="interests" id="item_4"></div>
-					</div>
-                </div>
-
-                <!--자기소개-->
-                <div class="itemBox_2" style="display:none; position:relative; top:-2.8%; ">
-                	<h4 style="color:#F9CA03; margin-bottom:0.6%; font-size:calc(1.3*var(--my-fontSize));">ABOUT ME</h4>
-                	<div id="item_2"></div>
-                </div>
-            </div>
-            
-            <!--div1_3(contact)-->
-            <div class="header_column side contact" style="width:25.56%; padding:1.7%; font-size: calc(1*var(--my-fontSize)); color: white;background-color:var(--my-color, #efefef); border-radius:15px;">
-            	<img class="pic" style="background-color:white; position:relative; top:2%;"src="<%=request.getContextPath()%>/resources/images/phone.png" width="15%" alt="default_img">
-            	<h3 style="line-height:2%; display:inline; padding-left:2%; font-size:calc(2*var(--my-fontSize));">CONTACT</h3>
-            	<ul class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:5.7%;">
-	                <!--핸드폰 번호-->
-	                <li class="phone">
-	               		<div class="phone1">
-	                		<div class="phone1_content1" style="padding:1.6% 0;">${phone}</div>
-	                	</div>
-	                </li>
-	                	
-	                <!--이메일-->
-					<li class="email"> 
-						<div class="email1">
-							<div class="email1_content1" style="padding:1.6% 0;">${email}</div>
-						</div>
-					</li>
-					<!--깃허브-->
-					<li class="itemBox_5" id="item_5">
-					</li>
-					<!--블로그-->
-					<li class="itemBox_6" id="item_6">
-						
-					</li>
-				</ul>
-            </div> 
-        </div>
-        
-        <div class="main">
-
-	        <!--div2(left box)-->
-	        <div class="main_column left" >
-				
-				<!--div2_2(학력)-->
-				<div class="itemBox_9 itemBoxCSS">
-					<h6 class="small_title" style="font-weight:700;">학력</h6>
-					<div class="title_line"></div>
-					<div class="educations" id="item_9"></div>
-				</div>
-				
-				<!--div2_3(강점)-->
-				<div class="itemBox_3 itemBoxCSS" >
-					<h6 class="small_title" style="font-weight:700">강점</h6>
-					<div class="title_line"></div>
-					<div class="strengths" id="item_3"></div>
-				</div>
-				
-				<!--div2_4(자격증/수상경력)-->
-				<div class="cANDa" >
-					<!--자격증-->
-					<div class="itemBox_11 itemBoxCSS" >
-						<h6 class="small_title">자격증</h6>
-						<div class="title_line"></div>
-						<div class="certificates" id="item_11"></div>
-					</div>
-					
-					<!--수상경력-->
-					<div class="itemBox_12 itemBoxCSS" >
-						<h6 class="small_title" style="font-weight:700">수상경력</h6>
-						<div class="title_line"></div>
-						<div class="awards" id="item_12"></div>
-					</div>
-				</div>
-					
-				<!--div2_5(활동)-->	
-				<div class="itemBox_10 itemBoxCSS" >
-					<h6 class="small_title" style="font-weight:700">나의 활동</h6>
-					<div class="title_line"></div>
-					<div class="activities" id="item_10"></div>
-				</div>
-	        </div>
-	        
-	        <div class="vl" style="border-left: 1px solid black; float:left; height: 100%;"></div>
-	         
-			<!--div3(right box)-->
-	        <div class="main_column right">
-	           <!--div3_1(테크닉)-->	
-	           <div class="itemBox_7" id="tec" >
-					<h6 class="small_title" style="font-weight:700">테크닉</h6>
-					<div class="title_line"></div>
-					<div class="tecs" id="item_7">
-					
-					</div>
-				</div>
-				
-				<!--div3_2(개발경험)-->
-				<div id="coding_exp">	
-					<div id="exps" class="itemBox_8" >
-						<h6 class="small_title" style="font-weight:700">개발경험</h6>
-						<div class="title_line"></div>
-						<div class="exps" id="item_8"></div>
-					</div>
-				</div>
-	        </div>
-        </div>
-    <!--/ 전체 body -->
-    </div> 
-    
-	</div>
-</body>
-
-    
-	<!--doughnut chart-->
-    <script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
-<script>
+	<script>
 $(document).ready(function () {
    		var item= ${data_list};
    		var template_info=${template_info};
@@ -618,4 +478,145 @@ $(document).ready(function () {
 		}//div에 div 넣기 
 });
     </script>
+    
+    
+</head>
+<body>
+	<div class="wrap">
+    <!--전체 body-->
+    <div class="container">
+        <!--div1(header)-->
+        <div class="header">
+            <!--div1_1(사진)-->
+            <div class="header_column side mypic itemBox_1" id="item_1"  style="width:15%;">
+            	<img class="pic" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="109%" alt="<%=request.getContextPath()%>/resources/images/default_userpic.png">
+            </div>
+            
+            <!--div1_2(이름+자기소개)-->
+            <div class="header_column middle aboutme"  style="width: 62.5%; display:table-cell; margin:0 1.67%; padding-top:0.89%;">
+                <!--이름-->
+                <div class="name" style="margin-bottom:0.97%;">
+                	<div class="name1_content1" style="font-size:calc(3.5*var(--my-fontSize)); color:white; font-weight:bold; display:inline;">
+	                  ${Name}
+	                </div>
+		            <!--div2_1(희망분야)-->
+		            <div class="itemBox_4" style="display:inline; color:white; margin: 0 1.97%; display: inline-block;">
+						<h4 class="interest_title" style="display:inline; color:#efefef; font-size:calc(1.3*var(--my-fontSize)); margin-bottom:10%">#희망분야</h4>
+						<div class="interests" id="item_4"></div>
+					</div>
+                </div>
+
+                <!--자기소개-->
+                <div class="itemBox_2" style="display:none; position:relative; top:-2.8%; ">
+                	<h4 style="color:#F9CA03; margin-bottom:0.6%; font-size:calc(1.3*var(--my-fontSize));">ABOUT ME</h4>
+                	<div id="item_2"></div>
+                </div>
+            </div>
+            
+            <!--div1_3(contact)-->
+            <div class="header_column side contact" style="width:25.56%; padding:1.7%; font-size: calc(1*var(--my-fontSize)); color: white;background-color:var(--my-color, #efefef); border-radius:15px;">
+            	<img class="pic" style="background-color:white; position:relative; top:2%;"src="<%=request.getContextPath()%>/resources/images/phone.png" width="15%" alt="default_img">
+            	<h3 style="line-height:2%; display:inline; padding-left:2%; font-size:calc(2*var(--my-fontSize));">CONTACT</h3>
+            	<ul class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:5.7%;">
+	                <!--핸드폰 번호-->
+	                <li class="phone">
+	               		<div class="phone1">
+	                		<div class="phone1_content1" style="padding:1.6% 0;">${phone}</div>
+	                	</div>
+	                </li>
+	                	
+	                <!--이메일-->
+					<li class="email"> 
+						<div class="email1">
+							<div class="email1_content1" style="padding:1.6% 0;">${email}</div>
+						</div>
+					</li>
+					<!--깃허브-->
+					<li class="itemBox_5" id="item_5">
+					</li>
+					<!--블로그-->
+					<li class="itemBox_6" id="item_6">
+						
+					</li>
+				</ul>
+            </div> 
+        </div>
+        
+        <div class="main">
+
+	        <!--div2(left box)-->
+	        <div class="main_column left" >
+				
+				<!--div2_2(학력)-->
+				<div class="itemBox_9 itemBoxCSS">
+					<h6 class="small_title" style="font-weight:700;">학력</h6>
+					<div class="title_line"></div>
+					<div class="educations" id="item_9"></div>
+				</div>
+				
+				<!--div2_3(강점)-->
+				<div class="itemBox_3 itemBoxCSS" >
+					<h6 class="small_title" style="font-weight:700">강점</h6>
+					<div class="title_line"></div>
+					<div class="strengths" id="item_3"></div>
+				</div>
+				
+				<!--div2_4(자격증/수상경력)-->
+				<div class="cANDa" >
+					<!--자격증-->
+					<div class="itemBox_11 itemBoxCSS" >
+						<h6 class="small_title">자격증</h6>
+						<div class="title_line"></div>
+						<div class="certificates" id="item_11"></div>
+					</div>
+					
+					<!--수상경력-->
+					<div class="itemBox_12 itemBoxCSS" >
+						<h6 class="small_title" style="font-weight:700">수상경력</h6>
+						<div class="title_line"></div>
+						<div class="awards" id="item_12"></div>
+					</div>
+				</div>
+					
+				<!--div2_5(활동)-->	
+				<div class="itemBox_10 itemBoxCSS" >
+					<h6 class="small_title" style="font-weight:700">나의 활동</h6>
+					<div class="title_line"></div>
+					<div class="activities" id="item_10"></div>
+				</div>
+	        </div>
+	        
+	        <div class="vl" style="border-left: 1px solid black; float:left; height: 100%;"></div>
+	         
+			<!--div3(right box)-->
+	        <div class="main_column right">
+	           <!--div3_1(테크닉)-->	
+	           <div class="itemBox_7" id="tec" >
+					<h6 class="small_title" style="font-weight:700">테크닉</h6>
+					<div class="title_line"></div>
+					<div class="tecs" id="item_7">
+					
+					</div>
+				</div>
+				
+				<!--div3_2(개발경험)-->
+				<div id="coding_exp">	
+					<div id="exps" class="itemBox_8" >
+						<h6 class="small_title" style="font-weight:700">개발경험</h6>
+						<div class="title_line"></div>
+						<div class="exps" id="item_8"></div>
+					</div>
+				</div>
+	        </div>
+        </div>
+    <!--/ 전체 body -->
+    </div> 
+    
+	</div>
+</body>
+
+    
+	<!--doughnut chart-->
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
+
 </html>
