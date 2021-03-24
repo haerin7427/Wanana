@@ -114,11 +114,22 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			}catch(JSONException e){
 			 	e.printStackTrace();
 			}
-			System.out.println(template_info);
+			String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+			String portURL;
+			if(portInfo.getUrl()!=null)
+				portURL=rootPath+"/portfolioView/"+portInfo.getUrl();
+			else {
+				portURL="";
+			}
+			
+			ObjectMapper mapper=new ObjectMapper();
+			mav.addObject("portfolioUrl",mapper.writeValueAsString(portURL));
+			System.out.println(portURL);
 			System.out.println(jArray2);
 			mav.addObject("data_list", jArray2);
 			mav.addObject("temName", template_name);
 			mav.addObject("portfolio_ID",portfolio_ID);
+			
 			mav.addObject("template_info",template_info);
 			mav.setViewName("checkPortfolio");
 			
@@ -568,7 +579,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("portfolio_id",portfolio_id);
 		    redirectAttr.addFlashAttribute("template_color",template_color);
 		    redirectAttr.addFlashAttribute("template_font",template_font);
-		    
+		    redirectAttr.addFlashAttribute("portURL",port_url);
 			return new ModelAndView("redirect:/call_data");
 		}
 		
@@ -606,6 +617,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        		ob.put("port_public", portInfo.getIsPublic());
 		        		ob.put("template_color", portInfo.getColor());
 		        		ob.put("template_font", portInfo.getFont());
+		        		ob.put("portfolio_url", portInfo.getUrl());
 		        		template_info.put(ob);
 			        
 		        	System.out.println(jArrayTem.toString());
@@ -728,6 +740,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    String template_color  = request.getParameter("template_color");
 		    String template_font  = request.getParameter("template_font");
 		    
+		    String port_url=request.getParameter("portfolio_url");
 		    int portfolio_id = Integer.parseInt(ex_portID);
 		    
 		    
@@ -842,7 +855,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("portfolio_id",portfolio_id);
 		    redirectAttr.addFlashAttribute("template_color",template_color);
 		    redirectAttr.addFlashAttribute("template_font",template_font);
-		    
+		    redirectAttr.addFlashAttribute("portURL",port_url);
 			return new ModelAndView("redirect:/call_data");
 		}
 		
@@ -856,6 +869,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		int template_id=0;
 		String template_color="#000000";
 		String template_font="Times New Roman";
+		String portURL="";
 			
 		Map<String,?> redirectMap = RequestContextUtils.getInputFlashMap(request);
 		if(redirectMap != null) {
@@ -864,6 +878,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			portfolio_id= (Integer)redirectMap.get("portfolio_id");
 			template_color= (String)redirectMap.get("template_color");
 			template_font= (String)redirectMap.get("template_font");
+			portURL=(String)redirectMap.get("portURL");
 		}
 		System.out.println("step7 : portfolio id: "+portfolio_id);
 					
@@ -906,12 +921,24 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	    ob.put("template_fontSize", "15px");
 	    jArray.put(ob);
 	    
+
+		String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+		String port_url;
+		if(portURL!=null)
+			port_url=rootPath+"/portfolioView/"+portURL;
+		else {
+			port_url="";
+		}
+		
+		ObjectMapper mapper=new ObjectMapper();
+		mav.addObject("portfolioUrl",mapper.writeValueAsString(port_url));
 	
 	    //보여주기
 		mav.addObject("temName", template_name);
+		mav.addObject("portfolio_ID", portfolio_id);
 		mav.addObject("data_list", jArray2);
 		mav.addObject("template_info", jArray);
-		mav.setViewName("portfolio_finish1");
+		mav.setViewName("checkPortfolio");
 		
 		System.out.println("step7 clear! ");
 		return mav;

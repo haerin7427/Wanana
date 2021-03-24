@@ -28,8 +28,9 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
 
-      <!--doughnut chart-->
-	<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+     
+ <!--doughnut chart-->
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js?ver=1"></script>
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- 한글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -52,6 +53,120 @@
 			border-radius:10px;
 		}
     </style>
+      
+    <script>
+$(document).ready(function(){
+  
+  	//경로 구하는 법 
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+	};
+
+	var portURL = ${portfolioUrl};
+/* 	var whole_addr = $(location).attr('href');
+   	var addr_slice = whole_addr.split('/');
+   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/portfolioView/";
+ */
+  $(".portURL").text(portURL);
+	$("input[name='portURL']").val(portURL);
+
+	$('#copyB').click(function(){
+		$(this).siblings("div").find("#portURL").attr("type","text");
+		$(this).siblings("div").find("#portURL").select();
+		document.execCommand('copy');
+		$(this).siblings("div").find("#portURL").attr("type","hidden");
+		
+		alert('URL 주소가 복사 되었습니다');	
+
+		});	    
+});//document ready end
+
+	//session 정보 가져오기 
+	function sessionChecking() {
+		var check_sessionID="";
+		$.ajax({ 
+		      url : '<%=request.getContextPath()%>/sessionCheck',
+		  	  type : "POST",
+		  	  dataType : 'json',
+		  	  async: false,
+		  	  success: function(data){
+		  		
+		  		console.log("세션 확인 성공");
+		  		check_sessionID=data;
+		  	  },error:function(jqXHR, textStatus, errorThrown){
+	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+	        }
+		 });
+	
+		if(check_sessionID == null || check_sessionID == ""){
+	    	//session 값이 없을 시 
+	    	console.log("session end");
+	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
+	    	location.href = "login";
+	    	return 0;
+		}else
+			return 1;
+	}
+	//session 만료 확인
+	sessionChecking();
+function printB() {
+		var resultYN = sessionChecking();
+	if(resultYN == 1){
+		 	var initBody = document.body.innerHTML;
+		 	var g_oBeforeBody = document.querySelector('.printSection').innerHTML;
+		 	html2canvas(document.querySelector(".printSection"),{scrollY: -window.scrollY, 
+		 	   scale: 1}).then(canvas => {  
+		 	    var dataURL = canvas.toDataURL();
+		 	    var width = canvas.width;
+		 	    var printWindow = window.open("");
+		 	   var data=document.querySelector(".printSection");
+		       var divHeight = data.clientHeight
+		       var divWidth = data.clientWidth
+		       var ratio = divHeight / divWidth;
+		       var height = ratio * width;
+		       
+		 	    $(printWindow.document.body)
+		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "'></img>")
+		 	      .ready(function() {
+		 	      printWindow.focus();
+		 	      printWindow.print();
+		 	      printWindow.close();
+		 	    });
+		 	  });
+             /* window.onbeforeprint = function(){
+                document.body.innerHTML = g_oBeforeBody;
+            }
+            window.onafterprint = function(){
+                document.body.innerHTML = initBody;
+            } 
+            setTimeout(function() {
+	            window.print(); 
+	            window.close();
+            }, 1000);  */
+	 }
+       }
+function deleteB() {
+			var resultYN = sessionChecking();
+			
+			if(resultYN == 1){
+			if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+			   		     document.deleteForm.submit();
+			}else{   //취소
+			   		     return false;
+			}
+	   		 }
+    }
+function editB() {
+		var resultYN = sessionChecking();
+			
+			if(resultYN == 1){
+	   	  		$("#deleteForm").attr("action","editPortfolio");
+			$("#deleteForm").submit();
+			}
+	}//edit 버튼
+	   		
+</script>
     
   </head>
 
@@ -133,10 +248,10 @@
 	 			<div class="table-content" style="padding:0 35px 0 26px;">
 	 				<div class="item" style="float:left; height:97px;">
 	 					<!-- 포트폴리오 이름넣기 -->
-		 				<h4 style="line-height: 10px; font-weight:bold;">해린이의 포트폴리오</h4>
+		 				<h4 style="line-height: 10px; font-weight:bold;">${sessionScope.Name}님의 포트폴리오</h4>
 		 				<!-- 포트폴리오 url넣기 -->
-		 				<button style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
-		 				<div style="text-decoration:underline; display:inline;">http://walab.handong.edu/wanana/fdjshfj3849</div>
+		 				<button id="copyB" style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
+		 				<div style="text-decoration:underline; display:inline;"><span class="portURL"></span><input name="portURL" id="portURL" style="border:none;" type="hidden" value="" readonly></div>
 	 				</div>
 	 				<div id="button_wrap" style="float:left; padding-top:10px;">
 						<div style="flex-direction:row; display:inline;" >
@@ -144,15 +259,16 @@
 					    	<button type="button" class="top_btn edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
 					    	<button type="button" class="top_btn delete" name="delete" id="deleteB" onclick="javascript:deleteB();">삭제 </button>
 					    	<form id="deleteForm" name="deleteForm" class="deleteForm"  action="deletePortfolio" method="POST">
-					    			<input type="hidden" id="select_portID" name="temName" value="${temName}"/>
+					    			<input type="hidden" id="select_temName" name="temName" value="${temName}"/>
 									<input type="hidden" id="select_portID" name="select_portID" value="${portfolio_ID}"/>
 							</form>
 				    	</div>	
 			    	</div>	
 	 			</div>
-	 			<div id="printSection 1page_preview" style="float:left; margin-right: 35px; padding-left: 22px;">
+	 			<div class="printSection" id="1page_preview" style="float:left; margin-right: 35px; padding-left: 22px;">
 	 			 <!-- <page size="A4" layout="portrait">  -->
 				 <page size="A4">
+				 
 		     		<jsp:include page="<%=templateURL%>" flush="true"/>
 		     	</page>
 				</div>
@@ -164,122 +280,7 @@
         <p class="u-custom-font u-small-text u-text u-text-variant u-text-1">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b>
         </p>
       </div></footer>
-    <script>
-$(document).ready(function(){
-  
-  	//경로 구하는 법 
-	function getContextPath() {
-	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
-	};
+    
 
-	var portURL = ${template_info};
-	var whole_addr = $(location).attr('href');
-   	var addr_slice = whole_addr.split('/');
-   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/portfolioView/";
-
-	$("#urlAddress").val(addr+portURL[0].port_url );
-
-	$('#copyB').click(function(){
- 	   
-		$(this).siblings("#urlAddress").attr("type","text");
-		$(this).siblings("#urlAddress").select();
-		document.execCommand('copy');
-		$(this).siblings("#urlAddress").attr("type","hidden");
-
-		
-		alert('URL 주소가 복사 되었습니다');	
-
-		});	    
-});//document ready end
-
-	//session 정보 가져오기 
-	function sessionChecking() {
-		var check_sessionID="";
-		$.ajax({ 
-		      url : '<%=request.getContextPath()%>/sessionCheck',
-		  	  type : "POST",
-		  	  dataType : 'json',
-		  	  async: false,
-		  	  success: function(data){
-		  		
-		  		console.log("세션 확인 성공");
-		  		check_sessionID=data;
-		  	  },error:function(jqXHR, textStatus, errorThrown){
-	            console.log("세션 에러 발생~~ \n" + textStatus + " : " + errorThrown);
-	        }
-		 });
-	
-		if(check_sessionID == null || check_sessionID == ""){
-	    	//session 값이 없을 시 
-	    	console.log("session end");
-	    	alert("세션이 만료되었습니다. 다시 로그인해주세요:)");
-	    	location.href = "login";
-	    	return 0;
-		}else
-			return 1;
-	}
-	//session 만료 확인
-	sessionChecking();
-function printB() {
-		var resultYN = sessionChecking();
-	if(resultYN == 1){
-		 	var initBody = document.body.innerHTML;
-		 	var g_oBeforeBody = document.getElementById('printSection').innerHTML;
-		 	html2canvas(document.querySelector("#printSection"),{scrollY: -window.scrollY, 
-		 	   scale: 1}).then(canvas => {  
-		 	    var dataURL = canvas.toDataURL();
-		 	    var width = canvas.width;
-		 	    var printWindow = window.open("");
-		 	   var data=document.querySelector("#printSection");
-		       var divHeight = data.clientHeight
-		       var divWidth = data.clientWidth
-		       var ratio = divHeight / divWidth;
-		       var height = ratio * width;
-		       
-		 	    $(printWindow.document.body)
-		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "'></img>")
-		 	      .ready(function() {
-		 	      printWindow.focus();
-		 	      printWindow.print();
-		 	      printWindow.close();
-		 	    });
-		 	  });
-             /* window.onbeforeprint = function(){
-                document.body.innerHTML = g_oBeforeBody;
-            }
-            window.onafterprint = function(){
-                document.body.innerHTML = initBody;
-            } 
-            setTimeout(function() {
-	            window.print(); 
-	            window.close();
-            }, 1000);  */
-	 }
-       }
-function deleteB() {
-			var resultYN = sessionChecking();
-			
-			if(resultYN == 1){
-			if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-			   		     document.deleteForm.submit();
-			}else{   //취소
-			   		     return false;
-			}
-	   		 }
-    }
-function editB() {
-		var resultYN = sessionChecking();
-			
-			if(resultYN == 1){
-	   	  		$("#deleteForm").attr("action","editPortfolio");
-			$("#deleteForm").submit();
-			}
-	}//edit 버튼
-
-
-		   
-	   		
-</script>
 </body>
 </html>
