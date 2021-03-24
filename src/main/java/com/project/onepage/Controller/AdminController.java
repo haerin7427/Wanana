@@ -5,6 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +25,7 @@ public class AdminController {
 	@Autowired
 	private AdminDAO adminDao;
 	
-	@RequestMapping(value = "/admin/manage") 
+	@RequestMapping(value = "/manage") 
 	public ModelAndView managePage (HttpSession session, HttpServletRequest request, SearchCriteria searchCRI) throws Exception {
 		System.out.println("<managePage> controller");
 		
@@ -38,8 +41,24 @@ public class AdminController {
 		int count = adminDao.countUserInfo(searchCRI.getSearchType(), searchCRI.getKeyword());
 		System.out.println("count : " + count);
 		
-		ObjectMapper mapper=new ObjectMapper();
-		String jArray=mapper.writeValueAsString(userData);
+		JSONArray jArray = new JSONArray();
+	    
+	    try {
+	    	JSONObject ob;
+	    	int portCount=0;
+	    	for(int i=0; i<userData.size();i++) {
+	    		ob =new JSONObject();
+	    		ob.put("id", userData.get(i).getId());
+	    		ob.put("name", userData.get(i).getName());
+	    		ob.put("phone", userData.get(i).getPhone_number());
+	    		ob.put("email", userData.get(i).getEmail_address());
+	    		portCount=adminDao.getUserPortInfo(userData.get(i).getId());
+	    		ob.put("portCount", portCount);
+	    		jArray.put(ob);
+	    	}
+	    }catch(JSONException e){
+		 	e.printStackTrace();
+		}
 		
 		PageMaker pageMaker=new PageMaker();
 		System.out.println(searchCRI);
@@ -49,7 +68,7 @@ public class AdminController {
 		int pageNum = searchCRI.getPage(); //현재 페이지 number
 		int perPageNum = searchCRI.getPerPageNum(); //현재 페이지 number
 		
-	
+	    ObjectMapper mapper=new ObjectMapper();
 		String searchOptionView = mapper.writeValueAsString(searchCRI.getSearchType());
 		String keywordView = mapper.writeValueAsString(searchCRI.getKeyword());
 		

@@ -1030,6 +1030,5 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		return mav;
 		
 	}
-	
 
 }

@@ -42,7 +42,10 @@
 		.item {
 		  flex: 1;
 		}
-		
+		#moreContent {
+	margin-right: auto;
+	margin-left: auto;
+}
 		body{
 			background: #f5f5f5;
 		}
@@ -102,8 +105,72 @@
 			text-align: justify;
 		}
 		
-		
     </style>
+    
+    <script type="text/javascript">
+
+	 $(document).ready(function(){
+		 
+		 var UserInfo = ${userData};
+		 var page = ${pageN} -1;
+
+		 var searchOption = ${searchOptionView};
+		 var keyword = ${keywordView};
+
+		 for(var i = 0; i < UserInfo.length;i++){
+			 var no = ( page * ${perPageN}) + i+1;
+			 //var no = i+1;
+			 var sectionTag = $('<tr style="height: 33px;" id="user_'+UserInfo[i].id+'"></tr>'); 
+			 var userNo = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+(i+1)+'</td>');
+			 var userName = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].name+'</td>');
+			 var userPhone = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].phone+'</td>');
+			 var userEmail = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].email+'</td>');
+			 var userCount = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].portCount+'</td>');
+			 var deleteButton = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a class="askDelete">탈퇴</a><input type="hidden" value="'+UserInfo[i].id+'"></td>');
+			 
+			 
+			 $('#mangeBody').append(sectionTag);
+			 $('#user_'+UserInfo[i].id).append(userNo);
+			 $('#user_'+UserInfo[i].id).append(userName);
+			 $('#user_'+UserInfo[i].id).append(userPhone);
+			 $('#user_'+UserInfo[i].id).append(userEmail);
+			 $('#user_'+UserInfo[i].id).append(userCount);
+			 $('#user_'+UserInfo[i].id).append(deleteButton);
+			 }//user list 만들기 끝
+
+			 
+
+	      //탈퇴처리 - modal창 열기
+	        $(".askDelete").click(function () {
+		        $('#deleteUser').text($(this).parent().siblings('.userName').text());
+		        $("#deleteUserID").val($(this).siblings('input').val());
+	        	  $("#modal").fadeIn(300);
+	        	$("#deleteModal").fadeIn(300);
+		        });
+
+	        $("#modal, #notDeleteB").on('click',function(){
+	        	  $("#modal").fadeOut(300);
+	        	  $("#deleteModal").fadeOut(300);
+	        	});
+
+	        $("#deleteB").on('click',function(){
+		       console.log("삭제");
+	        	  $("#userDeleteForm").submit();
+	        	});
+
+	     // select change,
+  	        $('.filters').on( 'change', function() {
+      	        console.log($(this).attr("id"));
+      	        console.log($(this).val());
+					$("#searchType").val($(this).attr("id"));
+					$("#keyword").val($(this).val());
+					$(".form-inline").submit();
+  	        });
+
+		 }); // $(document).ready End
+		 
+  
+    </script>
     
   </head>
 
@@ -205,7 +272,7 @@
 					<h4>회원정보</h4>
 				</div>
 				<div style="padding: 10px 0 10px 0; font-weight:bold;">
-					총 회원 수 : 4명 
+					총 회원 수 : ${count}명 
 				</div>
 				<section class="u-align-center u-clearfix u-section-3" id="sec-6f13"  style="overflow:hidden;">
 			      <div class="u-clearfix u-sheet u-sheet-1" style="overflow:hidden;">
@@ -222,44 +289,44 @@
 			                <th class="u-border-1 u-border-grey-50 u-table-cell">강제탈퇴</th>
 			              </tr>
 			            </thead>
-			            <tbody class="u-table-body u-table-body-1">
-			              <tr style="height: 33px;">
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">1</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">이주연</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">010-xxxx-xxxx</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">217*****@handong.edu</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">0</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a>탈퇴</a></td>
-			              </tr>
-			              <tr style="height: 33px;">
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">2</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">서인아</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">010-xxxx-xxxx</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">217*****@handong.edu</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">3</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a>탈퇴</a></td>
-			              </tr>
-			              <tr style="height: 33px;">
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">3</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">김해린</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">010-xxxx-xxxx</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">217*****@handong.edu</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">2</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a>탈퇴</a></td>
-			              </tr>
-			              <tr style="height: 33px;">
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">4</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">김광</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">010-xxxx-xxxx</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">217*****@handong.edu</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">1</td>
-			                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a>탈퇴</a></td>
-			              </tr>
+			            <tbody class="u-table-body u-table-body-1" id="mangeBody">
+			              
 			            </tbody>
 			          </table>
 			        </div>
 			      </div>
 			    </section>
+			    
+			    <div id="moreContent">  
+	         	 <ul class="pagination">
+			    <c:if test="${pageMaker.prev}">
+			    <c:set var="page" value="${param.page}"/>
+			    <c:if test="${page eq null}">
+			    	<c:set var="page" value="1"/>
+			    </c:if>
+			    <li>
+			        <a href='<%=request.getContextPath()%>/admin/manage?page=${pageMaker.startPage-1}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>&laquo;</a>
+			    </li>
+			    </c:if>
+			    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+			    <li>
+				    <c:choose>
+				    	<c:when test="${page eq idx}">
+			        	<a style="background: #bbb; color: white;" href='<%=request.getContextPath()%>/admin/manage?page=${idx}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>${idx}</a>
+			    	</c:when>
+			    	<c:otherwise>
+			    		<a href='<%=request.getContextPath()%>/admin/manage?page=${idx}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>${idx}</a>
+			    	</c:otherwise>
+			    	</c:choose>
+			    </li>
+			    </c:forEach>
+			    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+			    <li>
+			        <a href='<%=request.getContextPath()%>/admin/manage?page=${pageMaker.endPage+1}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>&raquo;</a>
+			    </li>
+			    </c:if>
+		  </ul>
+		  </div>
 			</div>
 		</div>
 
