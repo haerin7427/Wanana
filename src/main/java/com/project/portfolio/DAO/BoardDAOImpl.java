@@ -75,4 +75,9 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<String> getInterest(int port_id) throws Exception{
 		return sqlSession.selectList(namespace+".getInterest",port_id);
 	}
+	
+	@Override
+	public String getPortUser(int port_id) throws Exception{
+		return sqlSession.selectOne(namespace+".getPortUser",port_id);
+	}
 }

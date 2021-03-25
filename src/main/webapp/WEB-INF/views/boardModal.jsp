@@ -64,7 +64,7 @@
 			
 				<!-- 포트폴리오주인 -->
 	        	<div class="item" style="padding:15px; display:inline; padding-left:25px;">
-	        		<span><h2 style="display:inline; font-weight:bold;">${sessionScope.Name}</h2></span>
+	        		<span><h2 style="display:inline; font-weight:bold;" class="portUser"></h2></span>
 	        		<span><p style="font-size:23px; display:inline;">님의 포트폴리오</p></span>
 	       	 	</div>
 	        
@@ -94,7 +94,7 @@
 		 		<!-- 좋아요버튼  -->
 			 	<!-- <button type="button" class="good" name="good" style="border:0; outline:0; margin-right:10px; cursor:pointer;"><img src="resources/images/like.png" width="30" height="auto" alt=""></button> -->
 			 	<button class="btn good btn-like"  style="border:0; outline:0;">
-			    <span class="btn-icon btn--icon-default">
+			    <span class="btn-icon btn--icon-defaul like">
 			        <span class="fa fa-heart" style="font-size:30px"></span>
 			    </span>
 				</button>
@@ -121,11 +121,12 @@
 			var isLike=${checkLike};
 			var likeCnt=${likeCnt};
 			var regDate=${regDate};
+			var portUser=${portUser};
 			if(isLike>0){
 				$('.btn').addClass('liked');
-				$('.likeCnt').text(likeCnt);
 			}
 			$('.likeCnt').text(likeCnt);
+			$('.portUser').text(portUser.portUser);
 			console.log("regDate: "+regDate.regDate);
 			$('.regTime').text(regDate.regDate);
 			var portID=${portfolio_ID};
@@ -140,8 +141,9 @@
 						if(data==true){
 							$('.likeCnt').text(parseInt(cnt)+1);
 						}
-						else
+						else{
 							$('.likeCnt').text(parseInt(cnt)-1);
+						}
 					},
 					error:function(request,status,error){
 		            	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

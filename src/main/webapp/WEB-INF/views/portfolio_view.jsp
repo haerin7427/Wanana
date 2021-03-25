@@ -53,7 +53,7 @@
 	 <main>
 	 	<div class="wrap" style="width:100%; position:relative;">
 	 		<div style="display:block; margin:0 auto;">
-	 			<div id="printSection" style="float:left; margin-right: 15px; padding-left: 22px;">
+	 			<div class="printSection" id="1page_preview" style="float:left; margin-right: 15px; padding-left: 22px;">
 	 			 <!-- <page size="A4" layout="portrait">  -->
 				 <page size="A4">
 		     		<jsp:include page="<%=templateURL%>" flush="true"/>
