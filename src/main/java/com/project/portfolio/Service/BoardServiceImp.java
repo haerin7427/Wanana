@@ -61,4 +61,9 @@ public class BoardServiceImp implements BoardService {
 	public List<String> getInterest(int port_id) throws Exception{
 		return boardDAO.getInterest(port_id);
 	}
+	
+	@Override
+	public String getPortUser(int port_id) throws Exception{
+		return boardDAO.getPortUser(port_id);
+	}
 }

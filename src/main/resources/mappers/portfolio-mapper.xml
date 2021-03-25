@@ -220,16 +220,25 @@
    
       <!-- portfolio 좋아요수 -->
     <select id="likeCnt" resultType="int">
-      SELECT `like` from `portfolio` where id = #{portfolio_id};
+      SELECT count(*) from `like` where portfolio_id = #{portfolio_id} AND isLike=1;
    </select>
    
     <!-- 해당 포트폴리오 좋아요 누르기  -->
     <insert id="createLike">
-    	 INSERT INTO `like` (portfolio_id, user_id) values(#{portfolio_id},#{user_id})
+    	 INSERT INTO `like` (portfolio_id, user_id) values(#{portfolio_id},#{user_id});
+    	 UPDATE `portfolio` SET `like`=`like`+1 WHERE id=#{portfolio_id};
     </insert>
      <!-- 해당 포트폴리오 좋아요 이미 누른 적이 있다면 update하기 -->
      <update id="updateLike">
     	 UPDATE `like` SET isLike=#{isLike} WHERE portfolio_id=#{portfolio_id} AND user_id=#{user_id};
+    	<choose>
+         <when test="isLike == 1">
+         	UPDATE `portfolio` SET `like`=`like`+1 WHERE id=#{portfolio_id};
+         </when>
+         <when test="isLike == 0">
+        	UPDATE `portfolio` SET `like`=`like`-1 WHERE id=#{portfolio_id};
+         </when>
+      </choose>
     </update>
     
     <!-- 유저 개인정보 업데이트 -->
@@ -241,7 +250,7 @@
     <select id="getPortIDByUrl" resultType="int">
     	 SELECT id FROM portfolio WHERE url=#{link};
     </select>
-    
+
     <!-- portID로 각 포트폴리오 Interests GET -->
     <select id="getInterest" parameterType="int" resultType="java.lang.String">
     	 SELECT content1 FROM detail WHERE portfolio_id=#{port_id} AND item_id=4;
@@ -276,5 +285,10 @@
          </when>
       </choose>
    </sql>
+   
+   <select id="getPortUser" resultType="String" parameterType="int">
+   		SELECT name FROM portfolio INNER JOIN users ON portfolio.user_id=users.id WHERE portfolio.id=#{port_id};
+   </select>
+   
    
 </mapper>

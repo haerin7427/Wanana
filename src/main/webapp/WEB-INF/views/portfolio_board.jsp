@@ -67,12 +67,25 @@
 			}
 
 	          var likePort = ${likePort};
-			    for(var i = 0; i < 2; i++){
+	          var i_count1,i_count2;
+	          if(likePort.length>=4){
+		          i_count1=2;
+		          i_count2=4;
+	          }
+	          else if(likePort.length>=2&&likePort.length<4){
+		          i_count1=1;
+		          i_count2=1;
+	          }
+	          else if(likePort.length<2){
+				  i_count1=likePort.length;
+				  i_count2=0;
+		      }
+			    for(var i = 0; i < i_count1; i++){
 			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts1"></div>');
 			    	$(".1page_like1").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
 				    var portDate = $('<div class="u-text-grey-40 portDate" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon portDateSpan">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
+			    	var portImg = $('<div class="boardPortfolio" id="mainBoardPortfolio_'+likePort[i].id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
 				    var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
 				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
@@ -81,13 +94,17 @@
 				    $("#1page_likePortID_" + likePort[i].id).append(portImg);
 				    $("#1page_likePortID_" + likePort[i].id).append(portLike);
 				    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
+				    for(var j=0; j< likePort[i].interestNum; j++){
+						var interestSpan=$('<p>#'+likePort[i].interests[j]+'</p>');
+						$("#mainBoardPortfolio_" + likePort[i].id).find(".interests").append(interestSpan);
+					}
 			    }
-			    for(var i = 2; i < 4; i++){
+			    for(var i = 2; i < i_count2; i++){
 			    	var portDiv = $('<div id="1page_likePortID_'+likePort[i].id+'" class="u-effect-fade u-gallery-item likePorts2"></div>');
 			    	$(".1page_like2").append(portDiv);
 			    	var portTitle = $('<div style="font-size:1em;">'+likePort[i].title+'</div> ');
 				    var portDate = $('<div class="u-text-grey-40 portDate" style="float:right; font-size:0.7em; padding-right:2%;"><span class="u-meta-date u-meta-icon portDateSpan">'+moment(likePort[i].update_date).format('YYYY.MM.DD')+'</span></div>');
-			    	var portImg = $('<div class="boardPortfolio"><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></div>');
+			    	var portImg = $('<div class="boardPortfolio" id="mainBoardPortfolio_'+likePort[i].id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+likePort[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
 			    	var portLike=$('<div> 좋아요 : '+likePort[i].like+'개</div> ');
 				    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+likePort[i].id+'">');
 				    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+likePort[i].isVerticle+'">');
@@ -96,7 +113,10 @@
 				    $("#1page_likePortID_" + likePort[i].id).append(portImg);
 				    $("#1page_likePortID_" + likePort[i].id).append(portLike);
 				    $("#1page_likePortID_" + likePort[i].id).append(portHidden);
-					  
+				    for(var j=0; j< likePort[i].interestNum; j++){
+						var interestSpan=$('<p>#'+likePort[i].interests[j]+'</p>');
+						$("#mainBoardPortfolio_" + likePort[i].id).find(".interests").append(interestSpan);
+					}
 			    }
 	
             

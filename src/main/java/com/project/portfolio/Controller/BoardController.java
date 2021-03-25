@@ -47,10 +47,15 @@ public class BoardController {
 			int count=boardService.countPortfolio(cri.getSearchType(), cri.getKeyword());
 			System.out.println(portinfo.toString());
 			System.out.println("get info!");
+			
 			JSONArray jArray = new JSONArray();
 			String []interest;
+			
+			List<Portfolio> likePort = boardService.getLikePort();
+			JSONArray likePortfolios = new JSONArray();
 	        try {
-	        	for (int i = 0; i < portinfo.size() ; i++) {   
+	        	int i;
+	        	for (i = 0; i < portinfo.size() ; i++) {   
 	        		JSONObject ob =new JSONObject();
 	        		ob.put("port_id", portinfo.get(i).getId());
 	        		ob.put("port_temId", portinfo.get(i).getTemplate_id());
@@ -70,8 +75,26 @@ public class BoardController {
 
 		            jArray.put(ob);
 		        }
-	        	//System.out.println(jArray.toString());
-	        	System.out.println("개수 : " + jArray.length());
+	        	for (i = 0; i < likePort.size() ; i++) {   
+	        		JSONObject ob =new JSONObject();
+	        		ob.put("id", likePort.get(i).getId());
+	        		ob.put("template_id", likePort.get(i).getTemplate_id());
+	        		ob.put("title", likePort.get(i).getTitle());
+	        		ob.put("update_date", likePort.get(i).getUpdate_date());
+	        		ob.put("isVerticle", likePort.get(i).getIsVerticle());
+	        		ob.put("like", likePort.get(i).getLike());
+	        		List<String> interestList = boardService.getInterest(likePort.get(i).getId());
+	        		interest=new String[interestList.size()];
+	        		
+	        		for(int j=0; j<interestList.size();j++) {
+	        			interest[j]=interestList.get(j);
+	        		}
+	        		ob.put("interestNum", interestList.size());
+	        		ob.put("interests", interest);
+	        		System.out.println(ob.toString());
+
+	        		likePortfolios.put(ob);
+		        }
 	        }catch(JSONException e){
 	        	e.printStackTrace();
 	        }
@@ -79,11 +102,6 @@ public class BoardController {
 	        pageMaker.setCri(cri);
 			pageMaker.setTotalCount(count);
 
-			List<Portfolio> likePort = boardService.getLikePort();
-			System.out.println(likePort);
-			ObjectMapper mapper=new ObjectMapper();
-			String likePortfolios=mapper.writeValueAsString(likePort);
-			
 			mav.addObject("searchOption", cri.getSearchType());
 			mav.addObject("keyword", cri.getKeyword());
 			mav.addObject("likePort", likePortfolios);
@@ -150,9 +168,13 @@ public class BoardController {
 		}
 		JSONObject reg_date =new JSONObject();
 		reg_date.put("regDate", regDate);
+		JSONObject portUser=new JSONObject();
+		portUser.put("portUser", boardService.getPortUser(id));
+		
 		mav.addObject("data_list", jArray2);
 		mav.addObject("regDate", reg_date);
 		mav.addObject("portfolio_ID",id);
+		mav.addObject("portUser",portUser);
 		mav.addObject("template_info",template_info);
 		mav.addObject("temName",template_name);
 		mav.setViewName("boardModal");
@@ -168,7 +190,6 @@ public class BoardController {
 	}
 	
 	//포트폴리오 좋아요 눌렀을 때
-	//링크 중복체크
 	@RequestMapping(value="/clickHeart",method=RequestMethod.POST)
 	public boolean clickHeart(HttpSession session,HttpServletRequest request) throws Exception {
 		int portfolio_id=Integer.parseInt(request.getParameter("portfolio_id"));
