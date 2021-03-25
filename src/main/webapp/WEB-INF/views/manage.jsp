@@ -305,24 +305,24 @@
 			    	<c:set var="page" value="1"/>
 			    </c:if>
 			    <li>
-			        <a href='<%=request.getContextPath()%>/admin/manage?page=${pageMaker.startPage-1}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>&laquo;</a>
+			        <a href='<%=request.getContextPath()%>/manage?page=${pageMaker.startPage-1}'>&laquo;</a>
 			    </li>
 			    </c:if>
 			    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 			    <li>
 				    <c:choose>
 				    	<c:when test="${page eq idx}">
-			        	<a style="background: #bbb; color: white;" href='<%=request.getContextPath()%>/admin/manage?page=${idx}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>${idx}</a>
+			        	<a style="background: #bbb; color: white;" href='<%=request.getContextPath()%>/manage?page=${idx}'>${idx}</a>
 			    	</c:when>
 			    	<c:otherwise>
-			    		<a href='<%=request.getContextPath()%>/admin/manage?page=${idx}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>${idx}</a>
+			    		<a href='<%=request.getContextPath()%>/manage?page=${idx}'>${idx}</a>
 			    	</c:otherwise>
 			    	</c:choose>
 			    </li>
 			    </c:forEach>
 			    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 			    <li>
-			        <a href='<%=request.getContextPath()%>/admin/manage?page=${pageMaker.endPage+1}&filterType=${cri.filterType}&searchType=${searchOption}&keyword=${keyword}'>&raquo;</a>
+			        <a href='<%=request.getContextPath()%>/manage?page=${pageMaker.endPage+1}'>&raquo;</a>
 			    </li>
 			    </c:if>
 		  </ul>
