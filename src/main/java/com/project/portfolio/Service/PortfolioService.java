@@ -103,5 +103,5 @@ public interface PortfolioService {
 
 	public int getPortIdByUrl(String link) throws Exception;
 	
-	
+	public Template getTemInfo(int tem_id) throws Exception;
 }

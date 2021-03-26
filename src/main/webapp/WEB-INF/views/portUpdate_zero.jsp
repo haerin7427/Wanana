@@ -24,11 +24,15 @@
 
 <script>
 $(document).ready(function () {
-	var colorList;
+	var portfolio_Info = ${template_info};
+    var portfolio_ID = ${portfolioID};
+    
+
+ 	var colorList;
 	$.ajax({ //해당 template의 colorList가져오기
 		url : "colorList",
 	  	type : "post",
-	  	data:{"template_id":"1"},
+	  	data:{"template_id":portfolio_Info[0].tem_id},
 	  	dataType : "json",
 	  	async: false,
 	  	success: function(data){
@@ -38,47 +42,47 @@ $(document).ready(function () {
 		  					  		
 	  	},
 	  	error:function(request, status, error){
-
 			alert("code:"+request.status+"\n"+"\n"+"error:"+error);
-
 		}
 	});
 
-
 	for(var i=0; i<colorList.length;i++){
-		if(i==0)
+		console.log("colorList[i].id:"+colorList[i].id);
+		if(colorList[i].id==portfolio_Info[0].template_color)
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+" active' style='background-color:"+colorList[i].color1+";'></div>"); 
 		else
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
 		$(".color-picker").append(colorDiv);
 	}
+
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
-	var template_html="template2";
+	var template_html=portfolio_Info[0].tem_name;
 	var template_isVerticle=$("input[name=template_isVerticle]").val();
-	
-	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
+
+	var sendData={"template_html":portfolio_Info[0].tem_name,"template_color":portfolio_Info[0].template_color,"template_font":portfolio_Info[0].template_font};
 	$.ajax({
-        url: "<%=request.getContextPath()%>/tem_image",
-        type:'POST',
-        traditional : true,
-        data: sendData,
-        success:function(result){
-            $("#preview_portfolio_img").html(result);
-            //$(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
-            if(template_isVerticle=="1"){
-                $("#preview_portfolio_img .wrap").css("width","220px"); 
-                $("#preview_portfolio_img .wrap").css("height","280px");
-            }
-            else{
-            	$("#preview_portfolio_img .wrap").css("width","297px"); 
-               	$("#preview_portfolio_img .wrap").css("height","207px");
-            }
-        },
-        error:function(request,status,error){
-     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        }
+     url: "<%=request.getContextPath()%>/tem_image",
+     type:'POST',
+     traditional : true,
+     data: sendData,
+     success:function(result){
+         $("#preview_portfolio_img").html(result);
+         /* $("#preview_portfolio_img .imageicon").attr("src", $("#1page_form").find("img").attr("src"));  */
+         if(template_isVerticle=="1"){
+             $("#preview_portfolio_img .wrap").css("width","220px"); 
+             $("#preview_portfolio_img .wrap").css("height","280px");
+         }
+         else{
+         	$("#preview_portfolio_img .wrap").css("width","297px"); 
+            $("#preview_portfolio_img .wrap").css("height","207px");
+         }
+     },
+     error:function(request,status,error){
+  	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+     }
 	});
+
 	var tempData;
 	$.ajax({
 	     url: "<%=request.getContextPath()%>/templateData",
@@ -94,7 +98,8 @@ $(document).ready(function () {
 	  	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	     }
 	});
-});
+	
+});//document.ready 끝
 
 
 var color;
@@ -102,10 +107,11 @@ var color;
 function imgBig(a,b,templateID,template_html){
  
 	//document.getElementById('preview_portfolio').src=document.getElementById(a).src; 
-	document.getElementById('show_explanation').innerHTML=document.getElementById(b).innerHTML;
-	document.getElementById('select_template_id').value = templateID;
-	document.getElementById('select_template_html').value = template_html;
-	document.getElementById('select_template_isVerticle').value = $("#template_isVerticle_"+templateID).val(); 
+	$('#show_explanation').innerHTML=document.getElementById(b).innerHTML;
+	$('#select_template_id').value = templateID;
+	$('#select_template_html').value = template_html;
+	console.log($("#template_isVerticle_"+templateID).val());
+	$('#select_template_isVerticle').val($("#template_isVerticle_"+templateID).val());
 	//$("#select_template_html").val() = template_html;
 
 	$.ajax({ //해당 template의 colorList가져오기
@@ -138,7 +144,7 @@ function imgBig(a,b,templateID,template_html){
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
 	var template_html=template_html;
-	var template_isVerticle=$("input[name=template_isVerticle]").val();
+	var template_isVerticle=$("$select_template_isVerticle").val();
 	
 	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
 	$.ajax({
@@ -148,7 +154,7 @@ function imgBig(a,b,templateID,template_html){
         data: sendData,
         success:function(result){
             $("#preview_portfolio_img").html(result);
-           // $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+            //$("#preview_portfolio_img .imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
             if(template_isVerticle=="1"){
             	$("#preview_portfolio_img .wrap").css("width","220px"); 
                 $("#preview_portfolio_img .wrap").css("height","280px");
@@ -479,8 +485,9 @@ function rgbToHex(rgb) {
 						</div>
 						
 					</div>
-					
 					<script>
+
+					var portfolio_Info = ${template_info};
 					$('#font2').fontselect({
 					   googleFonts: [
 					      'Pacifico', 'Press+Start+2P',
@@ -488,14 +495,13 @@ function rgbToHex(rgb) {
 					      'Changa:200', 'Changa:300',
 					      'Changa:400', 'Changa:500'
 					   ],
-					   placeholder: 'sans-serif',
+					   placeholder: portfolio_Info[0].template_font,
 					   searchable: false
 					})
 					.on('change', function() {
 					   applyFont(this.value);
 					});
 					</script>
-					
                   </div>
                 </div>
                 
@@ -510,7 +516,7 @@ function rgbToHex(rgb) {
                     	<div id="preview_portfolio_img">
 							<%-- <img class="myPortfolio" id="preview_portfolio" name="bigView" src="<%=request.getContextPath()%>/resources/images/template2.png" style="width:80%; height:auto;" > --%>
 						</div>
-                    	<!— 선택한 템플릿 설명 —>
+                    	<!-- 선택한 템플릿 설명 -->
                     	<p class="text" id="show_explanation" style="padding: 20px 0;"></p>
 						<p class="text" id="ready" style="color:red"></p>
 						<input type="hidden" id="bigView_color" value="1">

@@ -605,7 +605,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				List<Option> option_list = portfolioService.getOption();
 				
 				//template 명 
-				JSONArray jArrayTem = new JSONArray();
 				JSONArray template_info = new JSONArray();
 				
 				try {
@@ -620,7 +619,6 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        		ob.put("portfolio_url", portInfo.getUrl());
 		        		template_info.put(ob);
 			        
-		        	System.out.println(jArrayTem.toString());
 		        }catch(JSONException e){
 		        	e.printStackTrace();
 		        }
@@ -702,10 +700,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        }
 				
 				//View로 보내기
-		        System.out.println(jArrayTem);
+		        System.out.println(template_info);
 		        mav.addObject("template",template);
 		        mav.addObject("portfolioID",Integer.parseInt(portID));
-		        mav.addObject("portfolioInfo",jArrayTem);
 		        mav.addObject("template_info",template_info);
 		        mav.addObject("data_list",jArray0);
 		        mav.addObject("item_list",jArray1);
@@ -1030,5 +1027,16 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		return mav;
 		
 	}
+	
+//	template ID에 따른 template 정보 가져오기
+	@RequestMapping(value= "/templateData", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	@ResponseBody
+	public Template getTemInfo(HttpServletRequest request, HttpSession session) throws Exception {
+			
+		int tem_id=Integer.parseInt(request.getParameter("tem_id"));
+		Template tempInfo = portfolioService.getTemInfo(tem_id);
+			
+		return tempInfo;
+	}	
 
 }

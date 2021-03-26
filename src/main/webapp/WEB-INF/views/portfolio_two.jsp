@@ -31,9 +31,9 @@
                         <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-2">
                           <label for="select-fd8b" class="u-custom-font u-label u-text-grey-75 u-label-2">포트폴리오 공개여부</label>
                           <div class="u-form-select-wrapper">
-                          	<div class="u-border-1 u-input u-input-rectangle u-radius-21 u-white u-input-2" style="border-color:transparent;">
-                          	<input type="radio" name="1page_public" value="1" checked="checked" style="margin-right:10px; width:15px;height:15px;border:1px;">공개 
-                          	<input type="radio" name="1page_public" value="0" style="margin-right:10px; margin-left:20px; width:15px;height:15px;border:1px;">비공개 
+                          	<div class="u-border-1 u-input u-input-rectangle u-radius-21 u-white u-input-2 publicCheck" style="border-color:transparent;">
+                          		<input type="radio" name="1page_public" value="1" checked="checked" style="margin-right:10px; width:15px;height:15px;border:1px;">공개 
+                          		<input type="radio" name="1page_public" value="0" style="margin-right:10px; margin-left:20px; width:15px;height:15px;border:1px;">비공개 
  							</div>
                           	<!-- 
                             <select id="select-fd8b" name="1page_public" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white u-input-2" required="required">
@@ -44,14 +44,12 @@
                              -->
                           </div>
                         </div>
-                        <script>
-				        	const randomString = Math.random().toString(36).slice(2);
-				        </script>
                         <div class="u-form-group">
                           <label for="email-ba61" class="u-custom-font u-label u-text-grey-75 u-label-3">내 포트폴리오 URL</label>
                            <span id="link_dup_txt" style="margin-left: 10px;"></span>
-                          <div style="height: 50px;">
-	                          <input type="text" id="link" name="url" style="float:left; width:100%;" onfocus="this.value=randomString;" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase;" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
+                          <div style="height: 50px; width:100%;" class="linkBox">
+	                          <span style="width:42%; float:left; padding:1.5% 0;">http://walab.handong.edu:8080/wanana/</span>
+	                          <input type="text" id="link" name="url"  class="u-border-1 u-border-grey-30 u-input-rectangle u-radius-21 u-white" style="text-transform:uppsercase; width:58%; float:left; padding:1.5% 2.5%" placeholder="사용할 폼 주소 url을 입력해주세요." required="required">
 	                      </div>
                           
                         </div>
