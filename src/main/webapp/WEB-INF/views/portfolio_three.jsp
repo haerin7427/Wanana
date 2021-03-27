@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
@@ -35,9 +35,124 @@
 		 height: 400px;
 		 overflow-y: auto;
 	}
-    </style>
-    
+    /* TAB1 */
+    .one_tempelete {
+		float: left;
+		width: 170px;
+		height: 130px;
+		line-height: 130px;
+		text-align: center;
+		padding:5px;
+		color:black;
+		margin:5px;
+	}
 	
+	/* card view 선택 */
+	.w3-display-container:hover .display-hover{
+		background-color: rgba( 255, 255, 255, 0.8 );
+		padding:20px;
+		display:block;
+		}
+	.w3-display-container:hover{
+		border:1px solid #F9CA03;
+		display:inline-block;
+		backgroud-color:white;
+		opacity:1;
+	}
+	.display-hover{
+		display:none;
+	}
+	.w3-display-container{
+		position:relative; 
+		padding:10px;
+		width:100%;
+		height:120%;
+		overflow: hidden;
+		border-radius: 10px;
+		border:1px solid #F2F2F2;
+	}
+	.w3-display-container_lock{
+		position:relative; 
+		padding:5px;
+		width:100%;
+		height:120%;
+		overflow: hidden;
+		border-radius: 10px;
+		border:1px solid #F2F2F2;
+		display : block ;
+  		text-align : center ;
+	}
+	.display-hover{
+		position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)
+	}
+	
+	.template_explanation{
+		background-color: rgba( 255, 255, 255, 0);
+		border:rgba( 255, 255, 255, 0);
+		width:300px;
+		height:250px;
+		font-size: 14px;
+		font-weight:bold;
+		line-height: 24px;
+		color: #EDBF00;
+	}
+	
+	/*color  */
+	.primary-content {
+		height: 100%;
+		text-align: center;
+		padding: 15px;
+		color: #fff;
+		overflow-y: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	
+	.color-picker {
+		height:auto;
+		width: 80%;
+		border-radius: 5px;
+		padding: 15px;
+	}
+	.color {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		margin-right: 10px;
+		border-radius: 50%;
+		border: 2px solid #fff;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		transition: 0.2s linear all;
+		cursor: pointer;
+	}
+	.color:hover {
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+	}
+	.color.active::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: #0005;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
+	.color.active::after {
+		content: '';
+		position: absolute;
+		top: 18%;
+		left: 50%;
+		border: 2px solid transparent;
+		border-left-color: #fff;
+		border-bottom-color: #fff;
+		width: 15px;
+		height: 8px;
+		transform: rotate(-45deg) translate(-50%, -50%);
+	}
 	
 	</style>
     <script type="application/ld+json">{
@@ -115,7 +230,19 @@
 		$('#select_portfolio_public').val(portfolio_Info[0].port_public);
 		$('#select_template_color').val(portfolio_Info[0].template_color);
 		$('#select_template_font').val(portfolio_Info[0].template_font);
- 		$('#select_portfolio_url').val(portfolio_Info[0].portfolio_url)
+ 		$('#select_portfolio_url').val(portfolio_Info[0].portfolio_url);
+ 		
+ 		$("#link").val(portfolio_Info[0].portfolio_url);
+ 		$("#link").attr("readonly",true);
+
+		if(portfolio_Info[0].port_public=="1"){
+			$($(".publicCheck").children()[0]).prop("checked",true);
+			$($(".publicCheck").children()[1]).prop("checked",false);
+		}else{
+			$($(".publicCheck").children()[0]).prop("checked",false);
+			$($(".publicCheck").children()[1]).prop("checked",true);
+		}
+ 		
           for(var i=0; i < item_content.length; i++){
                     /*1. category 별 div 만들기  */
                   if(past_categoryID != item_content[i].category_id){
@@ -331,7 +458,7 @@
             if(data_content[e].item_id ==1){//type이 file 일때
             	$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
 
-            	var viewTag = $('<img id="1page_view2" src="resources/user_photo/'+data_content[e].content[0]+'" alt="사진 로드 실패" class="u-image u-image-default u-image-1" data-image-width="242" data-image-height="275">');
+            	var viewTag = $('<img id="1page_view2" src="resources/user_photo/'+data_content[e].content[0]+'" alt="사진 로드 실패" class="u-image" data-image-width="242" data-image-height="275" style="top:-15px;margin-left:40%;width:70px; height:70px;">');
                 viewTag.attr("id","1page_view2" );
                 $($('#1page_count' + add_count).children()[0]).append(viewTag);
 
@@ -826,9 +953,7 @@
         	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
 				$("#select_portfolio_public").val(valueCheck);
           });
-
     }); //document.ready 
-
 
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -840,7 +965,25 @@
         }
     }
 </script>
-                        
+          <style>
+  	.notification-container {
+		background-color: #ABABAB;
+		opacity:0.7;
+		color:white;
+		border-radius: 10px;
+		position: fixed;
+		left:40%;
+		padding:5px;
+		top:100px;
+		border : 1px solid black;
+		display: none;
+		z-index:100002;
+	}
+			
+	.notification-container.show {
+		display: flex;
+	}
+  </style>                  
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -853,10 +996,16 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-custom-font u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_one" style="padding: 10px 20px;">Portfolios</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
+            <ul class="u-custom-font u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
 </li>
-<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>	
+<c:set var="admin" value="${admin }" />
+<c:if test="${admin == 1}">
+<li class="u-nav-item">
+<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
+</li>
+</c:if>
+<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
 </li>
 </ul>
           </div>
@@ -864,9 +1013,16 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_one" style="padding: 10px 20px;">Portfolios</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY 페이지</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="">로그아웃</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
+</li>
+<c:set var="admin" value="${admin}" />
+<c:if test="${admin == 1}">
+<li class="u-nav-item">
+<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
+</li>
+</c:if>
+<li class="u-nav-item"><a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
 </li></ul>
               </div>
             </div>
@@ -912,8 +1068,21 @@
           <div class="u-tab-content">
           
           <!-- 1. 템플릿  include  -->
-          <jsp:include page="/WEB-INF/views/portfolio_zero.jsp"/>
-            
+       	<jsp:include page="/WEB-INF/views/portUpdate_zero.jsp"/>
+        <!-- 입력시 문구 -->
+          <div class="1page_ notification-container" id="notification-container">
+		    <span>포트폴리오에 데이터를 입력했습니다.</span>
+		  </div>
+          <script>
+          const notification = document.getElementById('notification-container');
+       	  // Show notification
+          const showNotification = () => {
+            notification.classList.add('show')
+            setTimeout(() => {
+              notification.classList.remove('show')
+            }, 1000)
+          }
+          </script>
             <!-- 2. 정보 입력  -->
             <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-2917" role="tabpanel" aria-labelledby="link-tab-2917">
               <div class="u-container-layout u-container-layout-6">
@@ -944,6 +1113,7 @@
 						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="1" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
+						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="0" readonly/>
 						<input type="hidden" id="select_portfolio_url" name="portfolio_url" value="" readonly/>
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->
@@ -979,11 +1149,7 @@
             
             
           </div>
-        </div><span class="u-hidden-md u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-grey-30 u-icon-16" data-href="https://nicepage.com"><svg class="u-svg-link u-flip-horizontal" preserveAspectRatio="xMidYMin slice" viewBox="0 0 492.004 492.004" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ce59"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 492.004 492.004" x="0px" y="0px" id="svg-ce59" style="enable-background:new 0 0 492.004 492.004;"><g><g><path d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12    c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028    c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265    c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"></path>
-</g>
-</g></svg></span><span class="u-hidden-md u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-grey-30 u-icon-17"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 492.004 492.004" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ce59"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 492.004 492.004" x="0px" y="0px" id="svg-ce59" style="enable-background:new 0 0 492.004 492.004;"><g><g><path d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12    c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028    c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265    c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"></path>
-</g>
-</g></svg></span>
+        </div>
         <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round u-group-18">
           <div class="u-container-layout u-container-layout-21">
             <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25">저&nbsp; 장</p>
@@ -991,10 +1157,6 @@
         </div>
       </div>
     </section>
-    
-    
-    
-    
     
     
     

@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
-     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=1"></script>
+     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -906,7 +906,7 @@
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
 						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
-						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="" readonly/>
+						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="0" readonly/>
 						<input type="hidden" id="select_template_url" name="url" value="" readonly/>
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->

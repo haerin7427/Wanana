@@ -165,5 +165,9 @@ public class PortfolioServiceImp implements PortfolioService {
 		return portfolioDAO.getPortIdByUrl(link);
 	}
 
+	@Override
+	public Template getTemInfo(int tem_id) throws Exception{
+		return portfolioDAO.getTemInfo(tem_id);
+	}
 }
 

@@ -172,4 +172,8 @@ public class PortfolioDAOImpl implements PortfolioDAO{
 			return sqlSession.selectOne(namespace + ".getPortIDByUrl",link);
 		}
 
+		@Override
+		public Template getTemInfo(int tem_id) throws Exception{
+			return sqlSession.selectOne(namespace+".getTemInfo",tem_id);
+		}
 }

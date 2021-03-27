@@ -1,10 +1,11 @@
 /**
  * 
  */
- var dup_check = false;
+ var dup_check = true;
+
 function isValidForm(){
     if(!dup_check){
-        alert("링크 중복 체크를 해주세요.");
+        alert("포트폴리오 URL을 다시 입력 해주세요.");
         $("#red_ck_link").focus();
     	return false;
     }
@@ -18,12 +19,14 @@ $( document ).ready(function() {
 	    event.preventDefault();
 	  };
 	}, true);
-	
+	const randomString = Math.random().toString(36).slice(2);
+	$('.linkBox #link').val(randomString);
+	$("#select_template_url").val($("#link").val());
 	//중복 체크 안하면 못 넘어가게
 	//링크 중복 체크 
 	$("#link").blur(function(){
 		if($("#link").val()==""){
-	        $("#link").focus();
+	        //$("#link").focus();
 	        alert("링크를 입력해주세요.");
 	    }
 	    else{
@@ -38,6 +41,7 @@ $( document ).ready(function() {
 	            if(data=="success"){
 	              $("#link_dup_txt").html("<span style='color:green;' class='overlap_msg' >사용가능</span>");
 	              $("#link").css("background-color","#e4eee4");
+	              $("#select_template_url").val($("#link").val());
 	              dup_check=true;
 	            }
 	            else{
@@ -51,5 +55,9 @@ $( document ).ready(function() {
 	          }
 	    	});
 		}
+	});
+	
+	$("#link").on("propertychange change keyup paste input", function() {
+	    $("#link_dup_txt").html("");
 	});
 });//document.ready 끝
