@@ -587,7 +587,6 @@
 					                 //type : $(this).children().attr("type")
 					                 //value : $(this).children().val()
 					                	 type = $(this).children().attr("type");
-	                 
 	                						 if(type == "file"){
 	
 	                	 							$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
@@ -609,15 +608,23 @@
 							                     $('#1page_view1').attr('src', 'resources/images/21.png');     
 	                     
 	                     
-	                  					}else{
-	   
-	                          	
+	                  					}else if(type == "month"){
+												var value=$(this).children().val();
+												var replaced_str = value.replace(/\-/g, "/");
+	                  						 	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+replaced_str+'</p>');
+						                      	$($('#1page_count' + add_count).children()[0]).append(pTag);
+						                      
+						                      	var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+replaced_str+'">');
+						                      	$($('#1page_count' + add_count).children()[0]).append(realTag);
+				                  		}
+
+		 	                  			else{
 							                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 							                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 							                      
 							                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                     
+	               
 	                  					}
 	 	                  					
 						                 $(this).children().val('');
