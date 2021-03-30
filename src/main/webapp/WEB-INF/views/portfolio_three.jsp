@@ -202,8 +202,6 @@
     		}else
     			return 1;
     	}
-
-    	
         //category list 보여주기
         var item_content = ${item_list};
         var field_content = ${item_input};
@@ -243,208 +241,217 @@
 			$($(".publicCheck").children()[1]).prop("checked",true);
 		}
  		
-          for(var i=0; i < item_content.length; i++){
-                    /*1. category 별 div 만들기  */
-                  if(past_categoryID != item_content[i].category_id){
-                      count_categoryID += 1;
 
-                      var jumpID = "#1page_section" + item_content[i].category_id;
-                      var id = "1page_" + item_content[i].category_id;
-                      var divOne = $("<div id="+id+" data-href='"+ jumpID+ "'></div>"); 
-                      divOne.addClass("u-container-style u-dialog-link u-expanded-width u-group u-shape-rectangle u-white u-group-7 1page_marginUnder"); 
-                      $("#1page_categoryDiv").append(divOne);
+        for(var i=0; i < item_content.length; i++){
+                  /*1. category 별 div 만들기  */
+                if(past_categoryID != item_content[i].category_id){
+                    count_categoryID += 1;
 
-                      var divTwo = $("<div></div>"); 
-                      divTwo.addClass("u-container-layout u-container-layout-9");
-                      $($("#1page_categoryDiv").children()[count_categoryID]).append(divTwo);
+                    var jumpID = "#1page_section" + item_content[i].category_id;
+                    var id = "1page_" + item_content[i].category_id;
+                    var divOne = $("<div id="+id+" data-href='"+ jumpID+ "'></div>"); 
+                    divOne.addClass("u-container-style u-dialog-link u-expanded-width u-group u-shape-rectangle u-white u-group-7 1page_marginUnder"); 
+                    $("#1page_categoryDiv").append(divOne);
 
-                      var categoryName =  $("<p>"+item_content[i].category_name +"</p>"); 
-                      categoryName.addClass("u-align-left u-custom-font u-text u-text-7 noenter");
-                      $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(categoryName);
+                    var divTwo = $("<div></div>"); 
+                    divTwo.addClass("u-container-layout u-container-layout-9");
+                    $($("#1page_categoryDiv").children()[count_categoryID]).append(divTwo);
 
-                      var itemNames = "";
-                      for(var k = i; k < item_content.length; k++ ){
-                          console.log(item_content[k].item_name);
+                    var categoryName =  $("<p>"+item_content[i].category_name +"</p>"); 
+                    categoryName.addClass("u-align-left u-custom-font u-text u-text-7 noenter");
+                    $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(categoryName);
 
-                          if(item_content[i].category_id != item_content[k].category_id)
-                              break;
-                          
-                          if(i != k)
-                              itemNames += " | ";
-                          itemNames += item_content[k].item_name;
-                        }
+                    var itemNames = "";
+                    for(var k = i; k < item_content.length; k++ ){
+                        console.log(item_content[k].item_name);
 
-                      var itemList =  $("<p>"+itemNames +"</p>"); 
-                      itemList.addClass("u-align-left u-custom-font u-text u-text-8 noenter");
-                      $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(itemList);
+                        if(item_content[i].category_id != item_content[k].category_id)
+                            break;
+                        
+                        if(i != k)
+                            itemNames += " | ";
+                        itemNames += item_content[k].item_name;
+                      }
 
-                      var niceTag = $('<span class="u-align-left u-icon u-icon-circle u-text-grey-40 u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 469.336 469.336" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-db3f"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 469.336 469.336" x="0px" y="0px" id="svg-db3f" style="enable-background:new 0 0 469.336 469.336;"><g><g><path d="M456.836,76.168l-64-64.054c-16.125-16.139-44.177-16.17-60.365,0.031L45.763,301.682    c-1.271,1.282-2.188,2.857-2.688,4.587L0.409,455.73c-1.063,3.722-0.021,7.736,2.719,10.478c2.031,2.033,4.75,3.128,7.542,3.128    c0.979,0,1.969-0.136,2.927-0.407l149.333-42.703c1.729-0.5,3.302-1.418,4.583-2.69l289.323-286.983    c8.063-8.069,12.5-18.787,12.5-30.192S464.899,84.237,456.836,76.168z M285.989,89.737l39.264,39.264L120.257,333.998    l-14.712-29.434c-1.813-3.615-5.5-5.896-9.542-5.896H78.921L285.989,89.737z M26.201,443.137L40.095,394.5l34.742,34.742    L26.201,443.137z M149.336,407.96l-51.035,14.579l-51.503-51.503l14.579-51.035h28.031l18.385,36.771    c1.031,2.063,2.708,3.74,4.771,4.771l36.771,18.385V407.96z M170.67,390.417v-17.082c0-4.042-2.281-7.729-5.896-9.542    l-29.434-14.712l204.996-204.996l39.264,39.264L170.67,390.417z M441.784,121.72l-47.033,46.613l-93.747-93.747l46.582-47.001    c8.063-8.063,22.104-8.063,30.167,0l64,64c4.031,4.031,6.25,9.385,6.25,15.083S445.784,117.72,441.784,121.72z"></path></g></g></svg></span>'); 
+                    var itemList =  $("<p>"+itemNames +"</p>"); 
+                    itemList.addClass("u-align-left u-custom-font u-text u-text-8 noenter");
+                    $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(itemList);
 
-                      $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(niceTag);
-                      
+                    var niceTag = $('<span class="u-align-left u-icon u-icon-circle u-text-grey-40 u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 469.336 469.336" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-db3f"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 469.336 469.336" x="0px" y="0px" id="svg-db3f" style="enable-background:new 0 0 469.336 469.336;"><g><g><path d="M456.836,76.168l-64-64.054c-16.125-16.139-44.177-16.17-60.365,0.031L45.763,301.682    c-1.271,1.282-2.188,2.857-2.688,4.587L0.409,455.73c-1.063,3.722-0.021,7.736,2.719,10.478c2.031,2.033,4.75,3.128,7.542,3.128    c0.979,0,1.969-0.136,2.927-0.407l149.333-42.703c1.729-0.5,3.302-1.418,4.583-2.69l289.323-286.983    c8.063-8.069,12.5-18.787,12.5-30.192S464.899,84.237,456.836,76.168z M285.989,89.737l39.264,39.264L120.257,333.998    l-14.712-29.434c-1.813-3.615-5.5-5.896-9.542-5.896H78.921L285.989,89.737z M26.201,443.137L40.095,394.5l34.742,34.742    L26.201,443.137z M149.336,407.96l-51.035,14.579l-51.503-51.503l14.579-51.035h28.031l18.385,36.771    c1.031,2.063,2.708,3.74,4.771,4.771l36.771,18.385V407.96z M170.67,390.417v-17.082c0-4.042-2.281-7.729-5.896-9.542    l-29.434-14.712l204.996-204.996l39.264,39.264L170.67,390.417z M441.784,121.72l-47.033,46.613l-93.747-93.747l46.582-47.001    c8.063-8.063,22.104-8.063,30.167,0l64,64c4.031,4.031,6.25,9.385,6.25,15.083S445.784,117.72,441.784,121.72z"></path></g></g></svg></span>'); 
 
-                      //2. section 만들기
-                        var motherID = "#1page_sectionDiv_" + item_content[i].category_id;
-
-                        var titleH = $('<h3 class="u-custom-font u-text u-text-1">'+item_content[i].category_name+'</h3>'); 
-                        $(motherID).append(titleH);
-
-                        var entireDiv = $('<div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-tabs u-tabs-1"></div>'); 
-                        $(motherID).append(entireDiv);
-
-                        //ul append
-                        var ul_ID = "1page_ul_"+ item_content[i].category_id;
-                        var ul = $("<ul role='tablist' id='"+ul_ID+"'></ul>"); 
-                        ul.addClass("u-grey-15 u-tab-list u-unstyled u-tab-list-1");
-                        $($(motherID).children()[1]).append(ul);
-
-                        //item 전체 Div
-                        var tabID = "1page_tabDiv_c_"+item_content[i].category_id;
-                        var tabsDiv = $('<div id="'+ tabID +'" class="u-tab-content"></div>');
-                        $($(motherID).children()[1]).append(tabsDiv);
-                        var first = 1;
+                    $($($("#1page_categoryDiv").children()[count_categoryID]).children()[0]).append(niceTag);
                     
 
-                        for(var h = i; h < item_content.length; h++){ //item 개수만큼 반복
-                            if(item_content[i].category_id != item_content[h].category_id){
-                                console.log("test : "+ item_content[i].item_name+ " vs "+ item_content[h].item_name);
-                              break;
-                            }
+                    //2. section 만들기
+                      var motherID = "#1page_sectionDiv_" + item_content[i].category_id;
 
-                            // li 만들기  
-                            var li =$("<li role='presentation'></li>"); 
-                            li.addClass("u-tab-item");
-                            $("#"+ul_ID).append(li);
+                      var titleH = $('<h3 class="u-custom-font u-text u-text-1">'+item_content[i].category_name+'</h3>'); 
+                      $(motherID).append(titleH);
 
-                            	// a 만들기 
-                            var a =$("<a role='tab' id='1page_item_"+item_content[h].item_id+"' href='#item-"+item_content[h].item_id+"' aria-controls='item-"+item_content[h].item_id+"'>"+item_content[h].item_name+"</a>"); 
-                            a.addClass("u-active-white u-button-style u-custom-font u-tab-link u-text-active-black u-text-grey-30 u-tab-link-2");
-                            $($("#"+ul_ID).children()[h-i]).append(a);
+                      var entireDiv = $('<div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-tabs u-tabs-1"></div>'); 
+                      $(motherID).append(entireDiv);
 
-                            //id li랑 연결
-                            if(first == 1){
-                                var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2"></div></div>');
-                            		first = 0;
-                                }else{
-                                	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2"></div></div>');
-                                    }
-                            $("#"+tabID).append(niceTag1);
-                            
+                      //ul append
+                      var ul_ID = "1page_ul_"+ item_content[i].category_id;
+                      var ul = $("<ul role='tablist' id='"+ul_ID+"'></ul>"); 
+                      ul.addClass("u-grey-15 u-tab-list u-unstyled u-tab-list-1");
+                      $($(motherID).children()[1]).append(ul);
 
-                            //1. 새 데이터 입력
-                           	var itemDiv_ID = "item-"+item_content[h].item_id;
-                            var tabDiv_itemID = "1page_tabDiv_item_"+item_content[h].item_id;
-                            var niceTag2 = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-1"><div class="u-container-layout u-container-layout-3"><p class="u-custom-font u-text u-text-2">새 데이터​ 추가</p><div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2"><div class="u-container-layout u-container-layout-4"><div id="'+tabDiv_itemID+'" class="u-form u-form-1"></div></div></p></div></div></div>');
-                            $($("#"+itemDiv_ID).children()[0]).append(niceTag2);
+                      //item 전체 Div
+                      var tabID = "1page_tabDiv_c_"+item_content[i].category_id;
+                      var tabsDiv = $('<div id="'+ tabID +'" class="u-tab-content"></div>');
+                      $($(motherID).children()[1]).append(tabsDiv);
+                      var first = 1;
+                  
 
-                            	// field 추가 (content1-6)
-                            var count = 0;
-                            for(var k = 0 ; k <field_content.length;k++){
-                                if(item_content[h].item_id < field_content[k].item_id)
-                                    break;
-                                
-                                if(item_content[h].item_id == field_content[k].item_id){
-                                    count += 1;
-                                    var field_name = "count"+count;
-                                    var fieldID = "1page_field_" + field_content[k].field_id;
-                                    console.log("type: "+field_content[k].field_name+" : "+field_content[k].field_type);
+                      for(var h = i; h < item_content.length; h++){ //item 개수만큼 반복
+                          if(item_content[i].category_id != item_content[h].category_id){
+                              console.log("test : "+ item_content[i].item_name+ " vs "+ item_content[h].item_name);
+                            break;
+                          }
 
-                                    if(field_content[k].field_type=="file"){
-                                        var imgTag = $('<img id="1page_view'+ field_content[k].field_id+ '" src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1" data-image-width="242" data-image-height="275">');
-                                        $("#"+tabDiv_itemID).append(imgTag);
+                          // li 만들기  
+                          var li =$("<li role='presentation'></li>"); 
+                          li.addClass("u-tab-item");
+                          $("#"+ul_ID).append(li);
 
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
-                                        $("#"+tabDiv_itemID).append(labelTag);
+                          	// a 만들기 
+                          var a =$("<a role='tab' id='1page_item_"+item_content[h].item_id+"' href='#item-"+item_content[h].item_id+"' aria-controls='item-"+item_content[h].item_id+"'>"+item_content[h].item_name+"</a>"); 
+                          a.addClass("u-active-white u-button-style u-custom-font u-tab-link u-text-active-black u-text-grey-30 u-tab-link-2");
+                          $($("#"+ul_ID).children()[h-i]).append(a);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName" onchange="readURL(this);"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
-                                        if(field_content[k].field_mark == 1){
-                                            fieldDiv.addClass("redStar");
-                                        }
-                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                          //id li랑 연결
+                          if(first == 1){
+                              var niceTag1 = $('<div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" style="height:90%" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
+                          		first = 0;
+                              }else{
+                              	var niceTag1 = $('<div class="u-container-style u-tab-pane u-white u-tab-pane-1" id="item-'+item_content[h].item_id+'" style="height:90%" role="tabpanel" aria-labelledby="1page_item_'+item_content[h].item_id+'"><div class="u-container-layout u-container-layout-2" style="overflow:scroll;"></div></div>');
+                                  }
+                          $("#"+tabID).append(niceTag1);
+                          
 
-                                        
-                                    }else if(field_content[k].field_type=='textarea'){
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
-                                        $("#"+tabDiv_itemID).append(labelTag);
+                          //1. 새 데이터 입력
+                         	var itemDiv_ID = "item-"+item_content[h].item_id;
+                          var tabDiv_itemID = "1page_tabDiv_item_"+item_content[h].item_id;
+                          var niceTag2 = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-1 longersize2"><div class="u-container-layout u-container-layout-3"><p class="u-custom-font u-text u-text-2">새 데이터​ 추가</p><div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2 longersize"><div class="u-container-layout u-container-layout-4"><div id="'+tabDiv_itemID+'" class="u-form u-form-1"></div></div></p></div></div></div>');
+                          $($("#"+itemDiv_ID).children()[0]).append(niceTag2);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea></div>');
-                                        if(field_content[k].field_mark == 1){
-                                            fieldDiv.addClass("redStar");
-                                            var spanTag = $('<span class="redMark">*</span>');
-                                            $("#"+tabDiv_itemID).append(spanTag);
-                                        }
-                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                          	// field 추가 (content1-6)
+                          var count = 0;
+                          var isFile=false;
+                          for(var k = 0 ; k <field_content.length;k++){
+                              if(item_content[h].item_id < field_content[k].item_id)
+                                  break;
+                              
+                              if(item_content[h].item_id == field_content[k].item_id){
+                                  count += 1;
+                                  var field_name = "count"+count;
+                                  var fieldID = "1page_field_" + field_content[k].field_id;
+                                  console.log("type: "+field_content[k].field_name+" : "+field_content[k].field_type);
 
-                                    }else if(field_content[k].field_type=='date'){
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
-                                        $("#"+tabDiv_itemID).append(labelTag);
+                                  if(field_content[k].field_type=="file"){
+                                      var imgTag = $('<img id="1page_view'+ field_content[k].field_id+ '" src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
+                                      $("#"+tabDiv_itemID).append(imgTag);
 
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="month" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
-                                        if(field_content[k].field_mark == 1){
-                                            fieldDiv.addClass("redStar");
-                                            var spanTag = $('<span class="redMark">*</span>');
-                                            $("#"+tabDiv_itemID).append(spanTag);
-                                        }
-                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                                      var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3 fileLabel">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
 
-                                    }else if(field_content[k].field_type=="select"){
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
-                                        $("#"+tabDiv_itemID).append(labelTag);
+                                      var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName" onchange="readURL(this);"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
+                                      if(field_content[k].field_mark == 1){
+                                          fieldDiv.addClass("redStar");
+                                      }
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
+										isFile=true;
+                                      
+                                  }else if(field_content[k].field_type=='textarea'){
+                                      var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
 
-                                        var fieldDiv = $('<div class="u-form-select-wrapper u-form-group u-form-select u-vertical-form-control-visible u-form-group-5"><select id="'+fieldID+'" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-3"></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg></div>');
-                                        if(field_content[k].field_mark == 1){
-                                            fieldDiv.addClass("redStar");
-                                            var spanTag = $('<span class="redMark">*</span>');
-                                            $("#"+tabDiv_itemID).append(spanTag);
-                                        }
-                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                                      var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea><span id="1page_textLimit">(0/150)</span></div>');
+                                      if(field_content[k].field_mark == 1){
+                                          fieldDiv.addClass("redStar");
+                                          var spanTag = $('<span class="redMark">*</span>');
+                                          $("#"+tabDiv_itemID).append(spanTag);
+                                      }
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
 
-                                        for(var t = 0; t < list_content.length; t++){
-                                            if(list_content[t].field_id == field_content[k].field_id){
-                                                var optionTag = $('<option value="'+list_content[t].list_name+'">'+list_content[t].list_name+'</option>');
-                                                $("#"+fieldID).append(optionTag);
-                                            }
-                                        }
+                                  }else if(field_content[k].field_type=='date'){
+                                      var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
 
-                                    }else{
-                                        var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
-                                        $("#"+tabDiv_itemID).append(labelTag);
+                                      var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="month" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+                                      if(field_content[k].field_mark == 1){
+                                          fieldDiv.addClass("redStar");
+                                          var spanTag = $('<span class="redMark">*</span>');
+                                          $("#"+tabDiv_itemID).append(spanTag);
+                                      }
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
 
-                                        //var fieldID = "1page_field_" + field_content[k].field_id;
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="'+field_content[k].field_type+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
-                                        if(field_content[k].field_mark == 1){
-                                            fieldDiv.addClass("redStar");
-                                            var spanTag = $('<span class="redMark">*</span>');
-                                            $("#"+tabDiv_itemID).append(spanTag);
-                                        }
-                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                                  }else if(field_content[k].field_type=="select"){
+                                      var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
 
-                                    }
+                                      var fieldDiv = $('<div class="u-form-select-wrapper u-form-group u-form-select u-vertical-form-control-visible u-form-group-5"><select id="'+fieldID+'" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-3"></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg></div>');
+                                      if(field_content[k].field_mark == 1){
+                                          fieldDiv.addClass("redStar");
+                                          var spanTag = $('<span class="redMark">*</span>');
+                                          $("#"+tabDiv_itemID).append(spanTag);
+                                      }
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
 
-                                }
-                            }//for (k) 종료  
+                                      for(var t = 0; t < list_content.length; t++){
+                                          if(list_content[t].field_id == field_content[k].field_id){
+                                              var optionTag = $('<option value="'+list_content[t].list_name+'">'+list_content[t].list_name+'</option>');
+                                              $("#"+fieldID).append(optionTag);
+                                          }
+                                      }
 
-                            //hidden field
-                            for(var a = count+1 ; a <= 6; a++){
-                                var hiddenTag = $('<input type="hidden" name="content'+a+'" value="" readonly="">');
-                                $("#"+tabDiv_itemID).append(hiddenTag);
-                            }
+                                  }else{
+                                      var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
 
-                            //입력 버튼
-                            var addB = $('<div class="u-align-center u-form-group u-form-submit"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
-                            $("#"+tabDiv_itemID).append(addB);
+                                      //var fieldID = "1page_field_" + field_content[k].field_id;
+                                      var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="'+field_content[k].field_type+'" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></div>');
+                                      if(field_content[k].field_mark == 1){
+                                          fieldDiv.addClass("redStar");
+                                          var spanTag = $('<span class="redMark">*</span>');
+                                          $("#"+tabDiv_itemID).append(spanTag);
+                                      }
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
 
-                          //이전 데이터 버튼
-                            var dbB = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3 1page_past'+item_content[h].item_id+'"><div class="u-container-layout u-valign-middle-xs u-container-layout-5 "><a href="#" id="'+item_content[h].item_id+'" class="pastB"><p class="u-align-center-xs u-custom-font u-text u-text-grey-40 u-text-3" >이전➕</p></a></div></div>');
-                            //$($($("#"+tabID).children()[0]).children()[0]).append(dbB);
-                            $($("#"+itemDiv_ID).children()[0]).append(dbB);
-                        } //for(h) 종료 
+                                  }
+
+                              }
+                          }//for (k) 종료  
+                          
+
+                          //hidden field
+                          for(var a = count+1 ; a <= 6; a++){
+                              var hiddenTag = $('<input type="hidden" name="content'+a+'" value="" readonly="">');
+                              $("#"+tabDiv_itemID).append(hiddenTag);
+                          }
+                      
+
+                          //입력 버튼
+                          var addB = $('<div class="fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
+                          $("#"+tabDiv_itemID).append(addB);
+                          if(isFile==true)
+                          	addB.addClass("fileAddB");
+                          else
+                          	addB.addClass("otherAddB");
+                      	
+							isFile=false;
+                        //이전 데이터 버튼
+                          var dbB = $('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-3 1page_tm 1page_past'+item_content[h].item_id+'"><div class="u-container-layout u-valign-middle-xs u-container-layout-5 "><a href="#" id="'+item_content[h].item_id+'" class="pastB"><p class="u-align-center-xs u-custom-font u-text u-text-grey-40 u-text-3" >이전➕</p></a></div></div>');
+                          //$($($("#"+tabID).children()[0]).children()[0]).append(dbB);
+                          $($("#"+itemDiv_ID).children()[0]).append(dbB);
+                      } //for(h) 종료 
 
 
-                      //end
-                      past_categoryID = item_content[i].category_id;
-                  }
-        }//for (i) 종료 
+                    //end
+                    past_categoryID = item_content[i].category_id;
+                }
+      }//for (i) 종료    
         
          //수정의 경우 
          //---------------------------------------------------
@@ -486,10 +493,10 @@
 
             }//초기 데이터 다 넣음 
             //---------------------------------------------------끝 
-            
+           
         //이전 데이터 눌렀을 때 
          	$(".pastB").click(function (){
-				var resultYN = sessionChecking();
+         		var resultYN = sessionChecking();
        			
        			if(resultYN == 1){
              	
@@ -545,26 +552,28 @@
   					  		
   					  	  }
   					});
-  			  	}
+  			  	}//select의 경우 option 들고오기 끝! 
+  			  	
   				console.log("test option!");
   				console.log(option_list); 
 
-  				//이전 데이터들을 감싸는 div 
-  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-group u-radius-21 u-shape-round u-group-1 1page_pastBox'+id+'"></div>');
+  				//이전 데이터들을 감싸는 div  (여기 u-group을 지우니 세로 정렬!)
+  				var brotherItem=$('<div class="u-border-2 u-border-grey-5 u-container-style u-expanded-width u-radius-21 u-shape-round u-group-1 longersize2 1page_tm 1page_pastBox'+id+'"></div>');
   				$('.1page_past'+id).after(brotherItem); 	
 
   				var pastBox=$('<div class="u-container-layout u-container-layout-3"><p class="u-custom-font u-text u-text-2">이전 데이터​</p></div>');
   				$('.1page_pastBox'+id).append(pastBox); 
 
   				for(var idx=0;idx<item_data.length;idx++){
-  					var parentBox=$('<div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2" ></div>');
-  					$('.1page_pastBox'+id).append(parentBox); 
-  					var box1=$('<div class="u-container-layout u-valign-bottom-xs u-container-layout-14"></div>');
-  					$($('.1page_pastBox'+id).children()[idx+1]).append(box1);
+  					var parentBox=$('<div class="u-container-style u-expanded-width u-grey-5 u-group u-radius-21 u-shape-round u-group-2 longersize longersize" ></div>');
+  					$($('.1page_pastBox'+id).children()[0]).append(parentBox); 
+  					var box1=$('<div class="u-container-layout u-container-layout-4"></div>');
+  					$($($('.1page_pastBox'+id).children()[0]).children()[idx+1]).append(box1);
   					var box2=$('<div class="u-form u-form-1 1page_tabDiv'+id+'_past_'+item_data[idx].id+'"  id="1page_tabDiv'+id+'_past_'+item_data[idx].item_id+'"></div>');
-  					$($($('.1page_pastBox'+id).children()[idx+1]).children()[0]).append(box2);
+  					$($($($('.1page_pastBox'+id).children()[0]).children()[idx+1]).children()[0]).append(box2);
 
   					var count = 0;
+  					var isFile=false;
   					for(var k = 0 ; k <item_type.length; k++){
   						
   						if(k==0){
@@ -591,20 +600,22 @@
   						var fieldID = "1page_fieldPast"+item_data[idx].id+"_"+item_type[k].field_id;
   						
   						if(item_type[k].field_type=="file"){
-  	                        var imgPast = $('<img id="1page_view'+ item_type[k].field_id+ '" src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1" data-image-width="242" data-image-height="275">');
+  	                        var imgPast = $('<img id="1page_view'+ item_type[k].field_id+ '" src="resources/user_photo/'+content+'" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(imgPast);
   	
-  	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
+  	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3 fileLabel">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible fixplace2"><input id="'+fieldID+'" type="file" placeholder="" name="defaultName"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"/></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
-  	
+
+  	                      	isFile=true;
+  	                      	
   	                    }else if(item_type[k].field_type=='textarea'){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+'" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea></div>');
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea><span id="1page_textLimit">(0/150)</span></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
   	
   	                    }else if(item_type[k].field_type=='date'){
@@ -650,203 +661,185 @@
   	                }
 
   					//입력 버튼
-  					var pastAddB = $('<div class="u-align-center u-form-group u-form-submit "><a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_pastAddB">+ 입력</a></div>');
+  					var pastAddB = $('<div class="fixplace3 "><a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_pastAddB">+ 입력</a></div>');
                       $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastAddB);
+                    if(isFile==true)
+                    	pastAddB.addClass("fileAddB");
+                    else
+                    	pastAddB.addClass("otherAddB");
+                  	isFile=false;
   	                
-  				}//이전데이터 개수(3개)만큼 반복문을 돌림
+  					}//이전데이터 개수(3개)만큼 반복문을 돌림 for(idx) 
 
-
-  		  	  }//success
-
-  		 });//2번쨰 ajax 끝! 
-           		} //resultYN == 1 경우 끝
+  		  	  	}//success
+				});//2번쨰 ajax 끝! 
+       		} //resultYN == 1 경우 끝
   	    }); // 이전 데이터 보여주기 끝 
-
-        //이전 데이터 div에 넣기 
-          $(document).on("click", ".1page_pastAddB", function(){
-        	  var resultYN = sessionChecking();
-   			
-       		if(resultYN == 1){
-        	  add_count++; //포트폴리오에 넣는 전체 항목 
-              var data_num = $(this).parent().siblings("div").length;
-            console.log("click : " + data_num);
-
-            var find_itemID = $($(this).parent()).parent().attr("id");
-            console.log(find_itemID);
-            find_itemID = find_itemID.split("_");
-            var item = find_itemID[3] - 1;
-            console.log("item : " + item_content[item].item_name);
-
-            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
-            $('#1page_form').append(niceTag3); 
+  	  //이전 데이터 포트폴리오에 추가하기
+        $(document).on("click", ".1page_pastAddB", function(){
             
-
-          //체크된 박스의 라인에 존재하는 상태 값 변경
-          var field_count = 0;
-          $(this).parent().siblings("div").each(function() { 
-            	 field_count++;
-                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
-                 //type : $(this).children().attr("type")
-                 //value : $(this).children().val()
-                 var type = $(this).children().attr("type");
-                 
-                 if(type == "file"){
-                     
-                     var viewTag = $('<img src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1" data-image-width="242" data-image-height="275">');
-                     $($('#1page_count' + add_count).children()[0]).append(viewTag);
-
-                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-                     
-                     
-                  }else if(type == "text" || type == "date" ){
-                      /* if(vali($(this).children().val())){
-                         정보를 입력하지 않았을 경
-                          } */
-                          	
-                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
-                      $($('#1page_count' + add_count).children()[0]).append(pTag);
-                      
-                      var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-                     
-                  }else{
-                	  	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
-                      $($('#1page_count' + add_count).children()[0]).append(pTag);
-
-                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-                      
-                  }
-
-            }); //field 수 만큼 반복  
-             for(var z = field_count+1 ; z < 7;z++){
-                 var trashTag =  $('<input type = "hidden" name="content'+z+'" value ="">');
-                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
-                 }
-
-              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
-              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
-       				} //resultYN == 1 경우 
-              });//이전 데이터에서 입력된 정보 div에 넣기 끝
-         
-
-        //입력된 정보 div에 넣기 
-          $(".1page_addB").click(function () {
-        	  var resultYN = sessionChecking();
+      	var resultYN = sessionChecking();
    			
-   				if(resultYN == 1){
-
-             var check_id = $(this).attr("id");
-             check_id = check_id.split("_");
-             
-             var isEmpty = 0;
-             $(this).parent().siblings('.redStar').each(function() { 
-            	 		if ( $(this).children().is('input, textarea, select') && $(this).children().val().length < 1 ) 
-            	 				isEmpty = 1;
-                });
-
-             if(isEmpty == 1){
-            	 	$(this).siblings('p').text("필수 사항(*)을 모두 입력해주세요! ");
-              }else{ //필수 사항 모두 입력한 경우
-
-              if(check_id[2]==1 && $('input[name=file1]').length == 1){//사진 개수 확인 
-                  
-                  $(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");
-                  
-              }else if( (check_id[2]==2 || check_id[2]==5 || check_id[2]==6 || check_id[2]==9) && $('input[name=add_itemID]:input[value='+check_id[2]+']').length > 0){//사진 개수 확인 
-                  
-                  $(this).siblings('p').text("최대 1개만 입력 가능합니다. ");
-                  
-              }else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
-                  var topic = $(this).parent().siblings('label').text();
-            	  $(this).siblings('p').text(topic+" : 최대 3개 입력가능합니다.");
-              }else{
-                  //추가 가능할 때!
-                  $(this).siblings('p').text("");
-                  
-              
-	        	  add_count++; //포트폴리오에 넣는 전체 항목 
-	              var data_num = $(this).parent().siblings("div").length;
+   		if(resultYN == 1){
+      	  
+	        	add_count++; //포트폴리오에 넣는 전체 항목 
+	            var data_num = $(this).parent().siblings("div").length;
 	            console.log("click : " + data_num);
 	
 	            var find_itemID = $($(this).parent()).parent().attr("id");
+	            console.log(find_itemID);
 	            find_itemID = find_itemID.split("_");
 	            var item = find_itemID[3] - 1;
 	            console.log("item : " + item_content[item].item_name);
-	
-	            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
+
+	            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2" ></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
 	            $('#1page_form').append(niceTag3); 
-	            
-	
-	          //체크된 박스의 라인에 존재하는 상태 값 변경
+          
+
+        		//체크된 박스의 라인에 존재하는 상태 값 변경
 	          var field_count = 0;
-	          var type = "";
-	          $(this).parent().siblings("div").each(function() { 
+	          $(this).parent().siblings("div").each(function() {
 	            	 field_count++;
 	                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
 	                 //type : $(this).children().attr("type")
 	                 //value : $(this).children().val()
-	                	 type = $(this).children().attr("type");
+	                 var type = $(this).children().attr("type");
 	                 
 	                 if(type == "file"){
+	                     var viewTag = $('<img src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
+	                     $($('#1page_count' + add_count).children()[0]).append(viewTag);
 	
-	                	 	$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
-	
-	                	 	
-	                   var viewTag = $($(this).siblings("img")).clone();
-	                   viewTag.attr("id","1page_view2" );
-	                   $($('#1page_count' + add_count).children()[0]).append(viewTag);
-	
-	                     var realTag = $($(this).children()).clone();
-	                     realTag.attr("name", "file1");
-	                     realTag.attr("id", "");
-	                     realTag.attr("class", "");
-	                     realTag.css('display', 'none');
+	                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-	
-						// 기본이미지로 되돌리기 
-	                     $('#1page_view1').attr('src', 'resources/images/21.png');     
-	                     
-	                     
-	                  }else if(type == "text" || type == "date" ){
-	                      /* if(vali($(this).children().val())){
-	                         정보를 입력하지 않았을 경
-	                          } */
-	                          	
+	                  }else{
 	                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                      
-	                      var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                     
-	                  }else{
-	                	  	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
-	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
-	
 	                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                      
 	                  }
-	                 $(this).children().val('');
-	                 console.log("value : " + $(this).children().attr("type"));
-	
-	            }); //field 수 만큼 반복
-	              
-	            if(type != "file"){
-		             for(var z = field_count+1 ; z < 7;z++){
-		                 var trashTag =  $('<input type = "hidden" name="content'+z+'" value ="">');
-		                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
-		                 }
-	          	}
-	
-	              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
+	            }); //field 수 만큼 반복  
+	            
+	             for(var z = field_count+1 ; z < 7;z++){
+	                 var trashTag =  $('<input type = "hidden" id="content'+z+'" name="content'+z+'" value ="">');
+	                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
+	             }
+	              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
 	              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
-              }//입력된 정보 안에 넣기 완료 
-   				}//else - 필수 사항 모두 입력한 경우 
-   				}//resultYN == 1 경우 끝 
-	          });//입력된 정보 div에 넣기 끝
-	
+	              showNotification();
+   			} //resultYN == 1 경우 
+        	});//이전 데이터에서 입력된 정보 div에 넣기 끝
+
+            //입력된 정보 div에 넣기 
+              $(".1page_addB").click(function () {
+            	  var resultYN = sessionChecking();
+         			
+         			if(resultYN == 1){
+
+    		             var check_id = $(this).attr("id");
+    		             check_id = check_id.split("_");
+
+    		             var isEmpty = 0;
+    		             $(this).parent().siblings('.redStar').each(function() { 
+    		            	 		if ( $(this).children().is('input, textarea, select') && $(this).children().val().length < 1 ) 
+    		            	 				isEmpty = 1;
+    		                });
+
+    		             if(isEmpty == 1){
+    		            	 	$(this).siblings('p').text("필수 사항(*)을 모두 입력해주세요! ");
+    		              }else{ //필수 사항 모두 입력한 경우
+
+                  				if(check_id[2]==1 && $('input[name=file1]').length == 1){//사진 개수 확인 
+                      					$(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");
+                      			 }else if( (check_id[2]==2 || check_id[2]==5 || check_id[2]==6 || check_id[2]==9) && $('input[name=add_itemID]:input[value='+check_id[2]+']').length > 0){//사진 개수 확인 
+                      					$(this).siblings('p').text("최대 1개만 입력 가능합니다. ");
+                  				}else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
+                      					var topic = $(this).parent().siblings('label').text();
+                	 					$(this).siblings('p').text(topic+" : 최대 3개 입력가능합니다.");
+                  				}else{
+    				                  //추가 가능할 때!
+    				                  $(this).siblings('p').text("");
+    				                  add_count++; //포트폴리오에 넣는 전체 항목 
+    						          var data_num = $(this).parent().siblings("div").length;
+    						          console.log("click : " + data_num);
+    	
+    					            var find_itemID = $($(this).parent()).parent().attr("id");
+    					            find_itemID = find_itemID.split("_");
+    					            var item = find_itemID[3] - 1;
+    					            console.log("item : " + item_content[item].item_name);
+    					
+    					            var niceTag3 = $('<div id="1page_count'+add_count+'" class="u-border-2 u-border-custom-color-2 u-container-style u-expanded-width u-group u-white u-group-14"><div class="u-container-layout u-container-layout-16 1page_inputs makedown_helper"><div class="u-border-1 u-border-grey-50 u-line u-line-vertical u-line-2"></div><p class="u-custom-font u-text u-text-grey-30 u-text-19">'+item_content[item].item_name+'</p><input type = "hidden" name="add_itemID" value ="'+item_content[item].item_id+'"></div></div>');
+    					            $('#1page_form').append(niceTag3); 
+    	            
+    	
+    					          //체크된 박스의 라인에 존재하는 상태 값 변경
+    					          var field_count = 0;
+    					          var type = "";
+    					          $(this).parent().siblings("div").each(function() {
+    					            	 field_count++;
+    					                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
+    					                 //type : $(this).children().attr("type")
+    					                 //value : $(this).children().val()
+    					                	 type = $(this).children().attr("type");
+    	                						 if(type == "file"){
+    	
+    	                	 							$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
+    	
+    							                   var viewTag = $($(this).siblings("img")).clone();
+    							                   viewTag.attr("id","1page_view2" );
+    							                   viewTag.attr("style","top:-15px;margin-left:40%;width:70px; height:70px;" );
+    							                   viewTag.attr("class","u-image" );
+    							                   $($('#1page_count' + add_count).children()[0]).append(viewTag);
+    							
+    							                     var realTag = $($(this).children()).clone();
+    							                     realTag.attr("name", "file1");
+    							                     realTag.attr("id", "");
+    							                     realTag.attr("class", "");
+    							                     realTag.css('display', 'none');
+    							                     $($('#1page_count' + add_count).children()[0]).append(realTag);
+    							
+    												// 기본이미지로 되돌리기 
+    							                     $('#1page_view1').attr('src', 'resources/images/21.png');     
+    	                     
+    	                     
+    	                  					}else if(type == "month"){
+    												var value=$(this).children().val();
+    												var replaced_str = value.replace(/\-/g, "/");
+    	                  						 	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+replaced_str+'</p>');
+    						                      	$($('#1page_count' + add_count).children()[0]).append(pTag);
+    						                      
+    						                      	var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+replaced_str+'">');
+    						                      	$($('#1page_count' + add_count).children()[0]).append(realTag);
+    				                  		}
+
+    		 	                  			else{
+    							                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
+    							                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+    							                      
+    							                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
+    							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+    	               
+    	                  					}
+    	 	                  					
+    						                 $(this).children().val('');
+    						                 console.log("value : " + $(this).children().attr("type"));
+    	
+    	            					}); //field 수 만큼 반복
+    	              
+    					            if(type != "file"){
+    						             for(var z = field_count+1 ; z < 7;z++){
+    						                 var trashTag =  $('<input type = "hidden" id="content'+z+'"  name="content'+z+'" value ="">');
+    						                 $($('#1page_count' + add_count).children()[0]).append(trashTag);
+    						                 }
+    					          	}
+    	
+    				              var niceTag4 = $('<span  class="u-icon u-icon-circle u-text-custom-color-1 u-icon-13 1page_deleteB makedown" ><svg class="u-svg-link " preserveAspectRatio="xMidYMin slice" viewBox="0 0 365.696 365.696" style=""><use  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6bc6"></use></svg><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 365.696 365.696" id="svg-6bc6"><path d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"></path></svg></span>');
+    				              $($('#1page_count' + add_count).children()[0]).append(niceTag4);
+                  	  		}//else - 추가 가능할 경우 
+                    		}//else - 필수 사항 모두 입력한 경우 
+                    		showNotification();
+         			}//resultYN == 1 경우 끝 
+    	          });//입력된 정보 div에 넣기 끝
 	          //입력 정보 지우기 
 	          $(document).on("click", ".1page_deleteB", function() {
 	        	  var resultYN = sessionChecking();
@@ -873,10 +866,11 @@
                   }else{
 					//포트폴리오 이름, 공개 여부 form에 입력 
 	              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
+	              $('#select_portfolio_url').val($("input[name=url]").val());
 	              $('#select_portfolio_public').val($("select[name=1page_public]").val());
 
 	              //form 전송 
-
+				  $("#1page_myForm").attr("target", "");
 		          $("#1page_myForm").submit();
                       
                       }
@@ -905,10 +899,11 @@
 	  		   	  var template_html=$("input[name=template_html]").val();
 	  		   	  var template_color=$("input[name=template_color]").val();
 	  		  	  var template_font=$("input[name=template_font]").val();
+	  		  	  var template_isVerticle=$("input[name=template_isVerticle]").val();
 	  		  	  console.log("template  color"+template_color);
 	  		  	  console.log("template  font"+template_font);
 
-	  		      for(var i=0; i<length; i++){                         
+	  		  	 for(var i=0; i<length; i++){                         
 		  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
 		  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
 		  		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
@@ -916,11 +911,12 @@
 		  		    	content4[i] = $("#1page_form").find("input[name=content4]").eq(i).val();
 		  		    	content5[i] = $("#1page_form").find("input[name=content5]").eq(i).val();
 		  		    	content6[i] = $("#1page_form").find("input[name=content6]").eq(i).val();
+		  
 	  		      }
   		        
 					console.log(item_id);
 					console.log(content1);
-  		       		var sendData = {"template_html":template_html,"template_color":template_color,"template_font":template_font,"item_id": item_id, "content1" : content1 , "content2" : content2 , "content3" : content3 , "content4" : content4 , "content5" : content5 , "content6" : content6};
+					var sendData = {"template_html":template_html,"template_color":template_color,"template_font":template_font,"item_id": item_id, "content1" : content1 , "content2" : content2 , "content3" : content3 , "content4" : content4 , "content5" : content5 , "content6" : content6};
 
        	  			console.log(sendData);
 		    		  $.ajax({
@@ -1193,7 +1189,77 @@
     </section>
     
     
-    <style>.u-section-4 {
+    <style type="text/css">
+    .noenter{
+		white-space:nowrap;
+	}
+	.immodal{
+		 height: 400px;
+		 overflow-y: auto;
+	}
+	img.fixplace{
+		position: relative;
+		top: 120px;
+	}
+	div.fixplace2{
+		float:left;
+		width:50%;
+		margin-left:25%;
+		margin-top:10%;
+	}
+	div.fixplace3{
+		float:right;
+		height:80px;
+	}
+	.fileAddB{
+		margin-top:7%;
+	}
+	/* .otherAddB{
+		position:absolute;
+		top:-30px;
+		left:82%;
+	} */
+	.longersize, .longersize2{
+		float:left;
+	}
+	.longersize2{
+		margin-bottom: 300px;
+	}
+	.modalscroll{
+		display: static;
+		height: 300px;
+		overflow: scroll;
+	}
+	.makedown_helper{
+		display: table;
+	}
+	.makedown{
+		float:left;
+		display: table-cell; vertical-align: middle;
+	}
+	.u-tab-content{
+   		height:400px;
+     }
+     .u-form{
+     	display:inline-block;
+     	height:90%;
+     	padding-top:2%;
+     }
+     .fileLabel{
+     	float:left;
+     	position:absolute;
+     	margin-left:27%;
+     	margin-top:5%;
+     }
+     .1page_tm{
+     	margin-top:2%;
+     }
+    </style>
+    
+    
+    <style>
+    
+    .u-section-4 {
   min-height: 1352px;
 }
 
@@ -1280,20 +1346,22 @@
 
 <!-- 1번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-5" id="1page_section1">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
-        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1"style="height:55vh">
+        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1" >
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역  -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-95b6"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-95b6"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-5 {
+    </section><style>
+    
+/*     .u-section-5 {
   min-height: 1760px;
-}
+} */
 
 .u-section-5 .u-dialog-1 {
   width: 814px;
-  min-height: 727px;
+  min-height: 700px;
   height: auto;
   margin: 89px auto 60px;
 }
@@ -1361,13 +1429,12 @@
 }
 
 .u-section-5 .u-container-layout-4 {
-  padding: 30px 30px 25px;
+  padding: 20px 20px 15px;
 }
 
 .u-section-5 .u-group-3 {
   width: 108px;
   min-height: 41px;
-  margin: 83px 0 0 auto;
 }
 
 .u-section-5 .u-container-layout-5 {
@@ -1775,7 +1842,7 @@
 @media (max-width: 991px) {
   .u-section-5 .u-dialog-1 {
     width: 720px;
-    min-height: 723px;
+    min-height: 700px;
   }
 
   .u-section-5 .u-text-1 {
@@ -2262,20 +2329,20 @@
 
 <!-- 2번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6" id="1page_section2">
-      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:40vh">
         <div id="1page_sectionDiv_2" class="u-container-layout u-container-layout-1">
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-3"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2bec"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-2bec"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-6 {
+    </section><style>/* .u-section-6 {
   min-height: 1760px;
-}
+} */
 
 .u-section-6 .u-dialog-1 {
   width: 800px;
-  min-height: 772px;
+  min-height: 700px;
   margin: 88px auto 60px;
 }
 
@@ -2981,19 +3048,19 @@
 }</style>
 <!-- 3번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-7" id="1page_section3">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
         <div id="1page_sectionDiv_3"  class="u-container-layout u-valign-top u-container-layout-1">
         <!-- 삭제 구역    -->
                   <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-5"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8edf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-8edf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
-    </section><style>.u-section-7 {
+    </section><style>/* .u-section-7 {
   min-height: 1760px;
-}
+} */
 
 .u-section-7 .u-dialog-1 {
   width: 800px;
-  min-height: 779px;
+  min-height: 700px;
   margin: 89px auto 60px;
 }
 
@@ -4405,8 +4472,8 @@
 }</style>
 <!-- 4번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-8" id="1page_section4">
-      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1">
-        <div id="1page_sectionDiv_4"  class="u-container-layout u-valign-bottom u-container-layout-1">
+      <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
+        <div id="1page_sectionDiv_4"  class="u-container-layout u-container-layout-1">
         <!-- 삭제 구역    -->
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-6"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-63bf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-63bf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
@@ -4417,7 +4484,7 @@
 
 .u-section-8 .u-dialog-1 {
   width: 800px;
-  min-height: 773px;
+  min-height: 700px;
   margin: 84px auto 60px;
 }
 
@@ -5859,5 +5926,10 @@
     margin-left: initial;
     width: auto;
   }
-}</style></body>
+}</style>
+
+ <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/textData.js?ver=11"></script>
+
+</body>
 </html>
+    

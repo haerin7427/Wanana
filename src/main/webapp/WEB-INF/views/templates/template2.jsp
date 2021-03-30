@@ -329,15 +329,14 @@
                 nameInput.innerHTML = item[i].content[0];
                 $("#1page_preview #item_"+item[i].item_id+"_"+i).append(nameInput);
 				
-			    $('.item_'+item[i].item_id+"_"+i+"_"+j).easyPieChart({
-			    	scaleColor: "#ecf0f1",
-			    	lineWidth:5,
-			    	barColor: '#f5b433', 
-			    	trackColor:	"#ecf0f1",
-			    	size: 62,
-			    	rotate: 0,
-			    	lineCap: 'round',
-			    	animate: false
+			    $('.item_'+item[i].item_id+"_"+i+"_"+j).css({
+			    	"background-color":"#fff",
+			    	"border": "7px "+ color_info.color1+" solid",
+			    	"padding": "25%",
+			    	"width":"80px",
+			    	"height":"80px",
+			    	"-webkit-border-radius":"100px",
+			    	"-moz-border-radius": "100px"
 			    });
 			    
 			}
@@ -360,6 +359,10 @@
                             $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==4)
                             $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                        else if(j==5)
+                        	$("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                        else if(j==6)
+                        	$("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                     }else if(item[i].item_id == 9){
                         if(j==1)
                             $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p class="small_title2" >'+item[i].content[j-1]+'</p><p style="color:#9fa0a0; font-weight:bold">.&nbsp</p>');

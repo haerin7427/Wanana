@@ -742,7 +742,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    
 		    
 		    //포트폴리오 정보 update
-		    	
+		   System.out.println("portPublic:"+portfolio_public);
 	        Portfolio port= new Portfolio();
 	        port.setId(portfolio_id);
 	        port.setTitle(portfolio_name);

@@ -395,16 +395,14 @@ $(document).ready(function () {
 				
 				$("#1page_preview #item_"+item[i].item_id+"_"+i).append(newInput);
 				
-			    $('.item_'+item[i].item_id+"_"+i+"_"+0).easyPieChart({
-				   
-			    	scaleColor: "#ecf0f1",
-			    	lineWidth:5,
-			    	rotate: 0,
-			    	lineCap: 'round',
-			    	barColor: '#f5b433',
-			    	trackColor:	"#ecf0f1",
-			    	size: 70,
-			    	animate: false
+			    $('.item_'+item[i].item_id+"_"+i+"_"+0).css({
+			    	"background-color":"#fff",
+			    	"border": "7px "+ color_info.color1+" solid",
+			    	"padding": "25%",
+			    	"width":"80px",
+			    	"height":"80px",
+			    	"-webkit-border-radius":"100px",
+			    	"-moz-border-radius": "100px"
 			    });
 			    
 			}
@@ -428,6 +426,10 @@ $(document).ready(function () {
                             $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p><p>)</p>');
                         else if(j==4)
                             $("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                        else if(j==5)
+                        	$("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
+                        else if(j==6)
+                        	$("#1page_preview #item_"+item[i].item_id+"_"+i+"_"+j).append('<p>'+item[i].content[j-1]+'</p>');
                     }
                     else if(item[i].item_id == 9){
                         if(j==1)
