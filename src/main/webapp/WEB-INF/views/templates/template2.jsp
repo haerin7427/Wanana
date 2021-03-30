@@ -81,7 +81,7 @@
 .aboutme {
 	padding: calc(0.66*var(--my-fontSize)) 0 0 0;
 	/* height: calc(65% - 8.66*var(--my-fontSize)); */
-	height: calc(16.66*var(--my-fontSize)); 
+	height: calc(35% + 1*var(--my-fontSize));
 }
 #introduce {
 	padding: calc(1*var(--my-fontSize)) 0 0 0;
@@ -247,6 +247,10 @@
 	canvas{
 	!important;
 	}
+}
+
+.item_2{
+	text-align: center !important;
 }
 
 .small_title{
@@ -421,12 +425,12 @@
 				<img class="imageicon" src="<%=request.getContextPath()%>/resources/images/default_userpic.png" width="100%" alt="default_img&quot;" data-image-width="166" data-image-height="195">
 			</div>
 			
-			<div style="display:block;" class="aboutme" id="item_2">
-				<h4 style="color:white; font-size:calc(1.5*var(--my-fontSize)); font-weight:800;">ABOUT ME</h4>
+			<div style="display:block; margin-top: 20px;margin-bottom: 20px;" class="aboutme" id="item_2">
+				<h4 style="color:white; font-size:calc(1.5*var(--my-fontSize)); font-weight:800; text-align: center;">ABOUT ME</h4>
 				
 			</div>
 			
-			<div id="contact">
+			<div id="contact" style="text-align: center;">
                 <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="15%;" alt="default_img">
                 <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
                 
