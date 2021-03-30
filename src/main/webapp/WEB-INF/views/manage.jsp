@@ -105,6 +105,45 @@
 			text-align: justify;
 		}
 		
+		.askDelete{
+		color: #808080 !important; 
+		}
+		
+		.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    .pagination>li {
+    display: inline;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #888888;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+		
     </style>
     
     <script type="text/javascript">
@@ -126,7 +165,7 @@
 			 var userPhone = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].phone+'</td>');
 			 var userEmail = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].email+'</td>');
 			 var userCount = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].portCount+'</td>');
-			 var deleteButton = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a class="askDelete">탈퇴</a><input type="hidden" value="'+UserInfo[i].id+'"></td>');
+			 var deleteButton = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a class="askDelete"><img style="width: 20px;" src="/onepage/resources/images/delete2.png"></a><input type="hidden" value="'+UserInfo[i].id+'"></td>');
 			 
 			 
 			 $('#mangeBody').append(sectionTag);
