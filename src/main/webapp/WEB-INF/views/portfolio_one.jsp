@@ -250,7 +250,16 @@
                                             }
                                         }
 
-                                    }else{
+                                    }
+                                    else if(field_content[k].field_type=="collection"){
+                                    	var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                        $("#"+tabDiv_itemID).append(labelTag);
+
+                                        //var fieldID = "1page_field_" + field_content[k].field_id;
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 collectionBox"><input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput0"></div>');                           
+                                        $("#"+tabDiv_itemID).append(fieldDiv);
+                                    }
+                                    else{
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
 
@@ -402,7 +411,7 @@
   						count += 1;
   						
   						var fieldID = "1page_fieldPast"+item_data[idx].id+"_"+item_type[k].field_id;
-  						
+  						console.log(item_type[k].field_type);
   						if(item_type[k].field_type=="file"){
   	                        var imgPast = $('<img id="1page_view'+ item_type[k].field_id+ '" src="resources/user_photo/'+content+'" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(imgPast);
@@ -448,7 +457,32 @@
   									}
   	                            }
   	                        }
-  	                    }else if(item_type[k].field_type=="text"){
+  	                    }
+  	                  else if(item_type[k].field_type=="collection"){
+  	  	                    
+							var colContent=content.replaceAll("[\\t\\s]","").split("#");
+								
+  	  	               		var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
+	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
+	
+                          //var fieldID = "1page_field_" + field_content[k].field_id;
+                          var pastFieldDiv='<div class="u-form-group u-vertical-form-control-visible u-form-group-1 collectionBox">';
+                          var wid;
+                         
+                          if(colContent.length==2)//한개면
+                              wid="100%";
+                          else if(colContent.length==3)//두개면
+                              wid="50%";
+                          else //세계면
+                              wid="33%";
+                          for(var x=0; x<colContent.length-1;x++){
+                        	  pastFieldDiv=pastFieldDiv.concat('<input id="'+fieldID+'" type="input" placeholder="" name="collection" value="'+colContent[x+1]+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput'+x+'" style="display:inline-block;width:'+wid+'">');
+                           }
+                          pastFieldDiv=pastFieldDiv.concat('</div>');
+                  
+                          $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv); 
+                      }
+  	                    else if(item_type[k].field_type=="text"){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
@@ -509,6 +543,7 @@
 	                 //type : $(this).children().attr("type")
 	                 //value : $(this).children().val()
 	                 var type = $(this).children().attr("type");
+	                 var isCollection = $(this).children('input').length;
 	                 
 	                 if(type == "file"){
 	                     var viewTag = $('<img src="resources/images/21.png" alt="" class="u-image u-image-default u-image-1 fixplace" data-image-width="242" data-image-height="275">');
@@ -516,13 +551,42 @@
 	
 	                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                  }else{
+	                  }
+	                 else if(isCollection>1){
+						var name=$(this).children().eq(0).attr("name");
+						if(name=="collection"){
+							var resultCollect=' ';
+							for(var x=0; x<isCollection; x++){
+								if($(this).children().eq(x).val().trim()=='')
+									continue;
+								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+							}
+
+							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+		                      
+		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
+		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+						}
+	                 }
+	                 else{
+	                	 var name=$(this).children().attr("name");
+ 						if(name=="collection" && $(this).children().val().trim()!=''){
+ 							 var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+ 		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+ 		                      
+ 		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');
+ 		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+ 						}
+ 						else{
 	                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                      
 	                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                  }
+
+		                  }
+	                 }
 	            }); //field 수 만큼 반복  
 	            
 	             for(var z = field_count+1 ; z < 7;z++){
@@ -582,12 +646,14 @@
 					          //체크된 박스의 라인에 존재하는 상태 값 변경
 					          var field_count = 0;
 					          var type = "";
+					          var isCollection=0;
 					          $(this).parent().siblings("div").each(function() {
 					            	 field_count++;
 					                 //date, text, file 이면 그대로 타입 유지 else 면 textarea
 					                 //type : $(this).children().attr("type")
 					                 //value : $(this).children().val()
 					                	 type = $(this).children().attr("type");
+					                	 isCollection = $(this).children('input').length;
 	                						 if(type == "file"){
 	
 	                	 							$($($('#1page_count' + add_count).children()[0]).children()[2]).remove(); //file일 경우 nice tag 지움  
@@ -618,14 +684,39 @@
 						                      	var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+replaced_str+'">');
 						                      	$($('#1page_count' + add_count).children()[0]).append(realTag);
 				                  		}
+	                  					else if(isCollection>1){
+	                						var name=$(this).children().eq(0).attr("name");
+	                						if(name=="collection"){
+	                							var resultCollect=' ';
+	                							for(var x=0; x<isCollection; x++){
+	                								if($(this).children().eq(x).val().trim()=='')
+	                									continue;
+	                								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+	                							}
 
+	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+	                		                      
+	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
+	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+	                						}
+	                	                 }
 		 	                  			else{
+		 	                  				var name=$(this).children().attr("name");
+	                						if(name=="collection" && $(this).children().val().trim()!=''){
+	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+	                		                      
+	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');
+	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+	                						}
+	                						else{
 							                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
 							                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 							                      
 							                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	               
+	                						}
 	                  					}
 	 	                  					
 						                 $(this).children().val('');
@@ -755,6 +846,31 @@
       	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
 				$("#select_portfolio_public").val(valueCheck);
         });
+
+          $('div').on('blur',".collectionInput0",function() {
+    		  if($(this).val().trim() != ''){
+    			  var fieldID=$(this).parent().children().eq(0).attr("id");
+    			  var plusInput=$('<input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput1">');
+    			  var num=$(this).parent().children().length;
+    			  
+    			  if(num==1){
+    				  $(this).parent().append(plusInput);
+    				  $(this).parent().children().css( 'width', '50%' );
+    			  }
+    		  }
+    	 });
+          $('div').on('blur',".collectionInput1",function() {
+    		  if($(this).val().trim() != ''){
+    			  var fieldID=$(this).parent().children().eq(0).attr("id");
+    			  var plusInput=$('<input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput2">');
+    			  var num=$(this).parent().children().length;
+    			  
+    			  if(num==2){
+    				  $(this).parent().append(plusInput);
+    				  $(this).parent().children().css( 'width', '33%' );
+    			  }
+    		  }
+    	 });
     });//document.ready 
 
     function readURL(input) {
@@ -784,6 +900,10 @@
 			
 	.notification-container.show {
 		display: flex;
+	}
+	
+	.collectionInput2,.collectionInput1,.collectionInput0{
+		display:inline-block;
 	}
   </style>      
   </head>
@@ -966,6 +1086,7 @@
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
+    
     
   <!--  미리보기 모달 창 -->
   <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-4" id="sec-0d99">

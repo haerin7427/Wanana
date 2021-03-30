@@ -406,7 +406,16 @@
                                           }
                                       }
 
-                                  }else{
+                                  }
+                                  else if(field_content[k].field_type=="collection"){
+                                  	var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
+                                      $("#"+tabDiv_itemID).append(labelTag);
+
+                                      //var fieldID = "1page_field_" + field_content[k].field_id;
+                                      var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1 collectionBox"><input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput0"></div>');                           
+                                      $("#"+tabDiv_itemID).append(fieldDiv);
+                                  }
+                                  else{
                                       var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                       $("#"+tabDiv_itemID).append(labelTag);
 
@@ -478,7 +487,7 @@
 	            	var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+data_content[e].content[f]+'</p>');
 	                $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                
-	                var realTag = $('<input type = "hidden" name="content'+(f+1)+'" id="content'+(f+1)+'" val="'+data_content[e].content[f]+'">');
+	                var realTag = $('<input type = "hidden" name="content'+(f+1)+'" id="content'+(f+1)+'" value="'+data_content[e].content[f]+'">');
 	                $($('#1page_count' + add_count).children()[0]).append(realTag);
 	             }//content수만큼 반복
 	
@@ -644,7 +653,32 @@
   									}
   	                            }
   	                        }
-  	                    }else if(item_type[k].field_type=="text"){
+  	                    }
+  	                  else if(item_type[k].field_type=="collection"){
+	  	                    
+							var colContent=content.replaceAll("[\\t\\s]","").split("#");
+								
+	  	               		var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
+	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
+	
+                        //var fieldID = "1page_field_" + field_content[k].field_id;
+                        var pastFieldDiv='<div class="u-form-group u-vertical-form-control-visible u-form-group-1 collectionBox">';
+                        var wid;
+                       
+                        if(colContent.length==2)//한개면
+                            wid="100%";
+                        else if(colContent.length==3)//두개면
+                            wid="50%";
+                        else //세계면
+                            wid="33%";
+                        for(var x=0; x<colContent.length-1;x++){
+                      	  pastFieldDiv=pastFieldDiv.concat('<input id="'+fieldID+'" type="input" placeholder="" name="collection" value="'+colContent[x+1]+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput'+x+'" style="display:inline-block;width:'+wid+'">');
+                         }
+                        pastFieldDiv=pastFieldDiv.concat('</div>');
+                
+                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv); 
+                    }
+  	                    else if(item_type[k].field_type=="text"){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
   	
@@ -711,12 +745,41 @@
 	
 	                     var realTag = $('<input type = "hidden" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
 	                     $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                  }else{
-	                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
-	                      $($('#1page_count' + add_count).children()[0]).append(pTag);
-	                      
-	                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
-	                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+	                  }
+	                 else if(isCollection>1){
+							var name=$(this).children().eq(0).attr("name");
+							if(name=="collection"){
+								var resultCollect=' ';
+								for(var x=0; x<isCollection; x++){
+									if($(this).children().eq(x).val().trim()=='')
+										continue;
+									resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+								}
+
+								var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+			                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+			                      
+			                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
+			                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+							}
+		                 }
+	                  else{
+	                	  var name=$(this).children().attr("name");
+	 						if(name=="collection" && $(this).children().val().trim()!=''){
+	 							 var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+	 		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+	 		                      
+	 		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');
+	 		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+	 						}
+	 						else{
+		                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
+		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+		                      
+		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
+		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+
+			                }
 	                  }
 	            }); //field 수 만큼 반복  
 	            
@@ -811,14 +874,39 @@
     						                      	var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+replaced_str+'">');
     						                      	$($('#1page_count' + add_count).children()[0]).append(realTag);
     				                  		}
+    	                  					else if(isCollection>1){
+    	                						var name=$(this).children().eq(0).attr("name");
+    	                						if(name=="collection"){
+    	                							var resultCollect=' ';
+    	                							for(var x=0; x<isCollection; x++){
+    	                								if($(this).children().eq(x).val().trim()=='')
+    	                									continue;
+    	                								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+    	                							}
 
+    	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+    	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+    	                		                      
+    	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
+    	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+    	                						}
+    	                	                 }
     		 	                  			else{
+    		 	                  				var name=$(this).children().attr("name");
+    	                						if(name=="collection" && $(this).children().val().trim()!=''){
+    	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+    	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
+    	                		                      
+    	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');
+    	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+    	                						}
+    	                						else{
     							                      var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+$(this).children().val()+'</p>');
     							                      $($('#1page_count' + add_count).children()[0]).append(pTag);
     							                      
     							                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+$(this).children().val()+'">');
     							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-    	               
+    	                						}
     	                  					}
     	 	                  					
     						                 $(this).children().val('');
@@ -949,6 +1037,31 @@
         	    var valueCheck = $(this).val(); // 체크된 Radio 버튼의 값을 가져옵니다.
 				$("#select_portfolio_public").val(valueCheck);
           });
+
+          $('div').on('blur',".collectionInput0",function() {
+    		  if($(this).val().trim() != ''){
+    			  var fieldID=$(this).parent().children().eq(0).attr("id");
+    			  var plusInput=$('<input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput1">');
+    			  var num=$(this).parent().children().length;
+    			  
+    			  if(num==1){
+    				  $(this).parent().append(plusInput);
+    				  $(this).parent().children().css( 'width', '50%' );
+    			  }
+    		  }
+    	 });
+          $('div').on('blur',".collectionInput1",function() {
+    		  if($(this).val().trim() != ''){
+    			  var fieldID=$(this).parent().children().eq(0).attr("id");
+    			  var plusInput=$('<input id="'+fieldID+'" type="input" placeholder="" name="collection"  class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput2">');
+    			  var num=$(this).parent().children().length;
+    			  
+    			  if(num==2){
+    				  $(this).parent().append(plusInput);
+    				  $(this).parent().children().css( 'width', '33%' );
+    			  }
+    		  }
+    	 });
     }); //document.ready 
 
     function readURL(input) {
@@ -978,6 +1091,9 @@
 			
 	.notification-container.show {
 		display: flex;
+	}
+	.collectionInput2,.collectionInput1,.collectionInput0{
+		display:inline-block;
 	}
   </style>                  
   </head>

@@ -235,7 +235,7 @@
 .item_8_1, .item_9_2, .item_10_1, .item_10_2, .item_11_1, .item_12_1{
     font-weight:bold;
 }
-.item_8_4, .item_10_5{ 
+.item_8_6, .item_10_5{ 
     display:block;
     border: 1px solid gray;
     padding: calc(0.533*var(--my-fontSize)) calc(0.533*var(--my-fontSize)) 0 calc(0.533*var(--my-fontSize));
@@ -333,8 +333,9 @@
 			    	"background-color":"#fff",
 			    	"border": "7px "+ color_info.color1+" solid",
 			    	"padding": "25%",
-			    	"width":"80px",
-			    	"height":"80px",
+			    	"width":"50px",
+			    	"height":"50px",
+			    	"font-size":"10px",
 			    	"-webkit-border-radius":"100px",
 			    	"-moz-border-radius": "100px"
 			    });
