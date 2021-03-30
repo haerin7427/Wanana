@@ -20,6 +20,14 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     
+    <style>
+     /* 개인정보 블러처리  */
+    #contactInfo>div,#contactInfo>p{
+	    color: transparent;
+	   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    </style>
+    
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">   
