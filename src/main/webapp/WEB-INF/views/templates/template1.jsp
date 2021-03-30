@@ -399,8 +399,9 @@ $(document).ready(function () {
 			    	"background-color":"#fff",
 			    	"border": "7px "+ color_info.color1+" solid",
 			    	"padding": "25%",
-			    	"width":"80px",
-			    	"height":"80px",
+			    	"width":"50px",
+			    	"height":"50px",
+			    	"font-size":"10px",
 			    	"-webkit-border-radius":"100px",
 			    	"-moz-border-radius": "100px"
 			    });
