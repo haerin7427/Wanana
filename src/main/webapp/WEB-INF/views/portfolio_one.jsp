@@ -32,6 +32,25 @@
     <meta name="theme-color" content="#478ac9">
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
+    
+    <style>
+    /* 미리보기용 css 작업 */
+    .small_title{
+    	width:calc(8*var(--my-fontSize)) !important;
+    }
+    
+    .u-align-center main_column p{
+    text-align: left !important;
+}
+    
+     .u-align-center {
+    text-align: left !important;
+}
+.item_8_4 {
+    text-align: center !important;
+}
+    </style>
+    
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",

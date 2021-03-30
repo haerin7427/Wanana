@@ -905,14 +905,16 @@
 
 	  		  	 for(var i=0; i<length; i++){                         
 		  		    	item_id[i] = $("#1page_form").find("input[name=add_itemID]").eq(i).val();
-		  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
-		  		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
-		  		    	content3[i] = $("#1page_form").find("input[name=content3]").eq(i).val();
-		  		    	content4[i] = $("#1page_form").find("input[name=content4]").eq(i).val();
-		  		    	content5[i] = $("#1page_form").find("input[name=content5]").eq(i).val();
-		  		    	content6[i] = $("#1page_form").find("input[name=content6]").eq(i).val();
-		  
 	  		      }
+	  		  	for(var i=0; i<length; i++){                         
+	  		    	content1[i] = $("#1page_form").find("input[name=content1]").eq(i).val();
+	  		    	content2[i] = $("#1page_form").find("input[name=content2]").eq(i).val();
+	  		    	content3[i] = $("#1page_form").find("input[name=content3]").eq(i).val();
+	  		    	content4[i] = $("#1page_form").find("input[name=content4]").eq(i).val();
+	  		    	content5[i] = $("#1page_form").find("input[name=content5]").eq(i).val();
+	  		    	content6[i] = $("#1page_form").find("input[name=content6]").eq(i).val();
+	  
+  		      }
   		        
 					console.log(item_id);
 					console.log(content1);
