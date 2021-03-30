@@ -277,7 +277,7 @@
                         
 
                             //입력 버튼
-                            var addB = $('<div class="fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a><p></p></div>');
+                            var addB = $('<div class="fixplace3"><a href="#" id="1page_add_'+field_content[h].field_id+'" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-21 u-text-body-alt-color u-btn-1 1page_addB">+ 입력</a></div><p class="alertMsg"></p>');
                             $("#"+tabDiv_itemID).append(addB);
                             if(isFile==true)
                             	addB.addClass("fileAddB");
@@ -552,8 +552,9 @@
 		                });
 
 		             if(isEmpty == 1){
-		            	 	$(this).siblings('p').text("필수 사항(*)을 모두 입력해주세요! ");
+		            	 	$(this).parent().siblings('.alertMsg').text("필수 사항(*)을 모두 입력해주세요! ");
 		              }else{ //필수 사항 모두 입력한 경우
+		            	  	$(this).parent().siblings('.alertMsg').text("");
 
               				if(check_id[2]==1 && $('input[name=file1]').length == 1){//사진 개수 확인 
                   					$(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");

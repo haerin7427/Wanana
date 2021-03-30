@@ -519,7 +519,7 @@ $(document).ready(function () {
             <div class="header_column side contact" style="width:25.56%; padding:1.7%; font-size: calc(1*var(--my-fontSize)); color: white;background-color:var(--my-color, #efefef); border-radius:15px;">
             	<img class="pic" style="background-color:white; position:relative; top:2%;"src="<%=request.getContextPath()%>/resources/images/phone.png" width="15%" alt="default_img">
             	<h3 style="line-height:2%; display:inline; padding-left:2%; font-size:calc(2*var(--my-fontSize));">CONTACT</h3>
-            	<ul class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:5.7%;">
+            	<ul id="contactInfo" class="myContact"  style="list-style:none; -webkit-padding-start:0px;width: 100%; height: 100%; margin: 0; overflow: hidden; padding-top:5.7%;">
 	                <!--핸드폰 번호-->
 	                <li class="phone">
 	               		<div class="phone1">

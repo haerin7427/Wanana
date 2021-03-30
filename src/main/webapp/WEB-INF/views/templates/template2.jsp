@@ -430,7 +430,7 @@
                 <img class="pic" style="position:relative; top:-calc(0.2*var(--my-fontSize));"src="<%=request.getContextPath()%>/resources/images/phone2.png" width="15%;" alt="default_img">
                 <h5 style="line-height:5px; display:inline; font-size:calc(1.5*var(--my-fontSize)); padding-left:calc(0.33*var(--my-fontSize));">CONTACT</h5>
                 
-                <div style="padding:calc(0.467*var(--my-fontSize));">
+                <div id = "contactInfo" style="padding:calc(0.467*var(--my-fontSize));">
                     <div class="phone">${phone}</div>
                     <div class="email">${email}</div>
                     <div class="github" id="item_5"></div>

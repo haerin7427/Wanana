@@ -261,7 +261,7 @@
  
          SELECT * FROM users 
          <include refid="search_userManage"/> 
-         LIMIT #{pageStart}, #{perPageNum};
+         ORDER BY id DESC LIMIT #{pageStart}, #{perPageNum};
    </select> 
    
    <select id="getUserPortInfo" parameterType="int"  resultType="int">
@@ -270,7 +270,7 @@
    </select> 
    <!-- 검색 대한 게시글 수 (admin)-->
    <select id="countUserInfo" resultType="int">
-         SELECT count(*) FROM users 
+         SELECT count(*) FROM users  
          <include refid="search_userManage"/> 
    </select>
    <!-- MyBatis 동적 sql -->
