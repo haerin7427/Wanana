@@ -48,10 +48,10 @@ $(document).ready(function () {
 	for(var i=0; i<colorList.length;i++){
 		if(i==0){
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+" active' style='background-color:"+colorList[i].color1+";'></div>"); 
-			var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].color_name+"</div>");	
+			var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].name+"</div>");	
 		}else{
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
-			var colorName=$("<div style='font-size:10px;padding-right:10px;'>"+colorList[i].color_name+"</div>");
+			var colorName=$("<div style='font-size:10px;padding-right:10px;'>"+colorList[i].name+"</div>");
 		}
 		$(".color-picker").append(colorDiv);
 		$(".color-picker").append(colorName);
@@ -88,7 +88,7 @@ $(document).ready(function () {
 	     url: "<%=request.getContextPath()%>/templateData",
 	     type:'POST',
 	     traditional : true,
-	     data: {"tem_id":portfolio_Info[0].tem_id},
+	     data: {"tem_id":1},
 	     success:function(result){
 	         tempData=result;
 	         $('#select_template_isVerticle').val(tempData.isVerticle);
