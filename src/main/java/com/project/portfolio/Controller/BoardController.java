@@ -67,7 +67,7 @@ public class BoardController {
 	        		ob.put("port_title", portinfo.get(i).getTitle());
 	        		ob.put("port_date", portinfo.get(i).getUpdate_date());
 	        		ob.put("isVerticle", portinfo.get(i).getIsVerticle());
-
+	        		
 	        		List<String> interestList = boardService.getInterest(portinfo.get(i).getId());
 	        		interest=new String[interestList.size()];
 	        		

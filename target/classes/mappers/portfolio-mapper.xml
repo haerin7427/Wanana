@@ -173,7 +173,7 @@
     <!-- template_id에 맞는 colorList가져오기  -->
     <select id="getColorList" parameterType="int" resultType="com.project.portfolio.DTO.Color">
 
-    	SELECT id, template_id, color1,color2 FROM color where template_id = #{template_id};
+    	SELECT * FROM color where template_id = #{template_id};
 
     </select>
     
