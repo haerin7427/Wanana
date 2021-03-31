@@ -46,11 +46,15 @@ $(document).ready(function () {
 
 
 	for(var i=0; i<colorList.length;i++){
-		if(i==0)
+		if(i==0){
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+" active' style='background-color:"+colorList[i].color1+";'></div>"); 
-		else
+			var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].color_name+"</div>");	
+		}else{
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
+			var colorName=$("<div style='font-size:10px;padding-right:10px;'>"+colorList[i].color_name+"</div>");
+		}
 		$(".color-picker").append(colorDiv);
+		$(".color-picker").append(colorName);
 	}
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
@@ -131,7 +135,9 @@ function imgBig(a,b,templateID,template_html){
 
 	for(var i=0; i<colorList.length;i++){
 		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
+		var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].color_name+"</div>");	
 		$(".color-picker").append(colorDiv);
+		$(".color-picker").append(colorName);
 	}
 
 
@@ -361,7 +367,7 @@ function rgbToHex(rgb) {
 	
 	.color-picker {
 		height:auto;
-		width: 80%;
+		width: 100%;
 		border-radius: 5px;
 		padding: 15px;
 	}
@@ -464,20 +470,21 @@ function rgbToHex(rgb) {
                 <!-- 템플릿 테마 고르는 div -->
                 <div class="u-border-2 u-border-grey-10 u-container-style u-group u-radius-21 u-shape-round u-white u-group-3">
                   <div class="u-container-layout u-valign-top u-container-layout-4">
-                    <h6 class="u-custom-font u-text u-text-4" style="padding-bottom:10px;">컬러테마</h6>
+                    <h6 class="u-custom-font u-text u-text-4" style="padding-bottom:10px;">테마 | 폰트 선택</h6>
+                    	
                     
                     <div>
-                  
-						<div id="onepage_ cp-background-color" class="onepage_ color-picker" style="display:inline;">
+						<div id="onepage_ cp-background-color" class="onepage_ color-picker" style="display:flex; align-items:center; ">
+							<h6 style="display:inline; padding-right: 15px;">테마</h6>
 							<!-- colorList 들어갈 자리 -->
 						</div>
-						
 	                    
 	                    <!-- font picker -->
-	                    <div id="onepage_ font_box" style="display:inline;">
+	                    <div id="onepage_ font_box" style="display:flex; align-items:center; padding-left:15px;">
+	                    	<h6 style="display:inline; padding-right: 15px;">폰트</h6>
 							<input id="font2" type="text">
 						</div>
-						
+	
 					</div>
 					
 					<script>
