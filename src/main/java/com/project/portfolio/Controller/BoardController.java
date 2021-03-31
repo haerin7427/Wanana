@@ -63,6 +63,7 @@ public class BoardController {
 	        		JSONObject ob =new JSONObject();
 	        		ob.put("port_id", portinfo.get(i).getId());
 	        		ob.put("port_temId", portinfo.get(i).getTemplate_id());
+	        		ob.put("port_temcolor", portinfo.get(i).getColor());
 	        		ob.put("port_title", portinfo.get(i).getTitle());
 	        		ob.put("port_date", portinfo.get(i).getUpdate_date());
 	        		ob.put("isVerticle", portinfo.get(i).getIsVerticle());
@@ -83,6 +84,7 @@ public class BoardController {
 	        		JSONObject ob =new JSONObject();
 	        		ob.put("id", likePort.get(i).getId());
 	        		ob.put("template_id", likePort.get(i).getTemplate_id());
+	        		ob.put("template_color", likePort.get(i).getColor());
 	        		ob.put("title", likePort.get(i).getTitle());
 	        		ob.put("update_date", likePort.get(i).getUpdate_date());
 	        		ob.put("isVerticle", likePort.get(i).getIsVerticle());

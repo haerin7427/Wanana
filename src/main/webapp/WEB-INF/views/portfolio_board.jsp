@@ -58,9 +58,9 @@
 	          for(var i = 0; i < port_info.length; i++){
 			    var portDiv = $('<div id="1page_portID_'+port_info[i].port_id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
 			    $("#1page_portBoard").append(portDiv);
-			    var portImg = $('<div class="boardPortfolio" id="boardPortfolio_'+port_info[i].port_id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].port_temId+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
+			    var portImg = $('<div class="boardPortfolio" id="boardPortfolio_'+port_info[i].port_id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/color'+port_info[i].port_color+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
 			    var portTitle = $('<div class="u-blog-control u-post-content u-text u-text-1">'+port_info[i].port_title+'</div> ');
-			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1 portDate"><span class="u-meta-date u-meta-icon portDateSpan">'+port_info[i].port_date+'</span></div>');
+			    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1 portDate"><span class="u-meta-date u-meta-icon portDateSpan">'+port_info[i].port_temcolor+'</span></div>');
 			    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+port_info[i].port_id+'">');
 			    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+port_info[i].isVerticle+'">');
 			    $("#1page_portID_" + port_info[i].port_id).children().append(portImg);

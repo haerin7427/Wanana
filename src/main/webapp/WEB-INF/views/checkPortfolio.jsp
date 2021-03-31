@@ -243,7 +243,7 @@ function editB() {
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
 	 <section class="u-clearfix u-white u-section-1" id="sec-fad6" style="height:100%; padding-bottom:130px;">
-	 	<div class="wrap" style="width:100%; position:relative; background-color:transparent; margin-left:140px;">
+	 	<div class="wrap" style="width:100%; position:relative; background-color:transparent; margin-left:80px;">
 	 		<div>
 	 			<div class="table-content" style="padding:0 35px 0 26px;">
 	 				<div class="item" style="float:left; height:97px;">

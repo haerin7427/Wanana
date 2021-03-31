@@ -1152,7 +1152,7 @@
       </div></header>
     <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h5 class="u-custom-font u-text u-text-1">새 포트폴리오 만들기</h5><span class="u-custom-color-1 u-hidden-sm u-hidden-xs u-icon u-icon-circle u-spacing-9 u-text-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 42 42" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7536"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 42 42" x="0px" y="0px" id="svg-7536" style="enable-background:new 0 0 42 42;"><path d="M37.059,16H26V4.941C26,2.224,23.718,0,21,0s-5,2.224-5,4.941V16H4.941C2.224,16,0,18.282,0,21s2.224,5,4.941,5H16v11.059
+        <h5 class="u-custom-font u-text u-text-1" style="color:#F76F6F;">포트폴리오 수정중..</h5><span class="u-custom-color-1 u-hidden-sm u-hidden-xs u-icon u-icon-circle u-spacing-9 u-text-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 42 42" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7536"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 42 42" x="0px" y="0px" id="svg-7536" style="enable-background:new 0 0 42 42;"><path d="M37.059,16H26V4.941C26,2.224,23.718,0,21,0s-5,2.224-5,4.941V16H4.941C2.224,16,0,18.282,0,21s2.224,5,4.941,5H16v11.059
 	C16,39.776,18.282,42,21,42s5-2.224,5-4.941V26h11.059C39.776,26,42,23.718,42,21S39.776,16,37.059,16z"></path></svg></span>
 	
 	<!-- 미리보기 버튼   -->
@@ -1264,10 +1264,13 @@
             
           </div>
         </div>
-        <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round u-group-18">
-          <div class="u-container-layout u-container-layout-21">
-            <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25">저&nbsp; 장</p>
-          </div>
+        
+        <div style="width:100%; heigth:100%;">
+	        <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round" style="width: 300px; margin:0 auto; margin-bottom: 20px;">
+	          <div class="u-container-layout u-container-layout-21">
+	            <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25">저&nbsp; 장</p>
+	          </div>
+	        </div>
         </div>
       </div>
     </section>
@@ -1279,15 +1282,6 @@
         </p>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/landing-page" target="_blank">
-        <span>Free Landing Page</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
     </section>
     
   <!--  미리보기 모달 창 -->

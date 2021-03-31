@@ -6,9 +6,10 @@ public class Color {
 	int template_id;
 	String color1;
 	String color2;
+	String color_name;
 	@Override
 	public String toString() {
-		return "Color [id=" + id + ", template_id=" + template_id + ", color1=" + color1 + ", color2=" + color2 + "]";
+		return "Color [id=" + id + ", template_id=" + template_id + ", color1=" + color1 + ", color2=" + color2 + ", color_name=" + color_name+"]";
 	}
 	public int getId() {
 		return id;
@@ -33,6 +34,12 @@ public class Color {
 	}
 	public void setColor2(String color2) {
 		this.color2 = color2;
+	}
+	public String getName() {
+		return color_name;
+	}
+	public void setName(String color_name) {
+		this.color_name = color_name;
 	}
 	
 	
