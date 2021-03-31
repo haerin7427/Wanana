@@ -164,7 +164,6 @@
 			 var userName = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].name+'</td>');
 			 var userPhone = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].phone+'</td>');
 			 var userEmail = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].email+'</td>');
-			 var userCount = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">'+UserInfo[i].portCount+'</td>');
 			 var deleteButton = $('<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a class="askDelete"><img style="width: 20px;" src="/onepage/resources/images/delete2.png"></a><input type="hidden" value="'+UserInfo[i].id+'"></td>');
 			 
 			 
@@ -173,7 +172,6 @@
 			 $('#user_'+UserInfo[i].id).append(userName);
 			 $('#user_'+UserInfo[i].id).append(userPhone);
 			 $('#user_'+UserInfo[i].id).append(userEmail);
-			 $('#user_'+UserInfo[i].id).append(userCount);
 			 $('#user_'+UserInfo[i].id).append(deleteButton);
 			 }//user list 만들기 끝
 
@@ -324,7 +322,6 @@
 			                <th class="u-border-1 u-border-grey-50 u-table-cell" style="width: 120px;">이름</th>
 			                <th class="u-border-1 u-border-grey-50 u-table-cell" style="width: 150px;">번호</th>
 			                <th class="u-border-1 u-border-grey-50 u-table-cell" style="width: 240px;">이메일</th>
-			                <th class="u-border-1 u-border-grey-50 u-table-cell" style="width: 100px;">포트폴리오 수</th>
 			                <th class="u-border-1 u-border-grey-50 u-table-cell">강제탈퇴</th>
 			              </tr>
 			            </thead>

@@ -33,5 +33,17 @@ public class AdminServiceImp implements AdminService {
 		// TODO Auto-generated method stub
 		return adminDAO.countUserInfo(searchType, keyword);
 	}
+	
+	@Override
+	public List<User> getAdminInfo(SearchCriteria searchCRI) throws Exception {
+		// TODO Auto-generated method stub
+		return adminDAO.getAdminInfo(searchCRI);
+	}
+	
+	@Override
+	public int countAdminInfo(String searchType, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		return adminDAO.countAdminInfo(searchType, keyword);
+	}
 
 }

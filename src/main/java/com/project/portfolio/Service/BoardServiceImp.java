@@ -66,4 +66,5 @@ public class BoardServiceImp implements BoardService {
 	public String getPortUser(int port_id) throws Exception{
 		return boardDAO.getPortUser(port_id);
 	}
+	
 }

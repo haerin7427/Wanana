@@ -170,6 +170,61 @@
 				$(this).find("img").css("opacity","1");
 				$(this).find(".interests").css("display","none");
 			});
+
+
+			$('#select-2b13').on( 'change', function() {
+				var  keyword=$(this).val();
+				var port_info;
+				$.ajax({
+					url: "board/portList",
+				 	type:'POST',
+				   	traditional : true,
+				   	data: {"keyword":keyword},
+				  	success:function(result){
+					  	port_info=result;
+				    	$("#1page_portBoard").empty();
+				    	
+				    	for(var i = 0; i < port_info.length; i++){
+						    var portDiv = $('<div id="1page_portID_'+port_info[i].id+'" class="u-blog-post u-container-style u-repeater-item"><div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-1"></div></div>');
+						    $("#1page_portBoard").append(portDiv);
+						    var portImg = $('<div class="boardPortfolio" id="boardPortfolio_'+port_info[i].id+'"><div class="interests" style="display:none"></div><img src="${pageContext.request.contextPath}/resources/images/template'+port_info[i].template_id+'.png" alt="" class="u-blog-control u-expanded-width u-image u-image-round u-radius-21 u-image-1 1page_portImg"></img></div>');
+						    var portTitle = $('<div class="u-blog-control u-post-content u-text u-text-1">'+port_info[i].title+'</div> ');
+						    var portDate = $('<div class="u-blog-control u-metadata u-text-grey-40 u-metadata-1 portDate"><span class="u-meta-date u-meta-icon portDateSpan">'+moment(port_info[i].update_date).format('YYYY-MM-DD HH:mm')+'</span></div>');
+						    var portHidden = $('<input type="hidden" name="1page_portfolioID" value="'+port_info[i].id+'">');
+						    var portIsVerticle = $('<input type="hidden" name="1page_portfolioIsVerticle" value="'+port_info[i].isVerticle+'">');
+						    $("#1page_portID_" + port_info[i].id).children().append(portImg);
+						    $("#1page_portID_" + port_info[i].id).children().append(portTitle);
+						    $("#1page_portID_" + port_info[i].id).children().append(portDate);
+						    $("#1page_portID_" + port_info[i].id).children().append(portHidden);
+						    $("#1page_portID_" + port_info[i].id).children().append(portIsVerticle);
+							var interest=new Array();
+						    $.ajax({
+								url: "board/getInterest",
+							 	type:'POST',
+							   	traditional : true,
+							   	data: {"portID": port_info[i].id},
+							  	success:function(result){
+							  		interest=result;
+							  		console.log(interest);
+							   	},
+							   	error:function(request,status,error){
+									alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							    }
+							});
+						    for(var j=0; j<interest.length; j++){
+								var interestSpan=$('<p>#'+interest[j]+'</p>');
+								$("#boardPortfolio_" + port_info[i].id).find(".interests").append(interestSpan);
+							}
+						}
+
+						$('.paging').attr('href','<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.startPage-1}?keyword="인기순"');
+							    	
+				   	},
+				   	error:function(request,status,error){
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+				});
+  	        });
 	    });
 	    function modal(id) {
 		    var zIndex = 9999;
@@ -425,17 +480,17 @@
         <ul class="responsive-style1 u-pagination u-unstyled u-pagination-1">
 			<c:if test="${pageMaker.prev}">
 			<li class="disabled prev u-nav-item u-pagination-item">
-				<a  class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.startPage-1}'>&laquo;</a>
+				<a  class="u-button-style u-nav-link paging" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.startPage-1}'>&laquo;</a>
 			</li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 			<li class="active u-nav-item u-pagination-item">
-				<a class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${idx}'>${idx}</a>
+				<a class="u-button-style u-nav-link paging" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${idx}'>${idx}</a>
 			</li>
 			</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 			<li class="next u-nav-item u-pagination-item">
-				<a class="u-button-style u-nav-link" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.endPage+1}'>&raquo;</a>
+				<a class="u-button-style u-nav-link paging" style="padding: 16px 28px;" href='<%=request.getContextPath()%>/portfolio_board?page=${pageMaker.endPage+1}'>&raquo;</a>
 			</li>
 			</c:if>
 		</ul>
