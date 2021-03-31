@@ -186,14 +186,24 @@
 
     <!-- 갤러리용 포트폴리오 들고오기   -->
     <select id="portfolioBoard" resultType="com.project.portfolio.DTO.Portfolio">
-    	<![CDATA[
-    		SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 ORDER BY update_date DESC LIMIT #{pageStart}, #{perPageNum};
-		 ]]>
+    	
+    	SELECT  portfolio.*, isVerticle  FROM portfolio RIGHT OUTER JOIN template ON template.id=portfolio.template_id where isPublic = 1 
+    	<choose>
+         	<when test="keyword == '최신순'">
+         		ORDER BY update_date DESC
+         	</when>
+         	<when test="keyword == '인기순'">
+        		ORDER BY `like` DESC
+         	</when>
+      	</choose>
+    	LIMIT #{pageStart}, #{perPageNum};
+		
     </select>
     
     <!-- 갤러리용 포트폴리오 개수 들고오기   -->
 	<select id="countPortfolio" resultType="int">
       SELECT count(*) FROM portfolio where isPublic = 1;
+ 
    </select>
     
     <!-- user 정보 가져오기 -->
@@ -259,7 +269,7 @@
     <!-- User 정보 가져오기 (한페이지용 데이터 들고 오기)  (페이징 + 검색 추가)-->
     <select id="getAllUser"  resultType="com.project.login.DTO.User">
  
-         SELECT * FROM users 
+         SELECT * FROM users WHERE admin=0
          <include refid="search_userManage"/> 
          ORDER BY id DESC LIMIT #{pageStart}, #{perPageNum};
    </select> 
@@ -268,11 +278,25 @@
  
          SELECT count(*) FROM portfolio WHERE user_id=#{user_id};
    </select> 
-   <!-- 검색 대한 게시글 수 (admin)-->
+   <!-- 검색 대한 게시글 수 (users)-->
    <select id="countUserInfo" resultType="int">
-         SELECT count(*) FROM users  
+         SELECT count(*) FROM users WHERE admin=0
          <include refid="search_userManage"/> 
    </select>
+   
+   <!-- Admin 정보 가져오기 (한페이지용 데이터 들고 오기)  (페이징 + 검색 추가)-->
+    <select id="getAllAdmin"  resultType="com.project.login.DTO.User">
+ 
+         SELECT * FROM users WHERE admin=1
+         <include refid="search_userManage"/> 
+         ORDER BY id DESC LIMIT #{pageStart}, #{perPageNum};
+   </select> 
+   <!-- 검색 대한 게시글 수 (admin)-->
+   <select id="countAdminInfo" resultType="int">
+         SELECT count(*) FROM users  WHERE admin=1
+         <include refid="search_userManage"/> 
+   </select>
+   
    <!-- MyBatis 동적 sql -->
    <sql id="search_userManage">
       <choose>

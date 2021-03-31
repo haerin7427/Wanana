@@ -17,10 +17,12 @@ import com.project.portfolio.Service.BoardService;
 import com.project.portfolio.Service.PortfolioService;
 import com.project.portfolio.DTO.PageMaker;
 import com.project.portfolio.DTO.SearchCriteria;
+import com.project.portfolio.DTO.Template;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,6 +45,8 @@ public class BoardController {
 		
 		try {
 			int user_id=(Integer) session.getAttribute("ID");
+			if (cri.getKeyword()=="")
+				cri.setKeyword("최신순");
 			List<Portfolio> portinfo = boardService.getPortfolios(cri);
 			int count=boardService.countPortfolio(cri.getSearchType(), cri.getKeyword());
 			System.out.println(portinfo.toString());
@@ -102,8 +106,6 @@ public class BoardController {
 	        pageMaker.setCri(cri);
 			pageMaker.setTotalCount(count);
 
-			mav.addObject("searchOption", cri.getSearchType());
-			mav.addObject("keyword", cri.getKeyword());
 			mav.addObject("likePort", likePortfolios);
 			mav.addObject("pageMaker", pageMaker);
 	        mav.addObject("portinfo", jArray);
@@ -209,4 +211,28 @@ public class BoardController {
 		}
 		return isOne;
 	}
+	
+	@RequestMapping(value= "/board/portList", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	@ResponseBody
+	public List<Portfolio> getPortList(SearchCriteria cri,HttpServletRequest request) throws Exception {
+			
+		String keyword=request.getParameter("keyword");
+		
+		cri.setKeyword(keyword);
+		List<Portfolio> portinfo = boardService.getPortfolios(cri);
+
+		return portinfo;
+	}	
+	
+	@RequestMapping(value= "/board/getInterest", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	@ResponseBody
+	public List<String> getInterest(HttpServletRequest request) throws Exception {
+			
+		int portID=Integer.parseInt(request.getParameter("portID"));
+		
+		List<String>interests = boardService.getInterest(portID);
+
+		return interests;
+	}	
+	
 }

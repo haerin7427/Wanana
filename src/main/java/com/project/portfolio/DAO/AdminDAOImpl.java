@@ -35,4 +35,16 @@ public class AdminDAOImpl implements AdminDAO {
 		map.put("keyword", keyword);
 		return sqlSession.selectOne(namespace + ".countUserInfo",map);
 	}
+	
+	public List<User> getAdminInfo(SearchCriteria searchCRI) throws Exception{
+		return sqlSession.selectList(namespace + ".getAllAdmin",searchCRI);
+	}
+	
+	
+	public int countAdminInfo(String searchType, String keyword) throws Exception{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchType", searchType);
+		map.put("keyword", keyword);
+		return sqlSession.selectOne(namespace + ".countAdminInfo",map);
+	}
 }
