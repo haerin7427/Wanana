@@ -182,7 +182,7 @@
 				            <div style="float:left; width: 180px; height: 130px; margin-left:10px; margin-bottom: 30px;">	
 				            	<button class="select_port" id="${portfolio.id}" style="border-radius:5px; height: 150px; border: transparent"> 
 				            		<div style="width: 160px; height: 105px;">
-				            			<img src="<%=request.getContextPath()%>/resources/images/${portfolio.html}.png"  style="max-width: auto; height: 100%;"> 
+				            			<img src="<%=request.getContextPath()%>/resources/images/color${portfolio.color}.png"  style="max-width: auto; height: 100%;"> 
 				            		</div>  
 				            		<div style="height:30px;">${portfolio.title}</div>
 				            		<p class="update_time" style="font-size:10px; margin-top:-8px;"><fmt:formatDate value="${portfolio.update_date}" pattern = "YYYY-MM-dd"/></p> 
