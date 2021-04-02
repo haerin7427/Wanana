@@ -44,7 +44,7 @@
     <!-- 유저 portfolio 리스트 가져오기 -->
     <select id="getMyPortfolio" parameterType="int" resultType="com.project.portfolio.DTO.Portfolio">
   
-		 	SELECT portfolio.id as id, user_id,template_id,template.html as html,title,date_format(portfolio.update_date, '%Y-%m-%d') as update_date FROM portfolio LEFT JOIN template on portfolio.template_id=template.id where user_id=#{user_id} AND portfolio.template_id IS NOT NULL ORDER BY update_date DESC;
+		 	SELECT portfolio.id as id, user_id,template_id,template.html as html,title,date_format(portfolio.update_date, '%Y-%m-%d') as update_date,color FROM portfolio LEFT JOIN template on portfolio.template_id=template.id where user_id=#{user_id} AND portfolio.template_id IS NOT NULL ORDER BY update_date DESC;
 
     </select>
     
