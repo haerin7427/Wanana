@@ -180,6 +180,10 @@
       </div>
     </section>
     
+    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testNewTemplate'">test</button>
+    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testJSNewTemplate'">test2</button>
+    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testJSNewTemplate2'">test3</button>
+    
   
    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
     	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
