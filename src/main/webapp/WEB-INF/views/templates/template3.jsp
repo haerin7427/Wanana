@@ -12,7 +12,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=1">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=3">
     <title>portfolio</title>
     
 </head>
@@ -37,7 +37,7 @@
                         </div>
                         <!-- contact -->
                         <div class="contact">
-                            <div><p>서울특별시</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>서울특별시</p></div>
                             <div><p>github.com/gd123456</p></div>
                             <div><p>blog.naver.com/rlfehd1234</p></div>
                             <div><p>217000000@handong.edu</p></div>
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                         <div>
-                            <div><p>Online Application System</p></div>
+                            <div><p>Online Application System<span><a href="https://www.naver.com/"><img class="urlIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></a></span></p></div>
                             <div><p>2020/06 ~ 2020/08</p></div>
                             <div class="project_skill">
                                 <div><p>Java</p></div>

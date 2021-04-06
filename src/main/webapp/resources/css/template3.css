@@ -23,7 +23,7 @@ h6:not(.interest>h6){
   margin:0;
   color : #FDCBCB;
 }
-img{
+.picBox img{
   margin:5%;
   width:120px;
   height:130px;
@@ -105,11 +105,21 @@ img{
   float :left;
   width:50%;
 } 
+.advantage div {
+    margin-right: 1%;
+}
 .interest div{
   background-color:#FDCBCB;
+  margin-right: 1%;
   border-radius:5px;
   padding:0 1.5%;
   font-weight:700;
+}
+.graduation_content div div {
+    margin-right: 1.5%;
+}
+.ceritificate_content div div, .award_content div div {
+    margin-right: 2%;
 }
 .activity,.project{
   position:relative;
@@ -180,4 +190,20 @@ img{
   margin-left:36.5%;
   height:94%;
   border-left:1.5px solid #E3E3E3;
+}
+
+.urlIcon{
+	width: 5%;
+    position: relative;
+    top: -20%;
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.contactIcon{
+	width: 5%;
+    margin-right: 2%;
+}
+.fieldTitle{
+	display:none;
 }
