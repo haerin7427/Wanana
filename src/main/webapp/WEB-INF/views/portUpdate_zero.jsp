@@ -50,43 +50,18 @@ $(document).ready(function () {
 		console.log("colorList[i].id:"+colorList[i].id);
 		if(colorList[i].id==portfolio_Info[0].template_color){
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+" active' style='background-color:"+colorList[i].color1+";'></div>"); 
-			var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].color_name+"</div>");	
+			var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].name+"</div>");	
 		}else{
 			var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
-			var colorName=$("<div style='font-size:10px;padding-right:10px;'>"+colorList[i].color_name+"</div>");
+			var colorName=$("<div style='font-size:10px;padding-right:10px;'>"+colorList[i].name+"</div>");
 		}
 		$(".color-picker").append(colorDiv);
 		$(".color-picker").append(colorName);
 	}
 
-	var template_color=$("#bigView_color").val();
-	var template_font=$("#bigView_font").val();
-	var template_html=portfolio_Info[0].tem_name;
-	var template_isVerticle=$("input[name=template_isVerticle]").val();
-
-	var sendData={"template_html":portfolio_Info[0].tem_name,"template_color":portfolio_Info[0].template_color,"template_font":portfolio_Info[0].template_font};
-	$.ajax({
-     url: "<%=request.getContextPath()%>/tem_image",
-     type:'POST',
-     traditional : true,
-     data: sendData,
-     success:function(result){
-         $("#preview_portfolio_img").html(result);
-         /* $("#preview_portfolio_img .imageicon").attr("src", $("#1page_form").find("img").attr("src"));  */
-         if(template_isVerticle=="1"){
-             $("#preview_portfolio_img .wrap").css("width","220px"); 
-             $("#preview_portfolio_img .wrap").css("height","280px");
-         }
-         else{
-         	$("#preview_portfolio_img .wrap").css("width","297px"); 
-            $("#preview_portfolio_img .wrap").css("height","207px");
-         }
-     },
-     error:function(request,status,error){
-  	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-     }
-	});
-
+	$("#templateImg").prop("src","<%=request.getContextPath()%>/resources/images/color"+portfolio_Info[0].template_color+".png");
+	$('#show_explanation').css("fontFamily",portfolio_Info[0].template_font);
+	
 	var tempData;
 	$.ajax({
 	     url: "<%=request.getContextPath()%>/templateData",
@@ -146,35 +121,6 @@ function imgBig(a,b,templateID,template_html){
 		$(".color-picker").append(colorName);
 	}
 
-
-	var template_color=$("#bigView_color").val();
-	var template_font=$("#bigView_font").val();
-	var template_html=template_html;
-	var template_isVerticle=$("$select_template_isVerticle").val();
-	
-	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
-	$.ajax({
-        url: "<%=request.getContextPath()%>/tem_image",
-        type:'POST',
-        traditional : true,
-        data: sendData,
-        success:function(result){
-            $("#preview_portfolio_img").html(result);
-            //$("#preview_portfolio_img .imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
-            if(template_isVerticle=="1"){
-            	$("#preview_portfolio_img .wrap").css("width","220px"); 
-                $("#preview_portfolio_img .wrap").css("height","280px");
-            }
-            else{
-          	  	$("#preview_portfolio_img .wrap").css("width","297px"); 
-               	$("#preview_portfolio_img .wrap").css("height","207px");
-            }
-        },
-        error:function(request,status,error){
-     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        }
-	});
-	
 	
 }
 
@@ -197,34 +143,8 @@ function changeColor(sender) {
 	document.getElementById('bigView_color').value =id_split[1];
 	sender.classList.add("active");
 
-	var template_color=id_split[1];
-	var template_font=$("#bigView_font").val();
-	var template_html=$("input[name=template_html]").val();
-	var template_isVerticle=$("input[name=template_isVerticle]").val();
-	
-	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
-	$.ajax({
-        url: "<%=request.getContextPath()%>/tem_image",
-        type:'POST',
-        traditional : true,
-        data: sendData,
-        success:function(result){
-            $("#preview_portfolio_img").html(result);
-            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
-            if(template_isVerticle=="1"){
-            	$(".wrap").css("width","220px"); 
-                $(".wrap").css("height","280px");
-            }
-            else{
-          	  	$(".wrap").css("width","297px"); 
-               	$(".wrap").css("height","207px");
-            }
-        },
-        error:function(request,status,error){
-     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        }
-	});
-	
+	$("#templateImg").prop("src","<%=request.getContextPath()%>/resources/images/color"+id_split[1]+".png");
+
 }
 
 function rgbToHex(rgb) { 
@@ -261,36 +181,10 @@ function rgbToHex(rgb) {
 		};
 		
 		/* $('p').css(css); */
+		$('#show_explanation').css(css);
 		document.getElementById('select_template_font').value =fontFamily;
 		document.getElementById('bigView_font').value =fontFamily;
-
-		var template_color=$("#bigView_color").val();
-		var template_font=fontFamily;
-		var template_html=$("input[name=template_html]").val();
-		var template_isVerticle=$("input[name=template_isVerticle]").val();
 		
-		var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
-		$.ajax({
-	        url: "<%=request.getContextPath()%>/tem_image",
-	        type:'POST',
-	        traditional : true,
-	        data: sendData,
-	        success:function(result){
-	            $("#preview_portfolio_img").html(result);
-	            $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
-	            if(template_isVerticle=="1"){
-	            	$(".wrap").css("width","220px"); 
-	                $(".wrap").css("height","280px");
-	            }
-	            else{
-	          	  	$(".wrap").css("width","297px"); 
-	               	$(".wrap").css("height","207px");
-	            }
-	        },
-	        error:function(request,status,error){
-	     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	        }
-		});
 	}
 
  
@@ -301,7 +195,7 @@ function rgbToHex(rgb) {
 		float: left;
 		width: 170px;
 		height: 130px;
-		line-height: 130px;
+		/* line-height: 130px; */
 		text-align: center;
 		padding:5px;
 		color:black;
@@ -521,7 +415,7 @@ function rgbToHex(rgb) {
                     <div class="u-border-2 u-border-grey-5 u-expanded-width u-radius-10 u-shape u-shape-round u-shape-1" style="text-align:center; border:white;">
                     	<!-- 선택한 템플릿 이미지 -->
                     	<div id="preview_portfolio_img">
-							<%-- <img class="myPortfolio" id="preview_portfolio" name="bigView" src="<%=request.getContextPath()%>/resources/images/template2.png" style="width:80%; height:auto;" > --%>
+							<img class="myPortfolio" id="templateImg" name="bigView" src="<%=request.getContextPath()%>/resources/images/color12.png" style="width:90%; height:auto;" >
 						</div>
                     	<!-- 선택한 템플릿 설명 -->
                     	<p class="text" id="show_explanation" style="padding: 20px 0;"></p>
