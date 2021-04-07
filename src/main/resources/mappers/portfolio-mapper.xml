@@ -195,6 +195,9 @@
          	<when test="keyword == '인기순'">
         		ORDER BY `like` DESC
          	</when>
+         	<otherwise>
+         		ORDER BY update_date DESC
+         	</otherwise>
       	</choose>
     	LIMIT #{pageStart}, #{perPageNum};
 		

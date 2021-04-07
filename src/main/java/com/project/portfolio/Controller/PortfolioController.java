@@ -91,7 +91,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				ob2.put("template_color", portInfo.getColor());
         			ob2.put("template_font", portInfo.getFont());
         			ob2.put("port_url", portInfo.getUrl());
-        			ob2.put("template_fontSize", "15px");
+        			ob2.put("template_fontSize", "10px");
         			template_info.put(ob2);
         		
 				for (int i = 0; i < list.size() ; i++) {   
@@ -914,7 +914,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	    JSONObject ob =new JSONObject();
 	    ob.put("template_color", template_color);
 	    ob.put("template_font", template_font);
-	    ob.put("template_fontSize", "15px");
+	    ob.put("template_fontSize", "10px");
 	    jArray.put(ob);
 	    
 
@@ -994,7 +994,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			ob2.put("template_color", portInfo.getColor());
     			ob2.put("template_font", portInfo.getFont());
     			ob2.put("port_url", portInfo.getUrl());
-    			ob2.put("template_fontSize", "15px");
+    			ob2.put("template_fontSize", "10px");
     			template_info.put(ob2);
     		
 			for (int i = 0; i < list.size() ; i++) {   
@@ -1215,7 +1215,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		mav.addObject("portfolio_ID", portfolio_id);
 		mav.addObject("data_list", jArray2);
 		//mav.addObject("template_info", jArray);
-		mav.setViewName("templates/template3_1");
+		mav.setViewName("templates/template3");
 		
 		System.out.println("step7 clear! ");
 		return mav;

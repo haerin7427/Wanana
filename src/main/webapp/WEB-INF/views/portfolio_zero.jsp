@@ -28,7 +28,7 @@ $(document).ready(function () {
 	$.ajax({ //해당 template의 colorList가져오기
 		url : "colorList",
 	  	type : "post",
-	  	data:{"template_id":"1"},
+	  	data:{"template_id":"3"},
 	  	dataType : "json",
 	  	async: false,
 	  	success: function(data){
@@ -56,9 +56,10 @@ $(document).ready(function () {
 		$(".color-picker").append(colorDiv);
 		$(".color-picker").append(colorName);
 	}
+	<%-- 
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
-	var template_html="template2";
+	var template_html="template3";
 	var template_isVerticle=$("input[name=template_isVerticle]").val();
 	
 	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
@@ -71,24 +72,26 @@ $(document).ready(function () {
             $("#preview_portfolio_img").html(result);
             //$(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
             if(template_isVerticle=="1"){
-                $("#preview_portfolio_img .wrap").css("width","220px"); 
-                $("#preview_portfolio_img .wrap").css("height","280px");
+                $("#preview_portfolio_img .wrap .container").css("width","182px"); 
+                $("#preview_portfolio_img .wrap .container").css("height","280px");
+                document.body.style.setProperty("--my-fontSize", "3.2px");
             }
             else{
-            	$("#preview_portfolio_img .wrap").css("width","297px"); 
-               	$("#preview_portfolio_img .wrap").css("height","207px");
+            	$("#preview_portfolio_img .wrap .container").css("width","280px"); 
+               	$("#preview_portfolio_img .wrap .container").css("height","182px");
+               	document.body.style.setProperty("--my-fontSize", "3.2px");
             }
         },
         error:function(request,status,error){
      	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
-	});
+	});--%>
 	var tempData;
 	$.ajax({
 	     url: "<%=request.getContextPath()%>/templateData",
 	     type:'POST',
 	     traditional : true,
-	     data: {"tem_id":1},
+	     data: {"tem_id":3},
 	     success:function(result){
 	         tempData=result;
 	         $('#select_template_isVerticle').val(tempData.isVerticle);
@@ -97,7 +100,7 @@ $(document).ready(function () {
 	     error:function(request,status,error){
 	  	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	     }
-	});
+	}); 
 });
 
 
@@ -140,12 +143,12 @@ function imgBig(a,b,templateID,template_html){
 		$(".color-picker").append(colorName);
 	}
 
-
+	<%-- 
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
 	var template_html=template_html;
 	var template_isVerticle=$("input[name=template_isVerticle]").val();
-	
+
 	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
 	$.ajax({
         url: "<%=request.getContextPath()%>/tem_image",
@@ -167,8 +170,7 @@ function imgBig(a,b,templateID,template_html){
         error:function(request,status,error){
      	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
-	});
-	
+	}); --%>
 	
 }
 
@@ -191,9 +193,11 @@ function changeColor(sender) {
 	document.getElementById('bigView_color').value =id_split[1];
 	sender.classList.add("active");
 
+	$("#templateImg").prop("src","<%=request.getContextPath()%>/resources/images/color"+id_split[1]+".png");
+<%-- 
 	var template_color=id_split[1];
 	var template_font=$("#bigView_font").val();
-	var template_html=$("input[name=template_html]").val();
+	var template_html=$("#select_template_html").val();
 	var template_isVerticle=$("input[name=template_isVerticle]").val();
 	
 	var sendData={"template_html":template_html,"template_color":template_color,"template_font":template_font};
@@ -206,19 +210,19 @@ function changeColor(sender) {
             $("#preview_portfolio_img").html(result);
             $(".imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
             if(template_isVerticle=="1"){
-            	$(".wrap").css("width","220px"); 
-                $(".wrap").css("height","280px");
+            	$("#preview_portfolio_img .wrap").css("width","220px"); 
+                $("#preview_portfolio_img .wrap").css("height","280px");
             }
             else{
-          	  	$(".wrap").css("width","297px"); 
-               	$(".wrap").css("height","207px");
+          	  	$("#preview_portfolio_img .wrap").css("width","297px"); 
+               	$("#preview_portfolio_img .wrap").css("height","207px");
             }
         },
         error:function(request,status,error){
      	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
-	
+	 --%>
 }
 
 function rgbToHex(rgb) { 
@@ -254,10 +258,11 @@ function rgbToHex(rgb) {
 			fontStyle: italic ? 'italic' : 'normal'
 		};
 		
-		/* $('p').css(css); */
+		
+		$('#show_explanation').css(css);
 		document.getElementById('select_template_font').value =fontFamily;
 		document.getElementById('bigView_font').value =fontFamily;
-
+<%-- 
 		var template_color=$("#bigView_color").val();
 		var template_font=fontFamily;
 		var template_html=$("input[name=template_html]").val();
@@ -284,7 +289,7 @@ function rgbToHex(rgb) {
 	        error:function(request,status,error){
 	     	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	        }
-		});
+		}); --%>
 	}
 
  
@@ -295,7 +300,7 @@ function rgbToHex(rgb) {
 		float: left;
 		width: 170px;
 		height: 130px;
-		line-height: 130px;
+		/* line-height: 130px; */
 		text-align: center;
 		padding:5px;
 		color:black;
@@ -418,7 +423,7 @@ function rgbToHex(rgb) {
 	 <!--템플릿 선택 TAB -->
             <div class="u-align-left u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
               <div class="u-container-layout u-container-layout-2">
-                
+               <div>
                 <!-- 템플릿 리스트 div -->
                 <div class="u-align-left u-border-2 u-border-grey-10 u-container-style u-group u-radius-21 u-shape-round u-white u-group-2">
                   <div class="u-container-layout u-container-layout-3" style="overflow-x:hidden; overflow-y:scroll; height:270px;">
@@ -430,6 +435,7 @@ function rgbToHex(rgb) {
                   		<c:forEach items="${template}" var="template">
 						<div class="onepage_ one_tempelete" style="display:inline; margin-bottom:45px;">
 							<div class="onepage_ w3-display-container" id="container_${template.id}">
+								
 								<img class="onepage_ templete_image" id="templete_image_${template.id}"
 									src="<%=request.getContextPath()%>/resources/images/${template.html}.png"
 									alt="template" style="height:auto; width:50%;">
@@ -505,6 +511,7 @@ function rgbToHex(rgb) {
 					
                   </div>
                 </div>
+                </div>
                 
                 <!-- 템플릿 고르는 페이지 오른쪽 박스 -->
                 <div class="u-border-2 u-border-custom-color-2 u-container-style u-group u-opacity u-opacity-95 u-radius-21 u-shape-round u-white u-group-4">
@@ -515,9 +522,9 @@ function rgbToHex(rgb) {
                     <div class="u-border-2 u-border-grey-5 u-expanded-width u-radius-10 u-shape u-shape-round u-shape-1" style="text-align:center; border:white;">
                     	<!-- 선택한 템플릿 이미지 -->
                     	<div id="preview_portfolio_img">
-							<%-- <img class="myPortfolio" id="preview_portfolio" name="bigView" src="<%=request.getContextPath()%>/resources/images/template2.png" style="width:80%; height:auto;" > --%>
+							<img class="myPortfolio" id="templateImg" name="bigView" src="<%=request.getContextPath()%>/resources/images/color12.png" style="width:90%; height:auto;" >
 						</div>
-                    	<!— 선택한 템플릿 설명 —>
+                    	<!-- <!— 선택한 템플릿 설명 —> -->
                     	<p class="text" id="show_explanation" style="padding: 20px 0;"></p>
 						<p class="text" id="ready" style="color:red"></p>
 						<input type="hidden" id="bigView_color" value="1">

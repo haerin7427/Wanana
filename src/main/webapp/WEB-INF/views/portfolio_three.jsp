@@ -1020,12 +1020,12 @@
 			                      	$("#1page_preview .imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
 			                      	
 		                      if(template_isVerticle=="1"){
-			                      $("#1page_preview .wrap").css("width","440px"); 
-			                      $("#1page_preview .wrap").css("height","560px");
+			                      $("#1page_preview .wrap.container").css("width","440px"); 
+			                      $("#1page_preview .wrap.container").css("height","560px");
 		                      }
 		                      else{
-		                    	  $("#1page_preview .wrap").css("width","610px"); 
-			                      $("#1page_preview .wrap").css("height","409px");
+		                    	  $("#1page_preview .wrap.container").css("width","610px"); 
+			                      $("#1page_preview .wrap.container").css("height","409px");
 			                  }
 		                  },
 		                  error:function(request,status,error){

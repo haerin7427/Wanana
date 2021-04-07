@@ -55,7 +55,7 @@
 		 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
-	 <main class="portfolioBox" style="padding:10px;">
+	 <main class="portfolioBox" style="padding: 10px;width: 900px; height: auto;overflow: auto;">
 
 	 	
         <div style="height:700px; display:inline; padding-top:20px; height:20px;" >
@@ -78,7 +78,7 @@
 	        </div>
         
         
-        	<div class="wrap" style="width:100%; position:auto; border:0; margin:0 15px 0 15px;">
+        	<div class="wrap">
 	 			<div id="1page_preview" style="display:block; margin:0 auto;">
 			 			<!-- <page size="A4" layout="portrait">  -->
 						<page size="A4">

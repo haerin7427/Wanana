@@ -18,7 +18,7 @@
     <!-- template3 css -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=4">
     <title>portfolio</title>
-    
+   
     <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
