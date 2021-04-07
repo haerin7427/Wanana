@@ -8,7 +8,7 @@
     <!-- 한글 폰트 -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
-	
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=11">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=4">
     <title>portfolio</title>
    
     <script>
@@ -26,35 +26,6 @@
     }
     
     $(document).ready(function () {
-
-    	var template_info=${template_info};
-   		document.body.style.setProperty("--my-font", template_info[0].template_font);
-   		document.body.style.setProperty("--my-fontSize", template_info[0].template_fontSize);
-   		if(template_info[0].template_color>0){
-   			var color_info;
-   			var whole_addr = $(location).attr('href');
-		   	var addr_slice = whole_addr.split('/');
-		   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
-		   	
-   			$.ajax({ //해당 color 정보 가져오기
-   				url : addr + "colorData",
-   			  	type : "post",
-   			  	data:{"color_id":template_info[0].template_color},
-   			  	dataType : "json",
-   			  	async: false,
-   			  	success: function(data){
-   			  		color_info = data;
-   				  	console.log("color_info 불러오기 성공");
-   				 	document.body.style.setProperty("--my-color", color_info.color1);
-   				 	document.body.style.setProperty("--my-color2", color_info.color2);
-   			  	},
-   			  	error:function(request, status, error){
-   					alert("code:"+request.status+"\n"+"\n"+"error:"+error);
-   				}
-   			});
-   	   	}
-   		
-        
     var item= ${data_list};
     var currentPath = getContextPath();
    console.log(item);
@@ -165,6 +136,18 @@
                            			$("#itemBox_"+item[i].item_id).children(":last").children(":last").children(".project_skill").append('<div><p>'+tools[a]+'</p></div>');
                            	
                             }
+
+    	  
+
+  
+    
+
+    
+
+    	
+            
+
+
     	
     }
     });//document.ready end

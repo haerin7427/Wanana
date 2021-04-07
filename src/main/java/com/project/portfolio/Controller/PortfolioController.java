@@ -91,7 +91,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				ob2.put("template_color", portInfo.getColor());
         			ob2.put("template_font", portInfo.getFont());
         			ob2.put("port_url", portInfo.getUrl());
-        			ob2.put("template_fontSize", "15px");
+        			ob2.put("template_fontSize", "10px");
         			template_info.put(ob2);
         		
 				for (int i = 0; i < list.size() ; i++) {   
@@ -860,9 +860,8 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	@RequestMapping(value= "/call_data") // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 	 public ModelAndView callData(HttpServletRequest request, HttpSession session) throws Exception {
 
-		ModelAndView mav = new ModelAndView();
 		String template_name="";
-		int portfolio_id=0;
+		int portfolio_id=11;
 		int template_id=0;
 		String template_color="#000000";
 		String template_font="Times New Roman";
@@ -915,7 +914,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	    JSONObject ob =new JSONObject();
 	    ob.put("template_color", template_color);
 	    ob.put("template_font", template_font);
-	    ob.put("template_fontSize", "15px");
+	    ob.put("template_fontSize", "10px");
 	    jArray.put(ob);
 	    
 
@@ -926,9 +925,11 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		else {
 			port_url="";
 		}
-		
+		ModelAndView mav = new ModelAndView();
 		ObjectMapper mapper=new ObjectMapper();
 		mav.addObject("portfolioUrl",mapper.writeValueAsString(port_url));
+		System.out.println("callback url : " + mapper.writeValueAsString(port_url));
+		
 	
 	    //보여주기
 		mav.addObject("temName", template_name);
@@ -993,7 +994,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			ob2.put("template_color", portInfo.getColor());
     			ob2.put("template_font", portInfo.getFont());
     			ob2.put("port_url", portInfo.getUrl());
-    			ob2.put("template_fontSize", "15px");
+    			ob2.put("template_fontSize", "10px");
     			template_info.put(ob2);
     		
 			for (int i = 0; i < list.size() ; i++) {   
@@ -1037,6 +1038,188 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		Template tempInfo = portfolioService.getTemInfo(tem_id);
 			
 		return tempInfo;
+	}	
+	
+	@RequestMapping(value= "/testNewTemplate", method = RequestMethod.GET) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	public ModelAndView testNewTemplate(HttpServletRequest request, HttpSession session) throws Exception {
+			
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("templates/template3");
+			
+		return mav;
+	}	
+	@RequestMapping(value= "/testJSNewTemplate", method = RequestMethod.GET) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	public ModelAndView testJSNewTemplate(HttpServletRequest request, HttpSession session) throws Exception {
+		System.out.println("testJSNewTemplate controller!");	
+		ModelAndView mav = new ModelAndView();
+		String template_name="template3_1";
+		int portfolio_id=11;
+		//int template_id=0;
+		//String template_color="#000000";
+		//String template_font="sans-serif";
+		//String portURL="";
+			
+//		Map<String,?> redirectMap = RequestContextUtils.getInputFlashMap(request);
+//		if(redirectMap != null) {
+//			template_id=(Integer)redirectMap.get("template_id");
+//			template_name= (String)redirectMap.get("template_name");
+//			portfolio_id= (Integer)redirectMap.get("portfolio_id");
+//			template_color= (String)redirectMap.get("template_color");
+//			template_font= (String)redirectMap.get("template_font");
+//			portURL=(String)redirectMap.get("portURL");
+//		}
+		System.out.println("step7 : portfolio id: "+portfolio_id);
+		System.out.println("step7 :  id: "+portfolio_id);
+					
+		List<Data> list = portfolioService.callData(portfolio_id);
+		
+		System.out.println("Get Data for template");
+        System.out.println(list);
+
+        String content[];
+			
+		JSONArray jArray2 = new JSONArray();
+	    try {
+	    	for (int i = 0; i < list.size() ; i++) {   
+		    	JSONObject ob =new JSONObject();
+		        content=new String[6];
+		        ob.put("item_id", list.get(i).getItem_id());
+		        ob.put("data_no", list.get(i).getData_no());
+		        
+		        content[0]=list.get(i).getContent1();
+		        content[1]=list.get(i).getContent2();
+		        content[2]=list.get(i).getContent3();
+		        content[3]=list.get(i).getContent4();
+		        content[4]=list.get(i).getContent5();
+		        content[5]=list.get(i).getContent6();
+		            
+		        ob.put("content", content);
+		            
+		        jArray2.put(ob);
+		        
+		    }
+	        System.out.println(jArray2.toString());
+	    }catch(JSONException e){
+	        e.printStackTrace();
+	    }
+	    
+//	    JSONArray jArray = new JSONArray();
+//	    JSONObject ob =new JSONObject();
+//	    ob.put("template_color", template_color);
+//	    ob.put("template_font", template_font);
+//	    ob.put("template_fontSize", "15px");
+//	    jArray.put(ob);
+	    
+
+//		String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+//		String port_url;
+//		if(portURL!=null)
+//			port_url=rootPath+"/portfolioView/"+portURL;
+//		else {
+//			port_url="";
+//		}
+		
+		ObjectMapper mapper=new ObjectMapper();
+		String specialURL = "http://localhost:8080/onepage/portfolioView/testJS";
+		mav.addObject("portfolioUrl",mapper.writeValueAsString(specialURL));
+	
+	    //보여주기
+		mav.addObject("temName", template_name);
+		mav.addObject("portfolio_ID", portfolio_id);
+		mav.addObject("data_list", jArray2);
+		//mav.addObject("template_info", jArray);
+		mav.setViewName("checkPortfolio");
+		
+		System.out.println("step7 clear! ");
+		return mav;
+			
+	}	
+	
+	@RequestMapping(value= "/testJSNewTemplate2", method = RequestMethod.GET) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
+	public ModelAndView testJSNewTemplate2(HttpServletRequest request, HttpSession session) throws Exception {
+		System.out.println("testJSNewTemplate2 controller!");	
+		ModelAndView mav = new ModelAndView();
+		String template_name="template3_1";
+		int portfolio_id=11;
+		//int template_id=0;
+		//String template_color="#000000";
+		//String template_font="sans-serif";
+		//String portURL="";
+			
+//		Map<String,?> redirectMap = RequestContextUtils.getInputFlashMap(request);
+//		if(redirectMap != null) {
+//			template_id=(Integer)redirectMap.get("template_id");
+//			template_name= (String)redirectMap.get("template_name");
+//			portfolio_id= (Integer)redirectMap.get("portfolio_id");
+//			template_color= (String)redirectMap.get("template_color");
+//			template_font= (String)redirectMap.get("template_font");
+//			portURL=(String)redirectMap.get("portURL");
+//		}
+		System.out.println("step7 : portfolio id: "+portfolio_id);
+		System.out.println("step7 :  id: "+portfolio_id);
+					
+		List<Data> list = portfolioService.callData(portfolio_id);
+		
+		System.out.println("Get Data for template");
+        System.out.println(list);
+
+        String content[];
+			
+		JSONArray jArray2 = new JSONArray();
+	    try {
+	    	for (int i = 0; i < list.size() ; i++) {   
+		    	JSONObject ob =new JSONObject();
+		        content=new String[6];
+		        ob.put("item_id", list.get(i).getItem_id());
+		        ob.put("data_no", list.get(i).getData_no());
+		        
+		        content[0]=list.get(i).getContent1();
+		        content[1]=list.get(i).getContent2();
+		        content[2]=list.get(i).getContent3();
+		        content[3]=list.get(i).getContent4();
+		        content[4]=list.get(i).getContent5();
+		        content[5]=list.get(i).getContent6();
+		            
+		        ob.put("content", content);
+		            
+		        jArray2.put(ob);
+		        
+		    }
+	        System.out.println(jArray2.toString());
+	    }catch(JSONException e){
+	        e.printStackTrace();
+	    }
+	    
+//	    JSONArray jArray = new JSONArray();
+//	    JSONObject ob =new JSONObject();
+//	    ob.put("template_color", template_color);
+//	    ob.put("template_font", template_font);
+//	    ob.put("template_fontSize", "15px");
+//	    jArray.put(ob);
+	    
+
+//		String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+//		String port_url;
+//		if(portURL!=null)
+//			port_url=rootPath+"/portfolioView/"+portURL;
+//		else {
+//			port_url="";
+//		}
+		
+		ObjectMapper mapper=new ObjectMapper();
+		String specialURL = "http://localhost:8080/onepage/portfolioView/testJS";
+		mav.addObject("portfolioUrl",mapper.writeValueAsString(specialURL));
+	
+	    //보여주기
+		mav.addObject("temName", template_name);
+		mav.addObject("portfolio_ID", portfolio_id);
+		mav.addObject("data_list", jArray2);
+		//mav.addObject("template_info", jArray);
+		mav.setViewName("templates/template3");
+		
+		System.out.println("step7 clear! ");
+		return mav;
+			
 	}	
 
 }

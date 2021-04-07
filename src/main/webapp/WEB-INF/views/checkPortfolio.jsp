@@ -43,11 +43,15 @@
 		  display: flex;
 		  flex-direction: row;
 		}
-		
+		/* 
 		.item {
 		  flex: 1;
-		}
+		} */
 		
+		.printSection .container{
+			margin-left: 7%;
+    		margin-top: 3%;
+		}
 		.top_btn{
 			width:100px;
 			border-radius:10px;
@@ -242,8 +246,8 @@ function editB() {
 	 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
-	 <section class="u-clearfix u-white u-section-1" id="sec-fad6" style="height:100%; padding-bottom:130px;">
-	 	<div class="wrap" style="width:100%; position:relative; background-color:transparent; margin-left:80px;">
+	 <section class="u-clearfix u-grey-5 u-section-1" id="sec-fad6" style="height:100%; padding-bottom:130px;">
+	 	<div class="u-clearfix u-sheet u-sheet-1">
 	 		<div>
 	 			<div class="table-content" style="padding:0 35px 0 26px;">
 	 				<div class="item" style="float:left; height:97px;">
@@ -253,7 +257,7 @@ function editB() {
 		 				<button id="copyB" style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
 		 				<div style="text-decoration:underline; display:inline;"><span class="portURL"></span><input name="portURL" id="portURL" style="border:none;" type="hidden" value="" readonly></div>
 	 				</div>
-	 				<div id="button_wrap" style="float:left; padding-top:10px;">
+	 				<div id="button_wrap" style="float: right;padding-top:10px;margin-left: 20%;">
 						<div style="flex-direction:row; display:inline;" >
 					    	<button type="button" class="top_btn print" name="print" id="printB" onclick="javascript:printB();">출력 </button>
 					    	<button type="button" class="top_btn edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
@@ -265,7 +269,7 @@ function editB() {
 				    	</div>	
 			    	</div>	
 	 			</div>
-	 			<div class="printSection" id="1page_preview" style="float:left; margin-right: 35px; padding-left: 22px;">
+	 			<div class="printSection" id="1page_preview">
 	 			 <!-- <page size="A4" layout="portrait">  -->
 				 <page size="A4">
 				 
