@@ -479,7 +479,7 @@
   	                    }
   	                  else if(item_type[k].field_type=="collection"){
   	  	                    
-							var colContent=content.replaceAll("[\\t\\s]","").split("#");
+							var colContent=content.replaceAll("[\\t\\s]","").split("$");
 								
   	  	               		var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
 	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
@@ -574,11 +574,11 @@
 	                 else if(isCollection>1){
 						var name=$(this).children().eq(0).attr("name");
 						if(name=="collection"){
-							var resultCollect=' ';
+							var resultCollect='';
 							for(var x=0; x<isCollection; x++){
 								if($(this).children().eq(x).val().trim()=='')
 									continue;
-								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+								resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
 							}
 
 							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
@@ -706,11 +706,11 @@
 	                  					else if(isCollection>1){
 	                						var name=$(this).children().eq(0).attr("name");
 	                						if(name=="collection"){
-	                							var resultCollect=' ';
+	                							var resultCollect='';
 	                							for(var x=0; x<isCollection; x++){
 	                								if($(this).children().eq(x).val().trim()=='')
 	                									continue;
-	                								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+	                								resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
 	                							}
 
 	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');

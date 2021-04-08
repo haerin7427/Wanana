@@ -749,11 +749,11 @@
 	                 else if(isCollection>1){
 							var name=$(this).children().eq(0).attr("name");
 							if(name=="collection"){
-								var resultCollect=' ';
+								var resultCollect='';
 								for(var x=0; x<isCollection; x++){
 									if($(this).children().eq(x).val().trim()=='')
 										continue;
-									resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+									resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
 								}
 
 								var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
@@ -877,11 +877,11 @@
     	                  					else if(isCollection>1){
     	                						var name=$(this).children().eq(0).attr("name");
     	                						if(name=="collection"){
-    	                							var resultCollect=' ';
+    	                							var resultCollect='';
     	                							for(var x=0; x<isCollection; x++){
     	                								if($(this).children().eq(x).val().trim()=='')
     	                									continue;
-    	                								resultCollect = resultCollect.concat('#',$(this).children().eq(x).val(),' ');
+    	                								resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
     	                							}
 
     	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
