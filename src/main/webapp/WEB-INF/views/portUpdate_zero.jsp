@@ -113,10 +113,9 @@ function imgBig(a,b,templateID,template_html){
 	});
 
 	$(".color-picker").empty();
-
 	for(var i=0; i<colorList.length;i++){
 		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
-		var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].color_name+"</div>");	
+		var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].name+"</div>");	
 		$(".color-picker").append(colorDiv);
 		$(".color-picker").append(colorName);
 	}

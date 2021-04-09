@@ -257,7 +257,7 @@ function editB() {
 		 				<button id="copyB" style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
 		 				<div style="text-decoration:underline; display:inline;"><span class="portURL"></span><input name="portURL" id="portURL" style="border:none;" type="hidden" value="" readonly></div>
 	 				</div>
-	 				<div id="button_wrap" style="float: right;padding-top:10px;margin-left: 20%;">
+	 				<div id="button_wrap" style="float: right;padding-top:10px;margin-left: 20%;min-width: 40%;">
 						<div style="flex-direction:row; display:inline;" >
 					    	<button type="button" class="top_btn print" name="print" id="printB" onclick="javascript:printB();">출력 </button>
 					    	<button type="button" class="top_btn edit" name="edit" id="editB" onclick="javascript:editB();" >수정 </button>
