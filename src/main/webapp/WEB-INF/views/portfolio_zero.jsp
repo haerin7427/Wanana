@@ -135,14 +135,14 @@ function imgBig(a,b,templateID,template_html){
 	});
 
 	$(".color-picker").empty();
-
+	document.getElementById('select_template_color').value = colorList[0].id;
 	for(var i=0; i<colorList.length;i++){
 		var colorDiv=$("<div onclick='changeColor(this);' id='color_"+colorList[i].id+"' class='color "+colorList[i].color1+"' style='background-color:"+colorList[i].color1+";'></div>"); 
 		var colorName=$("<div style='font-size:10px; padding-right:10px;'>"+colorList[i].name+"</div>");	
 		$(".color-picker").append(colorDiv);
 		$(".color-picker").append(colorName);
 	}
-
+	$("#templateImg").attr("src", "<%=request.getContextPath()%>/resources/images/"+template_html+".png"); 
 	<%-- 
 	var template_color=$("#bigView_color").val();
 	var template_font=$("#bigView_font").val();
@@ -514,7 +514,7 @@ function rgbToHex(rgb) {
                 </div>
                 
                 <!-- 템플릿 고르는 페이지 오른쪽 박스 -->
-                <div class="u-border-2 u-border-custom-color-2 u-container-style u-group u-opacity u-opacity-95 u-radius-21 u-shape-round u-white u-group-4">
+                <div class="u-border-2 u-border-custom-color-2 u-container-style u-group u-opacity u-opacity-95 u-radius-21 u-shape-round u-white u-group-4" style="overflow:auto;">
                   <div class="u-container-layout u-valign-bottom u-container-layout-5">
                     <h6 class="u-custom-font u-text u-text-custom-color-3 u-text-5">선택된 템플릿</h6><span class="u-hidden-sm u-hidden-xs u-icon u-icon-circle u-text-custom-color-2 u-icon-3"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 405.272 405.272" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5217"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 405.272 405.272" x="0px" y="0px" id="svg-5217" style="enable-background:new 0 0 405.272 405.272;"><g><path d="M393.401,124.425L179.603,338.208c-15.832,15.835-41.514,15.835-57.361,0L11.878,227.836   c-15.838-15.835-15.838-41.52,0-57.358c15.841-15.841,41.521-15.841,57.355-0.006l81.698,81.699L336.037,67.064   c15.841-15.841,41.523-15.829,57.358,0C409.23,82.902,409.23,108.578,393.401,124.425z"></path>
 </g></svg></span>

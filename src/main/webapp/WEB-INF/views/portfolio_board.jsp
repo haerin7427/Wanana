@@ -229,8 +229,9 @@
 				$(this).find("img").css("opacity","1");
 				$(this).find(".interests").css("display","none");
 			});
-  	        
 	    });
+
+
 	    function modal(id) {
 		    var zIndex = 9999;
 		    var modal = $('#' + id);
@@ -500,6 +501,7 @@
 			</c:if>
 		</ul>
       </div>
+      
       
       <div id="yourModal">
 	        

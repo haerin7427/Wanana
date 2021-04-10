@@ -254,8 +254,8 @@ function editB() {
 	 					<!-- 포트폴리오 이름넣기 -->
 		 				<h4 style="line-height: 10px; font-weight:bold;">${sessionScope.Name}님의 포트폴리오</h4>
 		 				<!-- 포트폴리오 url넣기 -->
-		 				<button id="copyB" style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;">복사</button>
-		 				<div style="text-decoration:underline; display:inline;"><span class="portURL"></span><input name="portURL" id="portURL" style="border:none;" type="hidden" value="" readonly></div>
+		 				
+		 				<div style=" display:flex;"><button id="copyB" style="border-color:transparent; background-color:#F7C046;color:white; border-radius:20px; font-size:12px;width: 52px;">복사</button><span class="portURL" style="text-decoration:underline;margin-left:3%;"></span><input name="portURL" id="portURL" style="border:none;" type="hidden" value="" readonly></div>
 	 				</div>
 	 				<div id="button_wrap" style="float: right;padding-top:10px;margin-left: 20%;min-width: 40%;">
 						<div style="flex-direction:row; display:inline;" >
