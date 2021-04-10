@@ -179,12 +179,7 @@
         <img class="u-image u-image-round u-radius-27 u-image-2" src="<%=request.getContextPath()%>/resources/images/321.png" data-image-width="472" data-image-height="725">
       </div>
     </section>
-    
-    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testNewTemplate'">test</button>
-    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testJSNewTemplate'">test2</button>
-    <button type="button" onClick="location.href='<%=request.getContextPath()%>/testJSNewTemplate2'">test3</button>
-    
-  
+
    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
     	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
        		<p class="u-custom-font u-small-text u-text u-text-variant u-text-1" style="line-height:20px;">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b></p>

@@ -843,7 +843,7 @@
 		                      $("#1page_preview").html(result);
 		                      
 		                      if(check1 > 0) //사진을 추가 했을 때만!!
-			                      	$("#1page_preview .imageicon").attr("src", $("#1page_form").find("img").attr("src")); 
+			                      	$("#1page_preview .picBox img").attr("src", $("#1page_myForm").find("img").attr("src")); 
 			                      	
 		                      if(template_isVerticle=="1"){
 			                      $("#1page_preview .wrap.container").css("width","440px"); 
@@ -1051,7 +1051,7 @@
 						<input type="hidden" id="select_portfolio_name" name="portfolio_name" value="" readonly/>
 						<input type="hidden" id="select_portfolio_public" name="portfolio_public" value="1" readonly/>
 						<input type="hidden" id="select_portfolio_id" name="portfolio_id" value="" readonly/>
-						<input type="hidden" id="select_template_color" name="template_color" value="1" readonly/>
+						<input type="hidden" id="select_template_color" name="template_color" value="13" readonly/>
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="0" readonly/>
 						<input type="hidden" id="select_template_url" name="url" value="" readonly/>
