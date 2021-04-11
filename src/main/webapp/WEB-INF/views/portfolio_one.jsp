@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css?ver=1" media="screen">
     
     <title>addData</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=4" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=5" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
@@ -718,7 +718,9 @@
 	                		                      
 	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
 	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
-	                						}
+												$(this).find(":not(:first-child)").remove();
+												$(this).find(":first-child").css("width","100%");
+	  	                					}
 	                	                 }
 		 	                  			else{
 		 	                  				var name=$(this).children().attr("name");
@@ -737,7 +739,6 @@
 							                      $($('#1page_count' + add_count).children()[0]).append(realTag);
 	                						}
 	                  					}
-	 	                  					
 						                 $(this).children().val('');
 						                 console.log("value : " + $(this).children().attr("type"));
 	

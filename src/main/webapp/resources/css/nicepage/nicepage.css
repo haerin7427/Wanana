@@ -16159,7 +16159,7 @@ p {
     text-align: left;
   }
 }
-.u-align-center {
+.u-align-center:not(#1page_preview) {
   text-align: center;
 }
 @media (min-width: 1200px) {

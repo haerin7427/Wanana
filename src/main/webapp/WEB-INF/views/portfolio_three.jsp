@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css" media="screen">
     
     <title>addData</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=1" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
@@ -889,6 +889,9 @@
     	                		                      
     	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
     	                		                      $($('#1page_count' + add_count).children()[0]).append(realTag);
+
+    	                		                      $(this).find(":not(:first-child)").remove();
+    											      $(this).find(":first-child").css("width","100%");
     	                						}
     	                	                 }
     		 	                  			else{

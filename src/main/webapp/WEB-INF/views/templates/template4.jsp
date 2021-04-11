@@ -14,7 +14,7 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=3">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=5">
 <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
