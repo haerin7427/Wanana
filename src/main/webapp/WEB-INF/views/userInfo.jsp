@@ -106,14 +106,14 @@
 				url : '<%=request.getContextPath()%>/info/modify',
 				type : "POST",
 				data:{"id":user_id,"name":name,"email_address":email,"phone_number":phone},
-				dataType : "json",
-				async: false,
-				success: function(){
+				traditional:true,
+				success: function(data){
+					alert("개인정보가 수정되었습니다");
 					console.log("user정보 수정"); 
 				},
                 error:function(request,status,error){
 	               	   alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	                  }
+	            }
 			
 			});
 		});

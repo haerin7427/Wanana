@@ -44,6 +44,7 @@
 
 	<context:component-scan
 		base-package="com.project.*" />
+	<context:property-placeholder location="classpath:config/application.properties"/> 
 
 	<beans:bean id="authenticationInterceptor"
 		class="com.project.login.interceptor.AuthenticationInterceptor" />

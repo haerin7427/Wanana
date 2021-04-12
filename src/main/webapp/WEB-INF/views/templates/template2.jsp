@@ -522,10 +522,6 @@
 		</div>
 	</div>
 
-<!--doughnut chart-->
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>
-   
-
 </body>
  
 	 <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyPieChart.js"></script>

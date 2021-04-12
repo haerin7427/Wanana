@@ -22,7 +22,7 @@
     
     <style>
      /* 개인정보 블러처리  */
-    #contactInfo>div,#contactInfo>p{
+    #contactInfo>div,#contactInfo>p,.contact>div:nth-child(4),.contact>div:nth-child(5){
 	    color: transparent;
 	   text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
@@ -335,7 +335,7 @@
 					</li>
 					</c:if>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
