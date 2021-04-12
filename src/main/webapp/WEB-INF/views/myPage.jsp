@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>myPage</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=1" media="screen">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/myPage.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
@@ -84,7 +84,7 @@
 				</li>
 				</c:if>
 				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>	
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
 				</li>
 			</ul>
           </div>
@@ -106,7 +106,7 @@
 					</li>
 					</c:if>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>
@@ -175,7 +175,7 @@
                           
                           <div style="margin-left:15px;">
                           <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" <c:if test="${port_count >= 5}" var="portfolio"> onClick="createAlert();" </c:if> <c:if test="${port_count < 100}" var="portfolio"> data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356" </c:if>>	
-                              <p style="color:black;">+ 새로만들기</p>
+                              <p style="color:black;" class="newPort">+ 새로만들기</p>
                           </div>
                           
                           <c:forEach items="${portfolio_list}" var="portfolio">

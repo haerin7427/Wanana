@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 
 import com.project.login.DTO.User;
 import com.project.login.Service.LoginService;
@@ -45,10 +45,10 @@ public class LoginController{
 	final static String GOOGLE_AUTH_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 	final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
 	final static String GOOGLE_REVOKE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/revoke";
-
-	String clientId="301548670560-kv6g6e8emg8kuac082ib4q4eah7hp4qu.apps.googleusercontent.com";
-
-	String clientSecret="R9mJ3tDkMqKiqOPrVX96Pr6C";
+	@Value("${google.api.client_id}")
+	String clientId;
+	@Value("${google.api.client_secret}")
+	String clientSecret;
 	
 	//회원가입
 	@RequestMapping(value = "/userform") // GET 방식으로 페이지 호출
@@ -236,12 +236,12 @@ public class LoginController{
 	}
 	
 	//로그아웃
-	@RequestMapping(value="login/logout")
+	@RequestMapping(value="logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		//session.removeAttribute("login");
 		
-        return new ModelAndView("home");
+        return new ModelAndView("redirect:/");
 	}
 	
 	//session check controller

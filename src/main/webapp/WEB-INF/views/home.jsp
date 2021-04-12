@@ -113,7 +113,7 @@
 				</li>
 				</c:if>
 				<li id="1page_logoutMenu1" class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				
 			</ul>
@@ -136,7 +136,7 @@
 					</li>
 					</c:if>
 					<li id="1page_logoutMenu2" class="u-nav-item">
-						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/login/logout">로그아웃</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
 				</ul>
               </div>

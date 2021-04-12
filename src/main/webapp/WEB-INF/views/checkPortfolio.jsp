@@ -60,7 +60,7 @@
       
     <script>
 $(document).ready(function(){
-  
+	
   	//경로 구하는 법 
 	function getContextPath() {
 	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -118,20 +118,20 @@ function printB() {
 		var resultYN = sessionChecking();
 	if(resultYN == 1){
 		 	var initBody = document.body.innerHTML;
-		 	var g_oBeforeBody = document.querySelector('.printSection').innerHTML;
-		 	html2canvas(document.querySelector(".printSection"),{scrollY: -window.scrollY, 
+		 	var g_oBeforeBody = document.querySelector('.printSection .container').innerHTML;
+		 	html2canvas(document.querySelector(".printSection .container"),{scrollY: -window.scrollY, 
 		 	   scale: 1}).then(canvas => {  
-		 	    var dataURL = canvas.toDataURL();
-		 	    var width = canvas.width;
-		 	    var printWindow = window.open("");
-		 	   var data=document.querySelector(".printSection");
+		 	   var dataURL = canvas.toDataURL();
+		 	   var width = "1200px";
+		 	   var printWindow = window.open("");
+		 	   var data=document.querySelector(".printSection .container");
 		       var divHeight = data.clientHeight
 		       var divWidth = data.clientWidth
 		       var ratio = divHeight / divWidth;
 		       var height = ratio * width;
 		       
 		 	    $(printWindow.document.body)
-		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "'></img>")
+		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "' style='margin-top:60px; border:1px solid #EAEAEA'></img>")
 		 	      .ready(function() {
 		 	      printWindow.focus();
 		 	      printWindow.print();
@@ -236,7 +236,7 @@ function editB() {
         </nav>
         </div>
         <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
-          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="home.html" data-page-id="425530424">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="<%=request.getContextPath()%>/" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
             <span class="u-text-black">하나</span>
           </a>
