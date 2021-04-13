@@ -76,10 +76,21 @@ $(document).ready(function(){
 	$("input[name='portURL']").val(portURL);
 
 	$('#copyB').click(function(){
-		$(this).siblings("div").find("#portURL").attr("type","text");
-		$(this).siblings("div").find("#portURL").select();
+		
+		
+		/* $(this).siblings("#portURL").find().select();
 		document.execCommand('copy');
-		$(this).siblings("div").find("#portURL").attr("type","hidden");
+		$(this).siblings("#portURL").attr("type","hidden"); */
+
+		
+		var portfolioURL = $(this).siblings(".portURL").text();
+		console.log("URL : " + portfolioURL);
+		const t = document.createElement("textarea");
+		  document.body.appendChild(t);
+		  t.value = portfolioURL;
+		  t.select();
+		  document.execCommand('copy');
+		  document.body.removeChild(t);
 		
 		alert('URL 주소가 복사 되었습니다');	
 

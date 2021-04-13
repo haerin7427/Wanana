@@ -2,6 +2,9 @@ package com.project.portfolio.Controller;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -95,6 +98,22 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
         			template_info.put(ob2);
         		
 				for (int i = 0; i < list.size() ; i++) {   
+					 if(list.get(i).getItem_id() == 1) {
+						 
+						 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+						 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
+						System.out.println("imgUrl check : " + imgUrl);
+
+				        	URL u = new URL(imgUrl);
+
+				            URLConnection con = u.openConnection();
+				            HttpURLConnection exitCode = (HttpURLConnection)con;
+
+				            //true : 200, false : 404
+				            if ("404".equals(exitCode.getResponseCode() + "")) 
+				            		continue; 
+				        }
+					 
 					JSONObject ob =new JSONObject();
 				    content=new String[6];
 				    ob.put("item_id", list.get(i).getItem_id());
@@ -888,12 +907,32 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		JSONArray jArray2 = new JSONArray();
 	    try {
 	    	for (int i = 0; i < list.size() ; i++) {   
-		    	JSONObject ob =new JSONObject();
+		    
+		        
+		        
+		        
+	    		if(list.get(i).getItem_id() == 1) {
+					 
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
+					System.out.println("imgUrl check : " + imgUrl);
+
+			        	URL u = new URL(imgUrl);
+
+			            URLConnection con = u.openConnection();
+			            HttpURLConnection exitCode = (HttpURLConnection)con;
+
+			            //true : 200, false : 404
+			            if ("404".equals(exitCode.getResponseCode() + "")) 
+			            		continue; 
+			        }
+		        
+		        	JSONObject ob =new JSONObject();
 		        content=new String[6];
 		        ob.put("item_id", list.get(i).getItem_id());
-		        ob.put("data_no", list.get(i).getData_no());
+			    ob.put("data_no", list.get(i).getData_no());
+		        	content[0]=list.get(i).getContent1();
 		        
-		        content[0]=list.get(i).getContent1();
 		        content[1]=list.get(i).getContent2();
 		        content[2]=list.get(i).getContent3();
 		        content[3]=list.get(i).getContent4();
@@ -903,8 +942,8 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        ob.put("content", content);
 		            
 		        jArray2.put(ob);
-		        
 		    }
+	    	
 	        System.out.println(jArray2.toString());
 	    }catch(JSONException e){
 	        e.printStackTrace();
@@ -998,6 +1037,22 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
     			template_info.put(ob2);
     		
 			for (int i = 0; i < list.size() ; i++) {   
+				if(list.get(i).getItem_id() == 1) {
+					 
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
+
+					System.out.println("imgUrl check : " + imgUrl);
+
+			        	URL u = new URL(imgUrl);
+
+			            URLConnection con = u.openConnection();
+			            HttpURLConnection exitCode = (HttpURLConnection)con;
+
+			            //true : 200, false : 404
+			            if ("404".equals(exitCode.getResponseCode() + "")) 
+			            		continue; 
+			        }
 				JSONObject ob =new JSONObject();
 			    content=new String[6];
 			    ob.put("item_id", list.get(i).getItem_id());
