@@ -103,8 +103,10 @@ public class LoginController{
 		//HTTP Request를 위한 RestTemplate
 		RestTemplate restTemplate = new RestTemplate();
 
+		String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+		System.out.println("rootPath: "+rootPath);
 		//Google OAuth Access Token 요청을 위한 파라미터 세팅
-		GoogleOAuthRequest googleOAuthRequestParam = new GoogleOAuthRequest(clientId,clientSecret,authCode,"http://localhost:8080/onepage/login/google/auth","authorization_code");
+		GoogleOAuthRequest googleOAuthRequestParam = new GoogleOAuthRequest(clientId,clientSecret,authCode,rootPath+"/login/google/auth","authorization_code");
 
 
 		//JSON 파싱을 위한 기본값 세팅
