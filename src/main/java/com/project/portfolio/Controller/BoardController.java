@@ -1,5 +1,8 @@
 package com.project.portfolio.Controller;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -123,9 +126,9 @@ public class BoardController {
 	//포트폴리오 모달을 위한 컨트롤러
 	@RequestMapping(value = "board/portfolioView" ,method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (POST)
 	public ModelAndView portfolioModal(HttpSession session,HttpServletRequest request) throws Exception {
-
+		System.out.println("portfolioModal controller!");
 		ModelAndView mav = new ModelAndView();
-		System.out.println("portfolioView controller!!" );
+		
 		int id=Integer.parseInt(request.getParameter("portfolioID"));
 		String regDate=request.getParameter("regDate");
 		int user_id=(Integer) session.getAttribute("ID");
@@ -138,12 +141,30 @@ public class BoardController {
 		JSONArray jArray2 = new JSONArray();
 		JSONArray template_info = new JSONArray();
 		try {
+			
 			JSONObject ob2 =new JSONObject();
 			ob2.put("template_color", portInfo.getColor());
     		ob2.put("template_font", portInfo.getFont());
     		ob2.put("template_fontSize", "12px");
     		template_info.put(ob2);
 			for (int i = 0; i < list.size() ; i++) {   
+				
+				 if(list.get(i).getItem_id() == 1) {
+					 
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
+					System.out.println("imgUrl check : " + imgUrl);
+
+			        	URL u = new URL(imgUrl);
+
+			            URLConnection con = u.openConnection();
+			            HttpURLConnection exitCode = (HttpURLConnection)con;
+
+			            //true : 200, false : 404
+			            if ("404".equals(exitCode.getResponseCode() + "")) 
+			            		continue; 
+			        }
+				 
 				JSONObject ob =new JSONObject();
 			    content=new String[6];
 			    ob.put("item_id", list.get(i).getItem_id());
@@ -161,6 +182,7 @@ public class BoardController {
 			    jArray2.put(ob);
 			        	
 			}
+			System.out.println(jArray2.toString());
 			Integer checkLike=boardService.checkLike(id,user_id);
 			if(checkLike==null)
 				checkLike=-1;

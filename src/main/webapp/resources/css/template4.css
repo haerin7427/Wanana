@@ -1,76 +1,91 @@
+
 :root {
 		  --my-font: sans-serif;
-		  --my-color:#A8D1B4;
-		  --my-color2:#000000;
-		  --my-fontSize:11px;
+		  --my-color:black;
+		  --my-color2:white;
+		  --my-fontSize:10px;
 	}
 p{
   font-size: calc(1.0*var(--my-fontSize));
   margin:0;
 }
 .contact p{
-  /* font-size: calc(0.8*var(--my-fontSize)); */
-  -webkit-transform:scale(0.9);
+  font-size: calc(0.8*var(--my-fontSize));
+      margin-bottom: 0 !important;
 }
-
+.name div h3 {
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 5%;
+}
 h6{
-  font-size:calc(1.3*var(--my-fontSize));
+  font-size:calc(1.6*var(--my-fontSize));
   margin:0;
   font-weight:900;
 }
 h6:not(.interest>h6){
   margin:0;
-  color : var(--my-color);
-}
-.name h3{
-	font-size:calc(2*var(--my-fontSize));
-  margin-block-start: 0.7em;
-    /* margin-block-end: 0.5em; */
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+  color : #FDCBCB;
+  margin-bottom: 3%;
 }
 .picBox img{
   margin:5%;
-  position:absolute;
-  width:95%;
-  height:auto;
-  border-radius: 10px;
+  width: 120px;
+    height: 130px;
 }
  .wrap .container {
 			position: relative;
 			width: 570px;/* 2480 */
 			height: 877px;/* 3508 */
 			background-color: white;
-      border: 1px solid #EAEAEA;
+      border: 1px solid black;
 			font-family:var(--my-font);
+      padding: 2% 1%;
+}
+.top{
+  height:30%;
+border-bottom: 1px solid #c7c2c2;
+}
+.myInfo2{
+ float: left;
+    position: relative;
+    display: block;
+    height: auto;
+    width: 47%;
+    margin-left: 2%;
 }
 
-.left{
+.bottom{
+margin-top: 3%;
+  /* position:absolute;
+  float:left; */
+ /*  margin-left:36%; */
+  height: 67%;
+/*   padding-left:2%; */
+}
+
+.interest{
+margin-top: 2%;
+}
+
+graduation>h6{
+}
+
+.activity h6, .project h6{
+	margin-bottom: 3% !important;
+}
+
+.myInfo, .sgca{
+  position:relative;
+  width:50%;
+  height:auto;
+  float: left;
+}
+.sgca{
   position:relative;
   width:100%;
-  height:30%;
-}
-
-.right{
-  position:absolute;
-  width:100%;
-  top:auto;
-  padding:0 2%; 
-}
-
-.myInfo{
-  position:absolute;
-  width:50%;
-  float:left;
-  padding: 2%;
-} 
-.sgca{
-  position:absolute;
-  float:left;
-  margin-left:50%;
-  width:46%;
-  padding:3% 0;
+  height:auto;
+  border: 1px solid black;
 }
 
 .myInfo_upper, .myInfo_under{
@@ -78,100 +93,128 @@ h6:not(.interest>h6){
   width:100%;
   overflow:auto;
 }
-.myInfo_upper,.skill,.interest{
-  margin-bottom:3%;
-}
 .picBox{
   float:left;
-  width:40%;
-  height:100%;
-  position:relative;
+  width:20%;
+  height:auto;
 }
-
+.skill_content div {
+    margin-left: 2%;
+}
+.advantage{
+margin-top: 5%;
+    font-weight: 600;
+}
+.introduce{
+margin-top:1%;
+}
 .infoBox{
-  position:relative;
   float:right;
   width:54%;
   height:auto;
   padding-left:6%;
 }
-.contact,.name{
-  position:relative;
-  width:100%;
-}
 .contact>div{
   margin-bottom:2%;
 }
-
+.myInfo>div{
+  margin-bottom:2%;
+}
+.sgca>div{
+  margin-bottom:5%;
+}
 .advantage ,interest,introduce,.caBox {
   display :block;
 }
-
-.advantage *,.interest *,.skill_content div *,.graduation_content div *,.award_content div *,.ceritificate_content div *{
+.advantage *,.interest *,.skill_content div *,.award_content div *,.ceritificate_content div *{
   display:inline-block;
   margin-bottom:1%;
 }
-
-.award_content>div div:nth-child(3),.ceritificate_content>div div:nth-child(3),.project_skill *,.activity_content>div div:nth-child(3){
+.graduation{
+margin-top: 4%;
+}
+.graduation_content div *{
+display:inline-block;
+}
+.award_content>div div:nth-child(3),.ceritificate_content>div div:nth-child(3),.project_skill *,.activity_content>div>div:nth-child(3){
   background-color:#EAEAEA;
   padding:0 2%;
   border-radius:5px;
 }
+.award_content>div div:nth-child(1),.ceritificate_content>div div:nth-child(1),.skill_content>div>div:nth-child(1),.graduation_content>div>div:nth-child(1){
+  font-weight:600;
+}
 
-.award_content>div div:nth-child(1),.ceritificate_content>div div:nth-child(1),.skill_content>div>div:nth-child(1),.graduation_content>div>div:nth-child(1),.advantage div{
-  font-weight:700;
-}
-.interest div{
-  background-color:var(--my-color);
-  color:var(--my-color2);
-  border-radius:5px;
-  padding:0 1.5%;
-  font-weight:700;
-}
 .caBox{
   overflow:hidden;
+  margin-top: 3%;
 }
 .caBox>div{
   float :left;
   width:50%;
 } 
-.right>div{
-  margin-bottom:2%;
+.advantage div {
+    margin-right: 1%;
 }
-.right_left,.project{
+.interest div{
+  background-color:#FDCBCB;
+  margin-right: 1%;
+  border-radius:5px;
+  padding:0 1.5%;
+  font-weight:700;
+}
+.graduation_content div div {
+    margin-right: 1.5%;
+}
+.ceritificate_content div div, .award_content div div {
+    margin-right: 2%;
+}
+.activity,.project{
   position:relative;
-  width:46%;
-  float:left;
-}
-
-.project{
-  margin-left:3%;
-}
-.right_left>div{
-  margin-bottom:2%;
+  width:100%;
 }
 .activity_content>div,.project_content>div{
   overflow:hidden;
+}
+/* .activity_content>div>div,.project_content>div>div{
+  float:left;
+  width:48%;
   padding:1%;
+} */
+.activity_content div div {
+    width: fit-content;
+    float: left;
+    margin-right: 2%;
 }
-.activity{
-  padding-right:2%;
-}
-.project>div,.project h6{
-  padding-left:2%;
-}
-.award_content,.ceritificate_content{
-  padding:1%;
-}
-.ceritificate_content>div>div:nth-child(3),.award_content>div>div:nth-child(3){
-  font-size:calc(1*var(--my-fontSize));
-  -webkit-transform: scale(0.8);
-}
-.project_content>div div,.activity_content>div div{
+.project_content>div>div div,.activity_content>div>div div{
   margin-bottom:1.5%;
 }
-
-.project_content>div div:nth-child(4),.activity_content>div div:nth-child(4){
+.project_content>div>div:nth-child(5),.activity_content>div>div div:nth-child(4){
+  border : 1px solid #EAEAEA;
+  border-radius:10px;
+  padding:2%;
+}
+.project_content>div>div:nth-child(1){
+	float: left;
+    margin-right: 3%;
+}
+.project_content>div>div:nth-child(2){
+	float: left;
+}
+/* .project_content>div>div:nth-child(3){
+	margin-bottom: 6%;
+} */
+.project_content>div>div:nth-child(4){
+	clear:both;
+	margin-bottom: 1.5%;
+}
+.project_content>div>div:nth-child(2)>p, .activity_content>div>div:nth-child(3)>p
+{
+color: #a49c9c;
+}
+.activity_content>div> div:nth-child(4){
+margin-top: 2%;
+    margin-bottom: 4%;
   border : 1px solid #EAEAEA;
   border-radius:10px;
   padding:2%;
@@ -180,21 +223,28 @@ h6:not(.interest>h6){
   font-weight:900;
 /*   font-size: calc(1.1*var(--my-fontSize)); */
 }
-.project_content>div>div:nth-child(4) p,.activity_content>div>div:nth-child(4) p{
+.project_content>div>div:nth-child(5) p,.activity_content>div>div:nth-child(4) p{
   line-height:130%;
+  height: 70px;
 }
 
-.project_skill *,.activity_content>div div:nth-child(1),.activity_content>div div:nth-child(2),.activity_content>div div:nth-child(3),.project_content>div div:nth-child(1),.project_content>div div:nth-child(2){
+.project_skill *,.activity_content>div div:nth-child(1),.activity_content>div>div:nth-child(2),.activity_content>div>div div:nth-child(3){
   display : inline-block;
   margin-right:1%;
+}
+.project_skill{
+/*     margin: 4% 0 2%;
+ */}
+.project_content>div{
+margin-bottom:3%;
 }
 
 /* progress bar  */
 .range {
   -webkit-appearance: none;
   background: linear-gradient(to right,
-    var(--my-color) 0%, var(--my-color) 75%,
-    #EAEAEA 75%, #EAEAEA 100%);
+    #FDCBCB 0%, #FDCBCB 50%,
+    #EAEAEA 50%, #EAEAEA 100%);
   cursor: pointer;
   height: 10px;
   transitionx: 0.1s ease-in;
@@ -208,46 +258,30 @@ h6:not(.interest>h6){
   outline: none;
 }
 .rangeBox{
-  width:55%;
+  width:60%;
 }
 .rangeName{
-  width:25%;
+  width:20%;
 }
 .skill_content>div>div:nth-child(3){
   margin-left:2%;
-  color:var(--my-color);
+  color:#FDCBCB;
 }
 
 /* 가운데 선 */
 .line{
-/*   position:absolute; */
-  width:95%;
-  top:auto;
-  text-align:center;
-  margin:0 auto; 
-  margin-bottom:2%;
-/*   margin-top:30%; */
-  /*
+  position:absolute;
   float:left;
   margin-left:36.5%;
   height:94%;
-   */
-  border-top:2.5px solid #E3E3E3;
+  border-left:1.5px solid #E3E3E3;
 }
-.line2{
-  position:absolute;
-  float:left;
-  margin-left:45%;
-  height:100%;
-  border-left:0.5px dashed #E3E3E3;
-  
-}
+
 .urlIcon{
-	width: 5%;
+	    width: 4%;
     position: relative;
-    top: -20%;
-    margin-top: 3%;
-    margin-left: 2%;
+    top: -4px;
+    left: 1%;
 }
 
 .contactIcon{
@@ -256,4 +290,17 @@ h6:not(.interest>h6){
 }
 .fieldTitle{
 	display:none;
+}
+
+.bottomLeft {
+
+    width: 50%;
+    height: auto;
+    float: left;
+}
+.bottomRight {
+
+    width: 49%;
+    height: auto;
+    float: left;
 }
