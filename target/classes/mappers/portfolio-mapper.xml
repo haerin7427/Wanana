@@ -320,4 +320,7 @@
    <select id="getTemInfo" resultType="com.project.portfolio.DTO.Template" parameterType="int">
    		SELECT * FROM template WHERE id=#{tem_id};
    </select>
+   <select id="getPortUserInfo" resultType="com.project.login.DTO.User" parameterType="Integer">
+   		SELECT * FROM users WHERE id=#{user_id};
+   </select>
 </mapper>

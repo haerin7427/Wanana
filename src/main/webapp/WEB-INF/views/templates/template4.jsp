@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=1">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=7">
 <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -56,7 +57,7 @@
    console.log(item);
    for(var i=0; i < item.length; i++){
 
-   	if(item[i].item_id == 1){
+	   if(item[i].item_id == 1){
 			//파일의 경우
 			//console.log("파일명  :" + item[i].content[0]);
 			if(item[i].content[0].indexOf("data:") != -1) {
@@ -166,7 +167,7 @@
     </script>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" style="display: flex;justify-content: center;">
     <!--전체 body-->
     <div class="container">
         <!--div1(left box)-->
@@ -176,21 +177,22 @@
                 <div class="myInfo_upper">
                     <!-- 사진 div -->
                     <div class="picBox">
-                        <img src="#">
+                        <img src="https://i.ibb.co/1J8zMMB/default-userpic.png">
                     </div>
                     <!-- 개인정보 div -->
                     <div class="infoBox">
+                    	<c:set var="userInfo" value='<%=request.getAttribute("userInfo")%>' />
                         <!-- 이름 -->
                         <div class="name"> 
-                            <div><h3>${Name}</h3></div>
+                            <div><h3>${userInfo.name}</h3></div>
                         </div>
                         <!-- contact -->
                         <div class="contact">
                             <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>서울특별시</p></div>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${email}</p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${phone}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.email_address}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
                         </div>
                     </div>
                  
@@ -268,7 +270,7 @@
             </div>
            </div>
         </div>
-    <!—/ 전체 body —>
+    <!-- <!—/ 전체 body —> -->
     </div> 
     
 </div>

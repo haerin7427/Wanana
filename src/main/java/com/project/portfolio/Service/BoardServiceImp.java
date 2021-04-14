@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.login.DTO.User;
 import com.project.portfolio.DAO.BoardDAO;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.SearchCriteria;
@@ -65,6 +66,12 @@ public class BoardServiceImp implements BoardService {
 	@Override
 	public String getPortUser(int port_id) throws Exception{
 		return boardDAO.getPortUser(port_id);
+	}
+
+	@Override
+	public User getPortUserInfo(Integer user_id) throws Exception {
+		// TODO Auto-generated method stub
+		return boardDAO.getPortUserInfo(user_id);
 	}
 	
 }

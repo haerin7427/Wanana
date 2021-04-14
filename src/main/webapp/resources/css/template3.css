@@ -34,9 +34,11 @@
     font-weight: bold;
 }
 .picBox img{
-  margin:5%;
-  width:calc(11*var(--my-fontSize));
-  height:calc(13*var(--my-fontSize));
+ 	margin:5%;
+    /* position:absolute; */
+    width:95%;
+    height:auto;
+    border-radius: 10px;
 }
  .wrap .container {
 	  position: relative;

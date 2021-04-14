@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.login.DTO.User;
 import com.project.portfolio.DTO.Category_Item;
 import com.project.portfolio.DTO.Color;
 import com.project.portfolio.DTO.Data;
@@ -25,6 +26,7 @@ import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.Portfolio2;
 import com.project.portfolio.DTO.Template;
 import com.project.portfolio.DTO.dataKey;
+import com.project.portfolio.Service.BoardService;
 import com.project.portfolio.Service.PortfolioService;
 import com.project.portfolio.DTO.PageMaker;
 import com.project.portfolio.DTO.SearchCriteria;
@@ -50,6 +52,8 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 	@Autowired
 	private PortfolioService portfolioService;
+	@Autowired
+	private BoardService boardService;
 
 	//마이페이지 가기
 	@RequestMapping(value = "/myPage") // GET 방식으로 페이지 호출
@@ -148,6 +152,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			mav.addObject("data_list", jArray2);
 			mav.addObject("temName", template_name);
 			mav.addObject("portfolio_ID",portfolio_ID);
+			
+			User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
+			mav.addObject("userInfo",userInfo);
 			
 			mav.addObject("template_info",template_info);
 			mav.setViewName("checkPortfolio");
@@ -424,6 +431,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    jArray.put(ob);
 		    
 		    String url="templates/"+template_name;
+		    
+		    User userInfo=boardService.getPortUserInfo((Integer)session.getAttribute("ID"));
+			mav.addObject("userInfo",userInfo);
 			
 			mav.addObject("template_info", jArray);
 			mav.setViewName(url);
@@ -450,6 +460,8 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    String url="templates/"+template_name;
 		    ModelAndView mav = new ModelAndView();
 			mav.addObject("template_info", jArray);
+			User userInfo=boardService.getPortUserInfo((Integer)session.getAttribute("ID"));
+			mav.addObject("userInfo",userInfo);
 			mav.setViewName(url);
 		
 			return mav;
@@ -969,7 +981,8 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		mav.addObject("portfolioUrl",mapper.writeValueAsString(port_url));
 		System.out.println("callback url : " + mapper.writeValueAsString(port_url));
 		
-	
+		User userInfo=boardService.getPortUserInfo((Integer)session.getAttribute("ID"));
+		mav.addObject("userInfo",userInfo);
 	    //보여주기
 		mav.addObject("temName", template_name);
 		mav.addObject("portfolio_ID", portfolio_id);
