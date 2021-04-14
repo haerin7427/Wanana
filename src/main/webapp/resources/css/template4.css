@@ -1,9 +1,9 @@
 
 :root {
-		  --my-font: sans-serif;
-		  --my-color:black;
-		  --my-color2:white;
-		  --my-fontSize:10px;
+		 --my-font: sans-serif;
+		 --my-color:#A8D1B4;
+		 --my-color2:#000000;
+		 --my-fontSize:11px;
 	}
 p{
   font-size: calc(1.0*var(--my-fontSize));
@@ -11,49 +11,63 @@ p{
 }
 .contact p{
   font-size: calc(0.8*var(--my-fontSize));
-      margin-bottom: 0 !important;
+  -webkit-transform:scale(0.9);
+  margin-bottom: 0 !important;
 }
-.name div h3 {
-    font-size: 40px;
+.container .name div h3 {
+    font-size: calc(2.0*var(--my-fontSize));
     margin: 0;
     margin-bottom: 5%;
 }
 h6{
-  font-size:calc(1.6*var(--my-fontSize));
+  font-size:calc(1.3*var(--my-fontSize));
   margin:0;
   font-weight:900;
 }
 h6:not(.interest>h6){
   margin:0;
-  color : #FDCBCB;
+  color : var(--my-color);
   margin-bottom: 3%;
+}
+.name h3{
+	font-size:calc(2*var(--my-fontSize));
+  margin-block-start: 0.7em;
+    /* margin-block-end: 0.5em; */
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 .picBox img{
   margin:5%;
-  width: 120px;
-    height: 130px;
+  position:absolute;
+  width:95%;
+  height:auto;
+  border-radius: 10px;
 }
  .wrap .container {
-			position: relative;
-			width: 570px;/* 2480 */
-			height: 877px;/* 3508 */
-			background-color: white;
-      border: 1px solid black;
-			font-family:var(--my-font);
-      padding: 2% 1%;
+	position: relative;
+	width: 570px;/* 2480 */
+	height: 877px;/* 3508 */
+	background-color: white;
+    border: 1px solid #EAEAEA;
+	font-family:var(--my-font);
+    padding: 2% 1%;
 }
+
 .top{
   height:30%;
-border-bottom: 1px solid #c7c2c2;
+  border-bottom: 1px solid #c7c2c2;
 }
-.myInfo2{
- float: left;
-    position: relative;
+/* .myInfo2{
+ 	position:absolute;
+  
+  float:left;
+  
     display: block;
     height: auto;
     width: 47%;
     margin-left: 2%;
-}
+} */
 
 .bottom{
 margin-top: 3%;
@@ -75,17 +89,18 @@ graduation>h6{
 	margin-bottom: 3% !important;
 }
 
-.myInfo, .sgca{
-  position:relative;
+.myInfo{
+  position:absolute;
   width:50%;
-  height:auto;
-  float: left;
-}
-.sgca{
-  position:relative;
-  width:100%;
-  height:auto;
-  border: 1px solid black;
+  float:left;
+  padding: 2%;
+} 
+.myInfo2{
+  position:absolute;
+  float:left;
+  margin-left:50%;
+  width:46%;
+  padding:3% 0;
 }
 
 .myInfo_upper, .myInfo_under{
@@ -94,9 +109,13 @@ graduation>h6{
   overflow:auto;
 }
 .picBox{
-  float:left;
+  /* float:left;
   width:20%;
-  height:auto;
+  height:auto; */
+  float:left;
+  width:40%;
+  height:100%;
+  position:relative;
 }
 .skill_content div {
     margin-left: 2%;
@@ -140,6 +159,9 @@ display:inline-block;
   background-color:#EAEAEA;
   padding:0 2%;
   border-radius:5px;
+  font-size:calc(1*var(--my-fontSize));
+  -webkit-transform: scale(0.8);
+
 }
 .award_content>div div:nth-child(1),.ceritificate_content>div div:nth-child(1),.skill_content>div>div:nth-child(1),.graduation_content>div>div:nth-child(1){
   font-weight:600;
@@ -157,7 +179,8 @@ display:inline-block;
     margin-right: 1%;
 }
 .interest div{
-  background-color:#FDCBCB;
+  background-color:var(--my-color);
+  color:var(--my-color2);
   margin-right: 1%;
   border-radius:5px;
   padding:0 1.5%;
@@ -243,7 +266,7 @@ margin-bottom:3%;
 .range {
   -webkit-appearance: none;
   background: linear-gradient(to right,
-    #FDCBCB 0%, #FDCBCB 50%,
+    var(--my-color) 0%, var(--my-color) 50%,
     #EAEAEA 50%, #EAEAEA 100%);
   cursor: pointer;
   height: 10px;
@@ -265,7 +288,7 @@ margin-bottom:3%;
 }
 .skill_content>div>div:nth-child(3){
   margin-left:2%;
-  color:#FDCBCB;
+  color:var(--my-color);
 }
 
 /* 가운데 선 */
@@ -293,14 +316,14 @@ margin-bottom:3%;
 }
 
 .bottomLeft {
-
+	padding:0 1%;
     width: 50%;
     height: auto;
     float: left;
 }
 .bottomRight {
-
     width: 49%;
     height: auto;
     float: left;
+    padding:0 1%;
 }

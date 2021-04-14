@@ -843,9 +843,10 @@
 		                  success:function(result){
 		                      $("#1page_preview").html(result);
 		                      
-		                      if(check1 > 0) //사진을 추가 했을 때만!!
-			                      	$("#1page_preview .picBox img").attr("src", $("#1page_myForm").find("img").attr("src")); 
-			                      	
+		                      if(check1 > 0){ //사진을 추가 했을 때만!!
+			                      	$("#1page_preview .picBox>img").attr("src", $("#1page_myForm").find("img").attr("src")); 
+									console.log("file추");
+		                      }	
 		                      if(template_isVerticle=="1"){
 			                      $("#1page_preview .wrap.container").css("width","440px"); 
 			                      $("#1page_preview .wrap.container").css("height","560px");

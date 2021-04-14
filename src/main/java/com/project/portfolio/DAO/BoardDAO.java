@@ -2,6 +2,7 @@ package com.project.portfolio.DAO;
 
 import java.util.List;
 
+import com.project.login.DTO.User;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.SearchCriteria;
 
@@ -16,4 +17,5 @@ public interface BoardDAO {
 	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception;
 	public List<String> getInterest(int port_id) throws Exception;
 	public String getPortUser(int port_id) throws Exception;
+	public User getPortUserInfo(Integer user_id)throws Exception;
 }

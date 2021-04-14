@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=14">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=15">
     <title>portfolio</title>
    
     <script>
@@ -187,17 +188,18 @@
                     </div>
                     <!-- 개인정보 div -->
                     <div class="infoBox">
+                    	<c:set var="userInfo" value='<%=request.getAttribute("userInfo")%>' />
                         <!-- 이름 -->
                         <div class="name"> 
-                            <div><h3>${Name}</h3></div>
+                            <div><h3>${userInfo.name}</h3></div>
                         </div>
                         <!-- contact -->
                         <div class="contact">
                             <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>서울특별시</p></div>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${email}</p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${phone}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.email_address}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
                         </div>
                     </div>
                 </div>

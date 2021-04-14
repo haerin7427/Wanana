@@ -298,7 +298,7 @@
         
         }
         */
-        page[size="A4"][layout="portrait"] { width: 29.7cm; height: 21cm; }
+        page[size="A4"][layout="portrait"]:not(#1page_preview *) { width: 29.7cm; height: 21cm; }
 		page[size="A4"] { width: 21cm; height: 29.7cm; }
 
         @media print { body, page { margin: 0; box-shadow: 0; } }

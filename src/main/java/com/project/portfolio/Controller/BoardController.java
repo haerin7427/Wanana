@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.login.DTO.User;
 import com.project.portfolio.DTO.Data;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.Service.BoardService;
@@ -196,6 +197,9 @@ public class BoardController {
 		reg_date.put("regDate", regDate);
 		JSONObject portUser=new JSONObject();
 		portUser.put("portUser", boardService.getPortUser(id));
+		
+		User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
+		mav.addObject("userInfo",userInfo);
 		
 		mav.addObject("data_list", jArray2);
 		mav.addObject("regDate", reg_date);

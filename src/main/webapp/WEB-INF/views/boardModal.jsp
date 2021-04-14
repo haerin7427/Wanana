@@ -24,7 +24,6 @@
     <title>Check</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/likeBtn.css?ver=8">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
@@ -55,10 +54,10 @@
 		 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
-	 <main class="portfolioBox" style="padding: 10px;width: 900px; height: auto;overflow: auto;">
+	 <main class="portfolioBox" style="padding: 10px;width: 900px; height: 700px;overflow: auto;">
 
 	 	
-        <div style="height:700px; display:inline; padding-top:20px; height:20px;" >
+        <div style="height:700px; display:inline; padding-top:20px" >
         
 			<div class="table-content" style="line-height:20px; margin-top:10px;">        
 			
@@ -78,10 +77,10 @@
 	        </div>
         
         
-        	<div class="wrap">
-	 			<div id="1page_preview" style="display:block; margin:0 auto;">
+        	<div class="wras" style="position: relative;width: 100%; height:auto;">
+	 			<div id="1page_preview" style="/* position: absolute; */width: 100%;display: flex;justify-content: center;">
 			 			<!-- <page size="A4" layout="portrait">  -->
-						<page size="A4">
+						<page size="A4" style="display: flex;justify-content: center;">
 				     		<jsp:include page="<%=templateURL%>" flush="true"/>
 				     	</page>
 	

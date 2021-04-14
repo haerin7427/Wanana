@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.login.DTO.User;
 import com.project.portfolio.DTO.Portfolio;
 import com.project.portfolio.DTO.SearchCriteria;
 
@@ -79,5 +80,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public String getPortUser(int port_id) throws Exception{
 		return sqlSession.selectOne(namespace+".getPortUser",port_id);
+	}
+
+	@Override
+	public User getPortUserInfo(Integer user_id) throws Exception {
+		
+		return sqlSession.selectOne(namespace+".getPortUserInfo",user_id);
 	}
 }
