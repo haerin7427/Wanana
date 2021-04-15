@@ -14,6 +14,7 @@
     
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800"> 
@@ -165,11 +166,13 @@
             </p>
             <h2 class="u-custom-font u-text u-text-2">원페이지<br>포트폴리오
             </h2>
+            <c:set var="port_count" value='<%=request.getAttribute("portCount")%>' />
             <h5 class="u-custom-font u-text u-text-3">예쁜 포트폴리오를 손쉽게 만들어보세요 !</h5>
-            <div class="u-container-style u-custom-color-1 u-group u-radius-21 u-shape-round u-group-2" data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356">
-              <a id ="1page_link"  href="<%=request.getContextPath()%>/portfolio_one">
+            <div class="u-container-style u-custom-color-1 u-group u-radius-21 u-shape-round u-group-2"  <c:if test="${port_count >= 5}" var="portfolio"> onClick="createAlert();" </c:if> <c:if test="${port_count < 5}" var="portfolio"> data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356" </c:if>>
+              <%-- <a id ="1page_link"  href="<%=request.getContextPath()%>/portfolio_one"> --%>
               <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-xl u-valign-top-xs u-container-layout-2">
-                <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-4" style="padding-left:-200px;">포트폴리오 만들기 바로가기</p>
+              
+                <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-4" style="padding-left:-200px;text-align: center;">포트폴리오 만들기 바로가기</p>
               </div>
               </a>
             </div>

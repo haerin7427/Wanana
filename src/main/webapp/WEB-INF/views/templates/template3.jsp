@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=15">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=16">
     <title>portfolio</title>
    
     <script>

@@ -15,7 +15,7 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=7">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=9">
 <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -93,7 +93,7 @@
         	$("#itemBox_"+item[i].item_id).append(newInput);
 
         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeName"><p>'+item[i].content[0]+'</p></div>');
-        	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" value="'+item[i].content[1]+'" class="range" /></div>');
+        	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" value="'+item[i].content[1]+'" class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(100-item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
         	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'%</p></div>');
          }else if(item[i].item_id == 9){
              // 학력(9)
@@ -131,17 +131,12 @@
                            $("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
                            var newInput=document.createElement('div');
                            $("#itemBox_"+item[i].item_id).append(newInput);
-                           
-                       
-                          
-                          	var newInput=document.createElement('div');
-                        	$("#itemBox_"+item[i].item_id).append(newInput);
                         	                 
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+' ~ '+item[i].content[2]+'</p></div>');
 
                           	if(item[i].content[3] !=null && item[i].content[3] != "")
-                          		$("#itemBox_"+item[i].item_id).children(":last").append('<div><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></a></div>');
+                          		$("#itemBox_"+item[i].item_id).children(":last").append('<div style="height:0px"><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></a></div>');
                           	else
                           		$("#itemBox_"+item[i].item_id).children(":last").append('<div style="margin-bottom: 6%;"></div>');
                       		
@@ -152,7 +147,7 @@
                           tools = tools.split("$");
                           	
                           	for(var a = 0; a < tools.length-1 ; a++)
-                          			$("#itemBox_"+item[i].item_id).children(":last").children(":last").children(".project_skill").append('<div><p>'+tools[a]+'</p></div>');
+                          			$("#itemBox_"+item[i].item_id).children(":last").children(".project_skill").append('<div><p>'+tools[a]+'</p></div>');
                           	
                            }
 

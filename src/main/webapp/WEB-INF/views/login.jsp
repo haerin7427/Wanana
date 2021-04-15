@@ -137,7 +137,7 @@
 	                        <div class="u-form-group">
 	                          <input type="password" placeholder="비밀번호" id="pwd" name="pwd" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-2" required="required">
 	                        </div>
-	                        <div class="u-align-center u-form-group u-form-submit">
+	                        <div class="u-align-center u-form-group u-form-submit" style="display: flex;justify-content: center;">
 	                          <button type="submit" value="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-19 u-text-body-alt-color u-btn-1">로그인</button>
 	                        </div>
 	                        <input type="hidden" value="" name="recaptchaResponse">

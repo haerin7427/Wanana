@@ -78,9 +78,9 @@
         
         
         	<div class="wras" style="position: relative;width: 100%; height:auto;">
-	 			<div id="1page_preview" style="/* position: absolute; */width: 100%;display: flex;justify-content: center;">
+	 			<div id="1page_preview" style="/* position: absolute; */width: 100%;overflow:auto;height: 550px;">
 			 			<!-- <page size="A4" layout="portrait">  -->
-						<page size="A4" style="display: flex;justify-content: center;">
+						<page size="A4">
 				     		<jsp:include page="<%=templateURL%>" flush="true"/>
 				     	</page>
 	
