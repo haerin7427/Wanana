@@ -40,6 +40,7 @@ public class LoginController{
 	
 	@Autowired
 	private LoginService loginService;
+	
 	public String beforeUrl;
 	
 	final static String GOOGLE_AUTH_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
@@ -154,7 +155,7 @@ public class LoginController{
 		
 		mav.addObject("user", one);
 		mav.addObject("token", result.getAccessToken());
-		mav.setViewName("home");
+		mav.setViewName("redirect:/");
 		
 		return mav;
 
@@ -210,7 +211,7 @@ public class LoginController{
 			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
 			
-			mav=new ModelAndView("home");
+			mav=new ModelAndView("redirect:/");
 		}
 		else {
 			mav=new ModelAndView("login");

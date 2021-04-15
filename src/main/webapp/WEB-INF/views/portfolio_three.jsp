@@ -958,7 +958,6 @@
 					//포트폴리오 이름, 공개 여부 form에 입력 
 	              $('#select_portfolio_name').val($("input[name=1page_pName]").val()); 
 	              $('#select_portfolio_url').val($("input[name=url]").val());
-	              $('#select_portfolio_public').val($("select[name=1page_public]").val());
 
 	              //form 전송 
 				  $("#1page_myForm").attr("target", "");

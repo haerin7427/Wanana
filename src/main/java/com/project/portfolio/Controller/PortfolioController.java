@@ -112,11 +112,11 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 				            URLConnection con = u.openConnection();
 				            HttpURLConnection exitCode = (HttpURLConnection)con;
-
+				            
 				            //true : 200, false : 404
 				            if ("404".equals(exitCode.getResponseCode() + "")) 
 				            		continue; 
-				        }
+				      }
 					 
 					JSONObject ob =new JSONObject();
 				    content=new String[6];

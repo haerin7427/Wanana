@@ -174,7 +174,7 @@
                           <div style="height:25px;"></div>
                           
                           <div style="margin-left:15px;">
-                          <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" <c:if test="${port_count >= 5}" var="portfolio"> onClick="createAlert();" </c:if> <c:if test="${port_count < 100}" var="portfolio"> data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356" </c:if>>	
+                          <div id="portCount" style="float:left; width: 173px; height: 150px; margin-left:10px; background-color:#D6D6D6; margin-right:7px; text-align: center; line-height: 120px; border-radius:10px; margin-bottom:5px;" <c:if test="${port_count >= 5}" var="portfolio"> onClick="createAlert();" </c:if> <c:if test="${port_count < 5}" var="portfolio"> data-href="<%=request.getContextPath()%>/portfolio_one" data-page-id="266091356" </c:if>>	
                               <p style="color:black;" class="newPort">+ 새로만들기</p>
                           </div>
                           

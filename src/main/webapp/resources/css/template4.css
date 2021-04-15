@@ -38,9 +38,9 @@ h6:not(.interest>h6){
     font-weight: bold;
 }
 .picBox img{
-  margin:5%;
+  /* margin:5%; */
   position:absolute;
-  width:95%;
+  width:90%;
   height:auto;
   border-radius: 10px;
 }
@@ -116,12 +116,14 @@ graduation>h6{
   width:40%;
   height:100%;
   position:relative;
+  display: flex;
+    justify-content: center;
 }
 .skill_content div {
     margin-left: 2%;
 }
 .advantage{
-margin-top: 5%;
+/* margin-top: 5%; */
     font-weight: 600;
 }
 .introduce{
@@ -229,7 +231,7 @@ display:inline-block;
 } */
 .project_content>div>div:nth-child(4){
 	clear:both;
-	margin-bottom: 1.5%;
+	/* margin-bottom: 1.5%; */
 }
 .project_content>div>div:nth-child(2)>p, .activity_content>div>div:nth-child(3)>p
 {
@@ -254,6 +256,7 @@ margin-top: 2%;
 .project_skill *,.activity_content>div div:nth-child(1),.activity_content>div>div:nth-child(2),.activity_content>div>div div:nth-child(3){
   display : inline-block;
   margin-right:1%;
+  white-space: nowrap;
 }
 .project_skill{
 /*     margin: 4% 0 2%;

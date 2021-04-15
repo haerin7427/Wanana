@@ -26,6 +26,9 @@
 	    color: transparent;
 	   text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
+    .boardPortfolio>img{
+    	max-height:300px;
+    }
     </style>
     
     
