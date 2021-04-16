@@ -643,10 +643,10 @@
                   					$(this).siblings('p').text("사진은 최대 1장만 입력가능합니다.");
                   			 }else if( (check_id[2]==2 || check_id[2]==5 || check_id[2]==6 || check_id[2]==9) && $('input[name=add_itemID]:input[value='+check_id[2]+']').length > 0){//사진 개수 확인 
                   					$(this).siblings('p').text("최대 1개만 입력 가능합니다. ");
-              				}else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
+              				}/* else if(check_id[2] != 1 && $('input[name="add_itemID"]:input[value="'+check_id[2]+'"]').length == 3){
                   					var topic = $(this).parent().siblings('label').text();
             	 					$(this).siblings('p').text(topic+" : 최대 3개 입력가능합니다.");
-              				}else{
+              				} */else{
 				                  //추가 가능할 때!
 				                  $(this).siblings('p').text("");
 				                  add_count++; //포트폴리오에 넣는 전체 항목 
