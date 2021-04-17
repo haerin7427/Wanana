@@ -34,12 +34,14 @@ public class MyPageController{
 	@RequestMapping(value = "/info/modify" ,method = RequestMethod.POST)
 	  public void modifyInfo(HttpServletRequest request) throws Exception {
 
-		int user_id=Integer.parseInt(request.getParameter("id"));
-		String name=request.getParameter("name");
-		String email=request.getParameter("email_address");
-		String phone=request.getParameter("phone_number");
+		User user=new User();
+		user.setUser_id(request.getParameter("id"));
+		user.setName(request.getParameter("name"));
+		user.setPhone_number(request.getParameter("phone_number"));
+		user.setEmail_address(request.getParameter("email_address"));
+		user.setCity(request.getParameter("city"));
 		
-		mypageService.modifyUserInfo(user_id,name,email,phone);
+		mypageService.modifyUserInfo(user);
 		
 	}
 }

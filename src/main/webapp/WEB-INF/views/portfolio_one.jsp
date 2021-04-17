@@ -446,8 +446,8 @@
   	                    }else if(item_type[k].field_type=='textarea'){
   	                        var labelPast = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+item_type[k].field_name+'</label>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(labelPast);
-  	
-  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea><span id="1page_textLimit">(0)</span></div>');
+  	                        var length=content.length;
+  	                        var pastFieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1">'+content+'</textarea><span id="1page_textLimit">('+length+')</span></div>');
   	                        $('.1page_tabDiv'+id+'_past_'+item_data[idx].id).append(pastFieldDiv);
   	
   	                    }else if(item_type[k].field_type=='date'){
@@ -606,6 +606,8 @@
 
 		                  }
 	                 }
+	                 $(this).children().val('');
+	                 $(this).siblings('#1page_textLimit').html("(0)");
 	            }); //field 수 만큼 반복  
 	            
 	             for(var z = field_count+1 ; z < 7;z++){
@@ -740,6 +742,7 @@
 	                						}
 	                  					}
 						                 $(this).children().val('');
+						                 $(this).find('#1page_textLimit').html("(0)");
 						                 console.log("value : " + $(this).children().attr("type"));
 	
 	            					}); //field 수 만큼 반복

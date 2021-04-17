@@ -23,13 +23,8 @@ public class MyPageDAOImpl implements MyPageDAO {
 	}
 	
 	@Override
-	public User modifyUserInfo(int id, String name, String email, String phone) throws Exception {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("name", name);
-		map.put("phone", phone);
-		map.put("email", email);
-		return sqlSession.selectOne(namespace + ".modifyUserInfo",map);
+	public User modifyUserInfo(User user) throws Exception {
+		return sqlSession.selectOne(namespace + ".modifyUserInfo",user);
 	}
 
 }

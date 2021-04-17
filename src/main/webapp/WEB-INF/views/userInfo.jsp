@@ -66,6 +66,10 @@
               <label>핸드폰 번호</label>
               <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter your phone" name="phoneNum" id="phoneNum">
               </div>
+              <div>
+              <label>지역</label>
+              <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter your phone" name="city" id="city">
+              </div>
               
             </div>
             <button id="infoeditB" class="w3-button w3-black" type="submit">수정</button>
