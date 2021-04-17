@@ -18,7 +18,7 @@ public class MyPageServiceImp implements MyPageService {
 	}
 
 	@Override
-	public User modifyUserInfo(int id, String name, String email, String phone) throws Exception{
-		return mypageDAO.modifyUserInfo(id, name, email, phone);
+	public User modifyUserInfo(User user) throws Exception{
+		return mypageDAO.modifyUserInfo(user);
 	}
 }

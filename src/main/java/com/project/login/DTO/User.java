@@ -21,12 +21,13 @@ public class User {
 	
 	private Integer admin;
 	
+	private String city;
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", user_id=" + user_id + ", pwd=" + pwd + ", email_address="
 				+ email_address + ", gender=" + gender + ", phone_number=" + phone_number + ", social=" + social
-				+ ", admin=" + admin + "]";
+				+ ", admin=" + admin + ", city=" + city + "]";
 	}
 
 	public Boolean getSocial() {
@@ -101,4 +102,11 @@ public class User {
 		this.admin = admin;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 }
