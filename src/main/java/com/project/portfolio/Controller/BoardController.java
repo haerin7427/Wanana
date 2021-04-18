@@ -151,7 +151,8 @@ public class BoardController {
 			for (int i = 0; i < list.size() ; i++) {   
 				
 				 if(list.get(i).getItem_id() == 1) {
-					 
+					 continue;
+/*					 
 					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
 					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
 					System.out.println("imgUrl check : " + imgUrl);
@@ -163,7 +164,7 @@ public class BoardController {
 
 			            //true : 200, false : 404
 			            if ("404".equals(exitCode.getResponseCode() + "")) 
-			            		continue; 
+			            		continue; */
 			        }
 				 
 				JSONObject ob =new JSONObject();
@@ -199,6 +200,8 @@ public class BoardController {
 		portUser.put("portUser", boardService.getPortUser(id));
 		
 		User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
+		userInfo.setEmail_address("blurblur@blur.com");
+		userInfo.setPhone_number("010-0000-0000");
 		mav.addObject("userInfo",userInfo);
 		
 		mav.addObject("data_list", jArray2);
