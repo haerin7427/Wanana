@@ -52,6 +52,9 @@
             		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolios</a>
 				</li>
 				<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">직업탐색</a>
+				</li>
+				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY 페이지</a>	
 				</li>
 			</ul>
@@ -63,6 +66,9 @@
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
                 		<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">Portfolios</a>
+					</li>
+					<li class="u-nav-item">
+                		<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">직업 탐색</a>
 					</li>
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" onclick="javascript:alert('로그인 후 이용해주세요!')">MY 페이지</a>
