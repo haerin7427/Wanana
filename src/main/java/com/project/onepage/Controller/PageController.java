@@ -30,6 +30,14 @@ public class PageController{
 		mav.setViewName("home");
         return mav;
 	}
+	
+	@RequestMapping(value = "/recruit_info") // GET 방식으로 페이지 호출
+	public ModelAndView recruitGo(HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("recruitInfo_board");
+        return mav;
+	}
 
 	//로그인 됐는데, 메인 페이지로 갈 때
 //	@RequestMapping(value = "/new_home") // GET 방식으로 페이지 호출
