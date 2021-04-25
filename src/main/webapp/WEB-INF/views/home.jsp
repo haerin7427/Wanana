@@ -84,7 +84,6 @@
         	$('#1page_link').attr("href", getContextPath()+"/login");
         	$('#1page_link').attr("onclick", "javascript:alert('로그인 후 이용해주세요!')"); 	
     	}
-
         });
 
     </script>
@@ -188,6 +187,8 @@
         <img class="u-image u-image-round u-radius-27 u-image-2" src="<%=request.getContextPath()%>/resources/images/321.png" data-image-width="472" data-image-height="725">
       </div>
     </section>
+    
+    
 
    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
     	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">

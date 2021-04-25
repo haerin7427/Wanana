@@ -1,0 +1,289 @@
+@charset "UTF-8";
+/* 기본 셋팅 */
+*{ margin: 0; padding: 0; }
+body,html{
+margin:0;
+padding:0;
+width:100%;
+}
+ul, li{
+padding: 0;
+margin: 0;
+}
+li{
+list-style-type: none;
+}
+.floatLeft{
+float: left;
+}
+.floatRight{
+float: right;
+}
+p{
+margin: 0;
+padding: 0;
+}
+/* ----------------- */
+/* ----- font ----- */
+/* jua 폰트 */
+.font_jua{
+font-family: 'Jua', sans-serif;
+}
+/* noto 폰트 */
+.font_noto{
+font-family: 'Noto Sans KR', sans-serif;
+}
+/* -------------- */
+/* 오른쪽 하단 채팅 아이콘 */ 
+.chatIcon{
+position: fixed;
+bottom: 0px;
+right: 1rem;
+bottom: 1rem;
+border: 3px solid rgb(250,190,0);
+background-color: rgb(250,190,0);
+border-radius: 100%;
+width: 3rem;
+height: 3rem;
+text-align: center;
+}
+.chatIcon:hover{
+cursor: pointer;
+opacity: 0.4;
+}
+.name_container{
+display: inline-block; 
+margin-left: 0.5rem; 
+margin-top: 0.45rem;
+}
+.iconImg{
+object-fit: cover;
+width: 2rem;
+height: 2rem;
+margin-top: 7px;
+}
+/* --------------------------- */
+/* 채팅 리스트  */
+.chatListContainer{
+margin-bottom:2%;
+border: 3px solid rgb(250,190,0);
+/* border-bottom: none; */
+/* border-top-left-radius: 10px;
+border-top-right-radius: 10px; */
+border-radius:10px;
+position: fixed;
+bottom: 0px;
+right: 100px;
+width: 20rem;
+height: 28rem;
+box-shadow: 0 0 10px 2px rgb(0,0,0,0.2);
+background-color: white;
+}
+/* --------------------------- */
+/* ----- 채팅창 ----- */
+.chatContainer{
+margin-bottom:2%;
+border: 3px solid rgb(250,190,0);
+border-bottom: none;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+position: fixed;
+bottom: 0px;
+right: 100px;
+width: 20rem;
+height: 28rem;
+box-shadow: 0 0 10px 2px rgb(0,0,0,0.2);
+background-color: white;
+}
+/* ------------------------ 채팅창 상단 ------------------------ */
+.chatTop{
+border-bottom: 3px solid rgb(250,190,0);
+height: 2.5rem;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+box-shadow: 0 1px 6px 0.1px rgb(0,0,0,0.2);
+}
+.btnImg{
+object-fit: cover;
+width: 1.5rem;
+height: 1.5rem;
+margin-top: 0.5rem;
+margin-right: 0.5rem;
+}
+.profile_img{
+object-fit: cover;
+object-position: center;
+width: 2rem;
+height: 2rem;
+border-radius: 50%;
+margin-top: 0.25rem;
+margin-left: 0.25rem;
+}
+.profile_img_Container:before{
+content: ' ';
+position: absolute;
+width: 0.5rem;
+height: 0.5rem;
+left: 1.7rem;
+top: 1.6rem;
+background-color: rgb(250,190,0);
+border: 2px solid white;
+border-radius: 50%;
+}
+.btnImg:hover{
+cursor: pointer;
+opacity: 0.4;
+}
+/* ---------------------------------------------------------------- */
+/* ------------------------- 채팅창 중앙 -------------------------- */
+.chatMiddle{
+padding-bottom: 5px;
+height: 20.5rem;
+overflow:auto; 
+}
+.chatContainer .chatMiddle ul {
+width: 100%; list-style: none; 
+}
+.chatContainer .chatMiddle ul li { 
+width: 100%; 
+}
+.chatContainer .chatMiddle ul li.left { 
+text-align: left; 
+}
+.chatContainer .chatMiddle ul li.right {
+text-align: right; 
+}
+.chatContainer .chatMiddle ul li > div { 
+font-size: 13px;  
+}
+.chatContainer .chatMiddle ul li > div.sender { 
+margin: 10px 20px 0 20px; 
+font-weight: bold; 
+}
+.chatContainer .chatMiddle ul li > div.message { 
+display: inline-block; 
+word-break:break-all; 
+margin: 5px 20px; 
+max-width: 75%; 
+border: 1px solid #888; 
+padding: 0.2rem; 
+border-radius: 5px; 
+background-color: white; 
+color: #555; 
+text-align: left; 
+}
+.format { display: none; }
+/* --------------------------------------------------------------- */
+/* ------------------------- 채팅창 하단 -------------------------- */
+.chatBottom{
+border-top: 3px solid rgb(250,190,0);
+}
+.chatContainer .chatBottom {
+position: fixed; 
+/* bottom: 0; */
+width: 19.6rem;
+background-color: #FFF; 
+text-align: center; 
+border-top: 3px solid rgb(250,190,0); 
+border-bottom: 3px solid rgb(250,190,0); 
+}
+.chatContainer .chatBottom > textarea { 
+width: 100%;
+height: 4.1rem; 
+border: none; 
+padding: 10px; 
+box-sizing: border-box;
+resize: none;
+}
+.chatContainer .chatBottom > textarea:focus{
+outline: none;
+}
+/* ---------------------------------------------------------------- */
+/* 토글 display none */
+.display-none{
+display: none;
+}
+/* 채팅 리스트 */
+.chatList{
+display: grid;
+align-content: flex-start; 
+height: 90%;
+overflow:auto; 
+}
+.chatList_box{
+padding: 0.1rem;
+font-size: 1rem;
+height: fit-content;
+line-height: inherit;
+border-bottom: 1px  solid rgb(250,190,0);
+position: relative;
+}
+.chatList_box div{
+position: absolute;
+display: inline-block;
+margin-left: 0.3rem; 
+margin-top: 0.6rem;
+}
+/* 온라인 일 때 노란색 점 표시 */
+.chatList_box:before{
+content: ' ';
+position: absolute;
+width: 0.5rem;
+height: 0.5rem;
+left: 1.7rem;
+top: 1.6rem;
+background-color: rgb(250,190,0);
+border: 2px solid white;
+border-radius: 50%;
+}
+.chatList_box2{
+padding: 0.1rem;
+font-size: 1rem;
+height: fit-content;
+line-height: inherit;
+border-bottom: 1px  solid rgb(250,190,0);
+position: relative;
+}
+.chatList_box2 div{
+position: absolute;
+display: inline-block;
+margin-left: 0.3rem; 
+margin-top: 0.6rem;
+}
+.notRead{
+float: right;
+border-radius: 10px; 
+padding: 0.3rem; 
+margin-top: 0.3rem;
+margin-right: 0.3rem;
+color: rgb(87, 87, 87);
+background-color: rgb(250,190,0);
+width:1rem;
+text-align: center;
+animation:blink 0.7s ease-in-out infinite alternate;
+}
+@keyframes blink{
+    0% {opacity:0.3;}
+    100% {opacity:1;}
+}
+.chatList_box:hover{
+opacity: 0.6;
+cursor: pointer;
+}
+.chatList_box2:hover{
+opacity: 0.6;
+cursor: pointer;
+}
+.iconBlink{
+position: fixed;
+bottom: 0px;
+right: 1rem;
+bottom: 1rem;
+border: 3px solid rgb(250,190,0);
+background-color: rgb(250,190,0);
+border-radius: 100%;
+width: 3rem;
+height: 3rem;
+text-align: center;
+animation:blink 0.7s ease-in-out infinite alternate;
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.mappers.chat_mapper">
+
+	<!-- <resultMap type="com.project.chat.DTO.ChatRoomVO" id="chatRoomResultSet">
+		<id property="id" column="ROOM_ID" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userName" column="USER_NAME" />		
+		<result property="userPic" column="USER_PIC" />
+		<result property="masterEmail" column="MASTER_EMAIL" />
+		<result property="masterName" column="MASTER_NAME" />
+		<result property="masterPic" column="MASTER_PIC" />
+	</resultMap>
+
+	<resultMap type="com.project.chat.DTO.MessageVO" id="chatMessageResultSet">
+		<id property="messageId" column="MESSAGE_ID" />
+		<result property="roomId" column="ROOM_ID" />
+		<result property="message" column="MESSAGE_CONTENT" />
+		<result property="name" column="USER_NAME" />
+		<result property="email" column="USER_EMAIL" />
+		<result property="unReadCount" column="UNREAD_COUNT" />
+	</resultMap> -->
+	
+	<!-- 신규 채팅방일 때 채팅 방 생성 -->
+	<insert id="createChat" parameterType="com.project.chat.DTO.ChatRoomVO">
+		insert into chatRoom(senderId,senderName,receiverId,receiverName) values(#{senderId}, #{senderName}, #{receiverId}, #{receiverName})
+	</insert>
+
+	<select id="selectChatRoom" parameterType="string" resultType="com.project.chat.DTO.ChatRoomVO">
+		SELECT * FROM chatRoom 
+		WHERE id = #{roomId} 
+	</select>
+	
+	<insert id="insertMessage" parameterType="com.project.chat.DTO.MessageVO">
+		<if test="sessionCount == 1">
+		INSERT INTO message(roomId,message,name,userId,unReadCount) VALUES(#{roomId}, #{message}, #{name}, #{userId}, 1)
+		</if>
+		<if test="sessionCount == 2">
+		INSERT INTO message(roomId,message,name,userId,unReadCount) VALUES(#{roomId}, #{message}, #{name}, #{userId}, 0)
+		</if>
+	</insert>
+	
+	<select id="messageList" parameterType="string" resultType="com.project.chat.DTO.MessageVO">
+		SELECT * FROM message
+		WHERE roomId = #{roomId}
+	</select>
+	
+	<select id="searchChatRoom" parameterType="com.project.chat.DTO.ChatRoomVO" resultType="com.project.chat.DTO.ChatRoomVO">
+		SELECT * FROM chatRoom
+		WHERE (senderId = #{senderId} AND receiverId = #{receiverId}) OR (senderId = #{receiverId} AND receiverId = #{senderId})
+	</select>
+	
+	<select id="chatRoomList" parameterType="string" resultType="com.project.chat.DTO.ChatRoomVO">
+		SELECT * FROM chatRoom
+		WHERE senderId = #{userId} OR receiverId=#{userId}
+	</select>
+	
+	<select id="selectUnReadCount" parameterType="com.project.chat.DTO.MessageVO" resultType="_int">
+		SELECT COUNT(*) FROM message
+		WHERE roomId = #{roomId} AND userId != #{userId} AND unReadCount = 1
+	</select>
+	
+	<update id="updateCount" parameterType="com.project.chat.DTO.MessageVO">
+		UPDATE message
+		SET unReadCount = 0
+		WHERE roomId = #{roomId} AND userId != #{userId} AND unReadCount = 1
+	</update>
+</mapper>

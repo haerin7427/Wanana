@@ -17,9 +17,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="${portfolio.database.url}"></property>
-		<property name="username" value="${portfolio.database.username}"></property>
-		<property name="password" value="${portfolio.database.password}"></property>
+		<property name="url" value="jdbc:mysql://203.252.112.29:3306/wanana?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false&amp;allowMultiQueries=true"></property>
+		<property name="username" value="wanana"></property>
+		<property name="password" value="juahae217"></property>
 	</bean>
 
 	<bean id="sqlSessionFactory"
