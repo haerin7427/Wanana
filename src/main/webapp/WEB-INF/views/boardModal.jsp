@@ -65,6 +65,7 @@
 	        	<div class="item" style="padding:15px; display:inline; padding-left:25px;">
 	        		<span><h2 style="display:inline; font-weight:bold;" class="portUser"></h2></span>
 	        		<span><p style="font-size:23px; display:inline;">님의 포트폴리오</p></span>
+	        		
 	       	 	</div>
 	        
 		        <div>
@@ -148,6 +149,42 @@
 				});
 			});
 
+			$(".message").click(function(){
+				var id=portUser.userId;
+				var name=portUser.portUser;
+				if("${sessionScope.ID}" != id){
+					$.ajax({
+						url:"createChat.do",
+						data:{
+							userName:"${sessionScope.Name}",
+							userId:"${sessionScope.ID}",
+							receiverId:id
+						},
+						type:"post",
+						success:function(data){
+							// 채팅방이 닫혀있고, 채팅 리스트가 닫혀있다면
+				            if($('.chatContainer').hasClass("display-none") && $('.chatListContainer').hasClass('display-none')){
+				            	// 리스트를 연다
+				                $('.chatListContainer').toggleClass('display-none');
+				             	// 채팅 방 목록을 불러온다.
+				                getRoomList();		
+				                // 해당 채팅 방으로 들어간다.
+				                $('.userNameId:contains('+name+')').parent().trigger("click");
+				            }
+							// 채팅 리스트가 열려 있다면
+				            else if(!$('.chatListContainer').hasClass('display-none')){
+				                // 해당 채팅 방으로 들어간다.
+				                $('.userNameId:contains('+name+')').parent().trigger("click");
+				            }
+				            else{
+				            	alert("이미 채팅방이 열려 있습니다.");
+				            }
+						}
+					});
+					
+		            return false;
+					}
+			});
 		 });
 		 
 	 </script>

@@ -198,7 +198,7 @@ public class BoardController {
 		reg_date.put("regDate", regDate);
 		JSONObject portUser=new JSONObject();
 		portUser.put("portUser", boardService.getPortUser(id));
-		
+		portUser.put("userId", portInfo.getUser_id());
 		User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
 		userInfo.setEmail_address("blurblur@blur.com");
 		userInfo.setPhone_number("010-0000-0000");

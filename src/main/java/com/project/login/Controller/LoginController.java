@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-
+import com.project.chat.DTO.ChatSession;
 
 @RestController
 @RequestMapping(value = "/") // 주소 패턴
@@ -40,6 +40,9 @@ public class LoginController{
 	
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private ChatSession cSession; 
 	
 	public String beforeUrl;
 	
@@ -153,6 +156,8 @@ public class LoginController{
 		session.setAttribute("admin", one.getAdmin());
 		session.setAttribute("login", one);
 		
+		cSession.addLoginUser(Integer.toString(one.getId()));
+		
 		mav.addObject("user", one);
 		mav.addObject("token", result.getAccessToken());
 		mav.setViewName("redirect:/");
@@ -210,6 +215,7 @@ public class LoginController{
 			session.setAttribute("phone", one.getPhone_number());
 			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
+			cSession.addLoginUser(Integer.toString(one.getId()));
 			
 			mav=new ModelAndView("redirect:/");
 		}
@@ -241,9 +247,10 @@ public class LoginController{
 	//로그아웃
 	@RequestMapping(value="logout")
 	public ModelAndView logout(HttpSession session) {
+		String id=String.valueOf(session.getAttribute("ID"));
 		session.invalidate();
 		//session.removeAttribute("login");
-		
+		cSession.removeLoginUser(id);
         return new ModelAndView("redirect:/");
 	}
 	
