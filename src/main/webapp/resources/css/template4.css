@@ -40,7 +40,7 @@ h6:not(.interest>h6){
 .picBox img{
   /* margin:5%; */
   position:absolute;
-  width:90%;
+  width:80%;
   height:auto;
   border-radius: 10px;
 }
@@ -106,7 +106,7 @@ graduation>h6{
 .myInfo_upper, .myInfo_under{
   position:relative;
   width:100%;
-  overflow:auto;
+  /* overflow:auto; */
 }
 .picBox{
   /* float:left;

@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -82,11 +84,16 @@ public class LoginController{
 
 	//login
 	@RequestMapping(value="/login", method = RequestMethod.GET) //로그인 폼을 띄워
-	public ModelAndView loginForm() throws Exception {
+	public ModelAndView loginForm(HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		String txt=" ";
 		
-		mav.addObject("no_login"," ");
+		Map<String,?> redirectMap = RequestContextUtils.getInputFlashMap(request);
+		if(redirectMap != null) {
+			txt=(String)redirectMap.get("msg");
+		}
+		mav.addObject("no_login",txt);
 
 		mav.setViewName("login");
 
@@ -197,7 +204,7 @@ public class LoginController{
 
 	//로그인 성공 or 실패
 	@RequestMapping(value="login/loginProcess",method=RequestMethod.POST)
-	public ModelAndView loginProcess(HttpSession session,User user) throws Exception {
+	public ModelAndView loginProcess(RedirectAttributes redirectAttr,HttpSession session,User user) throws Exception {
 		ModelAndView mav;
 
 		if(session.getAttribute("login")!=null) { //기존에 login이라는 세션 값이 존재할 경
@@ -220,8 +227,8 @@ public class LoginController{
 			mav=new ModelAndView("redirect:/");
 		}
 		else {
-			mav=new ModelAndView("login");
-			mav.addObject("no_login","아이디 또는 비밀번호를 다시 입력해주세요.");
+		    redirectAttr.addFlashAttribute("msg","아이디 또는 비밀번호를 다시 입력해주세요.");
+			mav=new ModelAndView("redirect:/login");
 		}
 		System.out.println("loginProcess controller end");
 		return mav;

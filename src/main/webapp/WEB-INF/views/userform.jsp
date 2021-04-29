@@ -101,13 +101,13 @@
               <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-3">
                 <div class="u-align-center u-container-style u-group u-radius-19 u-shape-round u-white u-group-2">
                   <div class="u-container-layout u-container-layout-4">
-                    <h2 class="u-custom-font u-text u-text-1">회원가입</h2>
+                    <h2 class="u-custom-font u-text u-text-1" style="text-align:center;">회원가입</h2>
                     <div class="u-align-center u-custom-color-1 u-radius-50 u-shape u-shape-round u-shape-1"></div>
                     
                     
        
                     <div class="u-expanded-width-xs u-form u-form-1">
-                      <form action="userform" method="post" class="u-clearfix u-form-custom-backend u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form" redirect="true">
+                      <form action="userform" method="post" class="u-clearfix u-form-custom-backend u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form" redirect="true"  onsubmit="return isValidForm()">
                         <div class="u-form-group">
                           <input type="text" id="user_id" name="user_id" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-1" required="required" placeholder="아이디">
                           <span id="id_check" ></span><input id="idValiable" type="hidden" value="">
@@ -140,12 +140,12 @@
                         <div class="u-form-group u-form-partition-factor-2 u-form-group-7">
                           <input type="email" placeholder="이메일" id="email_address" name="email_address" class="u-border-1 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-19 u-text-grey-40 u-input-7" required="required">
                         </div>
-                        <div class="u-align-center u-form-group u-form-submit">
+                        <div class="u-align-center u-form-group u-form-submit"  style="text-align:center;">
                           <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-custom-font u-radius-19 u-text-body-alt-color u-btn-1">가 입 </a>
                           <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
                         <div class="u-form-send-message u-form-send-success"></div>
-                        <div class="u-form-send-error u-form-send-message">회원가입 정보를 다시 확인해주세요.</div>
+                        <div class="u-form-send-error u-form-send-message" id="errorMsg" style="margin: 0 auto;"></div>
                         <input type="hidden" value="" name="recaptchaResponse">
                       </form>
                     </div>

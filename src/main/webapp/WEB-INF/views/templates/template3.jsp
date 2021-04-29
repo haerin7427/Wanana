@@ -78,9 +78,14 @@
     	}else if(item[i].item_id == 2 || item[i].item_id == 5 || item[i].item_id == 6){
         	// 자기소개(2) || 깃헙브주소(5) || 블로그주소(6) 
         	
-        	if(item[i].item_id == 5 || item[i].item_id == 6)
+        	if(item[i].item_id == 5 || item[i].item_id == 6){
      	   		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></span>');
-       		$("#itemBox_"+item[i].item_id).append(item[i].content[0]);
+				var replaceStr=item[i].content[0].replace("https://","");
+     	   		var hidden=$("<a style='color:black;' href='https://"+replaceStr+"'>"+replaceStr+"</a>");
+     	   		$("#itemBox_"+item[i].item_id).append(hidden);
+        	}
+        	else
+       			$("#itemBox_"+item[i].item_id).append(item[i].content[0]);
         	
         }else if(item[i].item_id == 3){
             // 장점(3)
@@ -97,7 +102,7 @@
          	$("#itemBox_"+item[i].item_id).append(newInput);
 
          	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeName"><p>'+item[i].content[0]+'</p></div>');
-         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" value="'+item[i].content[1]+'" class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(100-item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
+         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" value="'+item[i].content[1]+'" class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
          	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'%</p></div>');
           }else if(item[i].item_id == 9){
               // 학력(9)

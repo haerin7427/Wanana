@@ -108,7 +108,7 @@
 	           
                 <div class="u-align-center u-container-style u-group u-radius-19 u-shape-round u-white u-group-2">
                   <div class="u-container-layout u-container-layout-4">
-	           <div class="no_login" style="color:red;"><%=request.getAttribute("no_login")%></div>
+	           <div class="no_login" style="color:red;text-align: center;"><%=request.getAttribute("no_login")%></div>
                     <h2 class="u-custom-font u-text u-text-3" style="text-align: center;">LOGIN</h2>
                     <div class="u-align-center u-custom-color-1 u-radius-50 u-shape u-shape-round u-shape-1"></div>
                     <p class="u-align-center u-custom-font u-text u-text-grey-50 u-text-4">회원전용서비스로 로그인이 필요합니다</p>

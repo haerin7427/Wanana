@@ -36,7 +36,7 @@
 .picBox img{
  	margin:5%;
     /* position:absolute; */
-    width:95%;
+    width:80%;
     height:auto;
     border-radius: 10px;
 }

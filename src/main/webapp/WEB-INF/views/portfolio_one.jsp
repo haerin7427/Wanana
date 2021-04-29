@@ -1126,8 +1126,7 @@
         	<div id= "1page_preview" style="margin:0 auto;"></div>
           <!-- <img alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1500" data-image-height="1001" src="images/2.svg"> -->
           
-          <!-- ok 버튼 -->
-          <a  xlink:href="#svg-6e8b" class="u-btn u-btn-round u-button-style u-custom-color-1 u-custom-font u-hover-custom-color-1 u-radius-50 u-text-body-alt-color u-btn-1">OK</a>
+         
         </div>
         
         <!-- x 버튼 -->
