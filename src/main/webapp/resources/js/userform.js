@@ -1,4 +1,14 @@
+var validCheck=false;
+function isValidForm(){
+    if(!validCheck){
+    	var errorT=$("<p>회원가입 정보를 다시 확인해주세요.</p>");
+        $("#errorMsg").html(errorT);
+    	return false;
+    }
+    else return true;
+}
 $(document).ready(function() {
+		
 		//유효성 검사
 		var empJ = /\s/g;
 		var idJ= /^[a-z0-9]{4,12}$/;
@@ -25,18 +35,24 @@ $(document).ready(function() {
 							$('#id_check').text('아이디를 사용하실 수 있습니다');
 							$('#id_check').css('color','gray');
 							//$('#reg_submit').attr('enabled','true');
+							$('#idValiable').val("1");
+							validCheck=true;
 						}
 						else if(id==''){
 							$('#id_check').text('아이디를 입력해주세요.');
 							$('#id_check').css('color','red');
 							//$('#reg_submit').attr('disabled','true');
+							$('#idValiable').val("0");
+							validCheck=false;
 						}
 						else{
 							$('#id_check').text('아이디는 소문자와 숫자 4~12자리만 가능합니다.');
 							$('#id_check').css('color','red');
 							//$('#reg_submit').attr('disabled','true');
+							$('#idValiable').val("0");
+							validCheck=false;
 						}
-						$('#idValiable').val("1");
+						
 					}
 					else{
 
@@ -44,6 +60,7 @@ $(document).ready(function() {
 						$('#id_check').css('color','red');
 						$('#idValiable').val("0");
 						//$('#reg_submit').attr('disabled','true');
+						validCheck=false;
 					}
 				},
 				error:function(request,status,error){
@@ -59,11 +76,13 @@ $(document).ready(function() {
 			if(pwdJ.test($('#pwd').val())){
 				console.log('true');
 				$('#pwd_check').text('');
+				validCheck=true;
 			}
 			else{
 				console.log('false');
 				$('#pwd_check').text('숫자 또는 문자로만 4~12자리 입력해주세요.');
 				$('#pwd_check').css('color','red');
+				validCheck=false;
 			}
 		});
 		//비밀번호 일치 확인
@@ -71,9 +90,11 @@ $(document).ready(function() {
 			if($('#pwd').val() != $(this).val()){
 				$('#re_pwd_check').text('비밀번호가 일치하지 않습니다.');
 				$('#re_pwd_check').css('color','red');
+				validCheck=false;
 			}
 			else{
 				$('#re_pwd_check').text('');
+				validCheck=true;
 			}
 		});
 		
@@ -82,9 +103,11 @@ $(document).ready(function() {
 			if(phoneJ.test($(this).val())){
 				console.log(nameJ.test($(this).val()));
 				$('#phone_check').text('');
+				validCheck=true;
 			} else {
 				$('#phone_check').text('휴대폰번호를 확인해주세요 :)');
 				$('#phone_check').css('color', 'red');
+				validCheck=false;
 			}
 		});
 		
@@ -93,9 +116,11 @@ $(document).ready(function() {
 			if (nameJ.test($(this).val())) {
 					console.log(nameJ.test($(this).val()));
 					$('#name_check').text('');
+					validCheck=true;
 			} else {
 				$('#name_check').text('이름을 확인해주세요');
 				$('#name_check').css('color', 'red');
+				validCheck=false;
 			}
 		});
 });	
