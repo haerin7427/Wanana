@@ -155,7 +155,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			
 			User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
 			mav.addObject("userInfo",userInfo);
-			
+			mav.addObject("title",portInfo.getTitle());
 			mav.addObject("template_info",template_info);
 			mav.setViewName("checkPortfolio");
 			
@@ -611,6 +611,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("template_color",template_color);
 		    redirectAttr.addFlashAttribute("template_font",template_font);
 		    redirectAttr.addFlashAttribute("portURL",port_url);
+		    redirectAttr.addFlashAttribute("title",portfolio_name);
 			return new ModelAndView("redirect:/call_data");
 		}
 		
@@ -884,6 +885,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		    redirectAttr.addFlashAttribute("template_color",template_color);
 		    redirectAttr.addFlashAttribute("template_font",template_font);
 		    redirectAttr.addFlashAttribute("portURL",port_url);
+		    redirectAttr.addFlashAttribute("title",portfolio_name);
 			return new ModelAndView("redirect:/call_data");
 		}
 		
@@ -897,6 +899,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		String template_color="#000000";
 		String template_font="Times New Roman";
 		String portURL="";
+		String title="";
 			
 		Map<String,?> redirectMap = RequestContextUtils.getInputFlashMap(request);
 		if(redirectMap != null) {
@@ -906,6 +909,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			template_color= (String)redirectMap.get("template_color");
 			template_font= (String)redirectMap.get("template_font");
 			portURL=(String)redirectMap.get("portURL");
+			title=(String)redirectMap.get("title");
 		}
 		System.out.println("step7 : portfolio id: "+portfolio_id);
 					
@@ -988,6 +992,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		mav.addObject("portfolio_ID", portfolio_id);
 		mav.addObject("data_list", jArray2);
 		mav.addObject("template_info", jArray);
+		mav.addObject("title",title);
 		mav.setViewName("checkPortfolio");
 		
 		System.out.println("step7 clear! ");
@@ -1091,6 +1096,9 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		mav.addObject("temName", template_name);
 		mav.addObject("portfolio_ID",portfolio_ID);
 		mav.addObject("template_info",template_info);
+		
+		User userInfo=boardService.getPortUserInfo(portInfo.getUser_id());
+		mav.addObject("userInfo",userInfo);
 		
 		mav.setViewName("portfolio_view");
 		return mav;

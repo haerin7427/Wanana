@@ -575,13 +575,16 @@
 						var name=$(this).children().eq(0).attr("name");
 						if(name=="collection"){
 							var resultCollect='';
+							var appendCollect='';
 							for(var x=0; x<isCollection; x++){
 								if($(this).children().eq(x).val().trim()=='')
 									continue;
 								resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
+								
 							}
+							appendCollect = resultCollect.replaceAll('$','/');
 
-							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+appendCollect+'</p>');
 		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 		                      
 		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
@@ -591,7 +594,7 @@
 	                 else{
 	                	 var name=$(this).children().attr("name");
  						if(name=="collection" && $(this).children().val().trim()!=''){
- 							 var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+ 							 var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+appendCollect+'</p>');
  		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
  		                      
  		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');
@@ -709,13 +712,15 @@
 	                						var name=$(this).children().eq(0).attr("name");
 	                						if(name=="collection"){
 	                							var resultCollect='';
+	                							var appendCollect='';
 	                							for(var x=0; x<isCollection; x++){
 	                								if($(this).children().eq(x).val().trim()=='')
 	                									continue;
 	                								resultCollect = resultCollect.concat($(this).children().eq(x).val(),'$');
+	                								
 	                							}
-
-	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+resultCollect+'</p>');
+	                							appendCollect = resultCollect.replaceAll('$','/');
+	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">'+appendCollect+'</p>');
 	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                		                      
 	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="'+resultCollect+'">');
@@ -727,7 +732,7 @@
 		 	                  			else{
 		 	                  				var name=$(this).children().attr("name");
 	                						if(name=="collection" && $(this).children().val().trim()!=''){
-	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+resultCollect+'</p>');
+	                							var pTag = $('<p class="u-custom-font u-text u-text-body-color u-text-20">#'+appendCollect+'</p>');
 	                		                      $($('#1page_count' + add_count).children()[0]).append(pTag);
 	                		                      
 	                		                      var realTag = $('<input type = "hidden" id="content'+field_count+'" name="content'+field_count+'" value ="#'+resultCollect+'">');

@@ -64,8 +64,6 @@
 				<!-- 포트폴리오주인 -->
 	        	<div class="item" style="padding:15px; display:inline; padding-left:25px;">
 	        		<span><h2 style="display:inline; font-weight:bold;" class="portUser"></h2></span>
-	        		<span><p style="font-size:23px; display:inline;">님의 포트폴리오</p></span>
-	        		
 	       	 	</div>
 	        
 		        <div>
@@ -124,7 +122,7 @@
 				$('.btn').addClass('liked');
 			}
 			$('.likeCnt').text(likeCnt);
-			$('.portUser').text(portUser.portUser);
+			$('.portUser').text(portUser.portfolioName);
 			console.log("regDate: "+regDate.regDate);
 			$('.regTime').text(regDate.regDate);
 			var portID=${portfolio_ID};

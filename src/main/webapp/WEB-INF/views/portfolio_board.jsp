@@ -439,8 +439,8 @@
           <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="custom" name="form">
             <div class="u-form-group u-form-select u-form-group-1">
               <label for="select-2b13" class="u-form-control-hidden u-label">Select</label>
-              <div class="u-form-select-wrapper">
-                <select id="select-2b13" name="select" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+              <div class="u-form-select-wrapper" style="display:none;">
+                <select id="select-2b13" name="select" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
                   <option value="최신순">최신순</option>
                   <option value="인기순">인기순</option>
                 </select>
