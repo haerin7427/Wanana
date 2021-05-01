@@ -151,10 +151,9 @@ public class BoardController {
 			for (int i = 0; i < list.size() ; i++) {   
 				
 				 if(list.get(i).getItem_id() == 1) {
-					 continue;
-/*					 
-					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
-					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
+					 
+
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/resources/user_photo/"+list.get(i).getContent1();					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
 					System.out.println("imgUrl check : " + imgUrl);
 
 			        	URL u = new URL(imgUrl);
@@ -164,7 +163,7 @@ public class BoardController {
 
 			            //true : 200, false : 404
 			            if ("404".equals(exitCode.getResponseCode() + "")) 
-			            		continue; */
+			            		continue; 
 			        }
 				 
 				JSONObject ob =new JSONObject();

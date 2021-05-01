@@ -77,6 +77,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 	}
 	
 	//고른 포트폴리오로 이동
+	
 		@RequestMapping(value = "/checkPortfolio" ,method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (POST)
 		public ModelAndView GoMyportfolio(HttpSession session,HttpServletRequest request) throws Exception {
 			System.out.println("GoMyportfolio portfolio!!");
@@ -104,7 +105,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 				for (int i = 0; i < list.size() ; i++) {   
 					 if(list.get(i).getItem_id() == 1) {
 						 
-						 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+						 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/resources/user_photo/"+list.get(i).getContent1();
 						 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
 						System.out.println("imgUrl check : " + imgUrl);
 
@@ -929,7 +930,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		        
 	    		if(list.get(i).getItem_id() == 1) {
 					 
-					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/resources/user_photo/"+list.get(i).getContent1();
 					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
 					System.out.println("imgUrl check : " + imgUrl);
 
@@ -1057,7 +1058,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 			for (int i = 0; i < list.size() ; i++) {   
 				if(list.get(i).getItem_id() == 1) {
 					 
-					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user_photo/"+list.get(i).getContent1();
+					 String imgUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/resources/user_photo/"+list.get(i).getContent1();
 					 //String imgUrl = "http://localhost:8080/onepage/resources/user_photo"+"/"+list.get(i).getContent1();
 
 					System.out.println("imgUrl check : " + imgUrl);

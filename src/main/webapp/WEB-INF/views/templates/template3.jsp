@@ -69,7 +69,7 @@
 			}else {
 				var whole_addr = $(location).attr('href');
 			   	var addr_slice = whole_addr.split('/');
-			   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/"+addr_slice[3] + "/";
+			   	var addr = addr_slice[0]+"/"+addr_slice[1]+"/"+addr_slice[2]+"/";
 								
 				var new_image_src = addr+ "resources/user_photo/" + item[i].content[0];
 			}
