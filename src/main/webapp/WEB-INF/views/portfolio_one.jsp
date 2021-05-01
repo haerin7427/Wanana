@@ -495,7 +495,8 @@
                           else //세계면
                               wid="33%";
                           for(var x=0; x<colContent.length-1;x++){
-                        	  pastFieldDiv=pastFieldDiv.concat('<input id="'+fieldID+'" type="input" placeholder="" name="collection" value="'+colContent[x+1]+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput'+x+'" style="display:inline-block;width:'+wid+'">');
+                              console.log("skill : " + colContent);
+                        	  pastFieldDiv=pastFieldDiv.concat('<input id="'+fieldID+'" type="input" placeholder="" name="collection" value="'+colContent[x]+'" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1 collectionInput'+x+'" style="display:inline-block;width:'+wid+'">');
                            }
                           pastFieldDiv=pastFieldDiv.concat('</div>');
                   
@@ -638,6 +639,9 @@
 
 		             if(isEmpty == 1){
 		            	 	$(this).parent().siblings('.alertMsg').text("필수 사항(*)을 모두 입력해주세요! ");
+		            	 	if($(this).attr("id") == "1page_add_1"){
+		            	 		$(this).parent().siblings('.alertMsg').css("margin-top","20%");
+			            	 	}
 		              }else{ //필수 사항 모두 입력한 경우
 		            	  	$(this).parent().siblings('.alertMsg').text("");
 

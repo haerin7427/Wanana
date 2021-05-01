@@ -19,7 +19,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 		Object obj=session.getAttribute("login");//login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져온다.
 		
 		if(obj==null) {
-			response.sendRedirect("/onepage/login"); //로그인이 안되어 있는 상태로, 로그인 폼으로 다시 돌려보낸다.
+			String rootPath = request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath();
+			System.out.println("주소 : " + rootPath+"/login");
+			response.sendRedirect(rootPath+"/login"); //로그인이 안되어 있는 상태로, 로그인 폼으로 다시 돌려보낸다.
 			System.out.println("preHandle : false");
 			return false;
 		}
