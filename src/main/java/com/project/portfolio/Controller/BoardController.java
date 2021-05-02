@@ -1,5 +1,6 @@
 package com.project.portfolio.Controller;
 
+import java.util.Date;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -229,14 +230,15 @@ public class BoardController {
 		int user_id=(Integer) session.getAttribute("ID");
 		boolean isOne=true;
 		Integer checkLike=boardService.checkLike(portfolio_id,user_id);
+		Date update=boardService.portfolioUpdateTime(portfolio_id);
 		if(checkLike==null){ // 한번도 이 포트폴리오에 좋아요 체크를 안해봤다면
-			boardService.createLike(portfolio_id,user_id);
+			boardService.createLike(portfolio_id,user_id,update);
 		}
 		else {
 			if(checkLike==0)
-				boardService.updateLike(portfolio_id,user_id,1);
+				boardService.updateLike(portfolio_id,user_id,1,update);
 			else if(checkLike==1) {
-				boardService.updateLike(portfolio_id,user_id,0);
+				boardService.updateLike(portfolio_id,user_id,0,update);
 				isOne=false;
 			}
 		}

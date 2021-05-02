@@ -9,7 +9,7 @@
     <!-- 한글 폰트 -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
-	
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -17,7 +17,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=16">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=17">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
     <title>portfolio</title>
    
     <script>
@@ -121,7 +123,11 @@
                	$("#itemBox_"+item[i].item_id).append(newInput);
 
                	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
-               	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+
+               	//글자수가 길 경우
+               	acText(item[i].content[0],item[i].item_id);
+               	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+               	
                	if(item[i].content[2] != null && item[i].content[2] != "")
                		$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+'</p></div>');
                 }else if(item[i].item_id == 10){
@@ -139,8 +145,8 @@
                        	
                        var newInput=document.createElement('div');
                      	$("#itemBox_"+item[i].item_id).children(":last").append(newInput);
-
-                       	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+                     	apText(item[i].content[0],item[i].item_id);
+                       	//$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
                        	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                        	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[2]+' ~ '+item[i].content[3]+'</p></div>');
                        	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[4]+'</p></div>');
@@ -158,8 +164,10 @@
                            
                            	var newInput=document.createElement('div');
                          	$("#itemBox_"+item[i].item_id).children(":last").append(newInput);
-                         	                 
+
+                         	//projectText(item[i].content[0],item[i].item_id,item[i].content[3]);                
                            	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[0]+'<span><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></a></span></p></div>');
+                           	
                            	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[1]+' ~ '+item[i].content[2]+'</p></div>');
                         		$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div class="project_skill"></div>');
                            	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[5]+'</p></div>');
@@ -174,7 +182,6 @@
     	
     }
     });//document.ready end
-
     </script>
     
 </head>

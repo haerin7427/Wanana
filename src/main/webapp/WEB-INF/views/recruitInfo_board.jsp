@@ -9,11 +9,12 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Home</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_home.css?ver=<%=System.currentTimeMillis()%>" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_home.css" media="screen">
+	
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js"></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js"></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jobData.js?ver=13"></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jobData.js?ver=<%=System.currentTimeMillis()%>"></script>
         <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/List.js?ver=1"></script>
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body">
@@ -91,120 +92,27 @@
         </p>
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-cd98">
-      <div class="u-clearfix u-sheet u-valign-bottom-xs u-valign-middle-xl u-sheet-1">
+      <div class="u-clearfix u-sheet u-valign-bottom-lg u-valign-middle-xs u-sheet-1">
         <div class="u-container-style u-expanded-width u-group u-palette-1-light-3 u-group-1">
-          <div class="u-container-layout u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
+          <div class="u-container-layout u-valign-top-md u-valign-top-xs u-container-layout-1">
             <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-2">
-              <div class="u-container-layout u-container-layout-2">
-                <h2 class="u-text u-text-default u-text-1">분류별 찾기</h2>
-              </div>
-            </div>
-            <div class="u-align-center-md u-align-center-sm u-border-2 u-border-palette-1-light-3 u-container-style u-group u-group-3" style="overflow:auto;">
-              <div class="u-container-layout u-container-layout-3">
-                <div class="u-expanded-width-xl u-table u-table-responsive u-table-1">
-                  <table class="u-table-entity">
-                    <colgroup>
-                      <col width="100%">
-                    </colgroup>
-                    <tbody class="u-table-body" id="jobListTBody">
-                      <!-- job분류 리스트 -->
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="u-align-center-md u-align-center-sm u-align-center-xs u-border-2 u-border-palette-1-light-3 u-container-style u-expanded-width-sm u-expanded-width-xs u-group u-group-4">
-              <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-4">
-                <div class="u-expanded-width u-table u-table-responsive u-table-2">
-                  <table class="u-table-entity">
-                    <colgroup>
-                      <col width="100%">
-                    </colgroup>
-                    <thead class="u-table-header">
-                      <tr style="height: 67px;">
-                        <th class="u-align-center u-border-2 u-border-palette-1-light-3 u-table-cell u-white u-table-cell-7" style="text-align: center;">직업분류 2차 선택</th>
-                      </tr>
-                    </thead>
-                    <tbody class="u-table-body" id="jobDetailTBody">
-                      <tr style="height: 47px;">
-                        <td class="u-table-cell u-white u-table-cell-8"></td>
-                      </tr>
-                      <tr style="height: 51px;">
-                        <td class="u-table-cell u-white u-table-cell-9"></td>
-                      </tr>
-                      <tr style="height: 65px;">
-                        <td class="u-table-cell u-white u-table-cell-10"></td>
-                      </tr>
-                      <tr style="height: 67px;">
-                        <td class="u-table-cell u-white u-table-cell-11"></td>
-                      </tr>
-                      <tr style="height: 67px;">
-                        <td class="u-table-cell u-white u-table-cell-12"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+              <div class="u-container-layout u-valign-middle-xs u-container-layout-2">
+                <h2 class="u-text u-text-1 tema">테마별 찾기</h2>
               </div>
             </div>
           </div>
         </div>
+        <div class="jobList u-list u-repeater u-list-1" id="jobListBody">
+          <!-- 직업분류 들어가는 div -->
+        </div>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-section-2" id="carousel_400e">
-      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-sm u-sheet-1">
-        <h2 class="u-align-left u-text u-text-1">총 <span style="font-weight: 700;">15</span>개의 결과가 있습니다.
+      <div class="u-clearfix u-sheet u-valign-middle-sm u-sheet-1">
+        <h2 class="u-align-left u-text u-text-1">총 <span style="font-weight: 700;" id="countJob">0</span>개의 결과가 있습니다.
         </h2>
-        <div class="u-expanded-width u-list u-repeater u-list-1">
-          <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-container-layout-1">
-              <div class="u-align-left u-border-2 u-border-palette-5-light-2 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-1">
-                <div class="u-container-layout u-container-layout-2">
-                  <h4 class="u-text u-text-default u-text-palette-3-base u-text-2">Sample Headline</h4>
-                  <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-3-light-3 u-palette-5-light-2 u-radius-6 u-btn-1">클라우드 컴퓨팅 개발자</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-container-layout-3">
-              <div class="u-align-left u-border-2 u-border-palette-5-light-2 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-video-cover u-group-2">
-                <div class="u-container-layout u-container-layout-4">
-                  <h4 class="u-text u-text-default u-text-palette-3-base u-text-3">Sample Headline</h4>
-                  <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-3-light-3 u-palette-5-light-2 u-radius-6 u-btn-2">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-container-layout-5">
-              <div class="u-align-left u-border-2 u-border-palette-5-light-2 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-video-cover u-group-3">
-                <div class="u-container-layout u-container-layout-6">
-                  <h4 class="u-text u-text-default u-text-palette-3-base u-text-4">Sample Headline</h4>
-                  <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-3-light-3 u-palette-5-light-2 u-radius-6 u-btn-3">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-container-layout-7">
-              <div class="u-align-left u-border-2 u-border-palette-5-light-2 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-video-cover u-group-4">
-                <div class="u-container-layout u-container-layout-8">
-                  <h4 class="u-text u-text-default u-text-palette-3-base u-text-5">Sample Headline</h4>
-                  <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-3-light-3 u-palette-5-light-2 u-radius-6 u-btn-4">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-container-layout-9">
-              <div class="u-align-left u-border-2 u-border-palette-5-light-2 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-video-cover u-group-5">
-                <div class="u-container-layout u-container-layout-10">
-                  <h4 class="u-text u-text-default u-text-palette-3-base u-text-6">Sample Headline</h4>
-                  <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-3-light-3 u-palette-5-light-2 u-radius-6 u-btn-5">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="u-expanded-width u-list u-repeater u-list-1" id="jobDetailBody">
+          <!-- 직업 들어가는 div -->
         </div>
       </div>
     </section>
@@ -216,4 +124,6 @@
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
   </body>
+  
+    
 </html>

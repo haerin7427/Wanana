@@ -1,6 +1,6 @@
 package com.project.portfolio.Service;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,13 +49,13 @@ public class BoardServiceImp implements BoardService {
 	}
 	
 	@Override
-	public void createLike(int portfolio_id,int user_id) throws Exception{
-		boardDAO.createLike(portfolio_id,user_id);
+	public void createLike(int portfolio_id,int user_id,Date update) throws Exception{
+		boardDAO.createLike(portfolio_id,user_id,update);
 	}
 	
 	@Override
-	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception{
-		boardDAO.updateLike(portfolio_id,user_id,isLike);
+	public void updateLike(int portfolio_id,int user_id, int isLike,Date update) throws Exception{
+		boardDAO.updateLike(portfolio_id,user_id,isLike,update);
 	}
 	
 	@Override
@@ -74,4 +74,8 @@ public class BoardServiceImp implements BoardService {
 		return boardDAO.getPortUserInfo(user_id);
 	}
 	
+	@Override
+	public Date portfolioUpdateTime(int port_id) throws Exception{
+		return boardDAO.portfolioUpdateTime(port_id);
+	}
 }

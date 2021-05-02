@@ -239,17 +239,17 @@
     <!-- 해당 포트폴리오 좋아요 누르기  -->
     <insert id="createLike">
     	 INSERT INTO `like` (portfolio_id, user_id) values(#{portfolio_id},#{user_id});
-    	 UPDATE `portfolio` SET `like`=`like`+1 WHERE id=#{portfolio_id};
+    	 UPDATE `portfolio` SET `like`=`like`+1,update_date=#{update} WHERE id=#{portfolio_id};
     </insert>
      <!-- 해당 포트폴리오 좋아요 이미 누른 적이 있다면 update하기 -->
      <update id="updateLike">
     	 UPDATE `like` SET isLike=#{isLike} WHERE portfolio_id=#{portfolio_id} AND user_id=#{user_id};
     	<choose>
          <when test="isLike == 1">
-         	UPDATE `portfolio` SET `like`=`like`+1 WHERE id=#{portfolio_id};
+         	UPDATE `portfolio` SET `like`=`like`+1,update_date=#{update} WHERE id=#{portfolio_id};
          </when>
          <when test="isLike == 0">
-        	UPDATE `portfolio` SET `like`=`like`-1 WHERE id=#{portfolio_id};
+        	UPDATE `portfolio` SET `like`=`like`-1,update_date=#{update} WHERE id=#{portfolio_id} AND update_date=#{update};
          </when>
       </choose>
     </update>
@@ -323,4 +323,8 @@
    <select id="getPortUserInfo" resultType="com.project.login.DTO.User" parameterType="Integer">
    		SELECT * FROM users WHERE id=#{user_id};
    </select>
+   <select id="portfolioUpdateTime" resultType="java.util.Date" parameterType="int">
+   		SELECT update_date FROM portfolio WHERE id=#{port_id};
+   </select>
+   
 </mapper>

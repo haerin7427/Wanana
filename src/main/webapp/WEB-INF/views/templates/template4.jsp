@@ -15,7 +15,9 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=9">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=10">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
 <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -117,7 +119,10 @@
               	$("#itemBox_"+item[i].item_id).append(newInput);
 
               	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
-              	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+              	//글자수가 길 경우
+               	acText(item[i].content[0],item[i].item_id);
+               	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+               	
               	if(item[i].content[2] != null && item[i].content[2] != "")
               		$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+'</p></div>');
                }else if(item[i].item_id == 10){
@@ -126,7 +131,8 @@
                        var newInput=document.createElement('div');
                     	$("#itemBox_"+item[i].item_id).append(newInput);
 
-                      	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+                    	apText2(item[i].content[0],item[i].item_id);
+                      	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+' ~ '+item[i].content[3]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[4]+'</p></div>');
@@ -136,7 +142,8 @@
                            $("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
                            var newInput=document.createElement('div');
                            $("#itemBox_"+item[i].item_id).append(newInput);
-                        	                 
+
+      	                   //projectText2(item[i].content[0],item[i].item_id,item[i].content[3]);                
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+' ~ '+item[i].content[2]+'</p></div>');
 

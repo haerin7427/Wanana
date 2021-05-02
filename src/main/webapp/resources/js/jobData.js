@@ -16,8 +16,9 @@ $( document ).ready(function() {
 		    		
 		    	
 			    	if(jobs.contains(jobList[j].jobClcdNM)==false){
-			 			var jobTr=$('<tr style="height: 60px;"><td class="u-table-cell u-white u-table-cell" id="'+jobList[j].jobClcdNM+'">'+jobList[j].jobClcdNM+'</td></tr>');
-			 			$("#jobListTBody").append(jobTr);
+			    		var jobTr=$('<div id="'+jobList[j].jobClcdNM+'" class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-1 jobPick"> <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3" ><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"></span><h6 class="u-text u-text-2" style="text-align:center;">'+jobList[j].jobClcdNM+'</h6></div></div');
+			 			//var jobTr=$('<tr style="height: 60px;"><td class="u-table-cell u-white u-table-cell" id="'+jobList[j].jobClcdNM+'">'+jobList[j].jobClcdNM+'</td></tr>');
+			 			$("#jobListBody").append(jobTr);
 			 			jobs.append(jobList[j].jobClcdNM);
 			 		}
 	 			}
@@ -28,15 +29,24 @@ $( document ).ready(function() {
 		});
 		
 	//직업 분류 중 하나를 눌렀을 때(td 눌렀을 때)
-	$("#jobListTBody td").click(function(){     //function_td 
-		var jobBigName=$(this).id;
+	$("#jobListBody .jobPick").click(function(){     //function_td 
+		$("#jobDetailBody").empty();
+		var jobBigName=$(this).attr('id');
+	
 	 	for(var j=0; j<jobList.length;j++){
-			if(jobList[j].jobClcdNM.equals(jobBigName)){
-				var jobRightTr=$('<tr style="height: 60px;"><td class="u-table-cell u-white u-table-cell" id="'+jobList[j].jobClcdNM+'">'+jobList[j].jobClcdNM+'</td></tr>');
-			 	$("#jobDetailTBody").append(jobRightTr);
+	 	
+			if(jobList[j].jobClcdNM==jobBigName){
+				var jobRightTr=$('<div class="u-align-center u-container-style u-list-item u-repeater-item u-list-item-1 jobName" id="'+jobList[j].jobCd+'"><div class="u-container-layout u-similar-container u-valign-middle u-container-layout-1"><h4 class="u-text u-text-default u-text-2" stlye="margin: 0 auto;">'+jobList[j].jobNm+'</h4></div></div>');
+			 	$("#jobDetailBody").append(jobRightTr);
 			 	
 			 }
 	 	}
+	 	var count=$("#jobDetailBody > div").length;
+	 	$("#countJob").text(count);
 	}); 
 	
+	$(".jobName").click(function(){
+		
+	
+	});
 });
