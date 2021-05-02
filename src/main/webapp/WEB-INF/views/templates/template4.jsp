@@ -15,7 +15,7 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=10">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=11">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
 <script>
@@ -201,7 +201,7 @@
                         </div>
                         <!-- contact -->
                         <div class="contact">
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div>
+                            <%-- <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div> --%>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
                             <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_mail.png" alt="default_img"></span>${userInfo.email_address}</p></div>

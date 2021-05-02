@@ -54,9 +54,11 @@
 			<mapping path="/**" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/login/**" />
+			<exclude-mapping path="/login" />
 			<exclude-mapping path="/portfolioView/**" />
-			<exclude-mapping path="/loginProcess" />
+			<exclude-mapping path="/login/loginProcess" />
 			<exclude-mapping path="/userform" />
+			<exclude-mapping path="/sessionCheck" />
 			<exclude-mapping path="/resources/**" />
 			<beans:ref bean="authenticationInterceptor" />
 		</interceptor>

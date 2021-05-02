@@ -229,14 +229,16 @@ public class LoginController{
 			session.setAttribute("login", one);
 			cSession.addLoginUser(Integer.toString(one.getId()));
 			System.out.println("login success");
-			mav.setViewName("home");
 		}
 		else {
 			System.out.println("loginfail");
 		    redirectAttr.addFlashAttribute("msg","아이디 또는 비밀번호를 다시 입력해주세요.");
 			mav.setViewName("redirect:/login");
+			return mav;
+			
 		}
-		System.out.println("loginProcess controller end");
+		mav.setViewName("redirect:/");
+		//System.out.println("loginProcess controller end");
 		return mav;
 	}
 
