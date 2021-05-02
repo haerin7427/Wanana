@@ -147,7 +147,7 @@ margin-top:1%;
 .advantage ,interest,introduce,.caBox {
   display :block;
 }
-.advantage *,.interest *,.skill_content div *,.award_content div *,.ceritificate_content div *{
+.advantage *,.interest *,.skill_content div *,.award_content div *:not(.toolTip),.ceritificate_content div *:not(.toolTip){
   display:inline-block;
   margin-bottom:1%;
 }

@@ -15,7 +15,9 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=9">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=10">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
 <script>
     function getContextPath() {
         var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -74,12 +76,18 @@
    	}else if(item[i].item_id == 2 || item[i].item_id == 5 || item[i].item_id == 6){
        	// 자기소개(2) || 깃헙브주소(5) || 블로그주소(6) 
        	
-   		if(item[i].item_id == 5 || item[i].item_id == 6){
- 	   		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></span>');
+   		if(item[i].item_id == 5){
+ 	   		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/contact_git.png" alt="default_img"></span>');
 			var replaceStr=item[i].content[0].replace("https://","");
  	   		var hidden=$("<a style='color:black;' href='https://"+replaceStr+"'>"+replaceStr+"</a>");
  	   		$("#itemBox_"+item[i].item_id).append(hidden);
     	}
+   		else if(item[i].item_id == 6){
+   			$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/contact_web.png" alt="default_img"></span>');
+			var replaceStr=item[i].content[0].replace("https://","");
+ 	   		var hidden=$("<a style='color:black;' href='https://"+replaceStr+"'>"+replaceStr+"</a>");
+ 	   		$("#itemBox_"+item[i].item_id).append(hidden);
+   	   	}
     	else
    			$("#itemBox_"+item[i].item_id).append(item[i].content[0]);
        	
@@ -117,7 +125,10 @@
               	$("#itemBox_"+item[i].item_id).append(newInput);
 
               	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
-              	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+              	//글자수가 길 경우
+               	acText(item[i].content[0],item[i].item_id);
+               	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+               	
               	if(item[i].content[2] != null && item[i].content[2] != "")
               		$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+'</p></div>');
                }else if(item[i].item_id == 10){
@@ -126,7 +137,8 @@
                        var newInput=document.createElement('div');
                     	$("#itemBox_"+item[i].item_id).append(newInput);
 
-                      	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+                    	apText2(item[i].content[0],item[i].item_id);
+                      	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+' ~ '+item[i].content[3]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[4]+'</p></div>');
@@ -136,12 +148,13 @@
                            $("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
                            var newInput=document.createElement('div');
                            $("#itemBox_"+item[i].item_id).append(newInput);
-                        	                 
+
+      	                   //projectText2(item[i].content[0],item[i].item_id,item[i].content[3]);                
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                           	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+' ~ '+item[i].content[2]+'</p></div>');
 
                           	if(item[i].content[3] !=null && item[i].content[3] != "")
-                          		$("#itemBox_"+item[i].item_id).children(":last").append('<div style="height:0px"><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></a></div>');
+                          		$("#itemBox_"+item[i].item_id).children(":last").append('<div style="height:0px"><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/link.png" alt="default_img"></a></div>');
                           	else
                           		$("#itemBox_"+item[i].item_id).children(":last").append('<div style="margin-bottom: 6%;"></div>');
                       		
@@ -177,22 +190,22 @@
                 <div class="myInfo_upper">
                     <!-- 사진 div -->
                     <div class="picBox">
-                        <img src="https://i.ibb.co/1J8zMMB/default-userpic.png">
+                        <img src="<%=request.getContextPath()%>/resources/images/newdefault.png" alt="default_img">
                     </div>
                     <!-- 개인정보 div -->
-                    <div class="infoBox">
+                    <div class="infoBox" style="width:150px;">
                     	<c:set var="userInfo" value='<%=request.getAttribute("userInfo")%>' />
                         <!-- 이름 -->
-                        <div class="name"> 
-                            <div><h3>${userInfo.name}</h3></div>
+                        <div class="name" style="padding-left:10px; padding-top:10px; padding-bottom:5px;"> 
+                            <div><p style="font-size:23px; font-weight: 900;">${userInfo.name}</p></div>
                         </div>
                         <!-- contact -->
                         <div class="contact">
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>서울특별시</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.email_address}</p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_mail.png" alt="default_img"></span>${userInfo.email_address}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_phone.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
                         </div>
                     </div>
                  

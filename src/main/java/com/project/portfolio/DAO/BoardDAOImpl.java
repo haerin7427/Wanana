@@ -1,8 +1,6 @@
 package com.project.portfolio.DAO;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,18 +55,20 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public void updateLike(int portfolio_id,int user_id, int isLike) throws Exception{
+	public void updateLike(int portfolio_id,int user_id, int isLike, Date update) throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("portfolio_id", portfolio_id);
 		map.put("user_id", user_id);
 		map.put("isLike", isLike);
+		map.put("update", update);
 		sqlSession.update(namespace +".updateLike", map);
 	}
 	@Override
-	public void createLike(int portfolio_id,int user_id) throws Exception{
+	public void createLike(int portfolio_id,int user_id, Date update) throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("portfolio_id", portfolio_id);
 		map.put("user_id", user_id);
+		map.put("update", update);
 		sqlSession.insert(namespace +".createLike", map);
 	}
 	
@@ -86,5 +86,10 @@ public class BoardDAOImpl implements BoardDAO {
 	public User getPortUserInfo(Integer user_id) throws Exception {
 		
 		return sqlSession.selectOne(namespace+".getPortUserInfo",user_id);
+	}
+	
+	@Override
+	public Date portfolioUpdateTime(int port_id) throws Exception{
+		return sqlSession.selectOne(namespace+".portfolioUpdateTime",port_id);
 	}
 }
