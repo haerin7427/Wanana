@@ -219,7 +219,7 @@
                         </div>
                         <!-- contact -->
                         <div class="contact">
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div>
+                            <%-- <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div> --%>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
                             <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_mail.png" alt="default_img"></span>${userInfo.email_address}</p></div>

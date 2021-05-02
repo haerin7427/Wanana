@@ -106,7 +106,7 @@ graduation>h6{
 .myInfo_upper, .myInfo_under{
   position:relative;
   width:100%;
-  /* overflow:auto; */
+  overflow:auto;
 }
 .picBox{
   /* float:left;
