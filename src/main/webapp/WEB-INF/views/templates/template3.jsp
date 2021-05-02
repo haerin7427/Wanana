@@ -80,12 +80,18 @@
     	}else if(item[i].item_id == 2 || item[i].item_id == 5 || item[i].item_id == 6){
         	// 자기소개(2) || 깃헙브주소(5) || 블로그주소(6) 
         	
-        	if(item[i].item_id == 5 || item[i].item_id == 6){
-     	   		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></span>');
+        	if(item[i].item_id == 5){
+     	   		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/contact_git.png" alt="default_img"></span>');
 				var replaceStr=item[i].content[0].replace("https://","");
      	   		var hidden=$("<a style='color:black;' href='https://"+replaceStr+"'>"+replaceStr+"</a>");
      	   		$("#itemBox_"+item[i].item_id).append(hidden);
         	}
+        	else if(item[i].item_id == 6){
+        		$("#itemBox_"+item[i].item_id).append('<span><img class="contactIcon" src="'+currentPath+'/resources/images/contact_web.png" alt="default_img"></span>');
+				var replaceStr=item[i].content[0].replace("https://","");
+     	   		var hidden=$("<a style='color:black;' href='https://"+replaceStr+"'>"+replaceStr+"</a>");
+     	   		$("#itemBox_"+item[i].item_id).append(hidden);
+            }
         	else
        			$("#itemBox_"+item[i].item_id).append(item[i].content[0]);
         	
@@ -101,6 +107,7 @@
          	$("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
          	
          	var newInput=document.createElement('div');
+         	newInput.style.height = "20px";
          	$("#itemBox_"+item[i].item_id).append(newInput);
 
          	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeName"><p>'+item[i].content[0]+'</p></div>');
@@ -110,6 +117,7 @@
               // 학력(9)
            	$("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
            	var newInput=document.createElement('div');
+           	newInput.style.height = "20px";
            	$("#itemBox_"+item[i].item_id).append(newInput);
 
            	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+' ~ '+item[i].content[3]+'</p></div>');
@@ -120,6 +128,7 @@
                 // 자격증(11) || 수상내역(12)
                	$("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
                	var newInput=document.createElement('div');
+               	newInput.style.height = "20px";
                	$("#itemBox_"+item[i].item_id).append(newInput);
 
                	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
@@ -165,8 +174,9 @@
                            	var newInput=document.createElement('div');
                          	$("#itemBox_"+item[i].item_id).children(":last").append(newInput);
 
+
                          	//projectText(item[i].content[0],item[i].item_id,item[i].content[3]);                
-                           	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[0]+'<span><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/phone2.png" alt="default_img"></a></span></p></div>');
+							$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[0]+'<span><a href="'+item[i].content[3]+'"><img class="urlIcon" src="'+currentPath+'/resources/images/link.png" alt="default_img"></a></span></p></div>');
                            	
                            	$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div><p>'+item[i].content[1]+' ~ '+item[i].content[2]+'</p></div>');
                         		$("#itemBox_"+item[i].item_id).children(":last").children(":last").append('<div class="project_skill"></div>');
@@ -184,6 +194,7 @@
     });//document.ready end
     </script>
     
+    
 </head>
 <body>
 <div class="wrap">
@@ -195,23 +206,23 @@
             <div class="myInfo">
                 <div class="myInfo_upper">
                     <!-- 사진 div -->
-                    <div class="picBox">
-                        <img src="https://i.ibb.co/1J8zMMB/default-userpic.png">
+                    <div class="picBox" style="float:left;">
+                        <img src="<%=request.getContextPath()%>/resources/images/newdefault.png" alt="default_img">
                     </div>
                     <!-- 개인정보 div -->
-                    <div class="infoBox">
+                    <div class="infoBox" style="float:left;">
                     	<c:set var="userInfo" value='<%=request.getAttribute("userInfo")%>' />
                         <!-- 이름 -->
-                        <div class="name"> 
-                            <div><h3>${userInfo.name}</h3></div>
+                        <div class="name" style="padding-left:10px; padding-top:10px; padding-bottom:5px;"> 
+                            <div><p style="font-size:23px; font-weight: 900;">${userInfo.name}</p></div>
                         </div>
                         <!-- contact -->
                         <div class="contact">
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>서울특별시</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_home.png" alt="default_img"></span>서울특별시</p></div>
                             <div><p id='itemBox_5'></p></div>
                             <div><p id='itemBox_6'></p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.email_address}</p></div>
-                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/phone2.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_mail.png" alt="default_img"></span>${userInfo.email_address}</p></div>
+                            <div><p><span><img class="contactIcon" src="<%=request.getContextPath()%>/resources/images/contact_phone.png" alt="default_img"></span>${userInfo.phone_number}</p></div>
                         </div>
                     </div>
                 </div>
@@ -244,7 +255,7 @@
             <div class="sgca">
                 <div class="skill">
                     <h6 class='fieldTitle'>SKILL</h6>
-                    <div id='itemBox_7'  class="skill_content">
+                    <div id='itemBox_7'  class="skill_content" style="padding-bottom:5px;">
                        <!-- <div>
                             <div class="rangeName"><p>C</p></div>
                             <div class="rangeBox"><input type="range" min="0" max="100" value="75" class="range" /></div>

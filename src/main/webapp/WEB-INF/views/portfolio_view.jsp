@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/home.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
@@ -46,11 +47,20 @@
     </style>
 </head>
 <body>
+<header class="u-clearfix u-header u-header" id="sec-bbf7" style="padding-top:80px; padding-left:50px; height: 100px;">	
+	        <div style="float:left;display:inline; padding-bottom: 10px;"><p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
+	            <span class="u-text-custom-color-1">One</span>
+	            <span class="u-text-black">하나</span>
+	        </p></div>
+	        <div style="float:left;border:2px solid #eec31b; border-radius: 10px; padding: 10px; display:inline;">
+        		<a href="<%=request.getContextPath()%>" style="color:black; font-weight:bold;">더 많은 포트폴리오 보러가기 ➞</a>
+			</div>
+</header>
 <%
 	 String templateURL ="/WEB-INF/views/templates/"+request.getAttribute("temName")+".jsp";
 	 %>
 	 
-	 <main>
+	 <main style="display: table; margin-left: auto; margin-right: auto; margin-bottom: 15px; ">
 	 	<div class="wrap" style="width:100%; position:relative;">
 	 		<div style="display:block; margin:0 auto;">
 	 			<div class="printSection" id="1page_preview" style="float:left; margin-right: 15px; padding-left: 22px;">
@@ -63,9 +73,14 @@
 	 		</div>
 	 	</div>
 	 </main>
-	 
 
-	<a href="<%=request.getContextPath()%>">더 많은 포트폴리오 보기</a>
-
+	
+ <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2994">
+    	<div class="u-clearfix u-sheet u-sheet-1" style="margin-top:-10px; margin-bottom:-6px;">
+       		<p class="u-custom-font u-small-text u-text u-text-variant u-text-1" style="line-height:20px;">경상북도 포항시 북구 흥해읍 한동로 558 한동대학교 WALAB<br>Copyright ⓒ <b>널주아해</b></p>
+      	</div>
+     </footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+    </section>
 </body>
 </html>
