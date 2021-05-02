@@ -1,4 +1,4 @@
-package com.project.login.Controller;
+  package com.project.login.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -156,13 +156,19 @@ public class LoginController{
 
 		//로그인이 성공하면 User 객체를 반환한다.
 		User one=loginService.socialLogin(user);
-		System.out.println("one:"+one);
-		session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
-		session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
-		session.setAttribute("email", one.getEmail_address());
-		session.setAttribute("admin", one.getAdmin());
-		session.setAttribute("login", one);
 		
+		System.out.println("one:"+one);
+		if(one!=null) {
+			session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
+			session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
+			session.setAttribute("email", one.getEmail_address());
+			session.setAttribute("admin", one.getAdmin());
+			session.setAttribute("login", one);
+		}
+		else {
+			mav.setViewName("redirect:/login");
+			return mav;
+		}
 		cSession.addLoginUser(Integer.toString(one.getId()));
 		
 		mav.addObject("user", one);
@@ -205,7 +211,7 @@ public class LoginController{
 	//로그인 성공 or 실패
 	@RequestMapping(value="login/loginProcess",method=RequestMethod.POST)
 	public ModelAndView loginProcess(RedirectAttributes redirectAttr,HttpSession session,User user) throws Exception {
-		ModelAndView mav;
+		ModelAndView mav= new ModelAndView(); ;
 
 		if(session.getAttribute("login")!=null) { //기존에 login이라는 세션 값이 존재할 경
 			session. removeAttribute("login"); //기존 값을 제거한
@@ -215,7 +221,6 @@ public class LoginController{
 		User one=loginService.login(user);
 
 		if(one!=null) {//로그인 성공
-			
 			session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
 			session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
 			session.setAttribute("email", one.getEmail_address());
@@ -223,12 +228,13 @@ public class LoginController{
 			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
 			cSession.addLoginUser(Integer.toString(one.getId()));
-			
-			mav=new ModelAndView("redirect:/");
+			System.out.println("login success");
+			mav.setViewName("home");
 		}
 		else {
+			System.out.println("loginfail");
 		    redirectAttr.addFlashAttribute("msg","아이디 또는 비밀번호를 다시 입력해주세요.");
-			mav=new ModelAndView("redirect:/login");
+			mav.setViewName("redirect:/login");
 		}
 		System.out.println("loginProcess controller end");
 		return mav;

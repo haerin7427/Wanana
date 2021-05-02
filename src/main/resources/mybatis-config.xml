@@ -7,7 +7,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="User" type="com.project.login.DTO.User" />
-		<typeAlias alias="Data" type="com.project.portfolio.DTO.Data" />
+		<typeAlias alias="Data" type="com.project.portfolio.DTO.Data" /> 
 	</typeAliases>
 	
 </configuration>
