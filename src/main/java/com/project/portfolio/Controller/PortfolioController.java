@@ -527,6 +527,7 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 					//이미지 파일 서버에 저장 
 					byte[] data = file.getBytes();
 					FileOutputStream fos = new FileOutputStream(SAVE_PATH + DBFileName);
+					System.out.println("저장 경로 : " + SAVE_PATH+DBFileName);
 					fos.write(data);
 					fos.close();
 					
