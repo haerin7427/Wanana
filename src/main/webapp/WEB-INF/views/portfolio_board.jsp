@@ -329,7 +329,7 @@
                 		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolio_board">Portfolio구경가기</a>
 					</li>
 					<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/recruit_info">직업탐색</a>
+                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="#" onclick="javascript:alert('준비 중인 서비스 입니다!')">직업탐색</a>
 					</li>
 					<li class="u-nav-item">
 						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>
@@ -354,7 +354,7 @@
             		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board">Portfolio구경가기</a>
 				</li>
 				<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/recruit_info">직업탐색</a>
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="#" onclick="javascript:alert('준비 중인 서비스 입니다!')">직업탐색</a>
 				</li>
 				<li class="u-nav-item">
 					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>	
