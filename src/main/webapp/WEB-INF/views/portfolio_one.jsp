@@ -22,9 +22,10 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
-     
-     
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
+
+<!-- <%--      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
+ --%>    <meta name="generator" content="Nicepage 3.3.7, nicepage.com"> -->
+
     
     
     <style>
@@ -596,7 +597,9 @@
 
 		                  }
 	                 }
-	                 //$(this).children().val('');
+
+	                // $(this).children().val('');
+
 	                 //$(this).siblings('#1page_textLimit').html("(0)");
 	            }); //field 수 만큼 반복  
 	            
@@ -940,7 +943,7 @@
             <ul class="u-custom-font u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
 			</li>
-			<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/recruit_info" style="padding: 10px 20px;">직업탐색</a>
+			<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#" onclick="javascript:alert('준비 중인 서비스 입니다!')" style="padding: 10px 20px;">직업탐색</a>
 			</li>
 			<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
 			</li>
@@ -960,7 +963,7 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
 </li>
-<li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/recruit_info" style="padding: 10px 20px;">직업탐색</a>
+<li class="u-nav-item"><a class="u-button-style u-nav-link" href="#" onclick="javascript:alert('준비 중인 서비스 입니다!')" style="padding: 10px 20px;">직업탐색</a>
 </li>
 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
 </li>
@@ -1288,7 +1291,7 @@
 <!-- 1번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-5" id="1page_section1">
       <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1"style="height:55vh">
-        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1" >
+        <div id="1page_sectionDiv_1" class="u-container-layout u-container-layout-1" style="overflow:scroll">
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역  -->
@@ -2271,7 +2274,7 @@
 <!-- 2번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6" id="1page_section2">
       <div class="u-align-left u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:40vh">
-        <div id="1page_sectionDiv_2" class="u-container-layout u-container-layout-1">
+        <div id="1page_sectionDiv_2" class="u-container-layout u-container-layout-1" style="overflow:scroll;">
         <!-- 삭제 구역    -->
           
           <!-- 삭제 구역    -->
@@ -2990,7 +2993,7 @@
 <!-- 3번 카테고리 modal -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-7" id="1page_section3">
       <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
-        <div id="1page_sectionDiv_3"  class="u-container-layout u-valign-top u-container-layout-1">
+        <div id="1page_sectionDiv_3"  class="u-container-layout u-valign-top u-container-layout-1" style="overflow:scroll;">
         <!-- 삭제 구역    -->
                   <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-5"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8edf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-8edf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
@@ -4414,7 +4417,7 @@
 <!-- 4번 카테고리 modal  -->
 <section class="u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-8" id="1page_section4">
       <div class="u-container-style u-dialog u-grey-10 u-radius-21 u-shape-round u-dialog-1" style="height:55vh">
-        <div id="1page_sectionDiv_4"  class="u-container-layout u-container-layout-1">
+        <div id="1page_sectionDiv_4"  class="u-container-layout u-container-layout-1" style="overflow:scroll;">
         <!-- 삭제 구역    -->
           <!-- 삭제 구역    -->
         </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-6"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-63bf"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-63bf"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
