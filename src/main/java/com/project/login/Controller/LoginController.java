@@ -76,7 +76,7 @@ public class LoginController{
 		ModelAndView mav = new ModelAndView();
         mav.addObject("no_login","회원가입에 성공하셨습니다.");
 
-        mav.setViewName("login");
+        mav.setViewName("loginForm");
         
         return mav;// 작성이 완료된 후, 목록페이지로 리턴
 
@@ -95,7 +95,7 @@ public class LoginController{
 		}
 		mav.addObject("no_login",txt);
 
-		mav.setViewName("login");
+		mav.setViewName("loginForm");
 
 		return mav;
 	}

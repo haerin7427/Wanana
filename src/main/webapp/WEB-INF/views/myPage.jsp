@@ -19,7 +19,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>myPage</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=1" media="screen">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/myPage.css" media="screen">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/myPage.css" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
