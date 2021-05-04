@@ -22,17 +22,10 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js?ver=3" defer=""></script>
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
-     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
-    <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
+     
+     
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
     
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|NanumGothic:400,700,800">
-    
-    <meta property="og:title" content="addData">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#478ac9">
-    <link rel="canonical" href="index.html">
-    <meta property="og:url" content="index.html">
     
     <style>
     /* 미리보기용 css 작업 */
@@ -52,14 +45,6 @@
 }
     </style>
     
-
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "",
-		"url": "index.html"
-}
-</script>
     
     <script type="text/javascript">
     $(document).ready(function () {
@@ -611,8 +596,8 @@
 
 		                  }
 	                 }
-	                 $(this).children().val('');
-	                 $(this).siblings('#1page_textLimit').html("(0)");
+	                 //$(this).children().val('');
+	                 //$(this).siblings('#1page_textLimit').html("(0)");
 	            }); //field 수 만큼 반복  
 	            
 	             for(var z = field_count+1 ; z < 7;z++){

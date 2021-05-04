@@ -46,7 +46,14 @@ $( document ).ready(function() {
 	}); 
 	
 	$(".jobName").click(function(){
-		
-	
+		var jobCode=$(this).attr("id");
+		$("#selectJobCode").val(jobCode);
+		var randomString = Math.random().toString(36).slice(2);
+        var openTap = window.open('jobDetail/'+urlLink,randomString);
+        var formTap = document.myform;
+        formTap.target=randomString;
+        formTap.submit();
+        $("#jobForm").attr("action","jobDetail/"+jobCode);
+        $("#jobForm").submit();
 	});
 });
