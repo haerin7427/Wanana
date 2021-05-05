@@ -7,19 +7,21 @@
     
     <title>Page 1</title>
     
-    
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 3.6.2, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    
     <!-- jQuery -->
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage2.js" defer=""></script>
+     
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=1" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_detail.css?ver=1" media="screen">
+
+	<!-- 원 차트 -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
   </head>
   <body class="u-body">
@@ -93,6 +95,7 @@
         </p>
       </div></header>
   
+  	<!-- detail page 헤더 (직업 이름이랑 설명란) -->
     <section class="u-align-center u-clearfix u-section-1" id="sec-920a">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-container-style u-expanded-width u-group u-palette-3-light-2 u-group-1">
@@ -103,7 +106,12 @@
           </div>
         </div>
       </div>
+      <c:set var="jobCode" value="${jobCode}" />
+      <input type="hidden" name="jobCode" id="jobCode" value="${jobCode}"/>
     </section>
+    
+    
+    <!-- 탭 -->
     <section class="u-align-center u-clearfix u-section-2" id="sec-3cb9">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-tabs u-tabs-1">
@@ -112,24 +120,26 @@
               <a class="active u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-1" id="link-tab-14b7" href="#tab-14b7" role="tab" aria-controls="tab-14b7" aria-selected="true">요약하기</a>
             </li>
             <li class="u-tab-item" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-2" id="link-tab-2917" href="#tab-2917" role="tab" aria-controls="tab-2917" aria-selected="false">하는 일</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-2 tab2" id="link-tab-2917" href="#tab-2917" role="tab" aria-controls="tab-2917" aria-selected="false">하는 일</a>
             </li>
             <li class="u-tab-item" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-3" id="link-tab-4d4d" href="#tab-4d4d" role="tab" aria-controls="tab-4d4d" aria-selected="false">교육/자격/훈련</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-3 tab3" id="link-tab-4d4d" href="#tab-4d4d" role="tab" aria-controls="tab-4d4d" aria-selected="false">교육/자격/훈련</a>
             </li>
             <li class="u-tab-item" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-4" id="link-tab-ba13" href="#tab-ba13" role="tab" aria-controls="tab-ba13" aria-selected="false">임금/직업만족도/전망</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-4 tab4" id="link-tab-ba13" href="#tab-ba13" role="tab" aria-controls="tab-ba13" aria-selected="false">임금/직업만족도/전망</a>
             </li>
             <li class="u-tab-item u-tab-item-5" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-5" id="link-tab-2f82" href="#tab-2f82" role="tab" aria-controls="tab-2f82" aria-selected="false">능력/지식/환경</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-5 tab5" id="link-tab-2f82" href="#tab-2f82" role="tab" aria-controls="tab-2f82" aria-selected="false">능력/지식/환경</a>
             </li>
             <li class="u-tab-item" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-6" id="link-tab-f5ab" href="#tab-f5ab" role="tab" aria-controls="tab-f5ab" aria-selected="false">성격/흥미/가치관</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-6 tab6" id="link-tab-f5ab" href="#tab-f5ab" role="tab" aria-controls="tab-f5ab" aria-selected="false">성격/흥미/가치관</a>
             </li>
             <li class="u-tab-item u-tab-item-7" role="presentation">
-              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-7" id="link-tab-1dcf" href="#tab-1dcf" role="tab" aria-controls="tab-1dcf" aria-selected="false">업무활동</a>
+              <a class="u-active-white u-border-2 u-border-active-grey-15 u-border-hover-grey-15 u-border-no-bottom u-button-style u-tab-link u-text-active-palette-2-base u-text-hover-black u-tab-link-7 tab7" id="link-tab-1dcf" href="#tab-1dcf" role="tab" aria-controls="tab-1dcf" aria-selected="false">업무활동</a>
             </li>
           </ul>
+          
+          <!-- 첫번째 탭 -->
           <div class="u-tab-content">
             <div class="u-align-center u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-14b7" role="tabpanel" aria-labelledby="link-tab-14b7">
               <div class="u-container-layout u-valign-middle u-container-layout-1">
@@ -144,136 +154,133 @@
                     <tbody class="u-table-body">
                       <tr style="height: 72px;">
                         <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-1">되는 길</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell way" colspan="3">Description</td>
                       </tr>
                       <tr style="height: 72px;">
-                        <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-1">교육/자격/훈련</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-1" rowspan="2">교육/자격/훈련정보</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">관련학과</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" >관련자격</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">훈련정보</td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">Row 3</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        
+                        <td class="u-border-1 u-border-grey-30 u-table-cell majorList"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell certList"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobStatus"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">Row 4</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9" rowspan="2">임금/직업만족도/전망</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">임금</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">직업만족도</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">전망</td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-13"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                       
+                        <td class="u-border-1 u-border-grey-30 u-table-cell sal"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell satis"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell prospect"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-17"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-17" rowspan="2">능력/지식/환경</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">업무수행능력</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">지식</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">환경</td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-21"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobAbil"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell knowldg"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobEnv"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-25"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-25" rowspan="2">성격/흥미/가치관</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">성격</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">흥미</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell">가치관</td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-29"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobChr"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobIntrst"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobVals"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-33"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-33" rowspan="2">업무활동</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" >중요도</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" >수준</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell" ></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-37"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobActvImprtncs"></td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobActvLvls"></td>
                         <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-41"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-41">일자리 현황</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobStatus" colspan="3"></td>
                       </tr>
                       <tr style="height: 74px;">
-                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-45"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
+                        <td class="u-border-1 u-border-grey-30 u-grey-5 u-table-cell u-table-cell-45">관련직업</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell jobList" colspan="3"></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            
+            <!-- 두번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-2917" role="tabpanel" aria-labelledby="link-tab-2917">
               <div class="u-container-layout u-container-layout-2">
-                <blockquote class="u-align-center u-text u-text-1">Sample quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</blockquote>
-                <p class="u-align-center u-text u-text-2">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of
-                disruptive innovation.</p>
-                <div class="u-video u-video-contain u-video-1">
-                  <div style=" position: absolute;" class="embed-responsive">
+                <blockquote class="u-align-center u-text u-text-1 two_jobSum"></blockquote>
+                <p class="u-align-center u-text u-text-2 two_execJob" ></p>
+                <div class="u-video u-video-contain u-video-1 two_jobVideoBox">
+                  <div style=" position: absolute;" class="embed-responsive two_jobVideo">
                     <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item" src="https://www.youtube.com/embed/B9YKnNtFqds?mute=0&amp;showinfo=0&amp;controls=0&amp;start=0" frameborder="0" allowfullscreen=""></iframe>
                   </div>
                 </div>
                 <h3 class="u-text u-text-3">&lt;관련 직업&gt;</h3>
                 <div class="u-align-center u-border-3 u-border-palette-1-base u-container-style u-group u-group-1">
-                  <div class="u-container-layout u-container-layout-3"></div>
+                  <div class="u-container-layout u-container-layout-3 two_jobList" style="overflow:auto;"></div>
                 </div>
               </div>
             </div>
+            
+            <!-- 세번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-4d4d" role="tabpanel" aria-labelledby="link-tab-4d4d">
               <div class="u-container-layout u-container-layout-4">
                 <div class="u-align-center u-border-3 u-border-grey-40 u-container-style u-group u-group-2">
                   <div class="u-container-layout u-valign-middle u-container-layout-5">
-                    <h4 class="u-align-center u-text u-text-4">When it absolutely, positively has to be readability in your designs</h4>
+                    <h4 class="u-align-center u-text u-text-4 three_technKnow"></h4>
                   </div>
                 </div>
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-group-3">
-                  <div class="u-container-layout u-container-layout-6"></div>
+                  <div class="u-container-layout u-container-layout-6 edubg" id="edubg"></div>
                 </div>
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-group-4">
-                  <div class="u-container-layout u-container-layout-7"></div>
+                  <div class="u-container-layout u-container-layout-7 schDpt" id="schDpt"></div>
                 </div>
-                <h3 class="u-text u-text-5">&lt;관련 직업&gt;</h3>
-                <div class="u-border-3 u-border-palette-1-base u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-5">
-                  <div class="u-container-layout u-container-layout-8"></div>
+                <h3 class="u-text u-text-5" class="three_org">&lt;관련정보처&gt;</h3>
+                <div class="u-border-3 u-border-palette-1-base u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-5 orgBox">
+                  <div class="u-container-layout u-container-layout-8 three_relOrg"></div>
                 </div>
                 <div class="fr-view u-align-center u-clearfix u-rich-text u-text u-text-6">
-                  <h2 style="text-align: left;">
-                    <span style="line-height: 2.0;">Sample Headline</span>
+                  <h2 style="text-align: left;"  class="three_major">
+                    <span style="line-height: 2.0;">관련 전공</span>
                   </h2>
                   <p style="text-align: left;">
-                    <span style="line-height: 2.0;">Sample text. Click to select the text box. Click again or double click to start editing the text. Dictum non consectetur a erat nam at. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Tellus mauris a diam maecenas sed enim ut sem. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. &nbsp;</span>
+                    <span style="line-height: 2.0;" class="three_majorList"></span>
                   </p>
-                  <h2 style="text-align: left;">
-                    <span style="line-height: 2.0;">Sample Headline</span>
+                  <h2 style="text-align: left;" class="three_cert">
+                    <span style="line-height: 2.0;">관련 자격</span>
                   </h2>
                   <p style="text-align: left;">
-                    <span style="line-height: 2.0;">Euismod in pellentesque massa placerat. Risus quis varius quam quisque. Fermentum leo vel orci porta non pulvinar neque. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Viverra aliquet eget sit amet. Platea dictumst vestibulum rhoncus est.</span>
+                    <span style="line-height: 2.0;" class="three_certList"></span>
                   </p>
                 </div>
               </div>
             </div>
+            
+            
+            <!-- 네번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-4" id="tab-ba13" role="tabpanel" aria-labelledby="link-tab-ba13">
               <div class="u-container-layout u-valign-top-sm u-valign-top-xs u-container-layout-9">
                 <div class="u-align-center u-expanded-width-sm u-expanded-width-xs u-table u-table-responsive u-table-2">
@@ -285,26 +292,29 @@
                     <tbody class="u-table-body">
                       <tr style="height: 75px;">
                         <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-49">임금</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell four_sal">Description</td>
                       </tr>
                       <tr style="height: 76px;">
                         <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-51">직업만족도</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell four_jobSatis">Description</td>
                       </tr>
                       <tr style="height: 72px;">
                         <td class="u-align-center u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-53">전망<span style="font-weight: 700;"></span>
                         </td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                        <td class="u-border-1 u-border-grey-30 u-table-cell four_jobProspect">Description</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <h4 class="u-text u-text-7">&lt;일자리 현황&gt;</h4>
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-group-6">
-                  <div class="u-container-layout u-container-layout-10"></div>
+                  <div class="u-container-layout u-container-layout-10 four_jobSumProspect" id="jobSumProspect"></div>
                 </div>
               </div>
             </div>
+            
+            
+            <!-- 다섯번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-5" id="tab-2f82" role="tabpanel" aria-labelledby="link-tab-2f82">
               <div class="u-container-layout u-container-layout-11">
                 <div class="u-accordion u-expanded-width u-accordion-1">
@@ -695,4 +705,6 @@
      </footer>
     
   </body>
+  
+     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
 </html>

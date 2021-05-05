@@ -45,15 +45,18 @@ $( document ).ready(function() {
 	 	$("#countJob").text(count);
 	}); 
 	
-	$(".jobName").click(function(){
+});
+
+
+$(document).on('click', ".jobName", function(){
 		var jobCode=$(this).attr("id");
 		$("#selectJobCode").val(jobCode);
 		var randomString = Math.random().toString(36).slice(2);
-        var openTap = window.open('jobDetail/'+urlLink,randomString);
+        var openTap = window.open('job/jobDetail/'+jobCode,randomString);
         var formTap = document.myform;
         formTap.target=randomString;
         formTap.submit();
-        $("#jobForm").attr("action","jobDetail/"+jobCode);
+        console.log(jobCode);
+        $("#jobForm").attr("action","job/jobDetail/"+jobCode);
         $("#jobForm").submit();
-	});
 });
