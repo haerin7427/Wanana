@@ -14,7 +14,6 @@
 	
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js"></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js"></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jobData.js?ver=<%=System.currentTimeMillis()%>"></script>
         <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/List.js?ver=1"></script>
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body">
@@ -129,5 +128,6 @@
     </section>
   </body>
   
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jobData.js?ver=<%=System.currentTimeMillis()%>"></script>
     
 </html>
