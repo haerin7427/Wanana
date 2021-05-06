@@ -124,4 +124,58 @@ public class JobController {
 		
 		return list;
 	}
+	
+	@RequestMapping("/jobDetail/{jobCode}/five") 
+	@ResponseBody
+	public JobDetailFive goToDetailFive(RedirectAttributes redirectAttr, @PathVariable String jobCode, HttpSession session, HttpServletRequest request) throws Exception {
+		
+		//직업 목록 가져오기
+		String uri="http://openapi.work.go.kr/opi/opi/opia/jobSrch.do?authKey=WNKNNYM558VXEOK5Z53CV2VR1HJ&returnType=XML&target=JOBDTL&jobGb=1&jobCd="+jobCode+"&dtlGb=5";
+		//RestTemplate 생성
+		RestTemplate rest=new RestTemplate();
+		//오브젝트로 결과 값 받아오기
+		JobDetailFive list=rest.getForObject(uri, JobDetailFive.class);
+	
+		ObjectMapper mapper=new ObjectMapper();
+		String jArray=mapper.writeValueAsString(list);
+		System.out.println(jArray);
+		
+		return list;
+	}
+	
+	@RequestMapping("/jobDetail/{jobCode}/six") 
+	@ResponseBody
+	public JobDetailSix goToDetailSix(RedirectAttributes redirectAttr, @PathVariable String jobCode, HttpSession session, HttpServletRequest request) throws Exception {
+		
+		//직업 목록 가져오기
+		String uri="http://openapi.work.go.kr/opi/opi/opia/jobSrch.do?authKey=WNKNNYM558VXEOK5Z53CV2VR1HJ&returnType=XML&target=JOBDTL&jobGb=1&jobCd="+jobCode+"&dtlGb=6";
+		//RestTemplate 생성
+		RestTemplate rest=new RestTemplate();
+		//오브젝트로 결과 값 받아오기
+		JobDetailSix list=rest.getForObject(uri, JobDetailSix.class);
+	
+		ObjectMapper mapper=new ObjectMapper();
+		String jArray=mapper.writeValueAsString(list);
+		System.out.println(jArray);
+		
+		return list;
+	}
+	
+	@RequestMapping("/jobDetail/{jobCode}/seven") 
+	@ResponseBody
+	public JobDetailSeven goToDetailSeven(RedirectAttributes redirectAttr, @PathVariable String jobCode, HttpSession session, HttpServletRequest request) throws Exception {
+		
+		//직업 목록 가져오기
+		String uri="http://openapi.work.go.kr/opi/opi/opia/jobSrch.do?authKey=WNKNNYM558VXEOK5Z53CV2VR1HJ&returnType=XML&target=JOBDTL&jobGb=1&jobCd="+jobCode+"&dtlGb=7";
+		//RestTemplate 생성
+		RestTemplate rest=new RestTemplate();
+		//오브젝트로 결과 값 받아오기
+		JobDetailSeven list=rest.getForObject(uri, JobDetailSeven.class);
+	
+		ObjectMapper mapper=new ObjectMapper();
+		String jArray=mapper.writeValueAsString(list);
+		System.out.println(jArray);
+		
+		return list;
+	}
 }

@@ -3,12 +3,8 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
+    
+    <title>JobInfoHome</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_home.css?ver=<%=System.currentTimeMillis()%>" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
 	
@@ -16,14 +12,14 @@
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js"></script>
         <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/List.js?ver=1"></script>
   </head>
-  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body">
+  <body class="u-body">
   <header class="u-clearfix u-header u-header" id="sec-bbf7">
 <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <div class="table-content">
         <div class="item"></div>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: NanumGothic; font-weight: 800;">
-            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/">
               <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
 </symbol>
