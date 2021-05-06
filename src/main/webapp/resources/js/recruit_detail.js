@@ -12,7 +12,13 @@ $( document ).ready(function() {
 		    
 		    	$(".jobName").text(summary.jobSmclNm);
 		    	$(".jobContent").text(summary.jobSum);
-		    	$(".way").text(summary.way);
+		    	
+		    	
+		    	$(".way").empty();
+			    	var jbSplit = summary.way.split('.');
+			    	for(var i=0; i<jbSplit.length-1; i++){
+				    	$(".way").append(jbSplit[i]+".<br>");
+				    }
 		    	$(".jobStatus").text(summary.jobStatus);
 		    	
 		    	if(summary.relMajorList!=null){
@@ -247,7 +253,12 @@ $( document ).ready(function() {
 			  	success:function(result){
 			    	three=result;
 			    	console.log(result);
-			    	$(".three_technKnow").text(three.technKnow);
+			    	
+			    	$(".three_technKnow").empty();
+			    	var jbSplit = three.technKnow.split('.');
+			    	for(var i=0; i<jbSplit.length-1; i++){
+				    	$(".three_technKnow").append(jbSplit[i]+".<br>");
+				    }
 			    	
 			    	
 			    	$(".three_relOrg").empty();
@@ -257,7 +268,7 @@ $( document ).ready(function() {
 				    	}
 		    		}
 		    		else{
-		    			$(".three_org").css("display","none");
+		    			$("#three_org").css("display","none");
 		    			$(".orgBox").css("display","none");
 		    		}
 		    		
@@ -300,6 +311,9 @@ $( document ).ready(function() {
 				    		chart.draw(data, options); 
 				    	}
 					}
+					else
+						$(".edubg").parent().css("display","none");
+					
 					
 					$(".schDpt").empty();
 			    	if(three.schDpt!=null){
@@ -323,6 +337,9 @@ $( document ).ready(function() {
 				    		chart.draw(data, options); 
 				    	}
 					}
+					else
+						$(".schDpt").parent().css("display","none");
+						
 			    	
 			   	},
 			   	error:function(request,status,error){
@@ -342,29 +359,161 @@ $( document ).ready(function() {
 			   	async: false,
 			  	success:function(result){
 			    	four=result;
-			    	console.log(result);
+			    	
 			    	$(".four_sal").text(four.sal);
 			    	$(".four_jobSatis").text(four.jobSatis);
-			    	$(".four_jobProspect").text(four.jobProspect);
+			    	
+			    	$(".four_jobProspect").empty();
+			    	var jbSplit =four.jobProspect.split('.');
+			    	for(var i=0; i<jbSplit.length-1; i++){
+				    	$(".four_jobProspect").append(jbSplit[i]+".<br>");
+				    }
 			    	
 			    	$(".four_jobSumProspect").empty();
 			    	if(four.jobSumProspect!=null){
 				    	//차트그리기(일자리 전망)
 				    	google.load("visualization", "1", {packages:["corechart"]}); 
 				    	google.setOnLoadCallback(drawChart); 
+				    	var jobSum=four.jobSumProspect;
+				    	var length=jobSum.length;
 				    	function drawChart() { 
 				    		var data = new google.visualization.DataTable();
 				    		data.addColumn("string", "일자리전망");
 				    		data.addColumn("number","Rating");
-				    		for (var i = 0; i < four.jobSumProspect.length; i++) {
+				    		for (var i = 0; i < length; i++) {
 				    			
-			                    data.addRow([four.jobSumProspect[i].jobProspectNm, Number(four.jobSumProspect[i].jobProspectRatio)]);
+			                    data.addRow([jobSum[i].jobProspectNm, Number(jobSum[i].jobProspectRatio)]);
 			                }
 				    		var options = { title: "일자리 전망" }; 
 				    		var chart = new google.visualization.PieChart(document.getElementById("jobSumProspect")); 
 				    		chart.draw(data, options); 
 				    	}
 					}
+			    	
+			   	},
+			   	error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+        });
+        
+         $('ul .tab5').click(function(){
+            var five;
+			var jobCode=$("#jobCode").val();
+		    $.ajax({
+				url: "../jobDetail/"+jobCode+"/five",
+			 	type:'GET',
+			   	traditional : true,
+			   	dataType : 'json',
+			   	async: false,
+			  	success:function(result){
+			    	five=result;
+			    	var tr;
+			    	console.log(five);
+			    	$(".five_accordi1").empty();
+			    	if(five.jobAbil!=null){
+				    	for(var i=0; i<five.jobAbil.length; i++){
+				    		tr='<tr style="height: 75px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-58">'+five.jobAbil[i].jobAblNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.jobAbil[i].jobAblStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.jobAbil[i].jobAblCont+'</td></tr>';
+				    		$(".five_accordi1").append(tr);
+				    	}
+		    		}
+			    	
+			    	$("#five_accordi2").empty();
+			    	if(five.knwldg!=null){
+				    	for(var i=0; i<five.knwldg.length; i++){
+				    		tr=$('<tr style="height: 75px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-73">'+five.knwldg[i].knwldgNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.knwldg[i].knwldgStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.knwldg[i].knwldgCont+'</td></tr>');
+				    		$("#five_accordi2").append(tr);
+				    	}
+		    		}
+		    		
+		    		$(".five_accordi3").empty();
+			    	if(five.jobEnv!=null){
+				    	for(var i=0; i<five.jobEnv.length; i++){
+				    		tr='<tr style="height: 75px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-88">'+five.jobEnv[i].jobEnvNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.jobEnv[i].jobEnvStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+five.jobEnv[i].jobEnvCont+'</td></tr>';
+				    		$(".five_accordi3").append(tr);
+				    	}
+		    		}
+			    	
+			   	},
+			   	error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+        });
+        
+        $('ul .tab6').click(function(){
+            var six;
+			var jobCode=$("#jobCode").val();
+		    $.ajax({
+				url: "../jobDetail/"+jobCode+"/six",
+			 	type:'GET',
+			   	traditional : true,
+			   	dataType : 'json',
+			   	async: false,
+			  	success:function(result){
+			    	six=result;
+			    	var tr;
+			    	
+			    	$(".six_accordi1").empty();
+			    	if(six.jobChr!=null){
+				    	for(var i=0; i<six.jobChr.length; i++){
+				    		tr='<tr style="height: 71px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-103">'+six.jobChr[i].jobChrNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobChr[i].jobChrStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobChr[i].jobChrCont+'</td></tr>';
+				    		$(".six_accordi1").append(tr);
+				    	}
+		    		}
+			    	
+			    	$(".six_accordi2").empty();
+			    	if(six.jobIntrst!=null){
+				    	for(var i=0; i<six.jobIntrst.length; i++){
+				    		tr='<tr style="height: 71px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-103">'+six.jobIntrst[i].intrstNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobIntrst[i].intrstStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobIntrst[i].intrstCont+'</td></tr>';
+				    		$(".six_accordi2").append(tr);
+				    	}
+		    		}
+		    		
+		    		$(".six_accordi3").empty();
+			    	if(six.jobVals!=null){
+				    	for(var i=0; i<six.jobVals.length; i++){
+				    		tr='<tr style="height: 71px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-103">'+six.jobVals[i].valsNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobVals[i].valsStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+six.jobVals[i].valsCont+'</td></tr>';
+				    		$(".six_accordi3").append(tr);
+				    	}
+		    		}
+			    	
+			   	},
+			   	error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
+        });
+        
+        $('ul .tab7').click(function(){
+            var seven;
+			var jobCode=$("#jobCode").val();
+		    $.ajax({
+				url: "../jobDetail/"+jobCode+"/seven",
+			 	type:'GET',
+			   	traditional : true,
+			   	dataType : 'json',
+			   	async: false,
+			  	success:function(result){
+			    	seven=result;
+			    	var tr;
+			    	
+			    	$(".seven_accordi1").empty();
+			    	if(seven.jobActvImprtnc!=null){
+				    	for(var i=0; i<seven.jobActvImprtnc.length; i++){
+				    		tr='<tr style="height: 75px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-148">'+seven.jobActvImprtnc[i].jobActvImprtncNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+seven.jobActvImprtnc[i].jobActvImprtncStatus+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+seven.jobActvImprtnc[i].jobActvImprtncCont+'</td></tr>';
+				    		$(".seven_accordi1").append(tr);
+				    	}
+		    		}
+			    	
+			    	$(".seven_accordi2").empty();
+			    	if(seven.jobActvLvl!=null){
+				    	for(var i=0; i<seven.jobActvLvl.length; i++){
+				    		tr='<tr style="height: 75px;"><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-163">'+seven.jobActvLvl[i].jobActvLvlNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+seven.jobActvLvl[i].jobActvLvlNm+'</td><td class="u-border-1 u-border-grey-30 u-table-cell">'+seven.jobActvLvl[i].jobActvLvlCont+'</td></tr>';
+				    		$(".seven_accordi2").append(tr);
+				    	}
+		    		}
+		    		
 			    	
 			   	},
 			   	error:function(request,status,error){

@@ -5,7 +5,7 @@
 <html style="font-size: 16px;">
   <head>
     
-    <title>Page 1</title>
+    <title>JobInfoDetail</title>
     
     <!-- jQuery -->
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,63 +14,45 @@
     
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage2.js" defer=""></script>
      
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_nicepage.css?ver=3" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=1" media="screen">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_detail.css?ver=1" media="screen">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_detail.css?ver=<%=System.currentTimeMillis()%>" media="screen">
 
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
 	<!-- 원 차트 -->
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
   </head>
   <body class="u-body">
-  
-  <header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+  <header class="u-clearfix u-header u-header" id="sec-bbf7">
+<div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="table-content">
+        <div class="item"></div>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: NanumGothic; font-weight: 800;">
-            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="#">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/">
               <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
 </symbol>
 </defs></svg>
             </a>
           </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-custom-font u-nav u-unstyled u-nav-1">
-            	<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
-				</li>
-				<li class="u-nav-item">
-            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/recruit_info" style="padding: 10px 20px;">직업탐색</a>
-				</li>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
-				</li>
-				<c:set var="admin" value="${admin }" />
-				<c:if test="${admin == 1}">
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
-				</li>
-				</c:if>
-				<li class="u-nav-item">
-					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
-				</li>
-			</ul>
-          </div>
+          
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                 	<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/portfolio_board" style="padding: 10px 20px;">Portfolio구경가기</a>
+                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/portfolio_board">Portfolio구경가기</a>
 					</li>
 					<li class="u-nav-item">
-                		<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/recruit_info" style="padding: 10px 20px;">직업탐색</a>
+                		<a class="u-button-style u-nav-link maker"  style="padding: 10px 20px;"  href="<%=request.getContextPath()%>/recruit_info">직업탐색</a>
 					</li>
 					<li class="u-nav-item">
-						<a class="u-button-style u-nav-link" href="<%=request.getContextPath()%>/myPage" style="padding: 10px 20px;">MY페이지</a>
+						<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>
 					</li>
 					<c:set var="admin" value="${admin}" />
 					<c:if test="${admin == 1}">
@@ -86,7 +68,30 @@
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
+          <div class="u-custom-menu u-nav-container">
+           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            	<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/portfolio_board">Portfolio구경가기</a>
+				</li>
+				<li class="u-nav-item">
+            		<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/recruit_info">직업탐색</a>
+				</li>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/myPage">MY페이지</a>	
+				</li>
+				<c:set var="admin" value="${admin}" />
+				<c:if test="${admin == 1}">
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
+				</li>
+				</c:if>
+				<li class="u-nav-item">
+					<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
+				</li>
+			</ul>
+          </div>
         </nav>
+        </div>
         <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="home.html" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
@@ -237,7 +242,7 @@
                     <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item" src="https://www.youtube.com/embed/B9YKnNtFqds?mute=0&amp;showinfo=0&amp;controls=0&amp;start=0" frameborder="0" allowfullscreen=""></iframe>
                   </div>
                 </div>
-                <h3 class="u-text u-text-3">&lt;관련 직업&gt;</h3>
+                <h4 class="u-text u-text-3">&lt;관련 직업&gt;</h4>
                 <div class="u-align-center u-border-3 u-border-palette-1-base u-container-style u-group u-group-1">
                   <div class="u-container-layout u-container-layout-3 two_jobList" style="overflow:auto;"></div>
                 </div>
@@ -249,7 +254,7 @@
               <div class="u-container-layout u-container-layout-4">
                 <div class="u-align-center u-border-3 u-border-grey-40 u-container-style u-group u-group-2">
                   <div class="u-container-layout u-valign-middle u-container-layout-5">
-                    <h4 class="u-align-center u-text u-text-4 three_technKnow"></h4>
+                    <h6 class="u-align-center u-text u-text-4 three_technKnow"></h6>
                   </div>
                 </div>
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-group-3">
@@ -258,7 +263,7 @@
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-group-4">
                   <div class="u-container-layout u-container-layout-7 schDpt" id="schDpt"></div>
                 </div>
-                <h3 class="u-text u-text-5" class="three_org">&lt;관련정보처&gt;</h3>
+                <h4 class="u-text u-text-5" id="three_org">&lt;관련정보처&gt;</h4>
                 <div class="u-border-3 u-border-palette-1-base u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-group-5 orgBox">
                   <div class="u-container-layout u-container-layout-8 three_relOrg"></div>
                 </div>
@@ -320,7 +325,7 @@
                 <div class="u-accordion u-expanded-width u-accordion-1">
                   <div class="u-accordion-item">
                     <a class="active u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-1" id="link-accordion-7c0e" aria-controls="accordion-7c0e" aria-selected="true">능력</a>
-                    <div class="u-accordion-active u-accordion-pane u-align-center u-container-style u-expanded-width u-accordion-pane-1" id="accordion-7c0e" aria-labelledby="link-accordion-7c0e">
+                    <div class="accordi u-accordion-active u-accordion-pane u-align-center u-container-style u-expanded-width u-accordion-pane-1" id="accordion-7c0e" aria-labelledby="link-accordion-7c0e">
                       <div class="u-container-layout u-container-layout-12">
                         <div class="u-expanded-width u-table u-table-responsive u-table-3">
                           <table class="u-table-entity">
@@ -336,27 +341,8 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-57">업무수행능력 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
-                              <tr style="height: 71px;">
-                                <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-58">업무수행능력 중요도</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                              </tr>
-                              <tr style="height: 78px;">
-                                <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-61">업무수행능력 수준</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                              </tr>
-                              <tr style="height: 76px;">
-                                <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-64">지식중요도</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                              </tr>
-                              <tr style="height: 76px;">
-                                <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-67">Row 4</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                                <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                              </tr>
+                            <tbody class="u-table-body five_accordi1" >
+                             
                             </tbody>
                           </table>
                         </div>
@@ -365,7 +351,7 @@
                   </div>
                   <div class="u-accordion-item">
                     <a class="u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-2" id="link-accordion-05cb" aria-controls="accordion-05cb" aria-selected="false"> 지식</a>
-                    <div class="u-accordion-pane u-align-center u-container-style u-expanded-width u-accordion-pane-2" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
+                    <div class="accordi u-accordion-pane u-align-center u-container-style u-expanded-width u-accordion-pane-2" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
                       <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-top-sm u-valign-top-xs u-container-layout-13">
                         <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xl u-table u-table-responsive u-table-4">
                           <table class="u-table-entity">
@@ -381,7 +367,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-72">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body five_accordi2" id="five_accordi2">
                               <tr style="height: 73px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-73">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -410,7 +396,7 @@
                   </div>
                   <div class="u-accordion-item">
                     <a class="u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-3" id="link-accordion-a6bb" aria-controls="accordion-a6bb" aria-selected="false"> 환경</a>
-                    <div class="u-accordion-pane u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-expanded-width u-accordion-pane-3" id="accordion-a6bb" aria-labelledby="link-accordion-a6bb">
+                    <div class="accordi u-accordion-pane u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-expanded-width u-accordion-pane-3" id="accordion-a6bb" aria-labelledby="link-accordion-a6bb">
                       <div class="u-container-layout u-container-layout-14">
                         <div class="u-expanded-width u-table u-table-responsive u-table-5">
                           <table class="u-table-entity">
@@ -426,7 +412,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-87">환경 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body five_accordi3">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-88">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -456,12 +442,14 @@
                 </div>
               </div>
             </div>
+            
+            <!-- 여섯번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-6" id="tab-f5ab" role="tabpanel" aria-labelledby="link-tab-f5ab">
               <div class="u-container-layout u-container-layout-15">
                 <div class="u-accordion u-expanded-width u-accordion-2">
                   <div class="u-accordion-item">
                     <a class="active u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-4" id="link-accordion-7c0e" aria-controls="accordion-7c0e" aria-selected="true"> 성격</a>
-                    <div class="u-accordion-active u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-4" id="accordion-7c0e" aria-labelledby="link-accordion-7c0e">
+                    <div class="accordi u-accordion-active u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-4" id="accordion-7c0e" aria-labelledby="link-accordion-7c0e">
                       <div class="u-container-layout u-container-layout-16">
                         <div class="u-expanded-width u-table u-table-responsive u-table-6">
                           <table class="u-table-entity">
@@ -477,7 +465,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-102">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body six_accordi1">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-103">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -506,7 +494,7 @@
                   </div>
                   <div class="u-accordion-item">
                     <a class="u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-5" id="link-accordion-05cb" aria-controls="accordion-05cb" aria-selected="false"> 흥미</a>
-                    <div class="u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-5" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
+                    <div class="accordi u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-5" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
                       <div class="u-container-layout u-container-layout-17">
                         <div class="u-expanded-width u-table u-table-responsive u-table-7">
                           <table class="u-table-entity">
@@ -522,7 +510,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-117">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body six_accordi2">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-118">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -551,7 +539,7 @@
                   </div>
                   <div class="u-accordion-item">
                     <a class="u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-6" id="link-accordion-a6bb" aria-controls="accordion-a6bb" aria-selected="false">가치관</a>
-                    <div class="u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-6" id="accordion-a6bb" aria-labelledby="link-accordion-a6bb">
+                    <div class="accordi u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-6" id="accordion-a6bb" aria-labelledby="link-accordion-a6bb">
                       <div class="u-container-layout u-container-layout-18">
                         <div class="u-expanded-width u-table u-table-responsive u-table-8">
                           <table class="u-table-entity">
@@ -567,7 +555,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-132">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body six_accordi3">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-133">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -597,12 +585,14 @@
                 </div>
               </div>
             </div>
+            
+            <!-- 일곱번째 탭 -->
             <div class="u-container-style u-tab-pane u-white u-tab-pane-7" id="tab-1dcf" role="tabpanel" aria-labelledby="link-tab-1dcf">
               <div class="u-container-layout u-container-layout-19">
                 <div class="u-accordion u-expanded-width u-accordion-3">
                   <div class="u-accordion-item">
                     <a class="active u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-7" id="link-accordion-05cb" aria-controls="accordion-05cb" aria-selected="true"> 업무활동 중요도</a>
-                    <div class="u-accordion-active u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-7" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
+                    <div class="accordi u-accordion-active u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-7" id="accordion-05cb" aria-labelledby="link-accordion-05cb">
                       <div class="u-container-layout u-container-layout-20">
                         <div class="u-expanded-width u-table u-table-responsive u-table-9">
                           <table class="u-table-entity">
@@ -618,7 +608,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-147">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body seven_accordi1 accordi">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-148">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -646,7 +636,7 @@
                     </div>
                   </div>
                   <div class="u-accordion-item">
-                    <a class="u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-8" id="link-accordion-a6bb" aria-controls="accordion-a6bb" aria-selected="false">업무활동 수준</a>
+                    <a class="accordi u-accordion-link u-border-1 u-border-active-grey-25 u-border-grey-30 u-border-hover-grey-30 u-border-no-left u-border-no-right u-border-no-top u-button-style u-text-active-palette-1-base u-text-black u-text-hover-palette-1-base u-accordion-link-8" id="link-accordion-a6bb" aria-controls="accordion-a6bb" aria-selected="false">업무활동 수준</a>
                     <div class="u-accordion-pane u-align-left u-container-style u-expanded-width u-accordion-pane-8" id="accordion-a6bb" aria-labelledby="link-accordion-a6bb">
                       <div class="u-container-layout u-container-layout-21">
                         <div class="u-expanded-width u-table u-table-responsive u-table-10">
@@ -663,7 +653,7 @@
                                 <th class="u-align-center u-grey-5 u-table-cell u-table-cell-162">지식 설명</th>
                               </tr>
                             </thead>
-                            <tbody class="u-table-body">
+                            <tbody class="u-table-body seven_accordi2">
                               <tr style="height: 71px;">
                                 <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-163">Row 1</td>
                                 <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
@@ -706,5 +696,5 @@
     
   </body>
   
-     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
+     
 </html>

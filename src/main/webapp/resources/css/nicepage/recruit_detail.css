@@ -1,7 +1,9 @@
 .u-section-1 .u-sheet-1 {
   min-height: 298px;
 }
-
+.accordi{
+	overflow:auto;
+}
 .u-section-1 .u-group-1 {
   min-height: 278px;
   margin-top: 20px;
