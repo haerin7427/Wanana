@@ -115,46 +115,6 @@ $( document ).ready(function() {
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		    }
 		});
-		$('ul .tab2').click(function(){
-            var two;
-			var jobCode=$("#jobCode").val();
-		    $.ajax({
-				url: "../jobDetail/"+jobCode+"/two",
-			 	type:'GET',
-			   	traditional : true,
-			   	dataType : 'json',
-			   	async: false,
-			  	success:function(result){
-			    	two=result;
-			    	console.log(result);
-			    	$(".two_jobSum").text(two.jobSum);
-			    	
-			    	if(two.execJob!=null){
-				    	var jbSplit = two.execJob.split('-');
-				    	for(var i=1; i<jbSplit.length; i++){
-				    		$(".two_execJob").append(jbSplit[i]+"<br>");
-				    	}
-		    		}
-			    	
-			    	if(two.jobVideo==null){
-			    		$(".two_jobVideoBox").css("display","none");
-			    	}
-			    	else{
-			    		$(".two_jobVideo iframe").attr("src",two.jobVideo);
-			    	}
-			    	
-			    	if(two.relJobList!=null){
-				    	for(var i=0; i<two.relJobList.length; i++){
-				    		$(".two_jobList").append(two.relJobList[i].jobNm+"<br>");
-				    	}
-		    		}
-			    	
-			   	},
-			   	error:function(request,status,error){
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			    }
-			});
-        });
         $('ul .tab2').click(function(){
             var two;
 			var jobCode=$("#jobCode").val();
@@ -198,49 +158,6 @@ $( document ).ready(function() {
 			});
         });
         
-        $('ul .tab2').click(function(){
-            var two;
-			var jobCode=$("#jobCode").val();
-		    $.ajax({
-				url: "../jobDetail/"+jobCode+"/two",
-			 	type:'GET',
-			   	traditional : true,
-			   	dataType : 'json',
-			   	async: false,
-			  	success:function(result){
-			    	two=result;
-			    	$(".two_jobSum").text(two.jobSum);
-			    	
-			    	$(".two_execJob").empty();
-			    	if(two.execJob!=null){
-				    	var jbSplit = two.execJob.split('-');
-				    	for(var i=1; i<jbSplit.length; i++){
-				    		$(".two_execJob").append(jbSplit[i]+"<br>");
-				    	}
-		    		}
-			    	
-			    	if(two.jobVideo==null){
-			    		$(".two_jobVideoBox").css("display","none");
-			    	}
-			    	else{
-			    		$(".two_jobVideo iframe").attr("src",two.jobVideo);
-			    	}
-			    	
-			    	$(".two_jobList").empty();
-			    	if(two.relJobList!=null){
-				    	for(var i=0; i<two.relJobList.length; i++){
-				    		$(".two_jobList").append(two.relJobList[i].jobNm+"<br>");
-				    	}
-		    		}
-			    	
-			   	},
-			   	error:function(request,status,error){
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			    }
-			});
-        });
-        
-        
         $('ul .tab3').click(function(){
             var three;
 			var jobCode=$("#jobCode").val();
@@ -260,11 +177,12 @@ $( document ).ready(function() {
 				    	$(".three_technKnow").append(jbSplit[i]+".<br>");
 				    }
 			    	
-			    	
+			    	var input;
 			    	$(".three_relOrg").empty();
 			    	if(three.relOrgList!=null){
 				    	for(var i=0; i<three.relOrgList.length; i++){
-				    		$(".three_relOrg").append(three.relOrgList[i].orgNm+"&ensp;&ensp;&ensp;-&ensp;&ensp;&ensp;"+three.relOrgList[i].orgSiteUrl+"<br>");
+				    		input=$("<p style='margin:0;'>"+three.relOrgList[i].orgNm+"&ensp;&ensp;&ensp;-&ensp;&ensp;&ensp;<a href='"+three.relOrgList[i].orgSiteUrl+"'>"+three.relOrgList[i].orgSiteUrl+"</a></p><br>");
+				    		$(".three_relOrg").append(input);
 				    	}
 		    		}
 		    		else{
@@ -290,13 +208,14 @@ $( document ).ready(function() {
 			    	else
 		    			$(".three_cert").css("display","none");
 			    	
+			    	
 			    	$(".edubg").empty();
 			    	if(three.edubg!=null){
 				    	
 				    	//차트그리기(학력분포)
-				    	google.load("visualization", "1", {packages:["corechart"]}); 
-				    	google.setOnLoadCallback(drawChart); 
-				    	function drawChart() { 
+				    	google.charts.load('current', {packages: ['corechart']});
+  						google.charts.setOnLoadCallback(drawChart1);
+				    	function drawChart1() { 
 				    		var data = google.visualization.arrayToDataTable( 
 				    			[["학력","Rating"],
 				    			["중졸이하",three.edubg[0].edubgMgraduUndr],
@@ -319,9 +238,9 @@ $( document ).ready(function() {
 			    	if(three.schDpt!=null){
 				    	
 				    	//차트그리기(전공학과분포)
-				    	google.load("visualization", "1", {packages:["corechart"]}); 
-				    	google.setOnLoadCallback(drawChart); 
-				    	function drawChart() { 
+				    	google.charts.load('current', {packages: ['corechart']});
+  						google.charts.setOnLoadCallback(drawChart2);
+				    	function drawChart2() { 
 				    		var data = google.visualization.arrayToDataTable( 
 				    			[["전공학과","Rating"],
 				    			["인문계열",three.schDpt[0].cultLangDpt],
@@ -346,6 +265,9 @@ $( document ).ready(function() {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			    }
 			});
+			
+			
+			
         });
         
         $('ul .tab4').click(function(){
@@ -368,25 +290,25 @@ $( document ).ready(function() {
 			    	for(var i=0; i<jbSplit.length-1; i++){
 				    	$(".four_jobProspect").append(jbSplit[i]+".<br>");
 				    }
-			    	
+				    
+			    	var len;
 			    	$(".four_jobSumProspect").empty();
 			    	if(four.jobSumProspect!=null){
 				    	//차트그리기(일자리 전망)
-				    	google.load("visualization", "1", {packages:["corechart"]}); 
-				    	google.setOnLoadCallback(drawChart); 
+				    	google.charts.load('current', {packages: ['corechart']});
+  						google.charts.setOnLoadCallback(drawChart3);
 				    	var jobSum=four.jobSumProspect;
-				    	var length=jobSum.length;
-				    	function drawChart() { 
-				    		var data = new google.visualization.DataTable();
-				    		data.addColumn("string", "일자리전망");
-				    		data.addColumn("number","Rating");
-				    		for (var i = 0; i < length; i++) {
-				    			
-			                    data.addRow([jobSum[i].jobProspectNm, Number(jobSum[i].jobProspectRatio)]);
+				    	len=jobSum.length;
+				    	function drawChart3() { 
+				    		var data3 = new google.visualization.DataTable();
+				    		data3.addColumn("string", "일자리전망");
+				    		data3.addColumn("number","Rating");
+				    		for (var i = 0; i < len; i++) {
+			                    data3.addRow([jobSum[i].jobProspectNm, Number(jobSum[i].jobProspectRatio)]);
 			                }
 				    		var options = { title: "일자리 전망" }; 
 				    		var chart = new google.visualization.PieChart(document.getElementById("jobSumProspect")); 
-				    		chart.draw(data, options); 
+				    		chart.draw(data3, options); 
 				    	}
 					}
 			    	
