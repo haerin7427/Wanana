@@ -106,7 +106,7 @@
         	$("#itemBox_"+item[i].item_id).append(newInput);
 
         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeName"><p>'+item[i].content[0]+'</p></div>');
-        	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" value="'+item[i].content[1]+'" class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
+        	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100" class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
         	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'%</p></div>');
          }else if(item[i].item_id == 9){
              // 학력(9)
@@ -137,8 +137,8 @@
                        var newInput=document.createElement('div');
                     	$("#itemBox_"+item[i].item_id).append(newInput);
 
-                    	apText2(item[i].content[0],item[i].item_id);
-                      	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+                    	//apText2(item[i].content[0],item[i].item_id);
+                      	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+' ~ '+item[i].content[3]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[4]+'</p></div>');
