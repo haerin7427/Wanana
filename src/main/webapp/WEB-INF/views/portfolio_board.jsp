@@ -11,6 +11,7 @@
     <title>portfolios</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=3" media="screen">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/modalFontSize.css?ver=1" media="screen">
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -22,13 +23,25 @@
     
     <style>
      /* 개인정보 블러처리  */
-    #contactInfo>div,#contactInfo>p,.contact>div:nth-child(4),.contact>div:nth-child(5){
+    #contactInfo>div,#contactInfo>p,.contact>div:nth-child(4),.contact>div:nth-child(3){
 	    color: transparent;
 	   text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
     .boardPortfolio>img{
     	max-height:300px;
     }
+    
+    .contact div a,.contact div p, #itemBox_2, #itemBox_3 div>p, #itemBox_9>div div>p, #itemBox_11 div div>p, #itemBox_12 div div>p, #itemBox_10 div>div div>p,#itemBox_8 div>div div>p,#itemBox_10 div div>p, #itemBox_8 div div>p{
+	    font-size: calc(0.8*var(--my-fontSize)) !important;
+}
+
+.fieldTitle{
+	font-size: calc(1.1*var(--my-fontSize)) !important;
+}
+
+#itemBox_4 div>p{
+	font-size: calc(0.9*var(--my-fontSize)) !important;
+}
     </style>
     
     
