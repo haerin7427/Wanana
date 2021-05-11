@@ -11,6 +11,7 @@
     <title>portfolios</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css?ver=3" media="screen">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolios.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/modalFontSize.css?ver=1" media="screen">
      <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -22,13 +23,14 @@
     
     <style>
      /* 개인정보 블러처리  */
-    #contactInfo>div,#contactInfo>p,.contact>div:nth-child(4),.contact>div:nth-child(5){
+    #contactInfo>div,#contactInfo>p,.contact>div:nth-child(4),.contact>div:nth-child(3){
 	    color: transparent;
 	   text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
     .boardPortfolio>img{
     	max-height:300px;
     }
+    
     </style>
     
     

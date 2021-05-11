@@ -50,6 +50,7 @@
     
     <script type="text/javascript">
     $(document).ready(function () {
+    	
     	//경로 구하는 법 
     	function getContextPath() {
     	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
@@ -217,8 +218,8 @@
                                     }else if(field_content[k].field_type=='textarea'){
                                         var labelTag = $('<label for="select-907f" class="u-custom-font u-label u-text-grey-75 u-label-3">'+field_content[k].field_name+'</label>');
                                         $("#"+tabDiv_itemID).append(labelTag);
-
-                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" name="defaultName" placeholder="" class="u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea><span id="1page_textLimit">(0)</span></div>');
+/*onkeypress="onTestChange();"  */
+                                        var fieldDiv = $('<div class="u-form-group u-vertical-form-control-visible u-form-group-1"><textarea id="'+fieldID+' 1page_textarea" onkeydown="if(event.keyCode == 13) return false;" name="defaultName" placeholder="" class="txtArea u-border-2 u-border-grey-30 u-custom-font u-input u-input-rectangle u-radius-21 u-white u-input-1"></textarea><span id="1page_textLimit">(0)</span></div>');
                                         if(field_content[k].field_mark == 1){
                                             fieldDiv.addClass("redStar");
                                             var spanTag = $('<span class="redMark">*</span>');
@@ -894,6 +895,8 @@
     			  }
     		  }
     	 });
+
+    
     });//document.ready 
 
     function readURL(input) {
@@ -905,6 +908,21 @@
             reader.readAsDataURL(input.files[0]);
         }
     }// function readURL end 
+
+    function onTestChange() {
+	    var key = window.event.keyCode;
+
+	    console.log("onTestChange");
+	    console.log($('#1page_field_2').value);
+	    // If the user has pressed enter
+	    if (key === 13) {
+	        document.getElementById("txtArea").value = document.getElementById("txtArea").value + "<br>";
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}
 </script>
   <style>
   	.notification-container {
