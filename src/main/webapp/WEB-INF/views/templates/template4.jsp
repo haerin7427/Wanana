@@ -136,7 +136,7 @@
                        $("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
                        var newInput=document.createElement('div');
                     	$("#itemBox_"+item[i].item_id).append(newInput);
-
+																								
                     	//apText2(item[i].content[0],item[i].item_id);
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
                       	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
