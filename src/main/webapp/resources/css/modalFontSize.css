@@ -1,0 +1,13 @@
+.contact div a, .contact div p, #itemBox_2, #itemBox_3 div>p, #itemBox_9>div div>p,
+	#itemBox_11 div div>p, #itemBox_12 div div>p, #itemBox_10 div>div div>p,
+	#itemBox_8 div>div div>p, #itemBox_10 div div>p, #itemBox_8 div div>p {
+	font-size: calc(0.8 * var(- -my-fontSize)) !important;
+}
+
+.fieldTitle {
+	font-size: calc(1.1 * var(- -my-fontSize)) !important;
+}
+
+#itemBox_4 div>p {
+	font-size: calc(0.9 * var(- -my-fontSize)) !important;
+}

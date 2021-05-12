@@ -15,7 +15,7 @@
 	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <!-- template4 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=11">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template4.css?ver=12">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
 <script>
@@ -124,10 +124,11 @@
               	var newInput=document.createElement('div');
               	$("#itemBox_"+item[i].item_id).append(newInput);
 
-              	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
-              	//글자수가 길 경우
-               	acText(item[i].content[0],item[i].item_id);
-               	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+/*               	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+ */              	
+ 				//글자수가 길 경우
+               	/* acText(item[i].content[0],item[i].item_id); */
+               	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="tooltipTitle"><p >'+item[i].content[0]+'</p><span class="tootipContent">'+item[i].content[1]+'</span></div>');
                	
               	if(item[i].content[2] != null && item[i].content[2] != "")
               		$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+'</p></div>');

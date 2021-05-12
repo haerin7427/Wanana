@@ -96,18 +96,54 @@
 .advantage ,interest,introduce,.caBox {
   display :block;
 }
-.advantage *,.interest *,.skill_content div *,.graduation_content div *,.award_content div *:not(.toolTip),.ceritificate_content div *:not(.toolTip){
+.advantage *,.interest *,.skill_content div *,.graduation_content div */* ,.award_content div *:not(.toolTip),.ceritificate_content div *:not(.toolTip) */{
   display:inline-block;
   margin-bottom:1%;
 }
 
-.award_content>div div:nth-child(3),.ceritificate_content>div div:nth-child(3),.project_skill *,.activity_content>div>div div:nth-child(3){
+./* award_content>div div:nth-child(2),.ceritificate_content>div div:nth-child(2), */.project_skill *,.activity_content>div>div div:nth-child(3){
   background-color:#EAEAEA;
   padding:0 2%;
   border-radius:5px;
+   font-size:calc(1*var(--my-fontSize));
+  -webkit-transform: scale(0.8);
 }
+
+/* #itemBox_8 >div>div div:nth-child(3) p{
+  background-color:#EAEAEA;
+  padding:0 2%;
+  border-radius:5px;
+   font-size:calc(1*var(--my-fontSize));
+  -webkit-transform: scale(0.8);
+}
+ */
 .award_content>div div:nth-child(1),.ceritificate_content>div div:nth-child(1),.skill_content>div>div:nth-child(1),.graduation_content>div>div:nth-child(1){
   font-weight:600;
+}
+
+.tootipContent {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    opacity: 0.7;
+	padding: 3px;
+	font-size: 10%;
+    top: 30%;
+    left: 50%;
+}
+
+.tooltipTitle{
+	float: left;
+	position: relative;
+}
+
+.tooltipTitle:hover>span.tootipContent {
+	display: block;
 }
 
 .caBox{
@@ -146,20 +182,22 @@
   width:48%;
   padding:1%;
 }
-.project_content>div>div div,.activity_content>div>div div{
+/* .project_content>div>div div,.activity_content>div>div div{
   margin-bottom:1.5%;
-}
+} */
 .project_content>div>div div:nth-child(4),.activity_content>div>div div:nth-child(4){
   border : 1px solid #EAEAEA;
   border-radius:10px;
   padding:2%;
 }
+
 .project_content>div>div>div:nth-child(1),.activity_content>div>div>div:nth-child(1){
   font-weight:900;
 /*   font-size: calc(1.1*var(--my-fontSize)); */
 }
 .project_content>div>div>div:nth-child(4) p,.activity_content>div>div>div:nth-child(4) p{
   line-height:130%;
+  height: 70px;
 }
 
 .project_skill *,.activity_content>div>div div:nth-child(1),.activity_content>div>div div:nth-child(2),.activity_content>div>div div:nth-child(3){

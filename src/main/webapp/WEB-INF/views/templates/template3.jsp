@@ -17,10 +17,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=20">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
     <title>portfolio</title>
+    
+    <style type="text/css">
+    .tootipContent {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    opacity: 0.7;
+	padding: 3px;
+	font-size: 10%;
+    top: 30%;
+    left: 50%;
+}
+
+.tooltipTitle{
+	float: left;
+	position: relative;
+}
+
+.tooltipTitle:hover>span.tootipContent {
+	display: block;
+}
+    </style>
    
     <script>
     function getContextPath() {
@@ -132,14 +159,15 @@
                	newInput.style.height = "20px";
                	$("#itemBox_"+item[i].item_id).append(newInput);
 
-               	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
-
+/*                	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'</p></div>');
+ */
                	//글자수가 길 경우
-               	acText(item[i].content[0],item[i].item_id);
-               	//$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[0]+'</p></div>');
+               	/* acText(item[i].content[0],item[i].item_id); */
+               	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="tooltipTitle"><p >'+item[i].content[0]+'</p><span class="tootipContent">'+item[i].content[1]+'</span></div>');
                	
                	if(item[i].content[2] != null && item[i].content[2] != "")
                		$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[2]+'</p></div>');
+           		
                 }else if(item[i].item_id == 10){
                         // 나의 활동(10)
                         $("#itemBox_"+item[i].item_id).siblings('.fieldTitle').css("display","block");
