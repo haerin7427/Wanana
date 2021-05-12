@@ -30,6 +30,8 @@
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
 
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- IE10, 11 지원을 위한 es6-promise -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
 	<!-- 한글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1:wght@200&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Noto+Serif+KR:wght@300&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
@@ -129,8 +131,9 @@ function printB() {
 		 	var initBody = document.body.innerHTML;
 		 	var g_oBeforeBody = document.querySelector('.printSection .container').innerHTML;
 		 	html2canvas(document.querySelector(".printSection .container"),{scrollY: -window.scrollY, 
-		 	   scale: 1}).then(canvas => {  
+		 	   scale: 1}).then(function(canvas) {  
 		 	   var dataURL = canvas.toDataURL();
+
 		 	   var width = "1200px";
 		 	   var printWindow = window.open("");
 		 	   var data=document.querySelector(".printSection .container");
@@ -140,7 +143,7 @@ function printB() {
 		       var height = ratio * width;
 		       
 		 	    $(printWindow.document.body)
-		 	      .html("<img id='Image' src=" + dataURL + " width='" + width + "' height='" + height + "' style='margin-top:60px; border:1px solid #EAEAEA'></img>")
+		 	      .html("<img id='img' src=" + dataURL + " width='" + width + "' height='" + height + "' style='margin-top:60px; border:1px solid #EAEAEA'></img>")
 		 	      .ready(function() {
 		 	      printWindow.focus();
 		 	      printWindow.print();

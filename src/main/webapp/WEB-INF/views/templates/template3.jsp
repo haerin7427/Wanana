@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=17">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
     <title>portfolio</title>
@@ -112,7 +112,7 @@
          	$("#itemBox_"+item[i].item_id).append(newInput);
 
          	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeName"><p>'+item[i].content[0]+'</p></div>');
-         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><input type="range" min="0" max="100"  class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(item[i].content[1])+'%, #EAEAEA 100%);" /></div>');
+         	$("#itemBox_"+item[i].item_id).children(":last").append('<div class="rangeBox"><div class="range" style="background: linear-gradient(to right,'+color_info.color1+' 0%, '+color_info.color1+' '+item[i].content[1]+'%,#EAEAEA '+(item[i].content[1])+'%, #EAEAEA 100%);"></div></div>');
          	$("#itemBox_"+item[i].item_id).children(":last").append('<div><p>'+item[i].content[1]+'%</p></div>');
           }else if(item[i].item_id == 9){
               // 학력(9)

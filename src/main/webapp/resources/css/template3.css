@@ -168,6 +168,10 @@
   white-space: nowrap;
 }
 
+.activity_content>div>div>div:nth-child(3) p{
+	display:inline-block;
+}
+
 /* progress bar  */
 .range {
   -webkit-appearance: none;
