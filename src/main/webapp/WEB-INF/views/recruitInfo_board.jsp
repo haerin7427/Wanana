@@ -22,6 +22,9 @@
             <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-2">
               <div class="u-container-layout u-valign-middle-xs u-container-layout-2">
                 <h2 class="u-text u-text-1 tema">테마별 찾기</h2>
+		  			<input type="text" id = "keyword" class="form-control mr-sm-2" name="keyword" value="" placeholder="직업" aria-label="검색">
+		  			<button class="btn btn-outline-success my-2 my-sm-0 submitB" type="submit">Search</button>
+  	
               </div>
             </div>
           </div>
