@@ -1,6 +1,6 @@
-
+let jobList;
 $( document ).ready(function() {
-	var jobList;
+
 	var jobs = new List();
     $.ajax({
 			url: "job/jobList",

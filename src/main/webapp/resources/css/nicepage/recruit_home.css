@@ -1,3 +1,9 @@
+.searchDiv{
+	position: absolute !important;
+    float: right;
+    top: 30%;
+    left: 70%;
+}
 .u-section-1 .u-sheet-1 {
   min-height: 696px;
 }
