@@ -9,7 +9,7 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 3) A Portfolio that can be configured beautifully even for those who do not have a sense of design.
 
 
-<Function>
+### function
  1. Create portfolio ( + modify, delete)
  2. Providing url for each portfolio 
  3. Viewing other people's portfolio 
