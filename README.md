@@ -16,3 +16,7 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
     through the board
  4. Contact the creator of the portfolio
  5. Provide job information
+ 
+ 
+ #### 수정사항
+ - 채팅기능
