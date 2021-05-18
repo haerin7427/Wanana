@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,6 +122,23 @@ public class ChatController {
  
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         gson.toJson(cList,response.getWriter());
+    }
+    
+    @RequestMapping("saveMessage.do")
+    public void saveMessage(HttpServletResponse response,HttpServletRequest request) throws JsonIOException, IOException{
+       int roomId=Integer.parseInt(request.getParameter("roomId"));
+       String name=request.getParameter("name");
+       int userId=Integer.parseInt(request.getParameter("userId"));
+       String chat=request.getParameter("message");
+       
+       MessageVO message=new MessageVO();
+       message.setRoomId(roomId);
+       message.setUserId(userId);
+       message.setName(name);
+       message.setMessage(chat);
+       message.setSessionCount(1);
+       
+       chatService.insertMessage(message);
     }
     
     @RequestMapping("chatSession.do")

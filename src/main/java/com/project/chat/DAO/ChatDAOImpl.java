@@ -55,5 +55,6 @@ public class ChatDAOImpl implements ChatDAO{
 	public int updateCount(MessageVO message) {
 		return sqlSession.update(namespace+".updateCount", message);
 	};
+	
 }
 

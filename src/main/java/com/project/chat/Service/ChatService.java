@@ -60,6 +60,4 @@ public interface ChatService {
 	 * @return
 	 */
 	int updateCount(MessageVO message);
-
-
 }
