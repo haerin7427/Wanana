@@ -263,7 +263,7 @@ function play() {
     			}
     		});
  			// 웹소켓 연결
- 			connect();
+ 			//connect();
  			console.log("enterRoom");
         }
         
@@ -288,8 +288,89 @@ function play() {
          		$('#loginOn').removeClass('profile_img_Container');
          	}
         });
+
+     // * 1 메시지 전송
+        function sendMessage(message){
+			
+            const data = {
+            	"roomId" : roomId,
+            	"name" : "${ sessionScope.Name }",
+              	"userId" : "${ sessionScope.ID }",
+                "message"   : message 
+            };
+ 			 
+            CheckLR(data);
+             
+            //let jsonData = JSON.stringify(data);
+             
+ 			//websocket.send(jsonData);
+            $.ajax({
+    			url:"saveMessage.do",
+    			data:data,
+    			async:false,
+    			dataType:"json",
+    			error:function(jqXHR, textStatus, errorThrown){
+    	            console.log("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+    	        }
+    		});
+         }
         
-        // 웹소켓
+        // * 2 메세지 수신
+     	function onMessage(evt) {
+        	 
+        	let receive = evt.data.split(",");
+     		
+            const data = {
+               	 "name" : receive[0],
+               	 "userId" : receive[1],
+                 "message" : receive[2]
+            };
+     		
+     		if(data.userId != "${ sessionScope.ID }"){
+        		CheckLR(data);
+     		}
+    	}
+         
+        // * 2-1 추가 된 것이 내가 보낸 것인지, 상대방이 보낸 것인지 확인하기
+        function CheckLR(data) {
+        	// email이 loginSession의 email과 다르면 왼쪽, 같으면 오른쪽
+        	const LR = (data.userId != "${ sessionScope.ID }") ? "left" : "right";
+         	// 메세지 추가
+            appendMessageTag(LR, data.userId, data.message, data.name);
+        }
+         
+        // * 3 메세지 태그 append
+        function appendMessageTag(LR_className, userId, message, name) {
+        	 
+            const chatLi = createMessageTag(LR_className, userId, message, name);
+         
+            $('div.chatMiddle:not(.format) ul').append(chatLi);
+         
+            // 스크롤바 아래 고정
+            $('div.chatMiddle').scrollTop($('div.chatMiddle').prop('scrollHeight'));
+        }
+         
+        // * 4 메세지 태그 생성
+        function createMessageTag(LR_className, userId, message, name) {
+         
+             // 형식 가져오기
+             let chatLi = $('div.chatMiddle.format ul li').clone();
+         
+             chatLi.addClass(LR_className); 			 // left : right 클래스 추가
+             // find() : chatLi의 하위 요소 찾기
+             chatLi.find('.sender span').text(name); 	 // 이름 추가
+             chatLi.find('.message span').text(message); // 메세지 추가
+         
+             return chatLi;
+        };
+         
+        // * 5 - 채팅창 비우기
+        function clearTextarea() {
+             $('div.chatBottom textarea').val('');
+             return false;
+        };
+        
+        /* // 웹소켓
  		let websocket;
  	
  		//입장 버튼을 눌렀을 때 호출되는 함수
@@ -388,7 +469,7 @@ function play() {
         function clearTextarea() {
              $('div.chatBottom textarea').val('');
              return false;
-        };
+        }; */
 	</script>
 </body>
 </html>
