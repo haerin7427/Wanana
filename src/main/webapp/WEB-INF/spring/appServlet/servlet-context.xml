@@ -63,13 +63,5 @@
 			<beans:ref bean="authenticationInterceptor" />
 		</interceptor>
 	</interceptors>
-
-
-	<!-- websocket 설정 (handler) -->
-	<beans:bean id="chatHandler" class="com.project.onepage.handler.ChatWebSocketHandler" />
-
-	<websocket:handlers>
-	 <websocket:mapping path="/websocket/echo.do" handler="chatHandler"/>
-	</websocket:handlers>
 	
 </beans:beans>
