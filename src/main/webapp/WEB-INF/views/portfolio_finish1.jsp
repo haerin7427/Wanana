@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>Wanana</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
 <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
 <style>
     .modal label {  
