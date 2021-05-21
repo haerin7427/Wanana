@@ -6,7 +6,13 @@
 <meta charset="UTF-8">
 <title>Header</title>
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
-       
+        <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
+        
+       	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
+    	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    	
+  
 </head>
 <body><header class="u-clearfix u-header u-header" id="sec-bbf7"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" style="float: none !important;">
@@ -32,8 +38,10 @@
 				<a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>	
 				</li>
 				</c:if>
+				<c:if test="${sessionScope.ID ne null}">
 				<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-grey-40 u-text-hover-black"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>	
 				</li>
+				</c:if>
 			</ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -52,15 +60,17 @@
 					<a class="u-button-style u-nav-link"  style="padding: 10px 20px;" href="<%=request.getContextPath()%>/manage">관리자페이지</a>
 					</li>
 					</c:if>
+					<c:if test="${sessionScope.ID ne null}">
 					<li class="u-nav-item"><a class="u-button-style u-nav-link"  style="padding: 10px 20px; cursor:pointer;" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</li>
+					</c:if>
 				</ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-        <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1" style="width: 80%;">
+        <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-custom-font u-enable-responsive u-text u-text-1" style="width: 20%;">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-palette-1-base u-btn-1" href="<%=request.getContextPath()%>/" data-page-id="425530424">
             <span class="u-text-custom-color-1">One</span>
             <span class="u-text-black">하나</span>

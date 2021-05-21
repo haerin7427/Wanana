@@ -6,10 +6,7 @@
     
     <title>JobInfoHome</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_home.css?ver=<%=System.currentTimeMillis()%>" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
-	
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js"></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js"></script>
+    
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/List.js?ver=1"></script>
   </head>
   <body class="u-body">

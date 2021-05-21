@@ -8,25 +8,18 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-<meta name="keywords" content="LOGIN">
-    <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
     
-<title>Wanana Portfolio</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
+	<title>Wanana Portfolio</title>
+	
 	<link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/nicepage.css" media="screen">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/checkPortfolio.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/nicepage/home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js?ver=1"></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
 
-      <!--doughnut chart-->
-	<script src="https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+      
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- 한글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
