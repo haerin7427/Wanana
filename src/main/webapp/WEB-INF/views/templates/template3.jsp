@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <!-- template3 css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=20">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/template3.css?ver=28">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/toolTip.css?ver=5">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/txtLengthLimit.js?ver=3" defer=""></script>
     <title>portfolio</title>

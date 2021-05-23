@@ -101,13 +101,16 @@
   margin-bottom:1%;
 }
 
-./* award_content>div div:nth-child(2),.ceritificate_content>div div:nth-child(2), */.project_skill *,.activity_content>div>div div:nth-child(3){
+/*.award_content>div div:nth-child(2),.ceritificate_content>div div:nth-child(2), */
+.project_skill *,.activity_content>div>div div:nth-child(3){
   background-color:#EAEAEA;
   padding:0 2%;
+  margin:0;
   border-radius:5px;
    font-size:calc(1*var(--my-fontSize));
-  -webkit-transform: scale(0.8);
+  -webkit-transform: scale(0.9);
 }
+
 
 /* #itemBox_8 >div>div div:nth-child(3) p{
   background-color:#EAEAEA;
