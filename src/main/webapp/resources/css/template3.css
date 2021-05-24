@@ -57,11 +57,13 @@
 
 
 .right{
-  position:absolute;
-  float:left;
-  margin-left:40%;
-  width:58%;
-  padding-left:2%;
+	  overflow:auto;
+	  position:relative;
+	  float:left;
+	  margin-left:43%;
+	  width:58%;
+	  height:100%;
+	  padding-left:2%;
 }
 
 .myInfo, .sgca{
