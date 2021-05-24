@@ -1,3 +1,11 @@
+.p_text{
+	position: relative;
+    float: right;
+    margin: 0;
+    margin-top: 1%;
+    color: gray;
+    font-size: 10px;
+}
 .u-section-1 {
   background-image: none;
 }
@@ -621,7 +629,7 @@
 
   .u-section-1 .u-text-1 {
     width: auto;
-    margin-top: 87px;
+    margin-top: 50px;
     margin-right: 619px;
     margin-left: 50px;
   }

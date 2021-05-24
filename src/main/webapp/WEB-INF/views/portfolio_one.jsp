@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css?ver=1" media="screen">
     
     <title>addData</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=12" media="screen">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=14" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
 
     
@@ -940,6 +940,7 @@
 	<jsp:include page="/WEB-INF/views/basic/header.jsp"/>
     <section class="u-clearfix u-grey-5 u-section-1" id="sec-428b">
       <div class="u-clearfix u-sheet u-sheet-1">
+      	<p class="p_text">**미리보기를 통해 포트폴리오의 완성도를 확인하세요**</p>
         <h5 class="u-custom-font u-text u-text-1">새 포트폴리오 만들기</h5><span class="u-custom-color-1 u-hidden-sm u-hidden-xs u-icon u-icon-circle u-spacing-9 u-text-white u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 42 42" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7536"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 42 42" x="0px" y="0px" id="svg-7536" style="enable-background:new 0 0 42 42;"><path d="M37.059,16H26V4.941C26,2.224,23.718,0,21,0s-5,2.224-5,4.941V16H4.941C2.224,16,0,18.282,0,21s2.224,5,4.941,5H16v11.059
 	C16,39.776,18.282,42,21,42s5-2.224,5-4.941V26h11.059C39.776,26,42,23.718,42,21S39.776,16,37.059,16z"></path></svg></span>
 	
