@@ -293,6 +293,8 @@ $( document ).ready(function() {
 				    
 			    	var len;
 			    	$(".four_jobSumProspect").empty();
+			    	$(".schDpt").empty();
+			    	$(".edubg").empty();
 			    	if(four.jobSumProspect!=null){
 				    	//차트그리기(일자리 전망)
 				    	google.charts.load('current', {packages: ['corechart']});
@@ -310,6 +312,7 @@ $( document ).ready(function() {
 				    		var chart = new google.visualization.PieChart(document.getElementById("jobSumProspect")); 
 				    		chart.draw(data3, options); 
 				    	}
+				    	
 					}
 			    	
 			   	},

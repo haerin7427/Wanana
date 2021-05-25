@@ -17848,10 +17848,17 @@ a.pswp__share--download:hover {
 }
 .u-tabs .u-tab-content > .u-tab-pane {
   flex: 1;
-  display: none;
-}
+  display: flex !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  
+} 
 .u-tabs .u-tab-content > .u-tab-active {
-  display: flex;
+   flex: 1;
+   display: flex !important; 
+   visibility: visible !important;
+   position: absolute !important;
+   
 }
 .u-tabs.u-tab-links-align-left .u-tab-list {
   justify-content: flex-start;
