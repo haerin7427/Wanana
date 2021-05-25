@@ -12,18 +12,23 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-     
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_nicepage.css?ver=3" media="screen">
+    
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_nicepage.css?ver=<%=System.currentTimeMillis()%>" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_detail.css?ver=<%=System.currentTimeMillis()%>" media="screen">
 
 	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
 	<!-- 원 차트 -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
-
+	
+	
+    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
+        
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
   </head>
   <body class="u-body">
-<jsp:include page="/WEB-INF/views/basic/header.jsp"/>
+<%-- <jsp:include page="/WEB-INF/views/basic/header.jsp"/> --%>
   
   	<!-- detail page 헤더 (직업 이름이랑 설명란) -->
     <section class="u-align-center u-clearfix u-section-1" id="sec-920a">
@@ -613,7 +618,7 @@
       </div>
     </section>
     
-    <jsp:include page="/WEB-INF/views/basic/footer.jsp"/>
+    <%-- <jsp:include page="/WEB-INF/views/basic/footer.jsp"/> --%>
     
   </body>
   
