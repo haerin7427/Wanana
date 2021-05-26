@@ -115,6 +115,7 @@ public class JobController {
 		String uri="http://openapi.work.go.kr/opi/opi/opia/jobSrch.do?authKey=WNKNNYM558VXEOK5Z53CV2VR1HJ&returnType=XML&target=JOBDTL&jobGb=1&jobCd="+jobCode+"&dtlGb=4";
 		//RestTemplate 생성
 		RestTemplate rest=new RestTemplate();
+		
 		//오브젝트로 결과 값 받아오기
 		JobDetailFour list=rest.getForObject(uri, JobDetailFour.class);
 	
