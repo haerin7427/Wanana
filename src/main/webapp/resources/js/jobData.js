@@ -16,7 +16,8 @@ $( document ).ready(function() {
 		    		
 		    	
 			    	if(jobs.contains(jobList[j].jobClcdNM)==false){
-			    		var jobTr=$('<div id="'+jobList[j].jobClcdNM+'" class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-1 jobPick"> <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3" ><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><img src="/resources/images/job/'+jobList[j].jobClcdNM+'.png" alt=""></span><h6 class="u-text u-text-2" style="text-align:center;" width="100%" height="100%">'+jobList[j].jobClcdNM+'</h6></div></div');
+			    		var path=getContextPath();
+			    		var jobTr=$('<div id="'+jobList[j].jobClcdNM+'" class="u-align-center u-container-style u-list-item u-repeater-item u-white u-list-item-1 jobPick"> <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3" ><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><img src="'+path+'/resources/images/job/'+jobList[j].jobClcdNM+'.png" width="100%" height="100%"></span><h6 class="u-text u-text-2" style="text-align:center;" >'+jobList[j].jobClcdNM+'</h6></div></div');
 			 			//var jobTr=$('<tr style="height: 60px;"><td class="u-table-cell u-white u-table-cell" id="'+jobList[j].jobClcdNM+'">'+jobList[j].jobClcdNM+'</td></tr>');
 			 			$("#jobListBody").append(jobTr);
 			 			jobs.append(jobList[j].jobClcdNM);

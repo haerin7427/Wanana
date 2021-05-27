@@ -11,6 +11,7 @@ import com.project.job.DTO.JobListDetail;
 public class JobDetailOne {
 	private String jobSmclNm;
 	private String jobSum;
+	private String jobMdclNm;
 	private String way;
 	private String sal;
 	private String jobSatis;
@@ -36,6 +37,15 @@ public class JobDetailOne {
 	public void setJobSmclNm(String jobSmclNm) {
 		this.jobSmclNm = jobSmclNm;
 	}
+	
+	public String getJobMdclNm() {
+		return jobMdclNm;
+	}
+
+	public void setJobMdclNm(String jobMdclNm) {
+		this.jobMdclNm = jobMdclNm;
+	}
+
 
 	public String getJobSum() {
 		return jobSum;

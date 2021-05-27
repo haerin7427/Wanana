@@ -9,10 +9,11 @@ $( document ).ready(function() {
 		   	async: false,
 		  	success:function(result){
 		    	summary=result;
-		    
+		    	console.log(summary);
 		    	$(".jobName").text(summary.jobSmclNm);
 		    	$(".jobContent").text(summary.jobSum);
-		    	
+		    	var path=getContextPath()+"/resources/images/job/";
+		    	$("#jobImg").attr("src",path+summary.jobMdclNm+".png");
 		    	
 		    	$(".way").empty();
 			    	var jbSplit = summary.way.split('.');

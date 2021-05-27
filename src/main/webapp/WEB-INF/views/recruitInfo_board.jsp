@@ -9,7 +9,7 @@
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/contextPath.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_home.css?ver=<%=System.currentTimeMillis()%>" media="screen">
         
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/List.js?ver=1"></script>
