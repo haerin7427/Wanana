@@ -2,7 +2,7 @@
 
 Project name : Wanana
 
-![](https://ibb.co/ZdDGgRg) 
+![](https://ibb.co/ZdDGgRg?raw=true) 
 Our WANANA service helps you create a one-page portfolio for the following people.
 
 [http://walab.handong.edu:8080/wanana/](http://walab.handong.edu:8080/wanana/)
