@@ -41,8 +41,8 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
 
 ---
-### 시연 영상
-
+### 소개 & 시연 영상
+![](https://www.youtube.com/watch?v=r7Pvgt6fakM)  
 
 ### 실제 서비스 사용
 ![](http://walab.handong.edu:8080/wanana/)  
