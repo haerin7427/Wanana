@@ -1,3 +1,9 @@
+.jobName{
+	height: 200px;
+}
+#jobDetailBody{
+	overflow:scroll;
+}
 .searchDiv{
 	position: absolute !important;
     float: right;
