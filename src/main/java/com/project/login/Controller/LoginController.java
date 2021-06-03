@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import com.project.login.DTO.User;
 import com.project.login.Service.LoginService;
+import com.project.portfolio.Service.MyPageService;
 import com.project.login.DTO.GoogleOAuthRequest;
 import com.project.login.DTO.GoogleOAuthResponse;
 
@@ -42,6 +43,8 @@ public class LoginController{
 	
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private MyPageService mypageService;
 	
 	@Autowired
 	private ChatSession cSession; 
@@ -151,6 +154,23 @@ public class LoginController{
 		if(loginService.socialCheck(user)==0) {//구글 로그인시 회원가입 전일 때
 			
 			loginService.joinSocialUser(user);
+			
+			//로그인이 성공하면 User 객체를 반환한다.
+			User one=loginService.socialLogin(user);
+			if(one!=null) {
+				session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
+				session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
+				session.setAttribute("email", one.getEmail_address());
+				session.setAttribute("admin", one.getAdmin());
+				session.setAttribute("login", one);
+			}
+			else {
+				mav.setViewName("redirect:/login");
+				return mav;
+			}
+			mav.addObject("user", user);
+			mav.setViewName("registInfo");
+	        return mav;
 		}
 		
 
@@ -258,6 +278,22 @@ public class LoginController{
 		mav.setViewName(redirectUrl);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/google/regist" ,method = RequestMethod.POST)
+	public ModelAndView registUser(HttpServletRequest request,HttpSession session,User user) throws Exception {
+		
+		user.setUser_id(request.getParameter("id"));
+		user.setName(request.getParameter("name"));
+		session.setAttribute("Name", request.getParameter("name"));
+		user.setPhone_number(request.getParameter("phone_number"));
+		session.setAttribute("phone", request.getParameter("phone_number"));
+		user.setEmail_address(request.getParameter("email_address"));
+		user.setCity(request.getParameter("city"));
+		
+		mypageService.modifyUserInfo(user);
+	    System.out.println("유저 정보 추가 등록 성공");
+	    return new ModelAndView("redirect:/");
+	 }
 	
 	//로그아웃
 	@RequestMapping(value="logout")
