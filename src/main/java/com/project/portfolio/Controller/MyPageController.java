@@ -33,11 +33,14 @@ public class MyPageController{
 	
 	@RequestMapping(value = "/info/modify" ,method = RequestMethod.POST)
 	  public void modifyInfo(HttpServletRequest request) throws Exception {
-
+		HttpSession session=request.getSession();
+		
 		User user=new User();
 		user.setUser_id(request.getParameter("id"));
 		user.setName(request.getParameter("name"));
+		session.setAttribute("Name", request.getParameter("name"));
 		user.setPhone_number(request.getParameter("phone_number"));
+		session.setAttribute("phone", request.getParameter("phone_number"));
 		user.setEmail_address(request.getParameter("email_address"));
 		user.setCity(request.getParameter("city"));
 		

@@ -153,6 +153,9 @@
 		height: 8px;
 		transform: rotate(-45deg) translate(-50%, -50%);
 	}
+	.u-icon-13{
+		position: absolute !important;
+	}
 	
 	</style>
     <script type="application/ld+json">{
