@@ -56,7 +56,7 @@
             <div class="w3-section">
               <div>
               <label>이름</label>
-              <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter Name" name="userName" id="userName">
+              <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter Name" name="userName" id="userName" required>
               </div>
               <div>
               <label>이메일</label>
@@ -64,7 +64,7 @@
               </div>
               <div>
               <label>핸드폰 번호</label>
-              <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter your phone" name="phoneNum" id="phoneNum">
+              <input class="w3-input w3-border w3-margin-bottom w3-light-grey" type="text" placeholder="Enter your phone" name="phoneNum" id="phoneNum" reqiored>
               </div>
               <div>
               <label>지역</label>
