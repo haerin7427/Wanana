@@ -16,6 +16,7 @@ import com.project.login.DTO.GoogleOAuthRequest;
 import com.project.login.DTO.GoogleOAuthResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -74,6 +75,9 @@ public class LoginController{
 
 	  public ModelAndView registPOST(User user) throws Exception { // 인자값으로 REDIRECT 사용
 
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
+		String password = scpwd.encode(user.getPwd());
+		user.setPwd(password);
 		loginService.joinuser(user); // 글작성 서비스 호출
 		
 		ModelAndView mav = new ModelAndView();
@@ -239,8 +243,10 @@ public class LoginController{
 
 		//로그인이 성공하면 User 객체를 반환한다.
 		User one=loginService.login(user);
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
+		
 
-		if(one!=null) {//로그인 성공
+		if(one!=null && (scpwd.matches(user.getPwd(), one.getPwd())||user.getPwd().equals(one.getPwd()))) {//로그인 성공
 			session.setAttribute("Name", one.getName()); //세션에 login이란 이름으로 User 객체를 저장한다.
 			session.setAttribute("ID", one.getId()); //세션에 login이란 이름으로 User 객체를 저장한다.
 			session.setAttribute("email", one.getEmail_address());
