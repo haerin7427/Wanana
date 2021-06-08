@@ -15,8 +15,6 @@
     
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_nicepage.css?ver=<%=System.currentTimeMillis()%>" media="screen">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/recruit_detail.css?ver=<%=System.currentTimeMillis()%>" media="screen">
-	    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/contextPath.js"></script>
-	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
 	<!-- 원 차트 -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
@@ -24,8 +22,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/index.css">
         
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/recruit_jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/recruit_nicepage.js"></script>
   </head>
   <body class="u-body">
 <%-- <jsp:include page="/WEB-INF/views/basic/header.jsp"/> --%>
@@ -35,7 +33,7 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-container-style u-expanded-width u-group u-palette-3-light-2 u-group-1">
           <div class="u-container-layout u-container-layout-1">
-            <img id="jobImg" src="images/colorful-delicious-vegetables-arrangement_23-2148290786.jpg" style="height: 70px;margin: 21px auto 0;" class="u-image u-image-default">
+            <img id="jobImg" src="" style="height: 70px;margin: 21px auto 0;" class="u-image u-image-default">
             <h1 class="u-align-center u-text u-text-1 jobName" style="text-align: center;">웹프로그래머</h1>
             <h4 class="u-align-center u-text u-text-2 jobContent" style="text-align: center;">웹상에서 각종 자료들을 보여줄 수 있도록 웹 프로그래밍 언어를 사용하여 ~~</h4>
           </div>
@@ -618,7 +616,9 @@
       </div>
     </section>
     
-    <%-- <jsp:include page="/WEB-INF/views/basic/footer.jsp"/> --%>
+	    <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/contextPath.js"></script>
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/recruit_detail.js?ver=<%=System.currentTimeMillis()%>" media="screen"></script>
+   
     
   </body>
   
