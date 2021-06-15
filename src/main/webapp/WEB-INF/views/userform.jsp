@@ -5,30 +5,31 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>userform</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/userform.css" media="screen">
-    <script src="<%=request.getContextPath()%>/resources/js/userform.js?v=<%=System.currentTimeMillis()%>" type="text/javascript"></script>
-    
-    <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=NanumGothic:400,700,800">
+    <meta name="keywords" content="REGIST">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>login</title>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/login.css" media="screen">
    
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	<meta name="google-signin-client-id" content="301548670560-kv6g6e8emg8kuac082ib4q4eah7hp4qu.apps.googleusercontent.com">
+    
 </head>
 <body class="u-body">
 <jsp:include page="/WEB-INF/views/basic/header.jsp"/>
-    <section class="u-clearfix u-valign-middle u-section-1" id="sec-32ab">
+    <section class="u-clearfix u-valign-middle-xl u-section-1" id="sec-32ab">
       <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
         <div class="u-layout" style="">
           <div class="u-layout-row" style="">
             <div class="u-align-left u-container-style u-custom-color-1 u-layout-cell u-left-cell u-opacity u-opacity-70 u-size-21 u-size-xs-60 u-layout-cell-1" src="">
               <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-valign-middle-xs u-valign-top-sm u-container-layout-1" src="">
                 <div class="u-container-style u-group u-image u-radius-28 u-shape-round u-image-1" data-image-width="472" data-image-height="725">
-                  <div class="u-container-layout u-container-layout-2"></div>
+                  <div class="u-container-layout u-container-layout-2">
+                    <p class="u-align-left-lg u-align-left-xl u-custom-font u-text u-text-custom-color-2 u-text-1">WELCOME</p>
+                    <p class="u-custom-font u-text u-text-grey-50 u-text-2">환영합니다!</p>
+                    <img class="u-image u-image-default u-image-2" data-image-width="242" data-image-height="275" src="<%=request.getContextPath()%>/resources/images/21.png">
+                    <img class="u-align-center-lg u-align-center-xl u-image u-image-default u-preserve-proportions u-image-3" data-image-width="172" data-image-height="43" src="<%=request.getContextPath()%>/resources/images/291.png">
+                  </div>
                 </div>
               </div>
             </div>
