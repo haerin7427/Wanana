@@ -27,7 +27,9 @@
   </head>
   <body class="u-body">
 <%-- <jsp:include page="/WEB-INF/views/basic/header.jsp"/> --%>
-  
+	<div>
+  		<button id="close_btn" style="border:0; outline:0; cursor:pointer; margin-right:20px;" onClick="closeWindow();"><p style="font-size:25px; font-weight:bold;">X</p></button>
+	</div>
   	<!-- detail page 헤더 (직업 이름이랑 설명란) -->
     <section class="u-align-center u-clearfix u-section-1" id="sec-920a">
       <div class="u-clearfix u-sheet u-sheet-1">

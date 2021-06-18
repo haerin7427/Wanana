@@ -447,7 +447,13 @@ $( document ).ready(function() {
 			    }
 			});
         });
+        
 });
+
+function closeWindow()
+ {
+  window.open('','_self').close(); 
+}
 
 
 		
