@@ -20,19 +20,6 @@ var checkUnload = true;
 */
     
 
-$(window).on("beforeunload", callback);
- 
-function callback(){
-    console.log("beforeunload callback !");
-    //do something
-    return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다!";
-}
- 
-function off(){
-    console.log("beforeunload turn off !");
-    $(window).off("beforeunload");
-}
-
 $(document).ready(function () {
     // Warning
     $(window).on('beforeunload', function(){
@@ -40,8 +27,9 @@ $(document).ready(function () {
         return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다!";
     });
     // Form Submit
-    $(document).on("#1page_saveB", "click", function(event){
+    $("#submit").click(function(event){
         // disable warning
-        $(window).off('beforeunload');
+        console.log("submit buyyon");
+       	 $(window).off("beforeunload");
     });
 });

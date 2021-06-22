@@ -23,7 +23,7 @@
     <title>addData</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=14" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
-	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=8"></script>
     
     <style>
     /* 미리보기용 css 작업 */
