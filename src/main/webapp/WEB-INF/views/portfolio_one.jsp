@@ -23,7 +23,7 @@
     <title>addData</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/addData.css?ver=14" media="screen">
     <script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/linkCheck.js?ver=6"></script>
-
+	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=2"></script>
     
     <style>
     /* 미리보기용 css 작업 */
@@ -1068,8 +1068,8 @@
 </g>
 </g></svg></span>
         <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round u-group-18">
-          <div class="u-container-layout u-container-layout-21">
-            <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25">저&nbsp; 장</p>
+          <div class="u-container-layout u-container-layout-21" id="submit">
+            <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25" >저&nbsp; 장</p>
           </div>
         </div>
       </div>
