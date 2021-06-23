@@ -15,7 +15,7 @@
         
        	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/jquery.js" defer=""></script>
     	<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/nicepage/nicepage.js" defer=""></script>
-    	
+    		<script class="u-script" type="text/javascript" src="<%=request.getContextPath()%>/resources/js/pageBackEvent.js?ver=8"></script>
    <!-- haerin  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nicepage/portfolio_one.css" media="screen">
     
@@ -1234,7 +1234,7 @@
         
         <div style="width:100%; heigth:100%;">
 	        <div id="1page_saveB" class="u-container-style u-custom-color-2 u-group u-radius-21 u-shape-round" style="width: 300px; margin:0 auto; margin-bottom: 20px;">
-	          <div class="u-container-layout u-container-layout-21">
+	          <div class="u-container-layout u-container-layout-21" id="submit">
 	            <p class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-default u-text-25">저&nbsp; 장</p>
 	          </div>
 	        </div>
