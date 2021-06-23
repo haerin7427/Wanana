@@ -29,7 +29,6 @@ $(document).ready(function () {
     // Form Submit
     $("#submit").click(function(event){
         // disable warning
-        console.log("submit buyyon");
        	 $(window).off("beforeunload");
     });
 });
