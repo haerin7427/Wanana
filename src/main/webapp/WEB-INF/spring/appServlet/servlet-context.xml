@@ -47,6 +47,17 @@
 		class="com.project.login.interceptor.AuthenticationInterceptor" />
 	<beans:bean
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		
+		
+    <!-- xss json filtering -->
+	 <beans:bean id="htmlEscapingObjectMapper" class="com.project.onepage.HtmlEscapingObjectMapperFactory" />
+	 <annotation-driven>
+		 <message-converters>
+			<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
+				<beans:property name="objectMapper" ref="htmlEscapingObjectMapper"></beans:property>
+			</beans:bean>
+		</message-converters>
+	</annotation-driven>
    
     <!-- Interceptor 설정 -->
 	<interceptors>
