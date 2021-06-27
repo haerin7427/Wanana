@@ -473,7 +473,13 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 		@RequestMapping(value= "/portfolio_two", method = RequestMethod.POST) // 주소 호출 명시 . 호출하려는 주소 와 REST 방식설정 (GET)
 		public ModelAndView putMyData(HttpServletRequest request, HttpSession session,RedirectAttributes redirectAttr, @RequestParam("file1") MultipartFile file) throws Exception {
 
-			System.out.println("putMyData controller! ");	
+			System.out.println("putMyData controller! ");
+			String storedCsrfToken = (String) session.getAttribute("CSRF_TOKEN");
+			String requestedCsrfToken = request.getParameter("csrfToken");
+	        
+	    	if( storedCsrfToken == null || !storedCsrfToken.equals(requestedCsrfToken)){
+	    	    return new ModelAndView("error/csrfMsg");
+	    	}
 
 		    String template_id  = request.getParameter("template_id");
 		    String template_name  = request.getParameter("template_html");
@@ -761,6 +767,13 @@ public class PortfolioController<GoogleConnectionFactory, OAuth2Parameters> {
 
 			System.out.println("saveEditData controller! ");
 			
+			String storedCsrfToken = (String) session.getAttribute("CSRF_TOKEN");
+			String requestedCsrfToken = request.getParameter("csrfToken");
+	        
+	    	if( storedCsrfToken == null || !storedCsrfToken.equals(requestedCsrfToken)){
+	    	    return new ModelAndView("error/csrfMsg");
+	    	}
+	    	
 		    String template_id  = request.getParameter("template_id");
 		    String template_name  = request.getParameter("template_html");
 		    String portfolio_name  = request.getParameter("portfolio_name");
