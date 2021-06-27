@@ -1030,6 +1030,9 @@
 						<input type="hidden" id="select_template_font" name="template_font" value="" readonly/>
 						<input type="hidden" id="select_template_isVerticle" name="template_isVerticle" value="0" readonly/>
 						<input type="hidden" id="select_template_url" name="url" value="" readonly/>
+						
+						 <!-- csrf token -->
+          				<input type="hidden" name="csrfToken" value="${sessionScope.CSRF_TOKEN}" />
                       <div id="1page_form" class="u-container-layout u-container-layout-14">
                       <!--  개인정보 -->
                         <div class="u-align-left u-container-style u-expanded-width u-grey-15 u-group u-group-13">

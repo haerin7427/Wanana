@@ -2,6 +2,7 @@
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -167,6 +168,7 @@ public class LoginController{
 				session.setAttribute("email", one.getEmail_address());
 				session.setAttribute("admin", one.getAdmin());
 				session.setAttribute("login", one);
+				session.setAttribute("CSRF_TOKEN",UUID.randomUUID().toString()); 
 			}
 			else {
 				mav.setViewName("redirect:/login");
@@ -188,6 +190,7 @@ public class LoginController{
 			session.setAttribute("email", one.getEmail_address());
 			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
+			session.setAttribute("CSRF_TOKEN",UUID.randomUUID().toString()); 
 		}
 		else {
 			mav.setViewName("redirect:/login");
@@ -253,6 +256,7 @@ public class LoginController{
 			session.setAttribute("phone", one.getPhone_number());
 			session.setAttribute("admin", one.getAdmin());
 			session.setAttribute("login", one);
+			session.setAttribute("CSRF_TOKEN",UUID.randomUUID().toString()); 
 			cSession.addLoginUser(Integer.toString(one.getId()));
 			System.out.println("login success");
 		}
