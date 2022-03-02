@@ -2,14 +2,14 @@
 
 ![](https://i.ibb.co/CBGm9p9/2021-05-28-11-34-37.png?raw=true) 
 
-Our WANANA service helps you create a one-page portfolio for the following people.
+This service helps you create a one-page portfolio for the following people.
 
 <!-- [http://walab.handong.edu:8080/wanana/](http://walab.handong.edu:8080/wanana/)
  -->
  
-1) A Portfolio that satisfies both applicants and recruiters. 
-2) A Portfolio that can be easily created by those who are new to portfolio creation. 
-3) A Portfolio that can be configured beautifully even for those who do not have a sense of design.
+1) A portfolio that satisfies both applicants and recruiters. 
+2) A portfolio that can be easily created by those who are new to portfolio creation. 
+3) A portfolio that can be configured beautifully even for those who do not have a sense of design.
 
 
 ## 📱 Function
@@ -31,10 +31,13 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 
 ## 📂 사용 데이터
 워크넷API:::직업정보 API
-
 https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
 
----
+## 🔗 Structure
+![](./readmeImage/structure.png)
+
+## 🔍 ERD
+![](./readmeImage/ERD.png)
 
 ### UCC 
 [https://youtu.be/r7Pvgt6fakM](https://youtu.be/r7Pvgt6fakM)
