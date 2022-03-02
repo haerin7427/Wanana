@@ -1,6 +1,4 @@
-# one-portfolio
-
-Project name : One 하나
+# One 하나
 
 ![](https://i.ibb.co/CBGm9p9/2021-05-28-11-34-37.png?raw=true) 
 
