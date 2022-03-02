@@ -34,7 +34,7 @@ This service helps you create a one-page portfolio for the following people.
 https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
 
 ---
-![Structure.png](./readMeImage/Structure.png)
+![](./readmeImage/Structure.png)
 
 
 ### UCC 
