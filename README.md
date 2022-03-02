@@ -12,7 +12,7 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 3) A Portfolio that can be configured beautifully even for those who do not have a sense of design.
 
 
-## 📱Function
+## 📱 Function
  1. Create portfolio ( + modify, delete)
  2. Providing url for each portfolio 
  3. Viewing other people's portfolio 
@@ -29,7 +29,7 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 - Code sharing: Github
 - Productivity: Notion, Dynalist
 
-### 사용 데이터
+## 📂 사용 데이터
 워크넷API:::직업정보 API
 
 https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
