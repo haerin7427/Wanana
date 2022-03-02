@@ -12,7 +12,7 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 3) A Portfolio that can be configured beautifully even for those who do not have a sense of design.
 
 
-### function
+## 📱Function
  1. Create portfolio ( + modify, delete)
  2. Providing url for each portfolio 
  3. Viewing other people's portfolio 
@@ -22,17 +22,17 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
  
  
 ---
-### 협업 도구
+## 🛠 Stacks
+- Spring, MariaDB
+- JSP, CSS, Javascript
+
+## 🗣 Communication
 - Messaging: Kakaotalk
 - Code sharing: Github
 - Productivity: Notion, Dynalist
 
-### 개발 환경 및 언어
-- Spring, MariaDB
-- JSP, CSS, Javascript
 
-### 배포 플랫폼
-- Walab server
+
 
 ### 사용 데이터
 워크넷API:::직업정보 API
