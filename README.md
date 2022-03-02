@@ -20,8 +20,6 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
  4. Contact the creator of the portfolio
  5. Provide job information
  
- 
----
 ## 🛠 Stacks
 - Spring, MariaDB
 - JSP, CSS, Javascript
@@ -30,9 +28,6 @@ Our WANANA service helps you create a one-page portfolio for the following peopl
 - Messaging: Kakaotalk
 - Code sharing: Github
 - Productivity: Notion, Dynalist
-
-
-
 
 ### 사용 데이터
 워크넷API:::직업정보 API
