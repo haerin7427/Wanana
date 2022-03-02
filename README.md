@@ -31,10 +31,11 @@ This service helps you create a one-page portfolio for the following people.
 
 ## 📂 사용 데이터
 워크넷API:::직업정보 API
-
 https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
 
 ---
+![jpg_1](./readMeImage/Structure.png)
+
 
 ### UCC 
 [https://youtu.be/r7Pvgt6fakM](https://youtu.be/r7Pvgt6fakM)
