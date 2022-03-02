@@ -36,8 +36,8 @@ https://openapi.work.go.kr/opi/opi/opia/jobSrchVw.do
 
 ---
 
-### 소개 UCC 영상
+### UCC 
 [https://youtu.be/r7Pvgt6fakM](https://youtu.be/r7Pvgt6fakM)
 
-### 데모영상
+### Demo
 [https://youtu.be/ovd0nOiKtqA](https://youtu.be/ovd0nOiKtqA)  
