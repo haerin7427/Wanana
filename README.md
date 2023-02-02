@@ -1,11 +1,8 @@
 # One 하나
 
-![](https://i.ibb.co/CBGm9p9/2021-05-28-11-34-37.png?raw=true) 
+![Onehana](https://user-images.githubusercontent.com/43716537/216227525-07196417-323b-48fe-b1d8-fe75a9347b06.png)
 
 This service helps you create a one-page portfolio for the following people.
-
-<!-- [http://walab.handong.edu:8080/wanana/](http://walab.handong.edu:8080/wanana/)
- -->
  
 1) A portfolio that satisfies both applicants and recruiters. 
 2) A portfolio that can be easily created by those who are new to portfolio creation. 
