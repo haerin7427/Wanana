@@ -8,7 +8,7 @@ This service helps you create a one-page portfolio for the following people.
 2) A portfolio that can be easily created by those who are new to portfolio creation. 
 3) A portfolio that can be configured beautifully even for those who do not have a sense of design.
 
-- <b>One 하나는 포트폴리오 제작, 다른 사용자의 포트폴리오 열람, 직업 정보 탐색이 가능한 웹 서비스 입니다.</b> 포트폴리오 제작에 어려움을 겪는 컴퓨터공학 계열 취업 준비생을 위해, 쉽게 포트폴리오를 제작할 수 있도록 개발하였습니다. 템플릿을 제공하여 디자인에 대한 부담감을 낮춰 A4용지 한 페이지 분량의 포트폴리오를 완성할 수 있습니다. 또한, 포트폴리오 추천 항목을 제공하여 완성도 높은 포트폴리오를 제작하는 데 도움을 주고 있습니다.
+- **One 하나는 포트폴리오 제작, 다른 사용자의 포트폴리오 열람, 직업 정보 탐색이 가능한 웹 서비스입니다.** 포트폴리오 제작에 어려움을 겪는 컴퓨터공학 계열 취업 준비생을 위해, 쉽게 포트폴리오를 제작할 수 있도록 개발하였습니다. 템플릿을 제공하여 디자인에 대한 부담감을 낮춰 A4용지 한 페이지 분량의 포트폴리오를 완성할 수 있습니다. 또한, 포트폴리오 추천 항목을 제공하여 완성도 높은 포트폴리오를 제작하는 데 도움을 줄 수 있습니다.
 
 - [One 하나 서비스 데모 동영상](https://youtu.be/ovd0nOiKtqA)
 
